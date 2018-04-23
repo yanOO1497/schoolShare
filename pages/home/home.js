@@ -18,27 +18,59 @@ Page({
     sliderOffset: 0,
     sliderLeft: 0,
     //最新消息列表
-    listData:[{
-      type:"wenda",
-      userName:"张三",
-      title:"标题标题标题标题标题",
-      desc:"摘要摘要",
-      comment:"33",
-      love:"3",
-      uid:"11"
+    listData: [{
+      type: "share",
+      nickName: "媛媛",
+      avatarUrl: "http://p3.music.126.net/NgCeNHxZcuqCsJTo_tdRKA==/18637821604170727.jpg?param=30y30",
+      coverUrl:"http://img1.gtimg.com/tj/pics/hv1/151/175/2020/131395276.jpg",
+      title: "四六级又没过？这是我最后一次抢救你了（碾压四六级全套经验）",
+      desc: "英语四六级和普通的日常英语不一样，毕竟是考试，要求的是笔试和听力，并没有口语，所以提升起来也可以相对的快一些。所以呢，我觉得只要有一点点的英语基础，加上自己的重视，过4，6级其实并不难。",
+      comment: "33",
+      love: "3",
+      uid: "11"
     }, {
       type: "wenda",
-      userName: "张三",
+      nickName: "holy俊辉",
+      avatarUrl: "https://pic.qqtn.com/up/2018-4/15241053731750196.jpg",
       title: "标题标题标题标题标题",
-      desc: "摘要摘要",
+      // desc: "摘要摘要",
+      comment: "33",
+      love: "3",
+      uid: "22",
+      isLove:true
+    }, {
+      type: "share",
+      nickName: "怀左同学",
+      avatarUrl: "https://pic.qqtn.com/up/2018-4/15241053732525556.jpg",
+      title: "有钱之前，先让自己值钱",
+      desc: "刚到北京的那几天，朋友正处于失业期，我们挑了一个时间，在紫阳公园聊了一下午。 工作后的人，通常比还在学校的同龄人成长要快，一个人",
+      comment: "33",
+      love: "3",
+      uid: "33"
+    },{
+      type: "share",
+      nickName: "媛媛",
+      avatarUrl: "http://p3.music.126.net/NgCeNHxZcuqCsJTo_tdRKA==/18637821604170727.jpg?param=30y30",
+      title: "四六级又没过？这是我最后一次抢救你了（碾压四六级全套经验）",
+      desc: "英语四六级和普通的日常英语不一样，毕竟是考试，要求的是笔试和听力，并没有口语，所以提升起来也可以相对的快一些。所以呢，我觉得只要有一点点的英语基础，加上自己的重视，过4，6级其实并不难。",
+      comment: "33",
+      love: "3",
+      uid: "11"
+    }, {
+      type: "wenda",
+      nickName: "holy俊辉",
+      avatarUrl: "https://pic.qqtn.com/up/2018-4/15241053731750196.jpg",
+      title: "标题标题标题标题标题",
+      // desc: "摘要摘要",
       comment: "33",
       love: "3",
       uid: "22"
     }, {
       type: "share",
-      userName: "张三",
-      title: "标题标题标题标题标题",
-      desc: "摘要摘要",
+      nickName: "怀左同学",
+      avatarUrl: "https://pic.qqtn.com/up/2018-4/15241053732525556.jpg",
+      title: "有钱之前，先让自己值钱",
+      desc: "刚到北京的那几天，朋友正处于失业期，我们挑了一个时间，在紫阳公园聊了一下午。 工作后的人，通常比还在学校的同龄人成长要快，一个人",
       comment: "33",
       love: "3",
       uid: "33"
@@ -48,88 +80,55 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-  },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
   //搜索框
   showInput: function () {
@@ -159,5 +158,9 @@ Page({
       sliderOffset: e.currentTarget.offsetLeft,
       activeIndex: e.currentTarget.id
     });
+  },
+  changeAct:function(e){
+    console.log(e.currentTarget);
+    
   }
 })

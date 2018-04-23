@@ -53,9 +53,107 @@
       <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
     </view>
     <view class="weui-tab__panel">
-      <view class="weui-tab__content" hidden="{{activeIndex != 0}}">全部的内容</view>
-      <view class="weui-tab__content" hidden="{{activeIndex != 1}}">问答的内容</view>
-      <view class="weui-tab__content" hidden="{{activeIndex != 2}}">分享的内容</view>
+      <scroll-view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+        <block class='list' wx:for="{{listData}}">
+          <view id="{{item.uid}}" class='list-item {{item.type}}'>
+            <view class='user-info'>
+              <image class='avatar' src='{{item.avatarUrl}}'></image>
+              <view class='user-data'>
+                <view class='nickname'>{{item.nickName}}</view>
+                <view class='from'>来自{{item.type}}</view>
+              </view>
+
+            </view>
+            <view class='list-content'>
+              <view class='item-title'>{{item.title}}</view>
+              <image wx:if="{{item.coverUrl}}" src='{{item.coverUrl}}' mode="widthFix"></image>
+              <!-- <text class='item-dec'>{{item.desc}}</text> -->
+            </view>
+            <ul class='control'>
+              <li>
+                <i class="iconfont icon-aixin" bindTap="changeAct"></i>
+                <text>{{item.love}}</text>
+              </li>
+              <li>
+                <i class="iconfont icon-pinglun"></i>
+                <text>{{item.comment}}</text>
+              </li>
+              <li>
+                <i class="iconfont icon-shoucang"></i>
+                <text>收藏</text>
+              </li>
+            </ul>
+          </view>
+        </block>
+
+      </scroll-view>
+      <scroll-view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+        <block class='list' wx:for="{{listData}}">
+          <view id="{{item.uid}}" class='list-item {{item.type}}' wx:if="{{item.type =='wenda'}}">
+            <view class='user-info'>
+              <image class='avatar' src='{{item.avatarUrl}}'></image>
+              <view class='user-data'>
+                <view class='nickname'>{{item.nickName}}</view>
+                <view class='from'>来自{{item.type}}</view>
+              </view>
+            </view>
+            <view class='list-content'>
+              <view class='item-title'>{{item.title}}</view>
+              <image wx:if="{{item.coverUrl}}" src='{{item.coverUrl}}' mode="widthFix"></image>
+              <!-- <text class='item-dec'>{{item.desc}}</text> -->
+               <ul class='control'>
+              <li>
+                <i class="iconfont icon-aixin" bindTap="changeAct"></i>
+                <text>{{item.love}}</text>
+              </li>
+              <li>
+                <i class="iconfont icon-pinglun"></i>
+                <text>{{item.comment}}</text>
+              </li>
+              <li>
+                <i class="iconfont icon-shoucang"></i>
+                <text>收藏</text>
+              </li>
+            </ul>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+      <scroll-view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+        <block class='list' wx:for="{{listData}}">
+          <view id="{{item.uid}}" class='list-item {{item.type}}' wx:if="{{item.type =='share'}}">
+            <view class='user-info'>
+              <image class='avatar' src='{{item.avatarUrl}}'></image>
+              <view class='user-data'>
+                <view class='nickname'>{{item.nickName}}</view>
+                <view class='from'>来自{{item.type}}</view>
+              </view>
+            </view>
+            <view class='list-content'>
+              <view class='item-title'>{{item.title}}</view>
+              <image wx:if="{{item.coverUrl}}" src='{{item.coverUrl}}' mode="widthFix"></image>
+              <!-- <text class='item-dec'>{{item.desc}}</text> -->
+               <ul class='control'>
+              <li>
+                <i class="iconfont icon-aixin" bindTap="changeAct"></i>
+                <text>{{item.love}}</text>
+              </li>
+              <li>
+                <i class="iconfont icon-pinglun"></i>
+                <text>{{item.comment}}</text>
+              </li>
+              <li>
+                <i class="iconfont icon-shoucang"></i>
+                <text>收藏</text>
+              </li>
+            </ul>
+            </view>
+            <view class=''>
+
+            </view>
+          </view>
+        </block>
+      </scroll-view>
     </view>
   </view>
 

@@ -2,6 +2,13 @@
  /* @import "http//at.alicdn.com/t/font_612512_0tguyeebp90jxlxr.css";  */
    @import "./utils/iconfont.wxss";   
 @import "./utils/weui.wxss";
+/* 去除默认滚动条 */
+::-webkit-scrollbar {  
+  width: 0;  
+  height: 0;  
+  color: transparent;  
+  display: none;
+} 
 .iconfont{
   font-size: 30rpx;
 }

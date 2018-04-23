@@ -3,11 +3,13 @@
     "pages/home/home",
     "pages/my/my",
     "pages/message/message",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/login/login",
+    "pages/user/user"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#79BD8F",
     "navigationBarTitleText": "同学帮帮忙",
     "navigationBarTextStyle": "black"
   },
@@ -21,7 +23,7 @@
         "pagePath": "pages/message/message",
         "text": "消息",
         "iconPath": "images/tab-message.png",
-        "selectedIconPath":"images/tab-message-cur.png",
+        "selectedIconPath": "images/tab-message-cur.png",
         "active": true
       },
       {
@@ -43,5 +45,4 @@
     ],
     "position": "bottom"
   }
-
 }

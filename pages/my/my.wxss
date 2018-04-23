@@ -2,7 +2,7 @@
 
 .page__hd{
   position: relative;
-  background-color: #99CC33;
+  background-color: #79BD8F;
   color: white;
 }
 .icon-list{
