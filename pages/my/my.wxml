@@ -5,9 +5,11 @@
       <i class='iconfont .icon-saomianerweima'></i>
       <i class='iconfont .icon-yifu'></i>
     </view>
-    <view class='user-infor'>
-        <image class='user-img'></image>
-        <text class='user-name'>用户昵称</text>
+    
+    <view class='user-login' wx:if="{{!hasUserInfo && canIUse}}" bindgetuserinfo="getUserInfo">立即登录</view>
+    <view class='user-info' wx:else>
+        <image class='user-img'src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <text class='user-name'>{{userInfo.nickName}}</text>
         <text class='points'>积分：{{points}}</text>
     </view>
     <view class='broadcast'>
@@ -18,7 +20,7 @@
 <view class='page__bd'>
   <view class="weui-grids">
             <block wx:for="{{list}}" wx:key="*this">
-                <navigator url="" class="weui-grid" hover-class="weui-grid_active">
+                <navigator url="{{item.url}}" class="weui-grid" hover-class="weui-grid_active">
                     <i class="iconfont {{item.iconClass}}"></i>
                     <view class="weui-grid__label">{{item.name}}</view>
                 </navigator>

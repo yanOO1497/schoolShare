@@ -1,26 +1,88 @@
 // pages/home/home.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    motto: '欢迎进入！',
+    userInfo: {},
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     //搜索框
     inputShowed: false,
     inputVal: "",
     tabs: ["全部", "问答", "分享"],
     activeIndex: 0,
     sliderOffset: 0,
-    sliderLeft: 0
+    sliderLeft: 0,
+    //最新消息列表
+    listData:[{
+      type:"wenda",
+      userName:"张三",
+      title:"标题标题标题标题标题",
+      desc:"摘要摘要",
+      comment:"33",
+      love:"3",
+      uid:"11"
+    }, {
+      type: "wenda",
+      userName: "张三",
+      title: "标题标题标题标题标题",
+      desc: "摘要摘要",
+      comment: "33",
+      love: "3",
+      uid: "22"
+    }, {
+      type: "share",
+      userName: "张三",
+      title: "标题标题标题标题标题",
+      desc: "摘要摘要",
+      comment: "33",
+      love: "3",
+      uid: "33"
+    }]
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      })
+    } else if (this.data.canIUse) {
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        }
+      })
+    }
   },
-
+  getUserInfo: function (e) {
+    console.log(e)
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
