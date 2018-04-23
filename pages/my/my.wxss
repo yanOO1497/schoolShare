@@ -1,0 +1,62 @@
+/* pages/my/my.wxss */
+
+.page__hd{
+  position: relative;
+  background-color: #99CC33;
+  color: white;
+}
+.icon-list{
+  position: absolute;
+   width: 100%; 
+  box-sizing: border-box;
+  top:0;
+  left:0;
+  padding: 0 20rpx;
+}
+ .icon-list .iconfont{
+    float: left;
+    font-size:50rpx;
+  }
+  .icon-list  .icon-yifu{
+    float: right;
+  } 
+
+  .user-infor{
+    text-align: center;
+  }
+  .user-img{
+    width: 120rpx;
+    height: 120rpx;
+    background-color: #ccc;
+    border-radius: 50%;
+  }
+  .user-name{
+    display: block;
+    font-size: 34rpx;
+  }
+  .points{
+    color: #ddd;
+    font-size: 26rpx;
+  }
+  .broadcast{
+    position: absolute;
+    padding: 0 15rpx;
+    bottom: 0;
+    left: 0;
+    width:100%;
+    box-sizing: border-box;
+    height: 60rpx;
+    line-height: 60rpx;
+    color: #FE9900;
+    background-color: rgba(51, 51, 51, 0.3)
+  }
+.broadcast-text{
+  font-size: 25rpx;
+  padding-left: 10rpx;
+}
+.weui-grids{
+  text-align: center;
+}
+.weui-grids .iconfont{
+  font-size: 50rpx;
+}

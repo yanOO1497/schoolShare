@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/my/my",
+    "pages/home/home",
+    "pages/message/message",
+    "pages/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "同学帮帮忙",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#36ab60",
+    "backgroundColor": "#fff",
+    "borderStyle": "#ccc",
+    "list": [
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "images/tab-message.png",
+        "selectedIconPath":"images/tab-message-cur.png",
+        "active": true
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "广场",
+        "iconPath": "images/tab-home.png",
+        "selectedIconPath": "images/tab-home-cur.png",
+        "selectedColor": "#4EDF80",
+        "active": false
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/tab-my.png",
+        "selectedIconPath": "images/tab-my-cur.png",
+        "selectedColor": "#4EDF80",
+        "active": false
+      }
+    ],
+    "position": "bottom"
+  }
+
+}

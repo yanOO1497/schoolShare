@@ -1,0 +1,29 @@
+<!--pages/my/my.wxml-->
+<view class='page'>
+<view class="page__hd">
+    <view class='icon-list'>
+      <i class='iconfont .icon-saomianerweima'></i>
+      <i class='iconfont .icon-yifu'></i>
+    </view>
+    <view class='user-infor'>
+        <image class='user-img'></image>
+        <text class='user-name'>用户昵称</text>
+        <text class='points'>积分：{{points}}</text>
+    </view>
+    <view class='broadcast'>
+       <i class='iconfont .icon-guangboxianxing'></i>
+       <text class='broadcast-text'>{{broadcast}}</text>
+    </view>
+  </view>
+<view class='page__bd'>
+  <view class="weui-grids">
+            <block wx:for="{{list}}" wx:key="*this">
+                <navigator url="" class="weui-grid" hover-class="weui-grid_active">
+                    <i class="iconfont {{item.iconClass}}"></i>
+                    <view class="weui-grid__label">{{item.name}}</view>
+                </navigator>
+            </block>
+     </view>
+</view>
+</view>
+
