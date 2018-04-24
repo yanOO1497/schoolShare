@@ -1,8 +1,9 @@
 <!--pages/home/home.wxml-->
 <!--index.wxml-->
 
-<import src="../../templates/list/list.wxml"/>
+<import src="../../templates/list/list.wxml" />
 <view class='page'>
+  <!-- 搜索框 -->
   <view class="weui-search-bar">
     <view class="weui-search-bar__form">
       <view class="weui-search-bar__box">
@@ -61,12 +62,12 @@
       </scroll-view>
       <scroll-view class="weui-tab__content" hidden="{{activeIndex != 1}}">
         <block class='list' wx:for="{{listQua}}" wx:key="*this">
-         <template is="list-question" data="{{...item}}" bindtap="enterDetail"></template>
+          <template is="list-question" data="{{...item}}" bindtap="enterDetail"></template>
         </block>
       </scroll-view>
       <scroll-view class="weui-tab__content" hidden="{{activeIndex != 2}}">
         <block class='list' wx:for="{{listShare}}" wx:key="*this">
-            <template is="list-share" data="{{...item}}"></template>
+          <template is="list-share" data="{{...item}}"></template>
         </block>
       </scroll-view>
     </view>

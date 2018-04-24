@@ -1,7 +1,7 @@
 /**app.wxss**/
  /* @import "http//at.alicdn.com/t/font_612512_0tguyeebp90jxlxr.css";  */
-   @import "./utils/iconfont.wxss";   
-@import "./utils/weui.wxss";
+@import "./common/style/iconfont.wxss";   
+@import "./common/style/weui.wxss";
 /* 去除默认滚动条 */
 ::-webkit-scrollbar {  
   width: 0;  
@@ -42,4 +42,10 @@ page{
     color: #888888;
     text-align: left;
     font-size: 14px;
+}
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
 }

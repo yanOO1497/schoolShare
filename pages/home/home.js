@@ -14,7 +14,7 @@ Page({
     //搜索框
     inputShowed: false,
     inputVal: "",
-    tabs: ["最新", "问答精华", "分享精华"],
+    tabs: ["广场", "问答精华", "分享精华","师哥师姐说","校园推广活动"],
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
