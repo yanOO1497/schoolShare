@@ -2,7 +2,7 @@
 <view class='page'>
 <view class="page__hd">
     <view class='icon-list'>
-      <i class='iconfont .icon-saomianerweima'></i>
+      <i class='iconfont .icon-saomianerweima' bindtap="scan"></i>
       <i class='iconfont .icon-yifu'></i>
     </view>
     
@@ -20,7 +20,7 @@
 <view class='page__bd'>
   <view class="weui-grids">
             <block wx:for="{{list}}" wx:key="*this">
-                <navigator url="{{item.url}}" class="weui-grid" hover-class="weui-grid_active">
+                <navigator url="{{item.url}}" class="weui-grid" hover-class="weui-grid_active" >
                     <i class="iconfont {{item.iconClass}}"></i>
                     <view class="weui-grid__label">{{item.name}}</view>
                 </navigator>

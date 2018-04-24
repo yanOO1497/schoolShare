@@ -15,32 +15,32 @@ Page({
     list:[
       {
         name:"每日签到",
-        url:"../message/message",
+        url:"../setting/setting",
         iconClass:"icon-qiandao"
       },
       {
         name: "我的问答",
-        url: "../message/message",
+        url: "../setting/setting",
         iconClass: "icon-wenda"
       },
       {
         name: "我的分享",
-        url: "../message/message",
+        url: "../setting/setting",
         iconClass: "icon-fenxiang"
       },
       {
         name: "我的收藏",
-        url: "../message/message",
+        url: "../setting/setting",
         iconClass: "icon-shoucang"
       },
       {
         name: "意见反馈",
-        url: "../message/message",
+        url: "../setting/setting",
         iconClass: "icon-yijianfankui"
       },
       {
         name: "我的设置",
-        url: "../message/message",
+        url: "../setting/setting",
         iconClass: "icon-shezhi"
       },
     ]
@@ -85,7 +85,13 @@ Page({
       })
     }
   },
-
+  scan:function(){
+    wx.scanCode({
+      success: (res) => {
+        console.log(res)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -134,4 +140,5 @@ Page({
   onShareAppMessage: function () {
   
   }
+
 })

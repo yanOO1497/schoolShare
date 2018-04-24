@@ -1,0 +1,15 @@
+<template name="talk">
+  <navigator class="weui-cells weui-cells_after-title" url='../chatroom/chatroom?userId={{userId}}&&nickname={{nickname}}&&avaterUrl={{avaterUrl}}'>
+    <view class="weui-cell">
+      <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+        <image src="../../images/{{avaterUrl}}" style="width: 50px; height: 50px; display: block" />
+        <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">{{messageNum}}</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view>{{nickname}}</view>
+        <view style="font-size: 13px;color: #888888;">{{talkMessage}}</view>
+      </view>
+    </view>
+  </navigator>
+
+</template>

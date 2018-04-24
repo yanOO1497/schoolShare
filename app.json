@@ -1,11 +1,14 @@
 {
   "pages": [
+    "pages/message/message",
     "pages/home/home",
     "pages/my/my",
-    "pages/message/message",
     "pages/index/index",
     "pages/login/login",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/setting/setting",
+    "pages/listDetail/listDetail",
+    "pages/chatroom/chatroom"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -20,19 +23,19 @@
     "borderStyle": "#ccc",
     "list": [
       {
-        "pagePath": "pages/message/message",
-        "text": "消息",
-        "iconPath": "images/tab-message.png",
-        "selectedIconPath": "images/tab-message-cur.png",
-        "active": true
-      },
-      {
         "pagePath": "pages/home/home",
         "text": "广场",
         "iconPath": "images/tab-home.png",
         "selectedIconPath": "images/tab-home-cur.png",
         "selectedColor": "#4EDF80",
         "active": false
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "消息",
+        "iconPath": "images/tab-message.png",
+        "selectedIconPath": "images/tab-message-cur.png",
+        "active": true
       },
       {
         "pagePath": "pages/my/my",

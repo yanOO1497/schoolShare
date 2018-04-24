@@ -1,11 +1,72 @@
 // pages/message/message.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-  
+    talkData:[{
+      userId: "222",
+      avaterUrl:"avater-holder.jpg",
+      nickname:"我是昵称",
+      messageNum:"5",
+      talkMessage:"我是消息正文"
+    },
+      {
+        userId:"333",
+        avaterUrl: "avater-holder.jpg",
+        nickname: "我是昵称333",
+        messageNum: "4",
+        talkMessage: "我是消息正文"
+      },
+      {
+        userId: "777",
+        avaterUrl: "avater-holder.jpg",
+        nickname: "昵称777",
+        messageNum: "0",
+        talkMessage: "我是消息正文"
+      },
+      {
+        userId: "444",
+        avaterUrl: "avater-holder.jpg",
+        nickname: "我是昵称444",
+        messageNum: "4",
+        talkMessage: "我是消息正文"
+      },
+      {
+        userId: "234",
+        avaterUrl: "avater-holder.jpg",
+        nickname: "我是昵称234",
+        messageNum: "4",
+        talkMessage: "我是消息正文"
+      },
+      {
+        userId: "555",
+        avaterUrl: "avater-holder.jpg",
+        nickname: "我是昵称555",
+        messageNum: "5",
+        talkMessage: "我是消息正文"
+      },
+      {
+        userId: "666",
+        avaterUrl: "avater-holder.jpg",
+        nickname: "我是昵称666",
+        messageNum: "2",
+        talkMessage: "我是消息正文"
+      },
+      {
+        userId: "999",
+        avaterUrl: "avater-holder.jpg",
+        nickname: "我是昵称999",
+        messageNum: "7",
+        talkMessage: "我是消息正文"
+      },
+      {
+        userId: "100",
+        avaterUrl: "avater-holder.jpg",
+        nickname: "我是昵称100",
+        messageNum: "4",
+        talkMessage: "我是消息正文"
+      }]
   },
 
   /**

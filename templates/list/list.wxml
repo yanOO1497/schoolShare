@@ -1,0 +1,62 @@
+<template name="list-share">
+    <view id="{{uid}}" class='list-item {{type}}' bindtap='enterDetail'>
+      <view class='user-info'>
+        <image class='avatar' src='{{avatarUrl}}'></image>
+        <view class='user-data'>
+          <view class='nickname'>{{nickName}}</view>
+          <view class='from'>来自{{type}}</view>
+        </view>
+
+      </view>
+      <view class='list-content' >
+        <view class='item-title'>{{title}}</view>
+        <image wx:if="{{coverUrl}}" src='{{coverUrl}}' mode="widthFix"></image>
+    
+      </view>
+      <ul class='control'>
+        <li>
+          <i class="iconfont icon-aixin" bindTap="changeAct"></i>
+          <text>{{love}}</text>
+        </li>
+        <li>
+          <i class="iconfont icon-pinglun"></i>
+          <text>{{comment}}</text>
+        </li>
+        <li>
+          <i class="iconfont icon-shoucang"></i>
+          <text>收藏</text>
+        </li>
+      </ul>
+    </view>
+</template>
+<template name="list-question">
+    <view id="{{uid}}" class='list-item {{type}}'>
+      <view class='user-info'>
+        <image class='avatar' src='{{avatarUrl}}'></image>
+        <view class='user-data'>
+          <view class='nickname'>{{nickName}}</view>
+          <view class='from'>来自{{type}}</view>
+        </view>
+
+      </view>
+      <view class='list-content'  >
+        <view class='item-title'>{{title}}</view>
+        <image wx:if="{{coverUrl}}" src='{{coverUrl}}' mode="widthFix"></image>
+    
+      </view>
+      <ul class='control'>
+        <li>
+          <i class="iconfont icon-aixin" bindTap="changeAct"></i>
+          <text>{{love}}</text>
+        </li>
+        <li>
+          <i class="iconfont icon-pinglun"></i>
+          <text>{{comment}}</text>
+        </li>
+        <li>
+          <i class="iconfont icon-shoucang"></i>
+          <text>收藏</text>
+        </li>
+      </ul>
+    </view>
+</template>

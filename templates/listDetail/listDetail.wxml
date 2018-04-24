@@ -1,0 +1,14 @@
+<template name="listDetail">
+  <view class="weui-media-box weui-media-box_text" >
+    <view class="weui-media-box__title weui-media-box__title_in-text">{{title}}</view>
+    <view class="weui-media-box__desc">{{title}}</view>
+    <view class="weui-media-box__info">
+      <view class="weui-media-box__info__meta">来自{{type}}</view>
+      <view class="weui-media-box__info__meta">{{time}}</view>
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+        <i class="iconfont icon-shoucang"></i>
+        <text>收藏</text>
+      </view>
+    </view>
+  </view>
+</template>

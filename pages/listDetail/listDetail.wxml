@@ -1,0 +1,5 @@
+<!--pages/listDetail/listDetail.wxml-->
+<import src="../../templates/listDetail/listDetail.wxml"/>
+<view class='page'>
+    <template is="listDetail" data="{{...listDetail}}" ></template>
+</view>

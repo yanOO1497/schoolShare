@@ -1,8 +1,27 @@
 <!--pages/login/login.wxml-->
 <view class='page'>
-  <i>icon</i>
-  <label>手机号：</label><input placeholder='请输入手机号'></input>
-  <text>如果您还没有用这个手机号注册过，我们将为您创建新账号</text>
-  <button>微信授权登录</button>
+  <view class="weui-cells weui-cells_after-title">
+            
+            <view class="weui-cell weui-cell_input weui-cell_vcode">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">手机号</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入手机号" />
+                </view>
+                <view class="weui-cell__ft">
+                    <view class="weui-vcode-btn">获取验证码</view>
+                </view>
+            </view>
+           <!-- <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">昵称</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入昵称"/>
+                </view>
+            </view> -->
+        </view>
+   <button class="weui-btn" type="primary">微信授权登录</button>
   
 </view>

@@ -1,0 +1,8 @@
+<template name="chat">
+<view class='chat'>
+   <image src='../../images/{{avaterUrl}}' class='chatNav'></image> 
+  <view class='chat-detail'>{{}}</view>
+
+</view>
+  {{nickname}}
+</template>
