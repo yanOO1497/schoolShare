@@ -1,6 +1,7 @@
 <!--pages/chateRoom/chatroom.wxml-->
 
-<import src="../../templates/chat/chat.wxml"/>
+<import src="../../templates/chat/chat.wxml" />
 <view class='page'>
-    <template is="chat" data="{{...userData}}"></template>
+  <template is="chat" data="{{...userData,myAvaterUrl:myAvaterUrl,chatData:chatData}}"></template>
+  <view class='sentMessage'> <input placeholder="请输入" /><text>发送</text></view>
 </view>

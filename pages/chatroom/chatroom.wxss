@@ -1,2 +1,2 @@
 /* pages/chateRoom/chatroom.wxss */
-
+@import '../../templates/chat/chat.wxss';
