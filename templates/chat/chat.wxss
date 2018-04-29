@@ -28,29 +28,12 @@
 }
 .sentMessage{
   width: 100%;
-   background-color: #ddd; 
-  box-sizing: border-box;
+  background-color: white;
   height:100rpx;
-  padding: 10rpx;
   position: fixed;
   bottom:0;
   z-index:20;
-  
 }
 .sentMessage input{
   width: 80%;
-  position: absolute;
-  left: 10rpx;
-  top:10rpx;
-  height: 80rpx;
-  padding: 0 20rpx;
-  border-radius: 20rpx;
-  line-height: 80rpx;
-  border: 1px solid #ddd;
-  background-color: white;
-}
-.sentMessage text{
-  position: absolute;
-  top:10rpx;
-  right:25rpx;
 }
