@@ -1,44 +1,17 @@
 <!--pages/home/home.wxml-->
 <!--index.wxml-->
-
-<!-- <import src="../../templates/list/list.wxml" /> -->
- <view class='page'> 
+<view class='page'>
   <!-- navtab -->
-  <!-- <view class="weui-tab">
-    <view class="weui-navbar">
-      <block wx:for="{{tabs}}" wx:key="*this">
-        <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
-          <view class="weui-navbar__title">{{item}}</view>
-        </view>
-      </block>
-      <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
-    </view>
-    <view class="weui-tab__panel">
-      <scroll-view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-        <block class='list' wx:for="{{listData}}" wx:key="*this">
-          <template is="{{type === 'share' ? 'list-share' : 'list-question'}}" data="{{...item}}" bindtap="enterDetail"></template>
-        </block>
+  <zan-tab list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" scroll="{{ navtab.scroll }}" height="{{ navtab.height }}" bindtabchange="tabchange" />
 
-      </scroll-view>
-      <scroll-view class="weui-tab__content" hidden="{{activeIndex != 1}}">
-        <block class='list' wx:for="{{listQua}}" wx:key="*this">
-          <template is="list-question" data="{{...item}}" bindtap="enterDetail"></template>
-        </block>
-      </scroll-view>
-      <scroll-view class="weui-tab__content" hidden="{{activeIndex != 2}}">
-        <block class='list' wx:for="{{listShare}}" wx:key="*this">
-          <template is="list-share" data="{{...item}}"></template>
-        </block>
-      </scroll-view>
-    </view>
-  </view> -->
-<view >
-    <zan-tab
-      list="{{ navtab.list }}"
-      selected-id="{{ navtab.selectedId }}"
-      scroll="{{ navtab.scroll }}"
-      height="{{ navtab.height }}"
-    />
-  </view>
- </view> 
+  <scroll-view class="weui-tab__content">
+    <!-- 校内问答与经验分享页面 -->
+    <list-one list="{{listData[navtab.selectedId]}}" />
 
+    <!-- 讲座 列表 -->
+
+  </scroll-view>
+
+
+</view>
+<!-- page -->

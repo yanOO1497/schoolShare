@@ -1,0 +1,68 @@
+<!--component/list-1/list-1.wxml-->
+<block class='list' wx:for="{{list}}" wx:key="index" >
+  <template is="{{type === 'share' ? 'list-share' : 'list-question'}}" data="{{...item}}" bindtap="enterDetail"></template>
+</block>
+
+<template name="list-share" >
+
+  <view data-uid="{{uid}}" data-index="{{index}}" class='list-item {{type}}' bindtap='enterDetail'>
+    <view class='user-info'>
+      <image class='avatar' src='{{avatarUrl}}' data-name="avater-img"></image>
+      <view class='user-data'>
+        <view class='nickname'>{{nickName}}</view>
+        <view class='from'>来自{{type}}</view>
+      </view>
+
+    </view>
+    <view class='list-content'>
+      <view class='item-title'>{{title}}</view>
+      <image wx:if="{{coverUrl}}" src='{{coverUrl}}' mode="widthFix"></image>
+
+    </view>
+    <ul class='control'>
+      <li data-name="love">
+        <i class="iconfont icon-aixin"></i>
+        <text>{{love}}</text>
+      </li>
+      <li>
+        <i class="iconfont icon-pinglun"></i>
+        <text>{{comment}}</text>
+      </li>
+      <li>
+        <i class="iconfont icon-shoucang"></i>
+        <text>收藏</text>
+      </li>
+    </ul>
+  </view>
+</template>
+<template name="list-question">
+  <view data-uid="{{uid}}" class='list-item {{type}}' bindtap='enterDetail'>
+    <view class='user-info'>
+      <image class='avatar' src='{{avatarUrl}}' data-name="avater-img"></image>
+      <view class='user-data'>
+        <view class='nickname'>{{nickName}}</view>
+        <view class='from'>来自{{type}}</view>
+      </view>
+
+    </view>
+    <view class='list-content'>
+      <view class='item-title'>{{title}}</view>
+      <image wx:if="{{coverUrl}}" src='{{coverUrl}}' mode="widthFix" data-uid="{{uid}}"></image>
+
+    </view>
+    <ul class='control'>
+      <li>
+        <i class="iconfont icon-aixin" data-name="love"></i>
+        <text>{{love}}</text>
+      </li>
+      <li>
+        <i class="iconfont icon-pinglun"></i>
+        <text>{{comment}}</text>
+      </li>
+      <li>
+        <i class="iconfont icon-shoucang"></i>
+        <text>收藏</text>
+      </li>
+    </ul>
+  </view>
+</template>

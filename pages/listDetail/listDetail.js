@@ -5,36 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    listData: {
-      "22": {
-        type: "wenda",
-        title: "福大东门怎么走？",
-        comment: "4",
-        love: "3",
-        uid: "22",
-        isLove: true,
-        time: "2017年6月5号",
-      },
-      "23": {
-        type: "wenda",
-        nickName: "萌新萌新",
-        avatarUrl: "https://pic.qqtn.com/up/2018-4/15241053731750196.jpg",
-        title: "谁有高数下的历年卷？",
-        // desc: "摘要摘要",
-        comment: "33",
-        love: "3",
-        uid: "23",
-        isLove: true,
-        time: "2018年1月3号",
-      }},
     listDetail: {
-      type: "wenda",
+      selectedId: "wenda",
+      avatarUrl: "https://pic.qqtn.com/up/2018-4/15241053731750196.jpg",
+      nickName: "holy俊辉",
       title: "福大东门怎么走？",
       comment: "4",
       love: "3",
-      uid: "22",
       isLove: true,
       time: "2017年6月5号",
+      },
+      comment:{
+
       }
   },
 
@@ -42,17 +24,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     this.setData=({
-      listDetail: this.data.listData[options.listId],
+      uid: options.uid,
     })
-    console.log(this.data.listData[options.listId]);
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log("this.data.listDetail");
+   
   },
 
   /**

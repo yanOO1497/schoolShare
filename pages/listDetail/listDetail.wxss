@@ -1,1 +1,18 @@
 /* pages/listDetail/listDetail.wxss */
+.nickname {
+  font-size: 34rpx;
+  line-height: 60rpx;
+}
+.avatar, .user-data {
+  float: left;
+}
+.weui-media-box__title{
+  clear: left;
+  padding-top:10rpx;
+  
+}
+.from {
+  color: #ddd;
+  font-size: 25rpx;
+  line-height: 40rpx;
+}

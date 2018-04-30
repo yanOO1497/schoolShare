@@ -1,3 +1,4 @@
+
 <template name="list-share">
     <view id="{{uid}}" class='list-item {{type}}' bindtap='enterDetail'>
       <view class='user-info'>
