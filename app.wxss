@@ -2,6 +2,7 @@
  /* @import "http//at.alicdn.com/t/font_612512_0tguyeebp90jxlxr.css";  */
 @import "./common/style/iconfont.wxss";   
 @import "./common/style/weui.wxss";
+@import "./common/style/zanui.wxss";
 /* 去除默认滚动条 */
 ::-webkit-scrollbar {  
   width: 0;  

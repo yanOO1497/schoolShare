@@ -1,3 +1,7 @@
 {
-    "navigationBarTitleText": "广场"
+    "navigationBarTitleText": "广场",
+    "usingComponents": {
+      "zan-tab": "../../component/tab/index",
+      "doc-page": "../../component/doc-page/index"
+    }
 }
