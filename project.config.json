@@ -37,6 +37,12 @@
 					"name": "个人信息",
 					"pathName": "pages/personal/personal",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "发布信息",
+					"pathName": "pages/publish/publish",
+					"query": ""
 				}
 			]
 		}

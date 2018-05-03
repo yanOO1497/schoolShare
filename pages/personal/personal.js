@@ -59,13 +59,15 @@ Page({
       love: "3",
       uid: "11",
       time: "2018.02.02"
-    }]
+    }],
+    navScroll:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   var uid = options.uid;
 
   },
   tabchange: function (e) {
@@ -81,7 +83,20 @@ Page({
   onReady: function () {
 
   },
-
+  // 页面滚动触发事件的处理函数
+  onPageScroll: function (e){
+    var that=this;
+    // console.log(e.scrollTop);
+    if(e.scrollTop > 221){
+      that.setData({
+        navScroll:true
+      })
+    }else{
+      that.setData({
+        navScroll: false
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -106,8 +121,8 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
+  onPullDownRefresh: function (e) {
+  
   },
 
   /**

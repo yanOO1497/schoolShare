@@ -9,7 +9,8 @@
     "pages/setting/setting",
     "pages/listDetail/listDetail",
     "pages/chatroom/chatroom",
-    "pages/personal/personal"
+    "pages/personal/personal",
+    "pages/publish/publish"
   ],
   "window": {
     "backgroundTextStyle": "light",

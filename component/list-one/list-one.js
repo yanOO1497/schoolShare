@@ -30,11 +30,14 @@ Component({
       var _uid = e.currentTarget.dataset.uid;
       var name = e.target.dataset.name;
       var _url = "../../pages/listDetail/listDetail?uid=" + _uid;
+      var _avaterUrl = "../../pages/personal/personal?uid=" + _uid;
       console.log(_uid);
       // 判断当前点击对象
       switch (name) {
         case "avater-img":
-
+          wx.navigateTo({
+            url: _avaterUrl
+          });
           break;
         case "love":
 

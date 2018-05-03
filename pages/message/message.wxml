@@ -1,6 +1,8 @@
 <!--pages/message/message.wxml-->
 <import src="../../templates/newMessage/newMessage.wxml" />
 <view class='page'>
+
+
   <block class='list' wx:for="{{talkData}}" wx:key="*this">
     <template is="talk" data="{{...item}}"></template>
   </block>

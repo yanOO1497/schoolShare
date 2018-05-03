@@ -21,7 +21,7 @@
     <view class=''>
     </view>
     <view class='list'>
-      <zan-tab list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" bindtabchange="tabchange" />
+      <zan-tab list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" bindtabchange="tabchange" style="{{navScroll ? 'position:fixed;top:0;z-index:100;' : ''}}"/>
       <scroll-view class="weui-tab__content">
         <!-- 他参与的 -->
         <list-one wx:if="{{navtab.selectedId == 'index'}}" list="{{publishList}}" />

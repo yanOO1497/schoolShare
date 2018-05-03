@@ -1,9 +1,17 @@
 <!--pages/home/home.wxml-->
 <!--index.wxml-->
 <view class='page'>
+  <view class='fixBar'>
+    <navigator url='../publish/publish' class='fixBar-item write'>
+      <text class='iconfont icon-xie'></text>
+    </navigator>
+    <view class='fixBar-item top'>
+      <text class='iconfont icon-top'></text>
+    </view>
+  </view>
   <!-- navtab -->
-  <zan-tab list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" scroll="{{ navtab.scroll }}" height="{{ navtab.height }}" bindtabchange="tabchange" />
-
+  <zan-tab  list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" scroll="{{ navtab.scroll }}" height="{{ navtab.height }}" bindtabchange="tabchange" />
+  <view class='empty' style='height:{{ navtab.height }}px'></view>
   <scroll-view class="weui-tab__content">
     <!-- 校内问答与经验分享页面 -->
     <list-one list="{{listData[navtab.selectedId]}}" />
