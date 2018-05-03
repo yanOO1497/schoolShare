@@ -1,5 +1,6 @@
 /* component/list-1/list-1.wxss */
 @import "../../common/style/iconfont.wxss"; 
+@import "../../common/style/weui.wxss"; 
 .avatar {
   width: 100rpx;
   height: 100rpx;
@@ -37,7 +38,7 @@
 }
 
 .list-content {
-  clear: left;
+  clear: both;
   padding-top: 20rpx;
 }
 
@@ -78,4 +79,7 @@
 
 .control .iconfont {
   padding: 0 10rpx;
+}
+.option-more{
+  float: right;
 }

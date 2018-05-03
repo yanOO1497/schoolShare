@@ -223,8 +223,6 @@ Page({
   // },
   tabchange:function(e){
     var that = this;
-    console.log(e.detail, that.data.navtab.selectedId);
-    
     that.data.navtab.selectedId=e.detail;
     that.setData({
       navtab: that.data.navtab

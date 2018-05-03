@@ -1,0 +1,35 @@
+<!--pages/personal/personal.wxml-->
+<view class='page'>
+  <view class="page__hd">
+    <view class='user-info'>
+      <image class='user-img' src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <view class='user-name'>{{userInfo.nickName}}
+        <text class='iconfont icon-girl'></text>
+      </view>
+      <view class='bio'>{{userInfo.bio}}</view>
+      <!-- <view class='points'>积分：{{userInfo.points}}</view> -->
+    </view>
+    <view class='user-option'>
+      <span class="user-opton-item">
+        <text class='iconfont icon-youjian'></text> 私信</span>
+      <span class="user-opton-item">
+        <text class='iconfont icon-gengduo1'></text>
+      </span>
+    </view>
+  </view>
+  <view class='page__bd'>
+    <view class=''>
+    </view>
+    <view class='list'>
+      <zan-tab list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" bindtabchange="tabchange" />
+      <scroll-view class="weui-tab__content">
+        <!-- 他参与的 -->
+        <list-one wx:if="{{navtab.selectedId == 'index'}}" list="{{publishList}}" />
+        <!-- 他收藏的 -->
+         <list-one wx:else list="{{collectList}}" />
+        <!-- 讲座 列表 -->
+
+      </scroll-view>
+    </view>
+  </view>
+</view>

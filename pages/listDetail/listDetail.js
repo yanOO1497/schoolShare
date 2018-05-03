@@ -15,19 +15,35 @@ Page({
       isLove: true,
       time: "2017年6月5号",
       },
-      comment:{
-
-      }
+    commentData: [{
+      userName: "小明",
+      userUid: "user1111",
+      replyUserName: "小花",
+      replyUserUid: "user2222",
+      content: "哈哈哈哈",
+      time: "13:44"
+    }, {
+      userName: "小花",
+      userUid: "user2222",
+      replyUserName: "",
+      replyUserUid: "",
+      content: "地图上好像都写的很清楚吧地图上好像都写的很清楚吧地图上好像都写的很清楚吧地图上好像都写的很清楚吧",
+      time: "10:30"
+    }],
+      commentLenght:2,
+      uid:"",
+      temp: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-    this.setData=({
-      uid: options.uid,
-    })
+    var that=this;
+    console.log(options);
+    // that.setData=({
+    //   uid: options.uid,
+    // })
     
   },
 

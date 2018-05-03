@@ -1,0 +1,4 @@
+@import "../../common/style/iconfont.wxss"; 
+@import "../../common/style/weui.wxss"; 
+@import "../../common/style/base.wxss";
+@import "../../pages/listDetail/listDetail.wxss"; 

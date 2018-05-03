@@ -1,5 +1,5 @@
 {
-  "pages": [ 
+  "pages": [
     "pages/home/home",
     "pages/message/message",
     "pages/my/my",
@@ -8,7 +8,8 @@
     "pages/user/user",
     "pages/setting/setting",
     "pages/listDetail/listDetail",
-    "pages/chatroom/chatroom"
+    "pages/chatroom/chatroom",
+    "pages/personal/personal"
   ],
   "window": {
     "backgroundTextStyle": "light",

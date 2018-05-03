@@ -1,9 +1,9 @@
 <!--component/list-1/list-1.wxml-->
-<block class='list' wx:for="{{list}}" wx:key="index" >
+<block class='list' wx:for="{{list}}" wx:key="index">
   <template is="{{type === 'share' ? 'list-share' : 'list-question'}}" data="{{...item}}" bindtap="enterDetail"></template>
 </block>
 
-<template name="list-share" >
+<template name="list-share">
 
   <view data-uid="{{uid}}" data-index="{{index}}" class='list-item {{type}}' bindtap='enterDetail'>
     <view class='user-info'>
@@ -12,27 +12,37 @@
         <view class='nickname'>{{nickName}}</view>
         <view class='from'>来自{{type}}</view>
       </view>
-
+      <view class='option-more' data-name="more">∨</view>
     </view>
+
     <view class='list-content'>
-      <view class='item-title'>{{title}}</view>
+      <view class='item-title'>{{content}}</view>
       <image wx:if="{{coverUrl}}" src='{{coverUrl}}' mode="widthFix"></image>
 
     </view>
-    <ul class='control'>
-      <li data-name="love">
-        <i class="iconfont icon-aixin"></i>
-        <text>{{love}}</text>
-      </li>
-      <li>
+
+    <view class="weui-media-box__info">
+      <view class="weui-media-box__info__meta ">
         <i class="iconfont icon-pinglun"></i>
-        <text>{{comment}}</text>
-      </li>
-      <li>
+        <text>评论</text>
+      </view>
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">
         <i class="iconfont icon-shoucang"></i>
         <text>收藏</text>
-      </li>
-    </ul>
+      </view>
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+        <i class="iconfont icon-dianzan"></i>
+        <text>赞</text>
+      </view>
+      <view class="weui-media-box__info__meta ">
+        <i class="iconfont icon-cai"></i>
+        <text>踩</text>
+      </view>
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+        <i class="iconfont icon-shoucang"></i>
+        <text>举报</text>
+      </view>
+    </view>
   </view>
 </template>
 <template name="list-question">
@@ -41,16 +51,16 @@
       <image class='avatar' src='{{avatarUrl}}' data-name="avater-img"></image>
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
-        <view class='from'>来自{{type}}</view>
+        <view class='from'> {{time}} 来自{{type}}</view>
       </view>
-
+      <view class='option-more' data-name="more">∨</view>
     </view>
     <view class='list-content'>
-      <view class='item-title'>{{title}}</view>
+      <view class='item-title'>{{content}}</view>
       <image wx:if="{{coverUrl}}" src='{{coverUrl}}' mode="widthFix" data-uid="{{uid}}"></image>
 
     </view>
-    <ul class='control'>
+    <!-- <ul class='control'>
       <li>
         <i class="iconfont icon-aixin" data-name="love"></i>
         <text>{{love}}</text>
@@ -63,6 +73,21 @@
         <i class="iconfont icon-shoucang"></i>
         <text>收藏</text>
       </li>
-    </ul>
+    </ul> -->
+    <view class="weui-media-box__info">
+
+      <view class="weui-media-box__info__meta ">
+        <i class="iconfont icon-cai"></i>
+        <text>踩</text>
+      </view>
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+        <i class="iconfont icon-dianzan"></i>
+        <text>赞</text>
+      </view>
+      <view class="weui-media-box__info__meta ">
+        <i class="iconfont icon-pinglun"></i>
+        <text>评论</text>
+      </view>
+    </view>
   </view>
 </template>

@@ -1,5 +1,6 @@
 <!--pages/listDetail/listDetail.wxml-->
-<import src="../../templates/listDetail/listDetail.wxml"/>
+<!-- <import src="../../templates/listDetail/listDetail.wxml"/> -->
 <view class='page'>
-    <template is="listDetail" data="{{...listDetail}}" ></template>
+     <listDetail-item listData="{{listDetail}}"></listDetail-item> 
+     <comment commentData="{{commentData}}" commentLenght="{{commentLenght}}"></comment> 
 </view>

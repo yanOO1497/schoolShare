@@ -1,5 +1,6 @@
 
 const app = getApp();
+console.log(app.globalData);
 Page({
   /**
    * 页面的初始数据
@@ -46,7 +47,7 @@ Page({
     ]
   },
   getUserInfo: function (e) {
-    console.log(e)
+ 
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,

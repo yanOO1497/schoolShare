@@ -1,0 +1,30 @@
+<!--component/comment/comment.wxml-->
+<view class='comment-wrap'>
+  <view>评论</view>
+  <view wx:if="{{commentLenght < 1}}" class='no-comment'>
+  还没有人评论，快来抢沙发~
+  </view>
+  <view wx:else class='comment-center'> 
+     <template  is="comment-item" wx:for="{{commentData}}" data="{{...item}}" ></template>
+  </view>
+
+</view>
+
+
+<template name="comment-item">
+  <view class='comment-item'>
+      <navigator class='user-link'>{{userName}}</navigator>
+      <span class="commen-reply" wx:if="{{replyUserName !== ''}}">
+        <text>回复</text>
+        <navigator class='user-link'>{{replyUserName}}</navigator>
+      </span>
+    <text class='comment-item-content'>: {{content}}</text>
+    <view class="weui-media-box__info">
+      <view class="weui-media-box__info__meta">{{time}}</view>
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+        <i class="iconfont icon-shoucang"></i>
+        <text cl>收藏</text>
+      </view>
+    </view>
+  </view>
+</template>

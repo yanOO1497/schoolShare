@@ -1,0 +1,23 @@
+/* pages/personal/personal.wxss */
+@import '../my/my.wxss';
+.user-name{
+  font-size: 40rpx;
+  font-weight: 600;
+}
+.icon-girl {
+  display: inline-block;
+  color: rgb(255, 77, 148);
+  margin: 0 10rpx;
+}
+.bio{
+  line-height: 60rpx;
+  font-size: 30rpx;
+}
+.user-option{
+  font-size: 30rpx;
+  text-align: center;
+}
+.user-opton-item{
+  display: inline-block;
+  padding: 0 10rpx;
+}

@@ -1,0 +1,26 @@
+/* component/comment/comment.wxss */
+@import "../../common/style/iconfont.wxss"; 
+@import "../../common/style/weui.wxss"; 
+@import "../../common/style/base.wxss";
+@import "../../pages/listDetail/listDetail.wxss"; 
+.weui-media-box__info{
+  margin-top: 5rpx;
+}
+.comment-wrap{
+  /* border: 1rpx solid #ccc; */
+  /* border-radius: 20rpx; */
+  /* padding: 20rpx; */
+  padding: 20rpx;
+  background-color: #f2f2f5;
+  font-size: 28rpx;
+
+}
+ .user-link{
+  display: inline-block;
+  color: #8590a6;
+  padding-right:5rpx;
+}
+.comment-item{
+  padding: 0 10rpx;
+  border-top: 1px solid #ccc;
+}
