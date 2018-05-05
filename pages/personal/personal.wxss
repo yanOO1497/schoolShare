@@ -1,23 +1,23 @@
 /* pages/personal/personal.wxss */
 @import '../my/my.wxss';
-.user-name{
-  font-size: 40rpx;
-  font-weight: 600;
-}
-.icon-girl {
-  display: inline-block;
-  color: rgb(255, 77, 148);
-  margin: 0 10rpx;
-}
-.bio{
-  line-height: 60rpx;
-  font-size: 30rpx;
-}
-.user-option{
-  font-size: 30rpx;
+
+.user-opton-item {
+   display: block; 
+  position: absolute;
+  bottom: -150rpx;
+  width: 90%;
+  margin: 0 5%;
   text-align: center;
+  height: 100rpx;
+  color: white;
+  background-color: #79bd8f;
+  font-size: 40rpx;
+  line-height: 100rpx;
+  border-radius: 20rpx;
 }
-.user-opton-item{
-  display: inline-block;
-  padding: 0 10rpx;
+
+.icon-youjian {
+  font-size: 40rpx;
+  line-height: 100rpx;
 }
+

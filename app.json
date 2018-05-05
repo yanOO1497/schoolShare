@@ -10,7 +10,8 @@
     "pages/listDetail/listDetail",
     "pages/chatroom/chatroom",
     "pages/personal/personal",
-    "pages/publish/publish"
+    "pages/publish/publish",
+    "pages/feedback/feedback"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -37,7 +38,7 @@
         "text": "消息",
         "iconPath": "images/tab-message.png",
         "selectedIconPath": "images/tab-message-cur.png",
-        "active": true
+        "active": false
       },
       {
         "pagePath": "pages/my/my",

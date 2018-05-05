@@ -1,10 +1,47 @@
 /* pages/my/my.wxss */
-
+.page{
+  position: relative;
+  height: 100%;
+  background: url("http://attach.bbs.miui.com/forum/201709/16/215420yjddlec5okkk58vj.jpg") no-repeat;
+  background-size: cover;
+}
 .page__hd{
   position: relative;
-  background-color: #79BD8F;
+  background-color: rgba(255, 255, 255, .2);
   color: white;
+  text-align: center;
 }
+.page__bd{
+  text-align: center;
+  background-color: white;
+}
+
+.user-info .iconfont{
+ margin: 0 10rpx; 
+}
+.user-name{
+  font-size: 34rpx;
+  font-weight: 600;
+}
+.icon-girl {
+  color: rgb(255, 77, 148);
+}
+.icon-boy {
+  color: #35a1d4;
+}
+.icon-school {
+  /* color: rgb(35, 148, 251); */
+}
+.bio {
+  line-height: 60rpx;
+  font-size: 30rpx;
+}
+
+.user-option {
+  font-size: 30rpx;
+  text-align: center;
+}
+
 .icon-list{
   position: absolute;
    width: 100%; 
@@ -20,19 +57,27 @@
   .icon-list  .icon-yifu{
     float: right;
   } 
-
-  .user-info{
+  .user-info,.user-item{
     text-align: center;
+  }
+  .user-login{
+    display: inline-block;
+    line-height: 40rpx;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80rpx;
+    margin: auto;
   }
   .user-img{
     width: 120rpx;
     height: 120rpx;
     background-color: #ccc;
     border-radius: 50%;
-  }
-  .user-name{
-    display: block;
-    font-size: 34rpx;
+    margin: 0 auto;
+    position: relative;
   }
   .points{
     color: #ddd;

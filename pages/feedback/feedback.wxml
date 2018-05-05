@@ -1,0 +1,11 @@
+<view class='page'>
+  <view class='feedText title'>您有什么问题或建议想对我们说？</view>
+  <view class="zan-cell zan-field zan-field--wrapped">
+    <textarea focus value="{{ textareaValue }}" placeholder="您的宝贵意见，就是我们进步的源泉" maxlength="{{ maxlength }}" class="zan-field__input zan-cell__bd " placeholder-class="zan-field__placeholder" bindinput="textChange" style="height: 200px;">
+    </textarea>
+  </view>
+  <view class='feedText'>（＾＿＾）请详细描述遇到的问题，有助于我们快速定位和解决问题，或留下您的宝贵建议，我们会认真进行评估！</view>
+  <view class="user-opton-item weui-btn" bindtap='submit'>
+    提交</view>
+
+</view>

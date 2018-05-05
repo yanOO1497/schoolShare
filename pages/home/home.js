@@ -1,22 +1,30 @@
 // pages/home/home.js
 // import list from "../../templates/list/list.js";
+var fetch = require('../../common/script/fetch')
+var util = require('../../utils/util')
+var config = require('../../common/script/config')
 const app = getApp();
+const typeArr = ["question","share"];
+const apiList = config.apiList;
 Page({
 
   /**
    * 页面的初始数据
    */
+
   data: {
     motto: '欢迎进入！',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    //搜索框
-    inputShowed: false,
-    inputVal: "",
+  
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
+    
+    hasMore:true,
+    start: 0,
+    showLoading:true,
     //最新消息列表
     listData:{
       share: [
@@ -30,7 +38,7 @@ Page({
           comment: "33",
           love: "3",
           uid: "11",
-
+          optionList:[true,false,false]
         }, {
           type: "wenda",
           nickName: "holy俊辉",
@@ -40,16 +48,19 @@ Page({
           comment: "33",
           love: "3",
           uid: "22",
-          isLove: true
+          optionList: [true, false, false]
         }, {
-          type: "share",
-          nickName: "怀左同学",
-          avatarUrl: "https://pic.qqtn.com/up/2018-4/15241053732525556.jpg",
-          title: "有钱之前，先让自己值钱",
-          content: "刚到北京的那几天，朋友正处于失业期，我们挑了一个时间，在紫阳公园聊了一下午。 工作后的人，通常比还在学校的同龄人成长要快，一个人",
-          comment: "33",
-          love: "3",
-          uid: "33"
+          type: "share",//消息类别
+          mid:"",//消息id
+          uid: "33",//发布人id
+          nickName: "怀左同学",//发布人昵称
+          avatarUrl: "https://pic.qqtn.com/up/2018-4/15241053732525556.jpg",//发布人头像地址
+          content: "刚到北京的那几天，朋友正处于失业期，我们挑了一个时间，在紫阳公园聊了一下午。 工作后的人，通常比还在学校的同龄人成长要快，一个人",//发布人头像地址
+          time: "",//发布时间
+          comment: "33",//评论数
+          useful: "3",//点赞/觉得有用 数目
+          useless:"4",//觉得没有的数目
+          optionList: [true, false, false]//没用、有用、收藏（用户是否）
         }, {
           type: "share",
           nickName: "媛媛",
@@ -69,82 +80,47 @@ Page({
           love: "3",
           uid: "33"
         }],
-      quiz: [{
-        type: "wenda",
-        nickName: "holy俊辉",
-        avatarUrl: "https://pic.qqtn.com/up/2018-4/15241053731750196.jpg",
-        title: "福大东门怎么走？",
-        content: "摘要摘要",
-        comment: "4",
-        love: "3",
-        uid: "22",
-        isLove: true
-      }, {
-          type: "quiz",
-        nickName: "holy俊辉",
-        avatarUrl: "https://pic.qqtn.com/up/2018-4/15241053731750196.jpg",
-        title: "这里是问答",
-        content: "摘要摘要",
-        comment: "4",
-        love: "3",
-        uid: "22",
-        isLove: true
-      },],
-      lectures: [{
-        type: "wenda",
-        nickName: "holy俊辉",
-        avatarUrl: "https://pic.qqtn.com/up/2018-4/15241053731750196.jpg",
-        title: "福大东门怎么走？",
-        content: "摘要摘要",
-        comment: "4",
-        love: "3",
-        uid: "22",
-        isLove: true
-      }, {
-        type: "quiz",
-        nickName: "holy俊辉",
-        avatarUrl: "https://pic.qqtn.com/up/2018-4/15241053731750196.jpg",
-        title: "这里是问答",
-        content: "摘要摘要",
-        comment: "4",
-        love: "3",
-        uid: "22",
-        isLove: true
-      },]
+      question: [],
+      lectures: []
 
     },
     navtab: {
       list: [{
-        id: 'quiz',
+        id: 'question',
         title: '校内问答'
       }, {
         id: 'share',
         title: '经验分享'
-      }, {
-          id: 'lectures',
-        title: '讲座'
-      }, {
-          id: 'activity',
-        title: '社团/团立项活动'
-      }, {
+      },
+      //  {
+      //     id: 'lectures',
+      //   title: '讲座'
+      // }, {
+      //     id: 'activity',
+      //   title: '社团/团立项活动'
+      // }, 
+      {
         id: 'reward',
         title: '悬赏求助'
-      }, {
-          id: ' preferential',
-        title: '商家优惠'
-      }, {
+      },
+      //  {
+      //     id: ' preferential',
+      //   title: '商家优惠'
+      // }, 
+      {
         id: ' lostandfound',
         title: '失物招领'
       }, 
        {
          id: ' 二手市场',
         title: '二手市场'
-      },{
-          id: 'employ',
-        title: '招聘日历'
-      }
+      },
+      // {
+      //     id: 'employ',
+      //   title: '招聘日历'
+      // }
       ],
-      selectedId: 'share',
+      selectedId: 'question',
       scroll: true,
       height: 45
     }
@@ -153,10 +129,39 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-    this.setData({
+    var that = this;
+    wx.showNavigationBarLoading();
+    // 获取用户信息
+    util.getUserSet(function (userInfo) {
+      console.log("登录成功", userInfo);
+      fetch._get.call(that, apiList.questionList, {
+        start: that.data.start,
+        count: 20
+      }, function (res) {
+        wx.hideNavigationBarLoading()
+        that.data.listData.question = that.data.listData.question.concat(res.subjects);
+        that.setData({
+          listData: that.data.listData
+        });
+      }, function () {
+        console.log("fail");
+      });
+    },function(){
+      console.log("获取用户数据失败");
+    });
+   
+    // app.getUserInfo();
+    // app.getCity(function () {
+    //   wx.hideNavigationBarLoading()
+    //   // wx.setNavigationBarTitle({
+    //   //   title: '正在热映 - ' + config.city
+    //   // })
+      
+    // })
+    // this.setData({
 
-    })
+    // })
+
     // list.list.apply(this, []);
   },
   enterDetail:function(){

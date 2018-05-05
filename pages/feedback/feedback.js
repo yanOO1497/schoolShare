@@ -1,33 +1,35 @@
-// pages/publish/publish.js
+// pages/feedback/feedback.js
+var fetch = require('../../common/script/fetch')
+var util = require('../../utils/util')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    types: ["请选择","校内问答", "经验分享", "悬赏求助","失物招领", "二手市场"],
-    typesIndex: 0,
-    countryCodes: ["人民币", "积分"],
-    countryCodeIndex: 0,
-    textareaArea:''
+    textareaValue:''
   },
-  bindTypesChange: function (e) {
-    // console.log('picker country 发生选择改变，携带值为', e.detail.value);
-    this.setData({
-      typesIndex: e.detail.value
-    })
-  },
-  formSubmit:function (event){
 
-    console.log(event,"submit");
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
   
   },
-
+  textChange : function (event){
+    var that = this;
+    that.setData({
+      textareaValue: event.detail.value
+    })
+  },
+  submit (){
+    var that = this;
+    if (that.data.textareaValue !== ''){
+      //添加请求代码
+    }else{
+      util.showText("请先输入反馈信息!");
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

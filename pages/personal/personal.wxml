@@ -3,33 +3,17 @@
   <view class="page__hd">
     <view class='user-info'>
       <image class='user-img' src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <view class='user-name'>{{userInfo.nickName}}
-        <text class='iconfont icon-girl'></text>
+      <view  class='user-info'>
+        <text  class='user-name' > {{userInfo.nickName}}</text>
+        <text wx:if="{{userInfo.sex == 2}}" class='iconfont icon-girl'></text>
+        <text wx:else class='iconfont icon-boy'></text>
       </view>
+      <view class='school'><i class='iconfont icon-school'></i>{{userInfo.school}}</view>
       <view class='bio'>{{userInfo.bio}}</view>
-      <!-- <view class='points'>积分：{{userInfo.points}}</view> -->
+      
     </view>
-    <view class='user-option'>
-      <span class="user-opton-item">
-        <text class='iconfont icon-youjian'></text> 私信</span>
-      <span class="user-opton-item">
-        <text class='iconfont icon-gengduo1'></text>
-      </span>
-    </view>
-  </view>
-  <view class='page__bd'>
-    <view class=''>
-    </view>
-    <view class='list'>
-      <zan-tab list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" bindtabchange="tabchange" style="{{navScroll ? 'position:fixed;top:0;z-index:100;' : ''}}"/>
-      <scroll-view class="weui-tab__content">
-        <!-- 他参与的 -->
-        <list-one wx:if="{{navtab.selectedId == 'index'}}" list="{{publishList}}" />
-        <!-- 他收藏的 -->
-         <list-one wx:else list="{{collectList}}" />
-        <!-- 讲座 列表 -->
 
-      </scroll-view>
-    </view>
   </view>
+    <navigator class="user-opton-item weui-btn" url="../chatroom/chatroom?userId={{userInfo.uid}}&&nickname={{userInfo.nickname}}&&avaterUrl={{userInfo.avatarUrl}}">
+        <text class='iconfont icon-youjian'></text> 私信</navigator>
 </view>

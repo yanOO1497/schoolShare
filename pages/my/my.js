@@ -1,4 +1,6 @@
-
+var util = require('../../utils/util')
+var config = require('../../common/script/config')
+var fetch = require('../../common/script/fetch')
 const app = getApp();
 console.log(app.globalData);
 Page({
@@ -9,7 +11,6 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-
     color:"#99CC33",
     points:"55",
     broadcast: "最新消息最新消息",
@@ -36,7 +37,7 @@ Page({
       },
       {
         name: "意见反馈",
-        url: "../setting/setting",
+        url: "../feedback/feedback",
         iconClass: "icon-yijianfankui"
       },
       {
@@ -46,43 +47,28 @@ Page({
       },
     ]
   },
-  getUserInfo: function (e) {
- 
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
+    var that = this;
+    if (config.openID !== 0) {
+      fetch._get.call(that, config.apiList.loadUserInfoDetails, { uid: config.openID }, function (res) {
+        console.log(res.result);
+        that.setData({
+          userInfo: res.result,
           hasUserInfo: true
         })
-      }
+      })
+      
     } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
+      util.getUserSet(function(){
+
+        that.setData({
+          userInfo: config.userInfo,
+          hasUserInfo: true
+        })
       })
     }
   },
@@ -92,6 +78,9 @@ Page({
         console.log(res)
       }
     })
+  },
+  getUserInfo:function(){
+    util.getUserInfo();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

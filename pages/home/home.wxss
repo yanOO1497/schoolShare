@@ -15,7 +15,8 @@ zan-tab{
   height: 100rpx;
   border: 1px solid #ccc;
   border-radius: 50%;
-  /* background-color: #91d3a6; */
+  color: white;
+   background-color: #f59763; 
   text-align: center;
   margin-top:20rpx;
 }

@@ -14,7 +14,7 @@
   <view class='empty' style='height:{{ navtab.height }}px'></view>
   <scroll-view class="weui-tab__content">
     <!-- 校内问答与经验分享页面 -->
-    <list-one list="{{listData[navtab.selectedId]}}" />
+    <list-one list="{{listData[navtab.selectedId]}}" listType="{{navtab.selectedId}}" />
 
     <!-- 讲座 列表 -->
 

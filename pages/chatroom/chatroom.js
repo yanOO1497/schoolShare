@@ -9,7 +9,7 @@ Page({
     userData: {
       userId: "id",
       nickname: "名字",
-      avaterUrl: "avater-holder.jpg"
+      avaterUrl: "https://wx.qlogo.cn/mmopen/vi_32/NxZsHXwemD7L0cvJjYeRK3GWUApuXMeOSTdn6RrUCxEbYiaXzbLcKNIIJOLVQ0DqMYXIoGibT4pcVZz6ojehdUdw/0"
     },
     chatData: [{"0":"这里是你发的消息"},
       { "1": "这里是我发的消息" },
@@ -33,6 +33,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    console.log(options);
     that.setData({
       userData: options,
       myAvaterUrl: app.globalData.userInfo.avatarUrl

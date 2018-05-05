@@ -1,34 +1,38 @@
 <!--pages/publish/publish.wxml-->
 <view class='page'>
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell">
-      <view class="weui-cell__bd">
-        <textarea class="weui-textarea" placeholder="说说你的看法吧~" style="height: 7.3em" />
-        <view class="weui-textarea-counter">0/200</view>
+  <form bindsubmit="formSubmit">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="说说你的看法吧~" style="height: 7.3em" value='{{textareaArea}}' />
+          <view class="weui-textarea-counter">0/200</view>
+        </view>
       </view>
     </view>
-  </view>
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell weui-cell_select">
-      <view class="weui-cell__hd weui-cell__hd_in-select-after">
-        <view class="weui-label">发布模块</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">发布模块</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindTypesChange" value="{{typesIndex}}" range="{{types}}">
+            <view class="weui-select weui-select_in-select-after">{{types[typesIndex]}}</view>
+          </picker>
+        </view>
       </view>
-      <view class="weui-cell__bd">
-        <picker bindchange="bindTypesChange" value="{{typesIndex}}" range="{{types}}">
-          <view class="weui-select weui-select_in-select-after">{{types[typesIndex]}}</view>
-        </picker>
+      <view wx:if="{{typesIndex == 3}}" class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd" style="width: 105px">
+          <picker bindchange="bindCountryCodeChange" value="{{countryCodeIndex}}" range="{{countryCodes}}">
+            <view class="weui-select">{{countryCodes[countryCodeIndex]}}</view>
+          </picker>
+        </view>
+        <view class="weui-cell__bd weui-cell__bd_in-select-before">
+          <input class="weui-input" placeholder="请输入悬赏金额" />
+        </view>
       </view>
+      <button form-type='submit'>提交</button>
     </view>
-    <view wx:if="{{typesIndex > 0}}" class="weui-cell weui-cell_select" >
-      <view class="weui-cell__hd" style="width: 105px">
-        <picker bindchange="bindCountryCodeChange" value="{{countryCodeIndex}}" range="{{countryCodes}}">
-          <view class="weui-select">{{countryCodes[countryCodeIndex]}}</view>
-        </picker>
-      </view>
-      <view class="weui-cell__bd weui-cell__bd_in-select-before">
-        <input class="weui-input" placeholder="请输入悬赏金额" />
-      </view>
-    </view>
-    
-  </view>
+
+  </form>
+
 </view>

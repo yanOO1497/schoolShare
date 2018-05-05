@@ -1,7 +1,7 @@
 <template name="chat">
  <view class='chat-wrap' wx:for="{{chatData}}" wx:key="*this">
    <view class='chat-other' wx:if="{{item[0]}}">
-    <image wx:if="{{avaterUrl}}" src='../../images/{{avaterUrl}}' class='avatar'></image> 
+    <image wx:if="{{avaterUrl}}" src='{{avaterUrl}}' class='avatar'></image> 
     <view class='chat-detail'>{{item[0]}}</view>
   </view>
   <view class='chat-my' wx:if="{{item[1]}}">
