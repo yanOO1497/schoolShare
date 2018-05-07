@@ -1,15 +1,15 @@
 <!--component/list-1/list-1.wxml-->
 <block class='list' wx:for="{{list}}" wx:key="index">
-  <template is="{{listType}}" data="{{...item,index}}" bindtap="enterDetail"></template>
+  <template is="{{listType}}" data="{{...item,index,isShowDelete}}" bindtap="checkEnter"></template>
 </block>
 
 <template name="share">
-  <view data-uid="{{uid}}" class='list-item {{type}}' bindtap='enterDetail'>
+  <view data-uid="{{uid}}" class='list-item {{type}}' bindtap='checkEnter'>
     <view class='user-info'>
       <image class='avatar' src='{{avatarUrl}}' data-name="avater-img"></image>
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
-        <view class='from'>来自{{type}}</view>
+        <view class='from'>{{createTime}}</view>
       </view>
       <view class='option-more' data-name="more">∨</view>
     </view>
@@ -45,31 +45,35 @@
   </view>
 </template>
 <template name="question">
-  <view data-mid="{{id}}" class='list-item {{type}}'  bindtap='enterDetail' >
+  <view data-mid="{{id}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
     <view class='user-info'>
-      <image class='avatar' src='{{avatarUrl}}' data-name="avater-img"></image>
+      <image class='avatar' src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
-        <view class='from'> {{time}} 来自{{type}}</view>
+        <view class='from'> {{createTime}}</view>
       </view>
       <view class='option-more' data-name="more">∨</view>
     </view>
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
-      <image wx:if="{{coverUrl}}" src='{{coverUrl}}' mode="widthFix" data-uid="{{uid}}"  ></image>
+      <image wx:if="{{coverUrl}}" src='{{coverUrl}}' mode="widthFix" data-uid="{{uid}}"></image>
     </view>
-    <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}"  data-mid="{{id}}">
+    <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}">
+    <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+        <text data-name="delete">删除</text>
+      </view>
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{agreeFlag == 1 ? 'act' : ''}}">
+        <i class="iconfont icon-dianzan" data-name="useful"></i>
+        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '有用'}}</text>
+      </view>
       <view class="weui-media-box__info__meta {{disagreeFlag == 1 ? 'act' : ''}}">
-        <i class="iconfont icon-cai"  data-name="useless"></i>
+        <i class="iconfont icon-cai" data-name="useless"></i>
         <text data-name="useless">{{disagreeNum > 0 ? disagreeNum : '没用'}}</text>
       </view>
-      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{agreeFlag == 1 ? 'act' : ''}}">  
-        <i class="iconfont icon-dianzan"   data-name="useful" ></i>
-        <text   data-name="useful">{{agreeNum > 0 ? agreeNum : '有用'}}</text>
-      </view>
+
       <view class="weui-media-box__info__meta {{optionList[2] ? 'act' : ''}}">
-        <i class="iconfont icon-pinglun"   data-name="comment" ></i>
-        <text   data-name="comment">{{}}评论</text>
+        <i class="iconfont icon-pinglun" data-name="comment"></i>
+        <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '评论'}}</text>
       </view>
     </view>
   </view>

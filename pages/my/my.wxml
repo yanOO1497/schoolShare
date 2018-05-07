@@ -6,7 +6,7 @@
       <i class='iconfont .icon-yifu'></i>
     </view>
 
-    <view class=' user-img' wx:if="{{!hasUserInfo}}" bindtap="getUserInfo">
+    <view class=' user-img' wx:if="{{!isLogin}}" bindtap="getUserInfo">
       <text class='user-login'>立即\n登录</text>
     </view>
     <view class='user-info' wx:else>
@@ -31,11 +31,11 @@
   </view>
   <view class='page__bd'>
     <view class="weui-grids">
-      <block wx:for="{{list}}" wx:key="*this">
-        <navigator url="{{item.url}}" class="weui-grid" hover-class="weui-grid_active">
+      <block wx:for="{{gridList}}" wx:key="*this">
+        <view data-index="{{index}}" class="weui-grid" hover-class="weui-grid_active" bindtap='jumpCheck'>
           <i class="iconfont {{item.iconClass}}"></i>
           <view class="weui-grid__label">{{item.name}}</view>
-        </navigator>
+        </view>
       </block>
     </view>
   </view>

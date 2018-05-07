@@ -1,4 +1,14 @@
 /* pages/listDetail/listDetail.wxss */
+.weui-media-box__info__meta{
+  float: right;
+}
+.weui-media-box{
+  position: static;
+  background-color: white;
+}
+.user-info{
+  height: 120rpx;
+}
 .nickname {
   font-size: 34rpx;
   line-height: 60rpx;

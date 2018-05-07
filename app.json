@@ -11,7 +11,8 @@
     "pages/chatroom/chatroom",
     "pages/personal/personal",
     "pages/publish/publish",
-    "pages/feedback/feedback"
+    "pages/feedback/feedback",
+    "pages/myQuestion/myQuestion"
   ],
   "window": {
     "backgroundTextStyle": "light",

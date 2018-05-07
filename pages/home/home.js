@@ -21,7 +21,6 @@ Page({
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
-    
     hasMore:true,
     start: 0,
     showLoading:true,
@@ -141,10 +140,11 @@ Page({
         wx.hideNavigationBarLoading()
         that.data.listData.question = that.data.listData.question.concat(res.subjects);
         that.setData({
-          listData: that.data.listData
+          listData: that.data.listData,
+          showLoading:false
         });
-      }, function () {
-        console.log("fail");
+        }, function (res) {
+          console.log("home get questionList fail");
       });
     },function(){
       console.log("获取用户数据失败");

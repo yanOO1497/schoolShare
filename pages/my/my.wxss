@@ -1,19 +1,22 @@
 /* pages/my/my.wxss */
 .page{
-  position: relative;
-  height: 100%;
   background: url("http://attach.bbs.miui.com/forum/201709/16/215420yjddlec5okkk58vj.jpg") no-repeat;
   background-size: cover;
+  overflow: hidden;
 }
 .page__hd{
   position: relative;
   background-color: rgba(255, 255, 255, .2);
   color: white;
   text-align: center;
+  height: 50%;
+  box-sizing:border-box; 
 }
 .page__bd{
   text-align: center;
   background-color: white;
+  min-height: 50%;
+  box-sizing:border-box; 
 }
 
 .user-info .iconfont{

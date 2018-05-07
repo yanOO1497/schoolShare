@@ -40,7 +40,8 @@ function getUserSet(cb, fail_cb){
       }
     },
     fail: res => {
-      typeof fail_cb == 'function' && fail_cb()
+      console.log("进入fail");
+      getUserInfo(cb, fail_cb);
     }
   })
 }
@@ -63,6 +64,7 @@ function getUserInfo (cb){
         }
       },
       fail: res => {
+        console.log('获取用户登录失败！' + res)
         typeof fail_cb == 'function' && fail_cb()
       }
     })
@@ -81,7 +83,7 @@ function getOpenID(code) {
       'content-type': 'application/json'
     },
     success: function (res) {
-      console.log("success", config.userInfo.nickName + "openID");
+      console.log("success", config.userInfo.nickName , "openID" , res.data.openid);
       // var openid = res.data.openid //返回openid
       config.openID = res.data.openid;
       wx.setStorageSync(config.userInfo.nickName + "openID", config.openID);
@@ -97,12 +99,29 @@ function getOpenID(code) {
     }
   })
 }
-function showToastSu(arr) {
+function showToastSu(str) {
   wx.showToast({
-    title: arr,
+    title: str,
     icon: 'success',
     duration: 1000
   });
+}
+function showConfirmModal(str,cb,cancel_cb){
+  /**
+   * prames:
+   * title:'提示'
+   * content:'文本内容'
+  */
+  wx.showModal({
+    content:str,
+    success: function (res) {
+      if (res.confirm) {
+        typeof cb == 'function' && cb()
+      } else if (res.cancel) {
+        typeof cancel_cb == 'function' && cancel_cb()
+      }
+    }
+  })
 }
 function showToastSu(str) {
   wx.showToast({
@@ -123,5 +142,7 @@ module.exports = {
   getUserInfo: getUserInfo,
   getUserSet: getUserSet,
   showText: showText,
-  showToastSu: showToastSu
+  showToastSu: showToastSu,
+  showConfirmModal
+
 }

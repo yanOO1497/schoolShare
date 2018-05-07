@@ -1,1 +1,10 @@
+
 /* pages/publish/publish.wxss */
+
+.weui-textarea-counter{
+  color: #79BD8F;
+  /* border: none; */
+  background: unset;
+  line-height: unset;
+  position: static;
+}

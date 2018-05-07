@@ -9,40 +9,40 @@ Page({
    */
   data: {
     userInfo: {},
-    hasUserInfo: false,
+    isLogin: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     color:"#99CC33",
     points:"55",
     broadcast: "最新消息最新消息",
-    list:[
+    gridList:[
       {
         name:"每日签到",
-        url:"../setting/setting",
+        urlName:"setting",
         iconClass:"icon-qiandao"
       },
       {
         name: "我的问答",
-        url: "../setting/setting",
+        urlName: "myQuestion",
         iconClass: "icon-wenda"
       },
       {
         name: "我的分享",
-        url: "../setting/setting",
+        urlName: "setting",
         iconClass: "icon-fenxiang"
       },
       {
         name: "我的收藏",
-        url: "../setting/setting",
+        urlName: "setting",
         iconClass: "icon-shoucang"
       },
       {
         name: "意见反馈",
-        url: "../feedback/feedback",
+        urlName: "feedback",
         iconClass: "icon-yijianfankui"
       },
       {
         name: "我的设置",
-        url: "../setting/setting",
+        urlName: "setting",
         iconClass: "icon-shezhi"
       },
     ]
@@ -55,10 +55,9 @@ Page({
     var that = this;
     if (config.openID !== 0) {
       fetch._get.call(that, config.apiList.loadUserInfoDetails, { uid: config.openID }, function (res) {
-        console.log(res.result);
         that.setData({
           userInfo: res.result,
-          hasUserInfo: true
+          isLogin: true
         })
       })
       
@@ -81,6 +80,21 @@ Page({
   },
   getUserInfo:function(){
     util.getUserInfo();
+  },
+  jumpCheck:function(e){
+    let that = this;
+    
+    if(that.data.isLogin){
+      // console.log(e);
+      let index = e.currentTarget.dataset.index;
+      let urlName = that.data.gridList[index].urlName;
+      // console.log(index, that.data.gridList[index], that.data.gridList);
+      wx.navigateTo({    
+        url: `/pages/${urlName}/${urlName}`
+      })
+    }else{
+      util.showText("请先登录！");
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

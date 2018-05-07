@@ -1,0 +1,5 @@
+<!--pages/myQuestion/myQuestion.wxml-->
+<view wx:if="{{showLoading}}">
+  <view class="loading">玩命加载中…</view>
+</view>
+<list-one wx:else list="{{listData}}" listType="question" bind:observeDelete="observeDelete" isShowDelete="yes" />

@@ -37,10 +37,12 @@ https://github.com/liriliri/eruda/blob/master/doc/README_CN.md
 
 ### 服务器后台搭建
 
-服务器：暂定本地服务器存储，java搭建后台
+服务器：暂定本地服务器存储，
+
+java搭建后台
+后台程序代码：https://github.com/yanOO1497/school_share
 
 数据抓取工具：python
-
 数据库：mySQL
 
 

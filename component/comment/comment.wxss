@@ -1,26 +1,73 @@
 /* component/comment/comment.wxss */
-@import "../../common/style/iconfont.wxss"; 
-@import "../../common/style/weui.wxss"; 
-@import "../../common/style/base.wxss";
-@import "../../pages/listDetail/listDetail.wxss"; 
-.weui-media-box__info{
+@import "../../common/style/iconfont.wxss";
+@import "../../common/style/weui.wxss";
+@import "../../pages/listDetail/listDetail.wxss";
+
+.comment-wrap {
+  margin-bottom: 100rpx;
+}
+
+.weui-media-box__info {
   margin-top: 5rpx;
 }
-.comment-wrap{
-  /* border: 1rpx solid #ccc; */
-  /* border-radius: 20rpx; */
-  /* padding: 20rpx; */
-  padding: 20rpx;
-  background-color: #f2f2f5;
-  font-size: 28rpx;
 
+.no-comment {
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  padding: 20rpx;
+  color: #333;
 }
- .user-link{
+
+.addComment {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #ddd;
+  border-top: 1rpx solid #ccc;
+  padding: 10rpx;
+  box-sizing: border-box;
+}
+
+.addComent-con {
+  display: flex;
+  background-color: white;
+  line-height: 45rpx;
+  font-size: 35rpx;
+}
+
+.comment-input {
+  width: 85%;
+  background-color: white;
+  padding: 10rpx 20rpx;
+  height: 45rpx;
+}
+
+.comment-inpt__placeholder {
+  width: 25%;
+}
+
+.sent {
+  color: #79bd8f;
+  line-height: 45rpx;
+  font-size: 35rpx;
+}
+
+.comment-wrap {
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  border-radius: 20rpx;
+}
+
+.user-link {
   display: inline-block;
   color: #8590a6;
-  padding-right:5rpx;
+  padding-right: 5rpx;
 }
-.comment-item{
-  padding: 0 10rpx;
-  border-top: 1px solid #ccc;
+
+.comment-item {
+  /* margin: 10rpx; */
+  padding: 10rpx 20rpx;
+  /* border-top: 1px solid #ccc; */
+  background-color: white;
 }
