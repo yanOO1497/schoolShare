@@ -144,5 +144,5 @@ module.exports = {
   showText: showText,
   showToastSu: showToastSu,
   showConfirmModal
-
+ 
 }

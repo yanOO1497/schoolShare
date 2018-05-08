@@ -53,11 +53,8 @@ function _uploadFile(prames){
           })
           return;
         }
-        // typeof cb == 'function' && cb(res.data)
-        var data = res.data
-        page.setData({  //上传成功修改显示头像
-          src: path[0]
-        })
+        typeof cb == 'function' && cb(res.data)
+      
       },
       fail: function (e) {
         wx.showModal({
@@ -65,7 +62,7 @@ function _uploadFile(prames){
           content: '上传失败',
           showCancel: false
         })
-        // typeof cb == 'function' && cb(res)
+        typeof cb == 'function' && cb(res)
       },
       complete: function () {
         wx.hideToast();  //隐藏Toast

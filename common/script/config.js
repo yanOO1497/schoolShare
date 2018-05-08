@@ -12,7 +12,7 @@ shakeSound: 摇一摇音效地址（带url表示远程地址）
 shakeWelcomeImg: 摇一摇欢迎图片
 */
 
-var url = 'http://192.168.1.101:8082/school_share/share'
+var url = 'http://192.168.1.102:8082/school_share/share'
 module.exports = {
   APP_ID:'wx15734a2373afa7a8',
   APP_SECRET:'10c27dc6070ef03f708ccdbe3c072e21',
@@ -38,6 +38,7 @@ module.exports = {
     setAgree: url + '/setAgree.do',//点赞文章
     getComment: url + '/getComment.do',//获取文章 评论信息
     addToComment: url + '/addToComment.do',//添加评论
+    uploadPic: url + '/uploadPic.do',//上传图片
     getMessageByMidAndType: url + '/getMessageByMidAndType.do',
     personDetail: 'https://api.douban.com/v2/movie/celebrity/',
     baiduMap: 'https://api.map.baidu.com/geocoder/v2/'

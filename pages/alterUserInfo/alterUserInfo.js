@@ -1,10 +1,11 @@
-// pages/setting/setting.js
+// pages/alterUserInfo/alterUserInfo.js
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-  
+    value:''
   },
 
   /**

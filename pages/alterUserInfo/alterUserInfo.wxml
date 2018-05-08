@@ -1,0 +1,11 @@
+<!--pages/alterUserInfo/alterUserInfo.wxml-->
+<view class='page'>
+   <zan-field
+      title="昵称"
+      placeholder="您的昵称"
+      focus=true
+      value="{{ value }}"
+    >
+    </zan-field>
+   
+</view>

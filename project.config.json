@@ -61,6 +61,12 @@
 					"name": "我的问答",
 					"pathName": "pages/myQuestion/myQuestion",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "设置",
+					"pathName": "pages/setting/setting",
+					"query": ""
 				}
 			]
 		}

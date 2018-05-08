@@ -8,6 +8,7 @@ page,.page{
   color: #161716;
   height: 100%;
   position: relative;
+  box-sizing: border-box;
 }
 /* 去除默认滚动条 */
 ::-webkit-scrollbar {  

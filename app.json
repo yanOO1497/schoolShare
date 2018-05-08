@@ -12,7 +12,8 @@
     "pages/personal/personal",
     "pages/publish/publish",
     "pages/feedback/feedback",
-    "pages/myQuestion/myQuestion"
+    "pages/myQuestion/myQuestion",
+    "pages/alterUserInfo/alterUserInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

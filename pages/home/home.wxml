@@ -13,7 +13,7 @@
   <!-- navtab -->
   <zan-tab list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" scroll="{{ navtab.scroll }}" height="{{ navtab.height }}" bindtabchange="tabchange" />
   <view class='empty' style='height:{{ navtab.height }}px'></view>
-  <scroll-view class="weui-tab__content">
+  <scroll-view class="weui-tab__content" scroll-y="true" bindscroll="scroll">
     <!-- 校内问答与经验分享页面 -->
     <view wx:if="{{showLoading}}">
       <view class="loading">玩命加载中…</view>

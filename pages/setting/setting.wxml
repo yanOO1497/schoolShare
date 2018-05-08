@@ -1,10 +1,20 @@
 <!--pages/setting/setting.wxml-->
 <view class='page'>
-  <view class="weui-cells weui-cells_after-title">
+  <view class="weui-cells ">
+    <navigator url="../alterUserInfo/alterUserInfo" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">个人资料</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+    <!-- <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd"></view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator> -->
+  </view>
+  <view class="weui-cells ">
     <view class="weui-cell weui-cell_switch">
       <view class="weui-cell__bd">是否允许添加微信好友</view>
       <view class="weui-cell__ft">
-        <switch  />
+        <switch />
       </view>
     </view>
     <view class="weui-cell weui-cell_switch">
@@ -13,10 +23,9 @@
         <switch checked />
       </view>
     </view>
-    <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__bd">帮助与反馈</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </navigator>
+  </view>
+
+  <view class="weui-cells ">
     <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__bd">关于我们</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>

@@ -4,7 +4,8 @@
 .user-opton-item {
    display: block; 
   position: absolute;
-  bottom: -150rpx;
+  /* bottom: -150rpx; */
+  margin-top: -150px;
   width: 90%;
   margin: 0 5%;
   text-align: center;
