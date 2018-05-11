@@ -8,3 +8,7 @@
   line-height: unset;
   position: static;
 }
+.weui-uploader__file-content{
+  position: relative;
+  color: #333;
+}

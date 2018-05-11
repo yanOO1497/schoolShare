@@ -17,6 +17,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    scrollTop: 0,
+    floorstatus: false,
   
     activeIndex: 0,
     sliderOffset: 0,
@@ -90,22 +92,11 @@ Page({
       }, {
         id: 'share',
         title: '经验分享'
-      },
-      //  {
-      //     id: 'lectures',
-      //   title: '讲座'
-      // }, {
-      //     id: 'activity',
-      //   title: '社团/团立项活动'
-      // }, 
+      }, 
       {
         id: 'reward',
         title: '悬赏求助'
-      },
-      //  {
-      //     id: ' preferential',
-      //   title: '商家优惠'
-      // }, 
+      }, 
       {
         id: ' lostandfound',
         title: '失物招领'
@@ -113,11 +104,7 @@ Page({
        {
          id: ' 二手市场',
         title: '二手市场'
-      },
-      // {
-      //     id: 'employ',
-      //   title: '招聘日历'
-      // }
+      }
       ],
       selectedId: 'question',
       scroll: true,
@@ -133,39 +120,47 @@ Page({
     // 获取用户信息
     util.getUserSet(function (userInfo) {
       console.log("登录成功", userInfo);
-      fetch._get.call(that, apiList.questionList, {
-        start: that.data.start,
-        count: 20
-      }, function (res) {
-        wx.hideNavigationBarLoading()
-        that.data.listData.question = that.data.listData.question.concat(res.subjects);
-        that.setData({
-          listData: that.data.listData,
-          showLoading:false
-        });
-        }, function (res) {
-          console.log("home get questionList fail");
-      });
+      
     },function(){
       console.log("获取用户数据失败");
     });
-   
-    // app.getUserInfo();
-    // app.getCity(function () {
-    //   wx.hideNavigationBarLoading()
-    //   // wx.setNavigationBarTitle({
-    //   //   title: '正在热映 - ' + config.city
-    //   // })
-      
-    // })
-    // this.setData({
 
-    // })
-
-    // list.list.apply(this, []);
   },
   enterDetail:function(){
     console.log("enter");
+  },
+  refreshData: function (start){
+    var that = this;
+    fetch._get.call(that, apiList.questionList, {
+      start: that.data.start,
+      count: 20
+    }, function (res) {
+      wx.hideNavigationBarLoading()
+      that.data.listData.question = that.data.listData.question.concat(res.subjects);
+      that.setData({
+        listData: that.data.listData,
+        showLoading: false
+      });
+    }, function (res) {
+      console.log("home get questionList fail");
+    });
+  },
+  scroll:function (e){
+    console.log("页面滚动");
+    if (e.detail.scrollTop > 500) {
+      this.setData({
+        floorstatus: true
+      });
+    } else {
+      this.setData({
+        floorstatus: false
+      });
+    }
+  },
+  toTop:function(){
+    this.setData({
+      scrollTop: 0
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -178,10 +173,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // wx.showToast({
-    //   title: '加载中',
-    //   icon: "loading"
-    // })
+    console.log("home显示")
+    this.refreshData(0);
   },
 
   /**

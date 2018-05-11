@@ -31,7 +31,7 @@ function _get(url, prames, cb, fail_cb) {
  * filePath: path[0]
  * name: 'file'
 */
-function _uploadFile(prames){
+function _uploadFile(prames,cb,fail_cb){
   wx.showToast({
     icon: "loading",
     title: "正在上传"
@@ -44,16 +44,16 @@ function _uploadFile(prames){
         'session_token': ''
       },
       success: function (res) {
-        console.log(res);
-        if (res.statusCode != 200) {
-          wx.showModal({
-            title: '提示',
-            content: '上传失败',
-            showCancel: false
-          })
-          return;
-        }
-        typeof cb == 'function' && cb(res.data)
+        // console.log(res);
+        // if (res.statusCode != 100) {
+        //   wx.showModal({
+        //     title: '提示',
+        //     content: '上传失败',
+        //     showCancel: false
+        //   })
+        //   return;
+        // }
+        typeof cb == 'function' && cb(res)
       
       },
       fail: function (e) {
@@ -62,7 +62,7 @@ function _uploadFile(prames){
           content: '上传失败',
           showCancel: false
         })
-        typeof cb == 'function' && cb(res)
+        typeof fail_cb == 'function' && fail_cb(res)
       },
       complete: function () {
         wx.hideToast();  //隐藏Toast

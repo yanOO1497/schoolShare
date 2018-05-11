@@ -5,7 +5,7 @@
     <navigator url='../publish/publish' class='fixBar-item write'>
       <text class='iconfont icon-xie'></text>
     </navigator>
-    <view class='fixBar-item top'>
+    <view class='fixBar-item top' wx:if="{{ floorstatus }}">
       <text class='iconfont icon-top'></text>
     </view>
   </view>
@@ -13,7 +13,7 @@
   <!-- navtab -->
   <zan-tab list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" scroll="{{ navtab.scroll }}" height="{{ navtab.height }}" bindtabchange="tabchange" />
   <view class='empty' style='height:{{ navtab.height }}px'></view>
-  <scroll-view class="weui-tab__content" scroll-y="true" bindscroll="scroll">
+  <scroll-view class="weui-tab__content" scroll-y="true" bindscroll="scroll" scroll-top="{{scrollTop}}">
     <!-- 校内问答与经验分享页面 -->
     <view wx:if="{{showLoading}}">
       <view class="loading">玩命加载中…</view>

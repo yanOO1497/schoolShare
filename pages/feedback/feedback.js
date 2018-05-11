@@ -37,6 +37,9 @@ Page({
           that.setData({
             pageNum:1
           })
+          setTimeout(function () {
+            wx.navigateBack();
+          }, 1000);
         }
 
       );
