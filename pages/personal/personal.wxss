@@ -4,7 +4,7 @@
 .user-opton-item {
    display: block; 
   position: absolute;
-  /* bottom: -150rpx; */
+  top:40%;
   margin-top: -150px;
   width: 90%;
   margin: 0 5%;
@@ -22,3 +22,9 @@
   line-height: 100rpx;
 }
 
+.page_bd,page__hd{
+  height: 50%;
+}
+.page__bd{
+   background-color: white;
+}

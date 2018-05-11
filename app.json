@@ -13,7 +13,9 @@
     "pages/publish/publish",
     "pages/feedback/feedback",
     "pages/myQuestion/myQuestion",
-    "pages/alterUserInfo/alterUserInfo"
+    "pages/alterUserInfo/alterUserInfo",
+    "pages/about/about",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -33,6 +35,13 @@
         "iconPath": "images/tab-home.png",
         "selectedIconPath": "images/tab-home-cur.png",
         "selectedColor": "#4EDF80",
+        "active": false
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "精华",
+        "iconPath": "images/tab-message.png",
+        "selectedIconPath": "images/tab-message-cur.png",
         "active": false
       },
       {

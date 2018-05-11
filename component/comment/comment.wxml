@@ -1,30 +1,30 @@
 <!--component/comment/comment.wxml-->
+<view class='addComment' wx:if="{{isShow}}">
+  <view class='addComent-con'>
+    <input placeholder='{{input_placeholder}}' class='comment-input' placeholder-class='comment-inpt__placeholder' value='{{sentMessage}}' focus='{{isFocus}}' bindinput="setSentData" bindblur='hideInput'></input>
+    <text class='sent' name='sent' bindtap='sentMsg'>发送</text>
+  </view>
+</view>
 <view class='comment-wrap'>
+   <view class='fake-addComent'>
+    <view class='addComent-con'>
+      <input placeholder='评论' class='comment-input' placeholder-class='comment-inpt__placeholder' value='{{sentMessage}}'  focus='{{isFocus}}' bindinput="setSentData" disabled='disabled' bindtap='setFocus'></input>
+      <text class='sent' name='sent' bindtap='sentMsg'>发送</text>
+    </view>
+  </view> 
   <view wx:if="{{commentData.length == 0}}" class='no-comment'>
     呀，还没有人评论，快来抢沙发~
   </view>
   <view wx:else class='comment-center'>
-    <template is="comment-item" wx:for="{{commentData}}" data="{{...item}}"></template>
-  </view>
-  <view class='addComment'>
-
-    <!-- <view class="zan-cell zan-field zan-field--wrapped">
-      <textarea focus value="{{ textareaValue }}" placeholder="评论" maxlength="{{ maxlength }}" class="zan-field__input zan-cell__bd " placeholder-class="zan-field__placeholder" bindinput="textChange" style="height: 50rpx;">
-      </textarea>
-    </view> -->
-    <view class='addComent-con'>
-    <input placeholder='评论' class='comment-input' placeholder-class='comment-inpt__placeholder'></input>
-    <span class='sent'>发送</span>
-    </view>
-    
+    <template is="comment-item" wx:for="{{commentData}}" data="{{...item,index}}"></template>
   </view>
 </view>
 <template name="comment-item">
-  <view class='comment-item'>
-    <navigator class='user-link' data-uid="{{uid}}">{{nickName}}</navigator>
+  <view class='comment-item' catchtap='setFocus' data-fatherId="{{uid}}" data-name="{{nickName}}">
+    <navigator class='user-link' url="../../pages/personal/personal?uid={{uid}}">{{nickName}}</navigator>
     <span class="commen-reply" wx:if="{{fatherId !== '0'}}">
       <text>回复</text>
-      <navigator class='user-link' data-uid="{{fatherId}}">{{fatherNickName}}</navigator>
+      <navigator class='user-link' url="../../pages/personal/personal?uid={{fatherId}}" data-uid="{{fatherId}}">{{fatherNickName}}</navigator>
     </span>
     <text class='comment-item-content'>: {{content}}</text>
     <view class="weui-media-box__info">

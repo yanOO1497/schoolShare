@@ -18,7 +18,11 @@ Page({
     countryCodes: ["人民币", "积分"],
     countryCodeIndex: 0,
     textareaArea: '',
-    files: []
+    files: [],//
+    uploadImgList:[],//用户选择发送的时候，图片的上传进度
+    tempImgList: [],//有上传成功的list
+    chooseImgFlag:[],//是否点击了选择图片
+    showWarn:[]//图片是否上传成功结果存储
   },
   bindTypesChange: function (e) {
     this.setData({
@@ -55,12 +59,17 @@ Page({
             files: that.data.files.concat(res.tempFilePaths)
           });
           
-          fetch._uploadFile({
+          fetch._uploadFile.call(that,{
             url: config.apiList.uploadPic,
             filePath: res.tempFilePaths[0],
             name: 'image'
-          },function(){
-            console.log("成功");
+          },function(res){
+            console.log(res.data.msg);
+            if (res.statusCode === 200){
+              that.data.tempImgList.push(res.data.msg)
+            }else{
+
+            }
           });
         }
 

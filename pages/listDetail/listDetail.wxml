@@ -33,5 +33,5 @@
       </view>
     </view>
   </template>
-  <comment mid="{{listDetail.mid}}" typeIndex="{{typeIndex}}" commentData="{{commentData}}"></comment>
+  <comment mid="{{listDetail.id}}" typeIndex="{{typeIndex}}" commentData="{{commentData}}" bind:observeReply="observeReply"></comment>
 </view>

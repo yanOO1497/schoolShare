@@ -1,15 +1,12 @@
 /*
 备注
-city: 城市（在程序载入时获取一次）
+APP_ID: 小程序appID
 count: 返回结果数量
 baiduAK: 百度地图AK
 apiList: api列表
-hotKeyword: 搜索页热门关键词关键词
-hotTag: 搜索页热门类型
-bannerList: 首页（热映页）轮播图列表列表
+userInfo: 用户信息存储（首次载入时获取）
+openID: 用户唯一标识符（载入时缓存获取或者请求微信相关api获取）
 skinList: “我的”页面背景列表
-shakeSound: 摇一摇音效地址（带url表示远程地址）
-shakeWelcomeImg: 摇一摇欢迎图片
 */
 
 var url = 'http://192.168.1.102:8082/school_share/share'
@@ -39,6 +36,7 @@ module.exports = {
     getComment: url + '/getComment.do',//获取文章 评论信息
     addToComment: url + '/addToComment.do',//添加评论
     uploadPic: url + '/uploadPic.do',//上传图片
+    publish: url + '/publish.do',//发布消息
     getMessageByMidAndType: url + '/getMessageByMidAndType.do',
     personDetail: 'https://api.douban.com/v2/movie/celebrity/',
     baiduMap: 'https://api.map.baidu.com/geocoder/v2/'

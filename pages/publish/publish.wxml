@@ -2,14 +2,6 @@
 <view class='page'>
   <form bindsubmit="formSubmit">
     <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell">
-        <view class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="说说你的看法吧~" style="height: 7.3em" value='{{textareaArea}}' />
-          <button class="weui-textarea-counter" >发送</button>
-        </view>
-      </view>
-    </view>
-    <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_select">
         <view class="weui-cell__hd weui-cell__hd_in-select-after">
           <view class="weui-label">发布模块</view>
@@ -29,19 +21,35 @@
         <view class="weui-cell__bd weui-cell__bd_in-select-before">
           <input class="weui-input" placeholder="请输入悬赏金额" />
         </view>
-        
+
 
       </view>
-    
-       <view class="weui-cell">
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="说说你的看法吧~" style="height: 7.3em" value='{{textareaArea}}' />
+          <button class="weui-textarea-counter">发送</button>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+
+
+
+      <view class="weui-cell">
         <view class="weui-uploader__bd">
           <view class="weui-uploader__files" id="uploaderFiles">
             <block wx:for="{{files}}" wx:key="*this">
               <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
                 <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                <!-- <view class="weui-uploader__file-content" wx:if="{{!tempImgList[index]}}">
+                  <view class="weui-uploader__file-content" wx:if="{{chooseImgFlag[index}}">正在上传</view>
+                  <icon type="warn" size="23" color="#F43530" wx:else="{{showWarn[index}}"></icon>
+                </view> -->
               </view>
             </block>
-            <!-- <view class="weui-uploader__file">
+            <view class="weui-uploader__file">
               <image class="weui-uploader__img" src="../../images/avater-holder.jpg" mode="aspectFill" />
             </view>
             <view class="weui-uploader__file weui-uploader__file_status">
@@ -52,14 +60,15 @@
             </view>
             <view class="weui-uploader__file weui-uploader__file_status">
               <image class="weui-uploader__img" src="../../images/avater-holder.jpg" mode="aspectFill" />
-              <view class="weui-uploader__file-content">50%</view>
-            </view> -->
+              <view class="weui-uploader__file-content">正在上传</view>
+            </view>
           </view>
           <view class="weui-uploader__input-box">
             <view class="weui-uploader__input" bindtap="chooseImage"></view>
+
           </view>
         </view>
-      </view> 
+      </view>
 
     </view>
 

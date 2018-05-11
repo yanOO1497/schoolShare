@@ -1,0 +1,7 @@
+<!--pages/about/about.wxml-->
+<view class='page'>
+   <view class='title'>校内互助共享平台</view>
+   <view class='content'>
+      <p ></p>
+   </view>
+</view>
