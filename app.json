@@ -15,7 +15,8 @@
     "pages/myQuestion/myQuestion",
     "pages/alterUserInfo/alterUserInfo",
     "pages/about/about",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/dataBase/dataBase"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,10 +39,10 @@
         "active": false
       },
       {
-        "pagePath": "pages/message/message",
-        "text": "精华",
-        "iconPath": "images/tab-message.png",
-        "selectedIconPath": "images/tab-message-cur.png",
+        "pagePath": "pages/dataBase/dataBase",
+        "text": "共享",
+        "iconPath": "images/tab-dataBase.png",
+        "selectedIconPath": "images/tab-dataBase-cur.png",
         "active": false
       },
       {

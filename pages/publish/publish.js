@@ -13,8 +13,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    types: ["请选择", "校内问答", "经验分享", "悬赏求助", "失物招领", "二手市场"],
-    typesIndex: 0,
+    types: ["校内问答", "经验分享", "悬赏求助", "失物招领", "二手市场"],
+    typesIndex: -1,
     countryCodes: ["人民币", "积分"],
     countryCodeIndex: 0,
     textareaArea: '',
@@ -40,7 +40,6 @@ Page({
     if (typesIndex !== 0 && textareaArea !== '') {
       console.log(textareaArea, "submit");
       that.publishData(1);
-
     } else if (typesIndex !== 0 && textareaArea === '') {
       util.showText("请先输入想要发布的信息");
     } else if (typesIndex === 0 && textareaArea !== '') {

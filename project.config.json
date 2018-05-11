@@ -35,7 +35,7 @@
 				{
 					"id": 0,
 					"name": "个人信息",
-					"pathName": "pages/personal/personal",
+					"pathName": "pages/alterUserInfo/alterUserInfo",
 					"query": "uid=o2GCt4iaAWOlVDzD3XX1nxc-KYKY"
 				},
 				{
@@ -69,9 +69,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "测试",
-					"pathName": "pages/test/test",
+					"id": 6,
+					"name": "关于",
+					"pathName": "pages/about/about",
 					"query": "uid=o2GCt4iaAWOlVDzD3XX1nxc-KYKY"
 				}
 			]

@@ -98,8 +98,8 @@ Page({
         title: '悬赏求助'
       }, 
       {
-        id: ' lostandfound',
-        title: '失物招领'
+        id: ' activity',
+        title: '校内活动'
       }, 
        {
          id: ' 二手市场',
@@ -158,6 +158,7 @@ Page({
     }
   },
   toTop:function(){
+    console.log("返回顶部");
     this.setData({
       scrollTop: 0
     })
@@ -211,14 +212,6 @@ Page({
   onShareAppMessage: function () {
 
   },
- 
-  //nav点击事件
-  // tabClick: function (e) {
-  //   this.setData({
-  //     sliderOffset: e.currentTarget.offsetLeft,
-  //     activeIndex: e.currentTarget.id
-  //   });
-  // },
   tabchange:function(e){
     var that = this;
     that.data.navtab.selectedId=e.detail;

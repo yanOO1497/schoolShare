@@ -1,7 +1,5 @@
 /* pages/about/about.wxss */
-page{
-  text-align: center;
-}
+
 .title{
   line-height: 100rpx;
   font-size: 40rpx;

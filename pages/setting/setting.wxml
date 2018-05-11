@@ -12,7 +12,13 @@
   </view>
   <view class="weui-cells ">
     <view class="weui-cell weui-cell_switch">
-      <view class="weui-cell__bd">是否允许添加微信好友</view>
+      <view class="weui-cell__bd">是否显示微信号在个人主页</view>
+      <view class="weui-cell__ft">
+        <switch />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_switch">
+      <view class="weui-cell__bd">是否显示QQ号在个人主页</view>
       <view class="weui-cell__ft">
         <switch />
       </view>
@@ -24,7 +30,12 @@
       </view>
     </view>
   </view>
-
+  <view class="weui-cells ">
+    <navigator url="../about/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">背景图片更改</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+  </view>
   <view class="weui-cells ">
     <navigator url="../about/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__bd">关于我们</view>

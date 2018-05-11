@@ -41,7 +41,7 @@ Page({
             wx.navigateBack();
           }, 1000);
         }
-
+        
       );
 
     } else {

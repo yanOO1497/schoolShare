@@ -1,7 +1,31 @@
 <!--pages/about/about.wxml-->
 <view class='page'>
-   <view class='title'>校内互助共享平台</view>
-   <view class='content'>
-      <p ></p>
-   </view>
+  <view class="page__hd">
+    <view class="page__title">校内互助共享平台</view>
+    <view class="page__desc">学生：严媛媛 </view>
+    <view class="page__desc">指导老师：李建微</view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-panel weui-panel_access">
+      <view class="weui-panel__hd">项目相关</view>
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_text">
+          <view class="weui-media-box__title weui-media-box__title_in-text">icon获取</view>
+          <view class="weui-media-box__desc">阿里巴巴图标字体库</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+          <view class="weui-media-box__title weui-media-box__title_in-text">产品原型工具</view>
+          <view class="weui-media-box__desc">https://www.xiaopiu.com/</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+          <view class="weui-media-box__title weui-media-box__title_in-text">代码存储</view>
+          <view class="weui-media-box__desc">https://github.com/yanOO1497/schoolShare</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+          <view class="weui-media-box__title weui-media-box__title_in-text">静态资源存储</view>
+          <view class="weui-media-box__desc">七牛云存储</view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
