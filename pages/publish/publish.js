@@ -13,8 +13,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    types: ["校内问答", "经验分享", "悬赏求助", "失物招领", "二手市场"],
-    typesIndex: -1,
+    types: ["请选择发布模块","校内问答", "经验分享", "悬赏求助", "失物招领", "二手市场"],
+    typesIndex: 0,
     countryCodes: ["人民币", "积分"],
     countryCodeIndex: 0,
     textareaArea: '',
@@ -51,7 +51,7 @@ Page({
   },
   chooseImage: function (e) {
     var that = this;
-    if (that.data.typesIndex !== 0){
+    if (that.data.typesIndex !== -1){
       wx.chooseImage({
         sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有

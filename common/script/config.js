@@ -9,7 +9,7 @@ openID: 用户唯一标识符（载入时缓存获取或者请求微信相关api
 skinList: “我的”页面背景列表
 */
 
-var url = 'http://192.168.1.102:8082/school_share/share'
+var url = 'http://192.168.1.101:8082/school_share/share'
 module.exports = {
   APP_ID:'wx15734a2373afa7a8',
   APP_SECRET:'10c27dc6070ef03f708ccdbe3c072e21',

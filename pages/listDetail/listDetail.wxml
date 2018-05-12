@@ -11,6 +11,9 @@
         </view>
       </view>
       <view class="content">{{content}}</view>
+       <view class='img-wrap'>
+        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-url="{{item}}" bindtap='previewImg'></view>
+      </view> 
       <view class="weui-media-box__info">
         <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">
           <i class="iconfont icon-pinglun"></i>

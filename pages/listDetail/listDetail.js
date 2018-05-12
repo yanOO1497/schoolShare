@@ -17,19 +17,24 @@ Page({
       love: "3",
       isLove: true,
       time: "2017年6月5号",
-      },
-      commentData:[],
-      typeIndex:0
+    },
+    commentData: [],
+    typeIndex: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this;
+    var that = this;
     console.log(options);
-    let { typeIndex,mid} = options;
-      fetch._get(config.apiList.getMessageByMidAndType, { 'type': typeIndex,mid},function(res){
+    let { typeIndex, mid } = options;
+    fetch._get(config.apiList.getMessageByMidAndType, { 'type': typeIndex, mid }, function (res) {
+      if (res.result.picUrl !== "" && res.result.picUrl) {
+        res.result.picUrl = res.result.picUrl.split(",");
+        console.log(res.result.picUrl);
+      }
+
       that.setData({
         commentData: res.subjects,
         listDetail: res.result,
@@ -37,35 +42,38 @@ Page({
       })
     })
   },
-  observeReply:function (){
+  observeReply: function () {
     console.log("发送");
+  },
+  previewImg: function (e) {
+    util.showImg(e.currentTarget.dataset.url);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-   
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
@@ -79,13 +87,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })

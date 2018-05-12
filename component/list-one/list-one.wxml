@@ -4,42 +4,35 @@
 </block>
 
 <template name="share">
-  <view data-uid="{{uid}}" class='list-item {{type}}' bindtap='checkEnter'>
+  <view data-mid="{{id}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
     <view class='user-info'>
-      <image class='avatar' src='{{avatarUrl}}' data-name="avater-img"></image>
+      <image class='avatar' src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
-        <view class='from'>{{createTime}}</view>
+        <view class='from'> {{createTime}}</view>
       </view>
       <view class='option-more' data-name="more">∨</view>
     </view>
-
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
-      <image wx:if="{{coverUrl}}" src='{{coverUrl}}' mode="widthFix"></image>
-
+      <image wx:if="{{coverUrl}}" src='{{coverUrl}}' mode="widthFix" data-uid="{{uid}}"></image>
     </view>
+    <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}">
+      <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+        <text data-name="delete">删除</text>
+      </view>
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{agreeFlag == 1 ? 'act' : ''}}">
+        <i class="iconfont icon-dianzan" data-name="useful"></i>
+        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '有用'}}</text>
+      </view>
+      <view class="weui-media-box__info__meta {{disagreeFlag == 1 ? 'act' : ''}}">
+        <i class="iconfont icon-cai" data-name="useless"></i>
+        <text data-name="useless">{{disagreeNum > 0 ? disagreeNum : '没用'}}</text>
+      </view>
 
-    <view class="weui-media-box__info">
-      <view class="weui-media-box__info__meta ">
-        <i class="iconfont icon-pinglun"></i>
-        <text>评论</text>
-      </view>
-      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">
-        <i class="iconfont icon-shoucang"></i>
-        <text>收藏</text>
-      </view>
-      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">
-        <i class="iconfont icon-dianzan"></i>
-        <text>赞</text>
-      </view>
-      <view class="weui-media-box__info__meta ">
-        <i class="iconfont icon-cai"></i>
-        <text>踩</text>
-      </view>
-      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">
-        <i class="iconfont icon-shoucang"></i>
-        <text>举报</text>
+      <view class="weui-media-box__info__meta {{optionList[2] ? 'act' : ''}}">
+        <i class="iconfont icon-pinglun" data-name="comment"></i>
+        <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '评论'}}</text>
       </view>
     </view>
   </view>
@@ -56,10 +49,12 @@
     </view>
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
-      <image wx:if="{{coverUrl}}" src='{{coverUrl}}' mode="widthFix" data-uid="{{uid}}"></image>
+      <view class='img-wrap'>
+        <view   wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}"></view>
+      </view>
     </view>
     <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}">
-    <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+      <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
         <text data-name="delete">删除</text>
       </view>
       <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{agreeFlag == 1 ? 'act' : ''}}">

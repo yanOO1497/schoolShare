@@ -1,6 +1,17 @@
 /* component/list-1/list-1.wxss */
 @import "../../common/style/iconfont.wxss"; 
-@import "../../common/style/weui.wxss"; 
+@import "../../common/style/weui.wxss";
+.img-wrap{
+  display: flex;
+  flex-wrap:wrap;
+} 
+.img{
+  flex:1;
+  min-width:33.3%;  
+  height:250rpx; 
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .option-more{
   color: #ccc;
   position: absolute;

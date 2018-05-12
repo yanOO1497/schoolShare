@@ -130,12 +130,20 @@ Page({
     console.log("enter");
   },
   refreshData: function (start){
+    console.log("页面刷新");
     var that = this;
     fetch._get.call(that, apiList.questionList, {
       start: that.data.start,
       count: 20
     }, function (res) {
-      wx.hideNavigationBarLoading()
+      wx.hideNavigationBarLoading();
+      res.subjects.map((item,key,arr)=>{
+        if (item.picUrl !== "" && item.picUrl){
+          // console.log(item.picUrl);
+          item.picUrl = item.picUrl.split(",");
+        }
+      })
+      // console.log(res.subjects);
       that.data.listData.question = that.data.listData.question.concat(res.subjects);
       that.setData({
         listData: that.data.listData,
@@ -146,7 +154,6 @@ Page({
     });
   },
   scroll:function (e){
-    console.log("页面滚动");
     if (e.detail.scrollTop > 500) {
       this.setData({
         floorstatus: true

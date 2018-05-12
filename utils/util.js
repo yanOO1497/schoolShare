@@ -137,12 +137,23 @@ function showText (str){
     duration: 1000
   });
 }
+function showImg(url){
+  let urlArr = [];
+  urlArr.push(url);
+  wx.previewImage({
+    current: '',
+    urls: urlArr,
+    success: function(res) {},
+    fail: function(res) {},
+    complete: function(res) {},
+  })
+}
 module.exports = {
-  formatTime: formatTime,
-  getUserInfo: getUserInfo,
-  getUserSet: getUserSet,
-  showText: showText,
-  showToastSu: showToastSu,
-  showConfirmModal
- 
+  formatTime,
+  getUserInfo,
+  getUserSet,
+  showText,
+  showToastSu,
+  showConfirmModal,
+  showImg
 }

@@ -1,4 +1,15 @@
 /* pages/listDetail/listDetail.wxss */
+.img-wrap{
+  display: flex;
+  flex-wrap:wrap;
+} 
+.img{
+  flex:1;
+  min-width:33.3%;  
+  height:250rpx; 
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .weui-media-box__info__meta{
   float: right;
 }
