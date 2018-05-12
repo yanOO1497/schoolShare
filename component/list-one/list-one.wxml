@@ -10,31 +10,35 @@
         <view class='nickname'>{{nickName}}</view>
         <view class='from'> {{createTime}}</view>
       </view>
-      <view class='option-more' data-name="more">∨</view>
+      <view class='option-more' data-name="more"></view>
     </view>
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
       <view class='img-wrap'>
         <view   wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}"></view>
       </view>
+      <view class='reward'>
+          <text class='reward-title'>报酬： </text><text>{{reward}}</text>
+      </view>
     </view>
     <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}">
       <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
         <text data-name="delete">删除</text>
       </view>
-      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{agreeFlag == 1 ? 'act' : ''}}">
+      <view class="weui-media-box__info__meta {{agreeFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-dianzan" data-name="useful"></i>
         <text data-name="useful">{{agreeNum > 0 ? agreeNum : '有用'}}</text>
       </view>
-      <view class="weui-media-box__info__meta {{disagreeFlag == 1 ? 'act' : ''}}">
-        <i class="iconfont icon-cai" data-name="useless"></i>
-        <text data-name="useless">{{disagreeNum > 0 ? disagreeNum : '没用'}}</text>
-      </view>
-
-      <view class="weui-media-box__info__meta {{optionList[2] ? 'act' : ''}}">
+      
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{optionList[2] ? 'act' : ''}}">
         <i class="iconfont icon-pinglun" data-name="comment"></i>
         <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '评论'}}</text>
       </view>
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{disagreeFlag == 1 ? 'act' : ''}}">
+        <i class="iconfont icon-fenxiang" data-name="useless"></i>
+        <text data-name="useless">{{disagreeNum > 0 ? disagreeNum : '找人帮他'}}</text>
+      </view>
+
     </view>
   </view>
 </template>
@@ -46,7 +50,7 @@
         <view class='nickname'>{{nickName}}</view>
         <view class='from'> {{createTime}}</view>
       </view>
-      <view class='option-more' data-name="more">∨</view>
+      <view class='option-more' data-name="more"></view>
     </view>
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
@@ -55,21 +59,25 @@
       </view>
     </view>
     <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}">
-      <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
-        <text data-name="delete">删除</text>
-      </view>
-      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{agreeFlag == 1 ? 'act' : ''}}">
+      
+      <view class="weui-media-box__info__meta {{agreeFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-dianzan" data-name="useful"></i>
-        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '有用'}}</text>
+        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '感兴趣'}}</text>
       </view>
-      <view class="weui-media-box__info__meta {{disagreeFlag == 1 ? 'act' : ''}}">
-        <i class="iconfont icon-cai" data-name="useless"></i>
-        <text data-name="useless">{{disagreeNum > 0 ? disagreeNum : '没用'}}</text>
+     
+      <view class="weui-media-box__info__meta  weui-media-box__info__meta_extra {{optionList[2] ? 'act' : ''}}">
+        <i class="iconfont icon-pinglun" data-name="comment"></i>
+        <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '了解更多'}}</text>
+  
+      </view>
+      <view class="weui-media-box__info__meta  weui-media-box__info__meta_extra {{disagreeFlag == 1 ? 'act' : ''}}">
+        <i class="iconfont icon-fenxiang" data-name="share"></i>
+         <!-- <text data-name="share">{{disagreeNum > 0 ? disagreeNum : '分享'}}</text>  -->
+        <button data-name="share" class='share-btn' id="shareBtn" open-type="share"  hover-class="other-button-hover">分享</button>
       </view>
 
-      <view class="weui-media-box__info__meta {{optionList[2] ? 'act' : ''}}">
-        <i class="iconfont icon-pinglun" data-name="comment"></i>
-        <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '评论'}}</text>
+      <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+        <text data-name="delete">删除</text>
       </view>
     </view>
   </view>
@@ -82,7 +90,7 @@
         <view class='nickname'>{{nickName}}</view>
         <view class='from'> {{createTime}}</view>
       </view>
-      <view class='option-more' data-name="more">∨</view>
+      <view class='option-more' data-name="more"></view>
     </view>
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
@@ -94,16 +102,15 @@
       <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
         <text data-name="delete">删除</text>
       </view>
-      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{agreeFlag == 1 ? 'act' : ''}}">
-        <i class="iconfont icon-dianzan" data-name="useful"></i>
-        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '有用'}}</text>
+      <view class="weui-media-box__info__meta {{agreeFlag == 1 ? 'act' : ''}}">
+        <i class="iconfont icon-aixin" data-name="useful"></i>
+        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '感兴趣'}}</text>
       </view>
-      <view class="weui-media-box__info__meta {{disagreeFlag == 1 ? 'act' : ''}}">
+      <!-- <view class="weui-media-box__info__meta weui-media-box__info__meta_extra {{disagreeFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-cai" data-name="useless"></i>
         <text data-name="useless">{{disagreeNum > 0 ? disagreeNum : '没用'}}</text>
-      </view>
-
-      <view class="weui-media-box__info__meta {{optionList[2] ? 'act' : ''}}">
+      </view> -->
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra {{optionList[2] ? 'act' : ''}}">
         <i class="iconfont icon-pinglun" data-name="comment"></i>
         <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '评论'}}</text>
       </view>
@@ -118,7 +125,7 @@
         <view class='nickname'>{{nickName}}</view>
         <view class='from'> {{createTime}}</view>
       </view>
-      <view class='option-more' data-name="more">∨</view>
+      <view class='option-more' data-name="more"></view>
     </view>
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
@@ -130,16 +137,16 @@
       <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
         <text data-name="delete">删除</text>
       </view>
-      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{agreeFlag == 1 ? 'act' : ''}}">
+      <view class="weui-media-box__info__meta   {{agreeFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-dianzan" data-name="useful"></i>
         <text data-name="useful">{{agreeNum > 0 ? agreeNum : '有用'}}</text>
       </view>
-      <view class="weui-media-box__info__meta {{disagreeFlag == 1 ? 'act' : ''}}">
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra {{disagreeFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-cai" data-name="useless"></i>
         <text data-name="useless">{{disagreeNum > 0 ? disagreeNum : '没用'}}</text>
       </view>
 
-      <view class="weui-media-box__info__meta {{optionList[2] ? 'act' : ''}}">
+      <view class="weui-media-box__info__meta {{optionList[2] ? 'act' : ''}} weui-media-box__info__meta_extra">
         <i class="iconfont icon-pinglun" data-name="comment"></i>
         <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '评论'}}</text>
       </view>
@@ -154,7 +161,7 @@
         <view class='nickname'>{{nickName}}</view>
         <view class='from'> {{createTime}}</view>
       </view>
-      <view class='option-more' data-name="more">∨</view>
+      <view class='option-more' data-name="more"></view>
     </view>
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
@@ -166,18 +173,18 @@
       <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
         <text data-name="delete">删除</text>
       </view>
-      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{agreeFlag == 1 ? 'act' : ''}}">
-        <i class="iconfont icon-dianzan" data-name="useful"></i>
-        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '有用'}}</text>
+      <view class="weui-media-box__info__meta {{agreeFlag == 1 ? 'act' : ''}}">
+        <i class="iconfont icon-aixin" data-name="useful"></i>
+        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '关注问题'}}</text>
       </view>
-      <view class="weui-media-box__info__meta {{disagreeFlag == 1 ? 'act' : ''}}">
-        <i class="iconfont icon-cai" data-name="useless"></i>
-        <text data-name="useless">{{disagreeNum > 0 ? disagreeNum : '没用'}}</text>
-      </view>
-
-      <view class="weui-media-box__info__meta {{optionList[2] ? 'act' : ''}}">
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{optionList[2] ? 'act' : ''}}">
         <i class="iconfont icon-pinglun" data-name="comment"></i>
         <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '评论'}}</text>
+      </view>
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{disagreeFlag == 1 ? 'act' : ''}}">
+        <i class="iconfont icon-fenxiang" data-name="share"></i>
+        <!-- <text data-name="share">{{disagreeNum > 0 ? disagreeNum : '转发'}}</text> -->
+      <button data-name="share" class='share-btn' id="shareBtn" open-type="share"  hover-class="other-button-hover">分享</button>
       </view>
     </view>
   </view>

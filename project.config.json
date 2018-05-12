@@ -70,8 +70,8 @@
 				},
 				{
 					"id": 6,
-					"name": "关于",
-					"pathName": "pages/about/about",
+					"name": "精华库",
+					"pathName": "pages/dataBase/dataBase",
 					"query": "uid=o2GCt4iaAWOlVDzD3XX1nxc-KYKY"
 				}
 			]

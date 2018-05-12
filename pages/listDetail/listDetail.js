@@ -19,7 +19,8 @@ Page({
       time: "2017年6月5号",
     },
     commentData: [],
-    typeIndex: 0
+    typeIndex: 0,
+    mid:1,
   },
 
   /**
@@ -38,7 +39,8 @@ Page({
       that.setData({
         commentData: res.subjects,
         listDetail: res.result,
-        typeIndex
+        typeIndex,
+        mid
       })
     })
   },
@@ -93,7 +95,24 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target);
 
+    }
+    let {mid , typeIndex} = this.data;
+    return {
+      title: '这里有个问题话题不错你要不要看看',
+      path: `pages/listDetail/listDetail?mid=${mid}&typeIndex=${typeIndex}`,
+      success: function (res) {
+        // 转发成功
+        util.showText("转发成功！");
+      },
+      fail: function (res) {
+        // 转发失败
+        util.showText("转发失败！");
+      }
+    }
   }
 })

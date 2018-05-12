@@ -114,6 +114,12 @@ Component({
         case "delete":
           that.deleteByUid(data);
         break;
+        case "comment":
+          that.enterDetail(data.index);
+        break;
+        case "share":
+          that.onShareAppMessage(data);
+        break;
       }
 
     },
@@ -224,8 +230,12 @@ Component({
 
       }
     },
-    refresh(){
-
+    onShareAppMessage (data){
+      var that = this;
+      let typeIndex = config.typeList.indexOf(that.data.listType);
+      var myEventDetail = { mid:data.mid,typeIndex } // detail对象，提供给事件监听函数
+      var myEventOption = {} // 触发事件的选项
+      that.triggerEvent('onShareAppMessage', myEventDetail, myEventOption)
     }
   }
 })

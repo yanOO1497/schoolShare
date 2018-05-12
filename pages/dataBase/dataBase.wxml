@@ -1,2 +1,13 @@
 <!--pages/dataBase/dataBase.wxml-->
-<text>pages/dataBase/dataBase.wxml</text>
+<view class='page'>
+
+  <view class="weui-grids">
+    <block wx:for="{{gridList}}" wx:key="*this">
+      <view data-index="{{index}}" class="weui-grid" hover-class="weui-grid_active" bindtap='jumpCheck'>
+        <i class="iconfont {{item.iconClass}}"></i>
+        <view class="weui-grid__label">{{item.name}}</view>
+      </view>
+    </block>
+  </view>
+
+</view>

@@ -19,7 +19,7 @@ module.exports = {
   openID: 0,
   userInfo:{},
   baiduAK: 'k28S8L69VGKML5GG2X6VBOKIFdhBQ6Bi',
-  typeList: ["","question","share"],
+  typeList: ["", "question", "share", "rewardhelp", "activity", "secondarymarket"],
   apiList: {
     // questionList: url + '/loadQuestionList.do',//加载问答列表
     // loadExperienceList: url + '/loadExperienceList.do',//加载问答列表

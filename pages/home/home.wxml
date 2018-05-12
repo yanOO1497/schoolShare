@@ -1,13 +1,15 @@
 <!--pages/home/home.wxml-->
 <!--index.wxml-->
 <scroll-view class='page'>
+
   <view class='fixBar'>
-    <navigator url='../publish/publish' class='fixBar-item write'>
+    <view  class='fixBar-item write ' bindtap='toPublish' wx:if="{{isShowFixBar}}">
       <text class='iconfont icon-xie'></text>
-    </navigator>
-    <view class='fixBar-item top' wx:if="{{ floorstatus }}" bindtap='toTop'>
+    </view>
+    <view class='fixBar-item top ' wx:if="{{ floorstatus && isShowFixBar}}" bindtap='toTop' >
       <text class='iconfont icon-top'></text>
     </view>
+    <view class='toggleFixBar' bindtap='toggleFixBar'></view>
   </view>
   
   <!-- navtab -->
@@ -16,9 +18,9 @@
   <scroll-view class="weui-tab__content" scroll-y scroll-with-animation='true' bindscroll="scroll"  style='height:94%' scroll-top="{{scrollTop}}">
     <!-- 校内问答与经验分享页面 -->
     <view wx:if="{{showLoading}}">
-      <view class="loading">玩命加载中…</view>
+      <view class="loading">正在加载中…</view>
     </view>
-    <list-one wx:else list="{{listData[navtab.selectedId]}}" listType="{{navtab.selectedId}}" />
+    <list-one wx:else list="{{listData[navtab.selectedId]}}" listType="{{navtab.selectedId}}" bind:onShareAppMessage="onShareAppMessage"/>
 
     <!-- 讲座 列表 -->
 

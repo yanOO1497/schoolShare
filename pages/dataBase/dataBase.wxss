@@ -1,1 +1,7 @@
 /* pages/dataBase/dataBase.wxss */
+.weui-grids{
+  text-align: center;
+}
+.weui-grids .iconfont{
+  font-size: 50rpx;
+}

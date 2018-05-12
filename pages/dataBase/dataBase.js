@@ -5,7 +5,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    gridList: [
+      {
+        name: "电子书",
+        urlName: "setting",
+        iconClass: "icon-qiandao"
+      },
+      {
+        name: "课件",
+        urlName: "myQuestion",
+        iconClass: "icon-wenda"
+      },
+      {
+        name: "共享图书",
+        urlName: "setting",
+        iconClass: "icon-fenxiang"
+      },
+      {
+        name: "我的课表",
+        urlName: "setting",
+        iconClass: "icon-shoucang"
+      },
+      {
+        name: "意见反馈",
+        urlName: "feedback",
+        iconClass: "icon-yijianfankui"
+      },
+      {
+        name: "我的设置",
+        urlName: "setting",
+        iconClass: "icon-shezhi"
+      },
+    ]
   },
 
   /**

@@ -40,7 +40,7 @@
       },
       {
         "pagePath": "pages/dataBase/dataBase",
-        "text": "共享",
+        "text": "精华",
         "iconPath": "images/tab-dataBase.png",
         "selectedIconPath": "images/tab-dataBase-cur.png",
         "active": false

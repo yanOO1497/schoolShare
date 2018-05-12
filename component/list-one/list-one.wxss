@@ -1,6 +1,14 @@
 /* component/list-1/list-1.wxss */
 @import "../../common/style/iconfont.wxss"; 
 @import "../../common/style/weui.wxss";
+.share-btn{
+  display: inline;
+  background: unset;
+  position: static;
+  color: inherit;
+  line-height: inherit;
+  font-size: inherit;
+}
 .img-wrap{
   display: flex;
   flex-wrap:wrap;
@@ -13,10 +21,14 @@
   background-repeat: no-repeat;
 }
 .option-more{
-  color: #ccc;
+  width: 20rpx;
+  height: 20rpx;
   position: absolute;
-  top:-30rpx;
+  top:-20rpx;
   right: -10rpx;
+  border-left: 2rpx solid #ccc;
+  border-bottom:  2rpx solid #ccc;
+  transform: rotate(-45deg);
 }
 .avatar {
   width: 100rpx;
@@ -104,10 +116,24 @@
 .option-more{
   float: right;
 }
+
 .weui-media-box__info__meta.act{
  color: #f59763;
 }
-
+.weui-media-box__info{
+  display: flex;
+  line-height: 1.2em;
+}
 .weui-media-box__info__meta{
-  float: right;
+ flex: 1;
+ box-sizing: border-box;
+ text-align: center;
+}
+.weui-media-box__info__meta .iconfont{
+  margin:0 10rpx;
+}
+.reward {
+  border-left: 4px solid #79BD8F;
+  padding-left: 10rpx;
+  /* color: red; */
 }

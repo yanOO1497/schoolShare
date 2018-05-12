@@ -4,7 +4,7 @@ var fetch = require('../../common/script/fetch')
 var util = require('../../utils/util')
 var config = require('../../common/script/config')
 const app = getApp();
-const typeArr = ["", "question", "share", "rewardhelp", "activity","secondarymarket"];
+const typeArr = config.typeList;
 const apiList = config.apiList;
 let api ={
   question:apiList.questionList, 
@@ -31,6 +31,8 @@ Page({
     hasMore:true,
     start: 0,
     showLoading:true,
+
+    isShowFixBar:true,
     //最新消息列表
     listData:{
       share: [],
@@ -41,10 +43,10 @@ Page({
     navtab: {
       list: [{
         id: 'question',
-        title: '校内问答'
+        title: '校内百事通'
       }, {
         id: 'share',
-        title: '经验分享'
+        title: '师哥师姐说'
       }, 
       {
         id: 'rewardhelp',
@@ -82,7 +84,7 @@ Page({
   enterDetail:function(){
     console.log("enter");
   },
-  tabchange: function (e) {
+  tabchange(e){
     var that = this;
     that.data.navtab.selectedId = e.detail;
     that.setData({
@@ -118,8 +120,21 @@ Page({
       console.log("home get questionList fail");
     });
   },
-
-  scroll:function (e){
+  toPublish(e){
+    var that = this;
+    let select = that.data.navtab.selectedId;
+    let url = `../publish/publish?typeIndex=${typeArr.indexOf(select)}`;
+    wx.navigateTo({
+      url: url
+    })
+  },
+  toggleFixBar(){
+    var that = this;
+    this.setData({
+      isShowFixBar: !that.data.isShowFixBar 
+    })
+  },
+  scroll(e){
     if (e.detail.scrollTop > 500) {
       this.setData({
         floorstatus: true
@@ -139,14 +154,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady(){
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow(){
     console.log("home显示");
     this.refreshData(0);
   },
@@ -154,36 +169,67 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  },
+  onShareAppMessage: function (res) {
+    if(res.from){//默认分享
+      return {
+        title: '同学可以帮忙看看吗',
+        path: `pages/home/home`,
+        success: function (res) {
+          // 转发成功
+          util.showText("转发成功！");
+        },
+        fail: function (res) {
+          // 转发失败
+          util.showText("转发失败！");
+        }
+      }
+    }else{
+      let {mid,typeIndex} = res.detail;
+      
+      
+      console.log("从组件的分享", res);
+      return {
+        title: '同学可以帮忙看看吗',
+        path: `pages/listDetail/listDetail?mid=${mid}&typeIndex=${typeIndex}`,
+        success: function (res) {
+          // 转发成功
+          util.showText("转发成功！");
+        },
+        fail: function (res) {
+          // 转发失败
+          util.showText("转发失败！");
+        }
+      }
+    }
+    
+  }
   
 })

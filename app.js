@@ -16,6 +16,7 @@ App({
     util.getUserSet(function(){
       console.log("suceess",config.openID);
     });
+    
   },
   getUserInfo: function () {
     // util.getUserInfo();

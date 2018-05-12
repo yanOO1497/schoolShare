@@ -18,7 +18,8 @@ Page({
    */
   onLoad: function () {
     var that = this;
-    that.getQuestList(0, function (res){
+    that.getQuestList.call(that,0, function (res){
+      console.log(res.subjects);
       that.setData({
         listData: res.subjects,
         showLoading:false
@@ -46,7 +47,12 @@ Page({
       uid: config.openID,
       count: 20
     }, function (res) {
-      console.log(res.subjects);
+      // console.log(res.subjects);
+      res.subjects.map((item, key, arr) => {
+        if (item.picUrl !== "" && item.picUrl) {
+          item.picUrl = item.picUrl.split(",");
+        }
+      }) 
       typeof cb == 'function' && cb(res)
     })
   },

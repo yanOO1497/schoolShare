@@ -16,10 +16,24 @@ zan-tab{
   border: 1px solid #ccc;
   border-radius: 50%;
   color: white;
-   background-color: #f59763; 
+  background-color: #f59763; 
   text-align: center;
-  margin-top:20rpx;
+  margin:20rpx 0;
 }
+
+.toggleFixBar{
+  position: absolute;
+  right: -60rpx;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+   border: 1px solid #ccc;
+  background-color: #f59763; 
+  margin: auto;
+  top:0;
+  bottom: 0;
+}
+
 .fixBar-item .iconfont{
   display: inline-block;
     font-size: 50rpx;
@@ -40,6 +54,8 @@ zan-tab{
 .weui-tab__panel {
   position: relative;
 }
+
+
 
 
 
