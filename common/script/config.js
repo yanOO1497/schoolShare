@@ -21,7 +21,10 @@ module.exports = {
   baiduAK: 'k28S8L69VGKML5GG2X6VBOKIFdhBQ6Bi',
   typeList: ["","question","share"],
   apiList: {
-    questionList: url + '/loadQuestionList.do',//加载问答列表
+    // questionList: url + '/loadQuestionList.do',//加载问答列表
+    // loadExperienceList: url + '/loadExperienceList.do',//加载问答列表
+    loadTableList: url + '/loadTableList.do',//加载各类信息列表
+    getExperienceListByUid: url + '/getExperienceListByUid.do',
     loadUserInfoDetails: url + '/loadUserInfoDetails.do',//获取用户详情
     saveUserInfo: url + '/saveUserInfo.do',//保存用户信息
     setBioByUid: url + '/setBioByUid.do',//添加用户签名

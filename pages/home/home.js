@@ -4,8 +4,13 @@ var fetch = require('../../common/script/fetch')
 var util = require('../../utils/util')
 var config = require('../../common/script/config')
 const app = getApp();
-const typeArr = ["question","share"];
+const typeArr = ["", "question", "share", "rewardhelp", "activity","secondarymarket"];
 const apiList = config.apiList;
+let api ={
+  question:apiList.questionList, 
+  share:apiList.loadExperienceList,
+
+};
 Page({
 
   /**
@@ -28,59 +33,7 @@ Page({
     showLoading:true,
     //最新消息列表
     listData:{
-      share: [
-        {
-          type: "share",
-          nickName: "媛媛",
-          avatarUrl: "http://p3.music.126.net/NgCeNHxZcuqCsJTo_tdRKA==/18637821604170727.jpg?param=30y30",
-          coverUrl: "http://img1.gtimg.com/tj/pics/hv1/151/175/2020/131395276.jpg",
-          title: "四六级又没过？这是我最后一次抢救你了（碾压四六级全套经验）",
-          content: "英语四六级和普通的日常英语不一样，毕竟是考试，要求的是笔试和听力，并没有口语，所以提升起来也可以相对的快一些。所以呢，我觉得只要有一点点的英语基础，加上自己的重视，过4，6级其实并不难。",
-          comment: "33",
-          love: "3",
-          uid: "11",
-          optionList:[true,false,false]
-        }, {
-          type: "wenda",
-          nickName: "holy俊辉",
-          avatarUrl: "https://pic.qqtn.com/up/2018-4/15241053731750196.jpg",
-          title: "标题标题标题标题标题",
-          content: "摘要摘要",
-          comment: "33",
-          love: "3",
-          uid: "22",
-          optionList: [true, false, false]
-        }, {
-          type: "share",//消息类别
-          mid:"",//消息id
-          uid: "33",//发布人id
-          nickName: "怀左同学",//发布人昵称
-          avatarUrl: "https://pic.qqtn.com/up/2018-4/15241053732525556.jpg",//发布人头像地址
-          content: "刚到北京的那几天，朋友正处于失业期，我们挑了一个时间，在紫阳公园聊了一下午。 工作后的人，通常比还在学校的同龄人成长要快，一个人",//发布人头像地址
-          time: "",//发布时间
-          comment: "33",//评论数
-          useful: "3",//点赞/觉得有用 数目
-          useless:"4",//觉得没有的数目
-          optionList: [true, false, false]//没用、有用、收藏（用户是否）
-        }, {
-          type: "share",
-          nickName: "媛媛",
-          avatarUrl: "http://p3.music.126.net/NgCeNHxZcuqCsJTo_tdRKA==/18637821604170727.jpg?param=30y30",
-          title: "四六级又没过？这是我最后一次抢救你了（碾压四六级全套经验）",
-          content: "英语四六级和普通的日常英语不一样，毕竟是考试，要求的是笔试和听力，并没有口语，所以提升起来也可以相对的快一些。所以呢，我觉得只要有一点点的英语基础，加上自己的重视，过4，6级其实并不难。",
-          comment: "33",
-          love: "3",
-          uid: "11"
-        }, {
-          type: "share",
-          nickName: "怀左同学",
-          avatarUrl: "https://pic.qqtn.com/up/2018-4/15241053732525556.jpg",
-          title: "有钱之前，先让自己值钱",
-          content: "刚到北京的那几天，朋友正处于失业期，我们挑了一个时间，在紫阳公园聊了一下午。 工作后的人，通常比还在学校的同龄人成长要快，一个人",
-          comment: "33",
-          love: "3",
-          uid: "33"
-        }],
+      share: [],
       question: [],
       lectures: []
 
@@ -94,15 +47,15 @@ Page({
         title: '经验分享'
       }, 
       {
-        id: 'reward',
+        id: 'rewardhelp',
         title: '悬赏求助'
       }, 
       {
-        id: ' activity',
+        id: 'activity',
         title: '校内活动'
       }, 
        {
-         id: ' 二手市场',
+         id: 'secondarymarket',
         title: '二手市场'
       }
       ],
@@ -129,22 +82,34 @@ Page({
   enterDetail:function(){
     console.log("enter");
   },
-  refreshData: function (start){
-    console.log("页面刷新");
+  tabchange: function (e) {
     var that = this;
-    fetch._get.call(that, apiList.questionList, {
+    that.data.navtab.selectedId = e.detail;
+    that.setData({
+      navtab: that.data.navtab
+    });
+    that.refreshData(0);
+  },
+  refreshData: function (start, refreshType = "refresh"){ 
+    var that = this;
+    let select = that.data.navtab.selectedId;
+    fetch._get.call(that, apiList.loadTableList, {
+      tableType: typeArr.indexOf(select),
       start: that.data.start,
       count: 20
     }, function (res) {
       wx.hideNavigationBarLoading();
       res.subjects.map((item,key,arr)=>{
         if (item.picUrl !== "" && item.picUrl){
-          // console.log(item.picUrl);
           item.picUrl = item.picUrl.split(",");
         }
-      })
-      // console.log(res.subjects);
-      that.data.listData.question = that.data.listData.question.concat(res.subjects);
+      }) 
+      if (refreshType == "refresh"){
+        that.data.listData[select] = res.subjects;
+      }else{
+        that.data.listData[select] = that.data.listData[select].concat(res.subjects);
+      }
+      console.log("页面刷新", select, that.data.listData[select]);
       that.setData({
         listData: that.data.listData,
         showLoading: false
@@ -153,6 +118,7 @@ Page({
       console.log("home get questionList fail");
     });
   },
+
   scroll:function (e){
     if (e.detail.scrollTop > 500) {
       this.setData({
@@ -181,7 +147,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log("home显示")
+    console.log("home显示");
     this.refreshData(0);
   },
 
@@ -219,11 +185,5 @@ Page({
   onShareAppMessage: function () {
 
   },
-  tabchange:function(e){
-    var that = this;
-    that.data.navtab.selectedId=e.detail;
-    that.setData({
-      navtab: that.data.navtab
-    });
-  }
+  
 })

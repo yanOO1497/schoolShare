@@ -70,6 +70,7 @@ Component({
         name = "回复" + name;
       }else{
         name = "评论" ;
+        fatherid = 0
       }
       
       console.log('focus', fatherid, name);
