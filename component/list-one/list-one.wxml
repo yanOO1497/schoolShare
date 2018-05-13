@@ -183,7 +183,6 @@
       </view>
       <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{disagreeFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-fenxiang" data-name="share"></i>
-        <!-- <text data-name="share">{{disagreeNum > 0 ? disagreeNum : '转发'}}</text> -->
       <button data-name="share" class='share-btn' id="shareBtn" open-type="share"  hover-class="other-button-hover">分享</button>
       </view>
     </view>

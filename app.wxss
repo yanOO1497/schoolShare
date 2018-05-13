@@ -5,6 +5,7 @@
 @import "./common/style/zanui.wxss";
 @import "./common/style/base.wxss";
 page,.page{
+  width: 100%;
   color: #161716;
   height: 100%;
   position: relative;

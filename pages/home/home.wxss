@@ -23,10 +23,10 @@ zan-tab{
 
 .toggleFixBar{
   position: absolute;
-  right: -60rpx;
-  width: 60rpx;
-  height: 60rpx;
-  border-radius: 50%;
+  right: -40rpx;
+  width: 30rpx;
+  height: 30rpx;
+  /* border-radius: 50%; */
    border: 1px solid #ccc;
   background-color: #f59763; 
   margin: auto;
