@@ -1,0 +1,29 @@
+<block>
+  <view class="image">
+    <block wx:for="{{list}}" wx:for-item="item" wx:key="list">
+      <template is="ebook" data="{{...item,index}}" bindtap="checkEnter"></template>
+    </block>
+    <template name="ebook">
+      <view data-bid="{{id}}" class="image-item" catchtap="viewimageDetail">
+        <view class="image-cover">
+          <image src="{{bookFace}}" class="image-cover-img"></image>
+          <view class="image-rating">
+          {{dec}}
+          </view>
+        </view>
+        <view class="file-intro">
+          <view class="image-title">{{bookName}}</view>
+        </view>
+        <view class='contributor-info'><text class='contributor-name'>{{nickName}}</text></view>
+        <view class='download' wx:if="{{downloadUrl !== ''}}" bindtap='downloadFile'>下载 <span class='iconfont icon-xiazai' data-id="{{id}}"></span></view>
+      </view>
+    </template>
+
+    <block wx:if="{{hasMore}}">
+      <view class="loading-tip">拼命加载中…</view>
+    </block>
+    <block wx:else>
+      <view class="loading-tip">没有更多内容了</view>
+    </block>
+  </view>
+</block>

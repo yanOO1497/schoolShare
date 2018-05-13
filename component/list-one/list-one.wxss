@@ -141,3 +141,10 @@ button::after{
   padding-left: 10rpx;
   /* color: red; */
 }
+
+
+.book-item{
+  width: 50%;
+  background-color: white;
+
+}

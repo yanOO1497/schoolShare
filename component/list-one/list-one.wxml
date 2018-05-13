@@ -37,7 +37,7 @@
       </view>
       <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{disagreeFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-fenxiang" data-name="share"></i>
-         <button data-name="share" class='share-btn' id="shareBtn" open-type="share" hover-class="other-button-hover">分享</button> 
+        <button data-name="share" class='share-btn' id="shareBtn" open-type="share" hover-class="other-button-hover">分享</button>
       </view>
 
     </view>
@@ -145,9 +145,9 @@
         <i class="iconfont icon-cai" data-name="useless"></i>
         <text data-name="useless">{{disagreeNum > 0 ? disagreeNum : '没用'}}</text>
       </view> -->
-<view class="weui-media-box__info__meta weui-media-box__info__meta_extra ">
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra ">
         <i class="iconfont icon-fenxiang" data-name="share"></i>
-         <button data-name="share" class='share-btn' id="shareBtn" open-type="share" hover-class="other-button-hover">分享</button> 
+        <button data-name="share" class='share-btn' id="shareBtn" open-type="share" hover-class="other-button-hover">分享</button>
       </view>
       <view class="weui-media-box__info__meta {{optionList[2] ? 'act' : ''}} weui-media-box__info__meta_extra">
         <i class="iconfont icon-pinglun" data-name="comment"></i>
@@ -184,11 +184,30 @@
       </view>
       <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{disagreeFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-fenxiang" data-name="share"></i>
-         <button data-name="share" class='share-btn' id="shareBtn" open-type="share" hover-class="other-button-hover">分享</button> 
+        <button data-name="share" class='share-btn' id="shareBtn" open-type="share" hover-class="other-button-hover">分享</button>
       </view>
       <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
         <text data-name="delete">删除</text>
       </view>
+    </view>
+  </view>
+</template>
+<template name="ebook">
+  <view data-mid="{{id}}" class='book-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
+
+    <view class='list-content'>
+      <view class='item-title'>{{bookName}}</view>
+      <view wx:if="{{bookFace !== '' && bookFace}}" style="background-image: url('{{bookFace}}')" class='img' mode="widthFix" data-uid="{{uid}}"></view>
+      <view class='item-con'>{{dec}}</view>
+    </view>
+
+    <view class='user-info'>
+      <view class='user-data'>
+        贡献者：
+        <view class='nickname'>{{nickName}}</view>
+        <view class='from'> {{createTime}}</view>
+      </view>
+      <view class='option-more' data-name="more"></view>
     </view>
   </view>
 </template>
