@@ -15,8 +15,8 @@
     "pages/myQuestion/myQuestion",
     "pages/alterUserInfo/alterUserInfo",
     "pages/about/about",
-    "pages/test/test",
-    "pages/dataBase/dataBase"
+    "pages/dataBase/dataBase",
+    "pages/shareBooks/shareBooks"
   ],
   "window": {
     "backgroundTextStyle": "light",

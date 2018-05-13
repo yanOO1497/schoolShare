@@ -3,7 +3,6 @@ var config = require('../../common/script/config')
 var fetch = require('../../common/script/fetch')
 //index.js
 
-
 //获取应用实例
 var app = getApp()
 Page({
@@ -12,7 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    types: ["请选择发布模块","校内问答", "经验分享", "悬赏求助", "失物招领", "二手市场"],
+    types: ["请选择发布模块","校内百事通", "师哥师姐说", "悬赏求助", "校内活动", "二手市场"],
     typesIndex: 0,
     countryCodes: ["人民币", "积分"],
     countryCodeIndex: 0,
@@ -22,7 +21,9 @@ Page({
     tempImgList: [],//有上传成功的list，本地，不一定上传成功
     chooseImgFlag:[],//是否点击了选择图片
     showImgLoad: [true, true, true, true, true, true, true, true, true],
-    showWarn: [false, false, false, false, false,false, false, false, false]//图片是否上传成功结果存储
+    showWarn: [false, false, false, false, false,false, false, false, false],//图片是否上传成功结果存储
+    isPublish:false,
+    publish_result :["", "发完求助记得也去看看其他小伙伴有没有需要帮助的哦~当问答区无法寻求到合适的帮助时可以考虑下悬赏求助模块", "字斟句酌处，亦是与心推敲时，记录学到的知识也是梳理整合的一个过程，感谢你为众多学弟学妹们带来的宝贵经验！", "必要的付费有时候是获得解决方案的最快途径~", "多去参加活动和朋友互动吧，宅在宿舍是会发霉的哦~", "清掉不再适合自己的物品，人生就不会有那么多烦恼~"]
   },
   bindTypesChange: function (e) {
     this.setData({
@@ -130,6 +131,12 @@ Page({
       
     },function(res){
       console.log("发布成功",res);
+      that.setData({
+        isPublish:true
+      })
+      wx.navigateBack({
+        delta: 1,
+      })
     })
   },
   /**
@@ -172,27 +179,7 @@ Page({
     }else{
       console.log("无图片内容");
     }
-    
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
 
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function (dataArr) {
-
-  }
 })

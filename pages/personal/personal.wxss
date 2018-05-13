@@ -23,7 +23,7 @@
 }
 
 .page_bd,page__hd{
-  height: 50%;
+  min-height: 50%;
 }
 .page__bd{
    background-color: white;

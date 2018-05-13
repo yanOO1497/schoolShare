@@ -1,4 +1,7 @@
 /* pages/home/home.wxss */
+.page{
+  height: 100%;
+}
 zan-tab{
   position: fixed;
   z-index: 100;

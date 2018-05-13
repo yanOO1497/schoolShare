@@ -39,7 +39,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
+
     sentMsg:function(e){
+      console.log("发送消息");
       var that = this;
       // console.log(this.data.sentMessage, e);
       let { mid, fatherId, typeIndex, sentMessage } = that.data;
@@ -63,6 +65,7 @@ Component({
     },
     setSentData:function(e){
       this.data.sentMessage = e.detail.value;
+      // console.log(e.detail.value,"评论输入框");
     },
     setFocus:function(e){
       let { fatherid, name } = e.currentTarget.dataset;
@@ -87,16 +90,22 @@ Component({
         type:this.data.typeIndex,
         mid: that.data.mid
       },function(res){
-          console.log("马上");
+          console.log("马上刷新");
           that.setData({
             commentData: res.result
           })
       })
     },
     hideInput:function(){
-      this.setData({
-        isShow: false
-      })
+      var that = this;
+      
+      setTimeout(function(){
+        that.setData({
+          isShow: false
+        })
+        // console.log("隐藏");
+      },1000)
+      
     }
   }
 })

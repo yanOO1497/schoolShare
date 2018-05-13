@@ -85,10 +85,8 @@ Page({
     let that = this;
     
     if(that.data.isLogin){
-      // console.log(e);
       let index = e.currentTarget.dataset.index;
       let urlName = that.data.gridList[index].urlName;
-      // console.log(index, that.data.gridList[index], that.data.gridList);
       wx.navigateTo({    
         url: `/pages/${urlName}/${urlName}`
       })
@@ -131,18 +129,5 @@ Page({
   
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
 
 })

@@ -9,8 +9,9 @@
   background-color: rgba(255, 255, 255, .2);
   color: white;
   text-align: center;
-  height: 50%;
+  min-height: 50%;
   box-sizing:border-box; 
+  /* padding: 0; */
 }
 .page__bd{
   text-align: center;
@@ -108,3 +109,9 @@
 .weui-grids .iconfont{
   font-size: 50rpx;
 }
+ /* .weui-media-box__info{
+  display: flex;
+} */
+.weui-media-box__info__meta{
+  line-height: 40rpx;
+} 

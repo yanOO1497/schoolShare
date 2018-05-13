@@ -2,13 +2,15 @@
 @import "../../common/style/iconfont.wxss"; 
 @import "../../common/style/weui.wxss";
 .share-btn{
-  display: inline;
-  background: unset;
-  position: static;
+  display: inline;  
+  background: unset; 
   color: inherit;
   line-height: inherit;
   font-size: inherit;
 }
+button::after{
+  border:none;
+  }
 .img-wrap{
   display: flex;
   flex-wrap:wrap;
@@ -128,6 +130,8 @@
  flex: 1;
  box-sizing: border-box;
  text-align: center;
+ padding: 0;
+ margin: 0;
 }
 .weui-media-box__info__meta .iconfont{
   margin:0 10rpx;

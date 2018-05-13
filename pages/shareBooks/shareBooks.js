@@ -1,18 +1,36 @@
-// pages/test/test.js
+// pages/shareBooks/shareBooks.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    navtab: {
+      list: [{
+        id: 'E-book',
+        title: '电子书'
+      }, {
+        id: 'book',
+        title: '实体书'
+      }
+      ],
+      selectedId: 'E-book',
+      scroll: true,
+      height: 45
+    }
   },
-
+  tabchange(e) {
+    var that = this;
+    that.data.navtab.selectedId = e.detail;
+    that.setData({
+      navtab: that.data.navtab
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+
   },
 
   /**

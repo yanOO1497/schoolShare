@@ -12,3 +12,7 @@
   position: relative;
   color: #333;
 }
+.publish-result{
+  text-align: center;
+  margin--top:40rpx;
+}

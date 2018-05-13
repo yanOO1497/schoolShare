@@ -18,15 +18,25 @@
         <text wx:else class='iconfont icon-boy'></text>
       </view>
 
+
+      <view class='weui-media-box__info'>
+
+      </view>
       <view class='school'>
         <i class='iconfont icon-school'></i>{{userInfo.school}}
       </view>
+      <view class='wechat' wx:if="{{userInfo.wechat  !== ''}}">
+        <i class='iconfont icon-wechat'></i>{{userInfo.wechat}}
+      </view>
+      <view class='qq' wx:if="{{userInfo.qq  !== ''}}">
+        <i class='iconfont icon-QQ'></i>{{userInfo.qq}}
+      </view>
       <view class='bio'>{{userInfo.bio}}</view>
-      <view class='score'>积分：{{userInfo.score}}</view>
+      <!-- <view class='score'>积分：{{userInfo.score}}</view> -->
     </view>
     <view class='broadcast'>
       <i class='iconfont .icon-guangboxianxing'></i>
-      <text class='broadcast-text'>{{broadcast}}</text>
+      <text class='broadcast-text'>积分：{{userInfo.score}}</text>
     </view>
   </view>
   <view class='page__bd'>

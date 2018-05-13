@@ -34,7 +34,7 @@ module.exports = {
     getQuestionListByUid: url + '/getQuestionListByUid.do',//获取用户问答列表
     setReport: url + '/setReport.do',//举报文章
     setCollect: url + '/setCollect.do',//收藏文章
-    setDisagree: url + '/setDisagree.do',//收藏文章
+    setShare: url + '/setShare.do',//转发内容
     setAgree: url + '/setAgree.do',//点赞文章
     getComment: url + '/getComment.do',//获取文章 评论信息
     addToComment: url + '/addToComment.do',//添加评论

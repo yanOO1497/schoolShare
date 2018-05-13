@@ -8,8 +8,8 @@
 <view class='comment-wrap'>
    <view class='fake-addComent'>
     <view class='addComent-con'>
-      <input placeholder='评论' class='comment-input' placeholder-class='comment-inpt__placeholder' value='{{sentMessage}}'  focus='{{isFocus}}' bindinput="setSentData" disabled='disabled' bindtap='setFocus'></input>
-      <text class='sent' name='sent' bindtap='sentMsg'>发送</text>
+      <input placeholder='评论' class='comment-input' placeholder-class='comment-inpt__placeholder'  focus='{{isFocus}}'  disabled='disabled' bindtap='setFocus'></input>
+      <text class='sent' name='sent' >发送</text>
     </view>
   </view> 
   <view wx:if="{{commentData.length == 0}}" class='no-comment'>

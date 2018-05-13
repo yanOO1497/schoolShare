@@ -1,0 +1,7 @@
+<!--pages/shareBooks/shareBooks.wxml-->
+<view class='page'>
+
+  <!-- navtab -->
+   <zan-tab list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" scroll="{{ navtab.scroll }}" height="{{ navtab.height }}" bindtabchange="tabchange" /> 
+
+</view>

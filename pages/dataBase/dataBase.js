@@ -7,34 +7,34 @@ Page({
   data: {
     gridList: [
       {
-        name: "电子书",
+        name: "问答分享",
         urlName: "setting",
-        iconClass: "icon-qiandao"
+        iconClass: "icon-online"
       },
       {
-        name: "课件",
+        name: "课件资料",
         urlName: "myQuestion",
-        iconClass: "icon-wenda"
+        iconClass: "icon-wenjian"
       },
       {
         name: "共享图书",
-        urlName: "setting",
-        iconClass: "icon-fenxiang"
+        urlName: "shareBooks",
+        iconClass: "icon-zhishi"
       },
       {
-        name: "我的课表",
+        name: "学校讲座",
         urlName: "setting",
-        iconClass: "icon-shoucang"
+        iconClass: "icon-lecture"
       },
       {
-        name: "意见反馈",
+        name: "校内新鲜事",
         urlName: "feedback",
-        iconClass: "icon-yijianfankui"
+        iconClass: "icon-freshNews"
       },
       {
-        name: "我的设置",
+        name: "校内生存指南",
         urlName: "setting",
-        iconClass: "icon-shezhi"
+        iconClass: "icon-schoolHome"
       },
     ]
   },
@@ -52,7 +52,14 @@ Page({
   onReady: function () {
   
   },
-
+  jumpCheck: function (e) {
+    let that = this;
+    let index = e.currentTarget.dataset.index;
+    let urlName = that.data.gridList[index].urlName;
+    wx.navigateTo({
+      url: `/pages/${urlName}/${urlName}`
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */

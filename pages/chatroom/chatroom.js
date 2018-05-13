@@ -1,5 +1,7 @@
 // pages/chateRoom/chatroom.js
-const app = getApp();
+var fetch = require('../../common/script/fetch')
+var util = require('../../utils/util')
+var config = require('../../common/script/config')
 Page({
 
   /**
@@ -36,7 +38,7 @@ Page({
     console.log(options);
     that.setData({
       userData: options,
-      myAvaterUrl: app.globalData.userInfo.avatarUrl
+      myAvaterUrl: config.userInfo.avatarUrl
     })
     
     wx.setNavigationBarTitle({

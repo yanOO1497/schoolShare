@@ -8,11 +8,11 @@
         <text wx:if="{{userInfo.sex == 2}}" class='iconfont icon-girl'></text>
         <text wx:else class='iconfont icon-boy'></text>
       </view>
+      <view class='wechat' wx:if="{{userInfo.showWechat == 1 && userInfo.wechat !== ''}}"><i class='iconfont icon-wechat'></i>{{userInfo.wechat}}</view>
+       <view class='QQ' wx:if="{{userInfo.showQQ == 1 && userInfo.qq !== ''}}"><i class='iconfont icon-QQ'></i>{{userInfo.qq}}</view>
       <view class='school'><i class='iconfont icon-school'></i>{{userInfo.school}}</view>
       <view class='bio'>{{userInfo.bio}}</view>
-      
     </view>
-
   </view>
     <navigator class="user-opton-item weui-btn" url="../chatroom/chatroom?userId={{userInfo.uid}}&&nickname={{userInfo.nickname}}&&avaterUrl={{userInfo.avatarUrl}}">
         <text class='iconfont icon-youjian'></text> 私信</navigator>

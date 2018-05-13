@@ -1,7 +1,23 @@
 <!--pages/chateRoom/chatroom.wxml-->
 
-<import src="../../templates/chat/chat.wxml" />
 <view class='page'>
   <template is="chat" data="{{...userData,myAvaterUrl:myAvaterUrl,chatData:chatData}}"></template>
-  <view class='sentMessage'> <input placeholder="请输入" /><text>发送</text></view>
+  <view class='sentMessage'>
+    <input class='inout-sent' placeholder="请输入" />
+    <button class='btn-sent'>发送</button>
+  </view>
 </view>
+
+<template name="chat">
+  <view class='chat-wrap' wx:for="{{chatData}}" wx:key="*this">
+    <view class='chat-other' wx:if="{{item[0]}}">
+      <image wx:if="{{avaterUrl}}" src='{{avaterUrl}}' class='avatar'></image>
+      <view class='chat-detail'>{{item[0]}}</view>
+    </view>
+    <view class='chat-my' wx:if="{{item[1]}}">
+      <view class='chat-detail'>{{item[1]}}</view>
+      <image src='{{myAvaterUrl}}' class='avatar'></image>
+    </view>
+  </view>
+
+</template>

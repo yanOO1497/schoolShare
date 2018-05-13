@@ -103,11 +103,7 @@ Component({
       let that = this;
       let data = e.currentTarget.dataset;
       let name = e.target.dataset.name;
-      // console.log(e);
       switch (name) {
-        case "useless":
-          that.toggleDisagree(data);
-          break;
         case "useful":
           that.toggleAgree(data);
           break;
@@ -181,26 +177,24 @@ Component({
       }
 
     },
-    toggleDisagree: function (dataArr) {
-
+    toggleSahre: function (dataArr) {
       if (disAgreeClickFlag) {
         disAgreeClickFlag = false;
         var that = this;
-        var nowFlag = that.properties.list[dataArr.index].disagreeFlag;
         let typeIndex = config.typeList.indexOf(that.data.listType);
         fetch._get.call(that, api.setDisagree, {
           ...dataArr,
           uid: config.openID,
-          type: typeIndex,
-          disagreeFlag: nowFlag
+          type: typeIndex
         }, function (res) {
-          that.properties.list[dataArr.index].disagreeFlag = nowFlag == 0 ? 1 : 0;
+          that.data.list[dataArr.index].shareNum = res.result.shareNum;
+          that.data.list[dataArr.index].shareNum = res.result.shareNum;
           that.setData({
             list: that.properties.list
           })
           disAgreeClickFlag = true;
         }, function () {
-          console.log("disagreeFlag fail");
+          console.log("setShare fail");
         })
 
       }
@@ -216,8 +210,9 @@ Component({
           type: typeIndex,
           uid: config.openID,
           agreeFlag: nowFlag
-        }, function () {
-          that.data.list[dataArr.index].agreeFlag = nowFlag == 0 ? 1 : 0;
+        }, function (res) {
+          that.data.list[dataArr.index].agreeFlag = res.result.agreeFlag;
+          that.data.list[dataArr.index].agreeNum = res.result.agreeNum;
           that.setData({
             list: that.data.list
           })
@@ -225,7 +220,6 @@ Component({
         }, function () {
           console.log("toggleAgree fail");
         })
-
       } else {
 
       }

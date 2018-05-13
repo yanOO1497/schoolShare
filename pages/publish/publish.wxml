@@ -1,6 +1,6 @@
 <!--pages/publish/publish.wxml-->
 <view class='page'>
-  <form bindsubmit="formSubmit">
+  <form bindsubmit="formSubmit" wx:if="{{!isPublish}}">
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_select">
         <view class="weui-cell__hd weui-cell__hd_in-select-after">
@@ -57,7 +57,15 @@
     </view>
 
   </form>
-
+<view wx:else class='publish-result'>
+    <view class="weui-msg__icon-area">
+      <icon type="success" size="93"></icon>
+    </view>
+    <view class="weui-msg__text-area">
+      <view class="weui-msg__title">发送成功</view>
+      <view class="weui-msg__desc">{{publish_result[typesIndex]}}</view>
+    </view>
+  </view>
 </view>
 
 <template name="img-item">
