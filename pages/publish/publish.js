@@ -124,7 +124,7 @@ Page({
       }
     }
     console.log(that.data.textareaArea, prams, that.data.typesIndex, option);
-    fetch._get(config.apiList.publish,{
+    fetch._get.call(that,config.apiList.publish,{
       uid:config.openID,
       content: that.data.textareaArea,
       ...prams,

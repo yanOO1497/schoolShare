@@ -11,7 +11,10 @@
   <!-- navtab -->
   <zan-tab list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" scroll="{{ navtab.scroll }}" height="{{ navtab.height }}" bindtabchange="tabchange" />
   <view class='empty' style='height:{{ navtab.height }}px'></view>
-  <scroll-view class="weui-tab__content" scroll-y scroll-with-animation='true' bindscroll="scroll" style='height:94%' scroll-top="{{scrollTop}}">
+  <block wx:if="{{showLoading}}">
+    <view class="loading">玩命加载中…</view>
+</block>
+  <scroll-view wx:else class="weui-tab__content" scroll-y scroll-with-animation='true' bindscroll="scroll" style='height:94%' scroll-top="{{scrollTop}}">
     <!-- 校内问答与经验分享页面 -->
     <view wx:if="{{showLoading}}">
       <view class="loading">正在加载中…</view>
@@ -34,3 +37,5 @@
     </view>
   </zan-popup>
 </movable-area>
+<import src="../../component/message/message.wxml"/>
+<template is="message" data="{{message: message}}"  />

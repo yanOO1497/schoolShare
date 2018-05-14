@@ -65,7 +65,7 @@ Page({
     let that = this;
     let bookType = that.data.bookType;
     
-    fetch._get(config.apiList.loadBookList, {
+    fetch._get.call(that,config.apiList.loadBookList, {
       start,
       bookType,
       count: 20

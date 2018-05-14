@@ -1,4 +1,6 @@
 /* pages/home/home.wxss */
+@import '../../component/message/message';
+
 .page{
   height: 100%;
 }

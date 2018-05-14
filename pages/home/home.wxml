@@ -28,4 +28,7 @@
 
 
 </movable-area>
+
+<import src="../../component/message/message.wxml"/>
+<template is="message" data="{{message: message}}"  />
 <!-- page -->

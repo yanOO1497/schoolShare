@@ -1,10 +1,12 @@
 var config = require('./config.js')
-var message = require('../../component/message/message')
 // var qiniu = require('./qiniu.js')
 // 获取
 function _get(url, prames, cb, fail_cb) {
   var that = this;
-  
+  that.setData({
+    showLoading:true,
+    message:[]
+  })
   wx.request({
     url: url,
     data: {
@@ -19,6 +21,16 @@ function _get(url, prames, cb, fail_cb) {
       typeof cb == 'function' && cb(res.data)
     },
     fail: function (res) {
+      that.setData({
+        showLoading: false,
+        message:{
+          content: '网络开小差了',
+          icon: 'offline',
+          duration: 3000,
+          visiable:true
+        }
+      })
+      console.log("fail");
       typeof fail_cb == 'function' && fail_cb()
     }
   })

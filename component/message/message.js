@@ -1,29 +1,35 @@
-module.exports = {
-    show: function(cfg) {
-        var that = this
-        that.setData({
-            message: {
-                content: cfg.content,
-                icon: cfg.icon,
-                visiable: true
-            }
-        })
-        if (typeof cfg.duration !== 'undefined') {
-            setTimeout(function(){
-                that.setData({
-                    message: {
-                        visiable: false
-                    }
-                })
-            }, cfg.duration)
-        }
+Component({
+  properties: {
+    show: {
+      type: Boolean,
+      value: false
     },
-    hide: function() {
-        var that = this
-        that.setData({
-            message: {
-                visiable: false
-            }
-        })
+
+    overlay: {
+      type: Boolean,
+      value: true
+    },
+
+    closeOnClickOverlay: {
+      type: Boolean,
+      value: true
+    },
+
+    // 弹出方向
+    type: {
+      type: String,
+      value: 'center'
     }
-}
+  },
+
+  methods: {
+    handleMaskClick() {
+      this.triggerEvent('click-overlay', {});
+
+      if (!this.data.closeOnClickOverlay) {
+        return;
+      }
+      this.triggerEvent('close', {});
+    }
+  }
+});
