@@ -1,2 +1,2 @@
 /* pages/shareBooks/shareBooks.wxss */
-@import '../home/home'
+ @import '../home/home' 

@@ -1,107 +1,98 @@
-@import "../../common/style/animation.wxss";
-
-.image {
-  box-sizing: border-box;
-  width: 750rpx;
-  padding: 10rpx 15rpx;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  box-shadow: 0 0 40rpx #f4f4f4 inset;
-}
-
-.image-item {
-  width: 350rpx;
-  margin-bottom: 20rpx;
-  border-radius: 10rpx;
-  background-color: #fff;
-  border: 1px solid #e4e4e4;
-  box-shadow: 0 20rpx 40rpx #eee;
-  overflow: hidden;
-  animation: fadeIn 1s;
-}
-
-.image-cover, .image-cover-img {
-  width: 350rpx;
-  height: 508rpx;
-}
-
-.image-cover {
-  position: relative;
-  overflow: hidden;
-}
-
-.image-rating {
-  box-sizing: border-box;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+@import "../../common/style/iconfont.wxss"; 
+.content{
+  margin: 0 20rpx;
+  text-align: justify; 
+}  
+.item{
   width: 100%;
-  height: 50rpx;
-  padding-right: 20rpx;
-  font-size: 12px;
-  text-align: right;
-  line-height: 50rpx;
-  background-color: rgba(0, 0, 0, 0.65);
-  color: #fff;
+  background-color: #fff;
+  margin: 2%; 
+  margin-bottom: 20rpx;
+  display: inline-block;
 }
-
-.file-intro {
-  padding: 16rpx;
-  margin-top: -8rpx;
+.item-ava{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
 }
-
-.image-title {
-  /* white-space: nowrap; *//* text-overflow: ellipsis;
-    overflow: hidden; */
+.heart{
+  width: 30rpx;
+  height: 26rpx;
+  margin-right: 8rpx;
+  font-size: 25rpx;
+  color: #79BD8F;
+  font-weight: bold;
+}
+.heart_{
+  display: flex;
+  align-items: center;
+}
+.item-img{
+  width: 100%;
+  background-color: #eee;
+  color: #c4c4c4;
+  text-align: center;
+  height: 400rpx;
+  line-height: 400rpx;
+}
+.item-title{
+  font-size: 24rpx;
+  text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 1;
   overflow: hidden;
+  font-family: ‘PingFang SC-Medium‘;
+  color: #1e1e1e;
+  margin: 15rpx;
+  line-height: 27rpx;
 }
-
-.image-tag {
-  width: 100%;
-  margin-top: 10rpx;
+.item .name{
   display: flex;
-  justify-content: flex-start;
+  padding: 0 15rpx;
+  margin-top: 20rpx;
+  padding-bottom: 10rpx;
+  align-items: center;
+  font-size: 22rpx;
+  color: #1e1e1e;
+  font-family: ‘PingFang SC-Medium‘;
 }
-
-.image-tag-item {
-  padding: 4rpx 6rpx;
-  margin-right: 10rpx;
-  font-size: 24rpx;
-  box-shadow: 0 0 0 1px #ccc;
-  border-top: 1px solid #fff;
-  border-radius: 10rpx;
-  background-color: #fafafa;
-  color: #666;
-}
-
-.loading-tip {
-  width: 100%;
-  height: 80rpx;
-  line-height: 80rpx;
-  text-align: center;
-  color: #ccc;
-}
-
-.contributor-info {
+/* .name image{
+  flex: 0 0 30rpx;
+} */
+.item-title-box{
+  display: flex;
+  position: relative;
   padding: 10rpx;
-  white-space: nowrap;
+}
+.item-dec{
+  color: #ccc;
+  font-size: 24rpx;
+  line-height: 32rpx;
+  padding: 10rpx;
+}
+.name-title{
+  flex: 1;
+  margin-left: 18rpx;
+  margin-right: 20rpx;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
   overflow: hidden;
 }
-
-.contributor-name {
-  color: #8590a6;
+.name text:last-child{
+  flex: 0 0 30rpx;
+  color: #c4c4c4;
+  text-decoration: underline;
+  line-height: 10rpx;
+  
 }
-
-.download{
-  text-align: center;
-  background-color: #79BD8F;
-  color: white;
-  margin:0 30rpx 10rpx;
-  border-radius: 20rpx;
+.left,.right{
+  display: inline-block;
+  vertical-align: top;
+  width: 49%;
+}
+.right{
+  float: right;
 }

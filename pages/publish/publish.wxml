@@ -28,7 +28,7 @@
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
         <view class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="说说你的看法吧~" style="height: 7.3em" value='{{textareaArea}}' bindblur="bindValue"/>
+          <textarea class="weui-textarea" placeholder="说说你的看法吧~" style="height: 7.3em" value='{{textareaArea}}' bindblur="bindValue" />
           <button class="weui-textarea-counter" bindtap='formSubmit'>发送</button>
         </view>
       </view>
@@ -57,7 +57,7 @@
     </view>
 
   </form>
-<view wx:else class='publish-result'>
+  <view wx:else class='publish-result'>
     <view class="weui-msg__icon-area">
       <icon type="success" size="93"></icon>
     </view>
@@ -67,7 +67,6 @@
     </view>
   </view>
 </view>
-
 <template name="img-item">
   <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
     <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
@@ -77,8 +76,6 @@
         <text wx:if="{{showImgLoad[index]}}">正在上传</text>
         <icon type="warn" size="23" color="#F43530" wx:if="{{showWarn[index]}}"></icon>
       </view>
-
     </view>
   </view>
-
 </template>

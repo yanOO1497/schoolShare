@@ -39,10 +39,12 @@ function _uploadFile(prames,cb,fail_cb){
     wx.uploadFile({
     ...prames,
       header: { "Content-Type": "multipart/form-data" },
-      formData: {
-        //和服务器约定的token, 一般也可以放在header中
-        'session_token': ''
-      },
+      // formData: {
+      //   //和服务器约定的token, 一般也可以放在header中
+      //   'session_token': '',
+      //   'uid': 1,
+      //   'type': 1
+      // },
       success: function (res) {
         // console.log(res);
         // if (res.statusCode != 100) {

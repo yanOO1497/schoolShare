@@ -1,24 +1,36 @@
 <!--pages/shareBooks/shareBooks.wxml-->
 <movable-area class='page'>
- <movable-view class='fixBar' direction="all"  x="280" y="400">
-    <view  class='fixBar-item write ' bindtap='toPublish' >
+  <movable-view class='fixBar' direction="all" x="280" y="400">
+    <view class='fixBar-item write ' bindtap='toPublish'>
       <text class='iconfont icon-shangchuan'></text>
     </view>
-    <view class='fixBar-item top ' wx:if="{{ floorstatus && isShowFixBar}}" bindtap='toTop' >
+    <view class='fixBar-item top ' wx:if="{{ floorstatus && isShowFixBar}}" bindtap='toTop'>
       <text class='iconfont icon-top'></text>
     </view>
   </movable-view>
   <!-- navtab -->
-   <zan-tab list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" scroll="{{ navtab.scroll }}" height="{{ navtab.height }}" bindtabchange="tabchange" /> 
-<view class='empty' style='height:{{ navtab.height }}px'></view>
-  <scroll-view class="weui-tab__content" scroll-y scroll-with-animation='true' bindscroll="scroll"  style='height:94%' scroll-top="{{scrollTop}}">
+  <zan-tab list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" scroll="{{ navtab.scroll }}" height="{{ navtab.height }}" bindtabchange="tabchange" />
+  <view class='empty' style='height:{{ navtab.height }}px'></view>
+  <scroll-view class="weui-tab__content" scroll-y scroll-with-animation='true' bindscroll="scroll" style='height:94%' scroll-top="{{scrollTop}}">
     <!-- 校内问答与经验分享页面 -->
-      <view wx:if="{{showLoading}}">
+    <view wx:if="{{showLoading}}">
       <view class="loading">正在加载中…</view>
-    </view> 
-     <list wx:else list="{{bookData[navtab.selectedId]}}" listType="{{navtab.selectedId}}" bind:onShareAppMessage="onShareAppMessage"/>  
+    </view>
+    <list wx:else list="{{bookData[navtab.selectedId]}}" listType="{{navtab.selectedId}}" bind:onShareAppMessage="onShareAppMessage" />
 
     <!-- 讲座 列表 -->
 
   </scroll-view>
+    <zan-popup
+    show="{{ showBottomPopup }}"
+    type="bottom"
+    bindclose="toggleBottomPopup"
+  >
+    <view class="pop-example__container pop-example__container--bottom">
+      <input placeholder='请输入书籍名称'></input>
+      <textarea  placeholder='请输入书籍名称'></textarea>
+      <button>上传文件</button>
+      <button>确定</button>
+    </view>
+  </zan-popup>
 </movable-area>

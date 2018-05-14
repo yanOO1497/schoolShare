@@ -2,6 +2,7 @@
   "navigationBarTitleText": "共享图书",
   "usingComponents": {
     "zan-tab": "../../component/tab/index",
-    "list": "../../component/imageList/imageList"
+    "list": "../../component/imageList/imageList",
+   "zan-popup":"../../component/popup/index"
   }
 }

@@ -23,7 +23,8 @@ Page({
     showImgLoad: [true, true, true, true, true, true, true, true, true],
     showWarn: [false, false, false, false, false,false, false, false, false],//图片是否上传成功结果存储
     isPublish:false,
-    publish_result :["", "发完求助记得也去看看其他小伙伴有没有需要帮助的哦~当问答区无法寻求到合适的帮助时可以考虑下悬赏求助模块", "字斟句酌处，亦是与心推敲时，记录学到的知识也是梳理整合的一个过程，感谢你为众多学弟学妹们带来的宝贵经验！", "必要的付费有时候是获得解决方案的最快途径~", "多去参加活动和朋友互动吧，宅在宿舍是会发霉的哦~", "清掉不再适合自己的物品，人生就不会有那么多烦恼~"]
+    publish_result :["", "发完求助记得也去看看其他小伙伴有没有需要帮助的哦~当问答区无法寻求到合适的帮助时可以考虑下悬赏求助模块", "字斟句酌处，亦是与心推敲时，记录学到的知识也是梳理整合的一个过程，感谢你为众多学弟学妹们带来的宝贵经验！", "必要的付费有时候是获得解决方案的最快途径~", "多去参加活动和朋友互动吧，宅在宿舍是会发霉的哦~", "清掉不再适合自己的物品，人生就不会有那么多烦恼~"],
+    publishType:"square"
   },
   bindTypesChange: function (e) {
     this.setData({
@@ -51,7 +52,7 @@ Page({
   },
   chooseImage: function (e) {
     var that = this;
-    if (that.data.typesIndex !== -1){
+    if (that.data.typesIndex !== 0){
       wx.chooseImage({
         sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
@@ -67,6 +68,7 @@ Page({
             });
            
             let formData= {
+              'session_token': '',
               'uid': config.openID,
               'type': that.data.typesIndex
             }
@@ -143,10 +145,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
-    this.setData({
-      typesIndex: options.typeIndex
-    })
+    if (options.publishType === "book"){
+      this.setData({
+        typesIndex: options.typeIndex,
+        publishType: options.publishType
+      })
+    }else{
+      this.setData({
+        typesIndex: options.typeIndex
+      })
+    }
+    
   },
 
   /**

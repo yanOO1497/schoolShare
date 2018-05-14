@@ -1,29 +1,54 @@
-<block>
-  <view class="image">
-    <block wx:for="{{list}}" wx:for-item="item" wx:key="list">
-      <template is="ebook" data="{{...item,index}}" bindtap="checkEnter"></template>
-    </block>
-    <template name="ebook">
-      <view data-bid="{{id}}" class="image-item" catchtap="viewimageDetail">
-        <view class="image-cover">
-          <image src="{{bookFace}}" class="image-cover-img"></image>
-          <view class="image-rating">
-          {{dec}}
-          </view>
-        </view>
-        <view class="file-intro">
-          <view class="image-title">{{bookName}}</view>
-        </view>
-        <view class='contributor-info'><text class='contributor-name'>{{nickName}}</text></view>
-        <view class='download' wx:if="{{downloadUrl !== ''}}" bindtap='downloadFile'>下载 <span class='iconfont icon-xiazai' data-id="{{id}}"></span></view>
-      </view>
-    </template>
 
-    <block wx:if="{{hasMore}}">
-      <view class="loading-tip">拼命加载中…</view>
-    </block>
-    <block wx:else>
-      <view class="loading-tip">没有更多内容了</view>
+<view class="content">
+  <view class="left">
+    <block wx:for="{{list}}" wx:key="">
+      <template is="{{listType}}" data="{{...item}}" wx:if="{{index%2==0}}"></template>
     </block>
   </view>
+  <view class="right">
+    <block wx:for="{{list}}" wx:key="">
+      <template is="{{listType}}" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+    </block>
+  </view>
+</view>
+<block wx:if="{{hasMore}}">
+  <view class="loading-tip">拼命加载中…</view>
 </block>
+<block wx:else>
+  <view class="loading-tip">没有更多内容了</view>
+</block>
+<!--  下面是一个模块 -->
+<template name="ebook">
+  <view class="item" bindtap='showMoreChoose' data-url="{{downloadUrl}}" data-uid="{{uid}}" data-bid="{{id}}">
+    <image class="item-img" wx:if="{{bookFace !== '' && bookFace}}" src="{{bookFace ? bookFace : defaultImg}}" mode="widthFix"></image>
+    <view class='item-img' wx:else>
+    暂无图片
+    </view>
+    <view class="item-title-box">
+      {{bookName}}
+    </view>
+    <view class='item-dec'>{{dec}}</view>
+    <view class="name" >
+      <image class="item-ava" src="{{avatarUrl}}" catchtap='enterUserDetail'  data-uid="{{uid}}" ></image>
+      <text class="name-title"  data-uid="{{uid}}"  catchtap='enterUserDetail'>{{nickName}}</text>
+      <a  href="{{downloadUrl}}" class="heart iconfont icon-xiazai" catchtap='downloadFile' data-url="{{downloadUrl}}" data-bid="{{id}}">
+      </a>
+    </view>
+  </view>
+
+</template>
+<template name="book">
+  <view class="item" bindtap='showMoreChoose' data-url="{{downloadUrl}}" data-uid="{{uid}}" data-bid="{{id}}">
+    <image class="item-img" wx:if="{{bookFace !== '' && bookFace}}" src="{{bookFace}}" mode="widthFix"></image>
+    <view class="item-title-box">
+      {{bookName}}
+    </view>
+    <view class='item-dec'>{{dec}}</view>
+    <view class="name" >
+      <image class="item-ava" src="{{avatarUrl}}" catchtap='enterUserDetail'  data-uid="{{uid}}"></image>
+      <text class="name-title"  data-uid="{{uid}}"  catchtap='enterUserDetail'>{{nickName}}</text>
+      <view></view>
+    </view>
+  </view>
+
+</template>

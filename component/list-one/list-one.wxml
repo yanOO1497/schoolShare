@@ -110,9 +110,15 @@
         <i class="iconfont icon-cai" data-name="useless"></i>
         <text data-name="useless">{{disagreeNum > 0 ? disagreeNum : '没用'}}</text>
       </view> -->
+
       <view class="weui-media-box__info__meta weui-media-box__info__meta_extra {{optionList[2] ? 'act' : ''}}">
         <i class="iconfont icon-pinglun" data-name="comment"></i>
         <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '评论'}}</text>
+      </view>
+
+      <view class="weui-media-box__info__meta  weui-media-box__info__meta_extra {{disagreeFlag == 1 ? 'act' : ''}}">
+        <i class="iconfont icon-fenxiang" data-name="share"></i>
+        <button data-name="share" class='share-btn' id="shareBtn" open-type="share" hover-class="other-button-hover">分享</button>
       </view>
     </view>
   </view>
