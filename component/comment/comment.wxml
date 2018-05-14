@@ -1,19 +1,24 @@
 <!--component/comment/comment.wxml-->
 <view class='addComment' wx:if="{{isShow}}">
   <view class='addComent-con'>
-    <input placeholder='{{input_placeholder}}' class='comment-input' placeholder-class='comment-inpt__placeholder' value='{{sentMessage}}' focus='{{isFocus}}' bindinput="setSentData" bindblur='hideInput'></input>
+    <input placeholder='{{input_placeholder}}' class='comment-input' placeholder-class='comment-inpt__placeholder' cursor-spacing='5' value='{{sentMessage}}' focus='{{isFocus}}' bindinput="setSentData" bindblur='hideInput' adjust-position="false"></input>
     <text class='sent' name='sent' bindtap='sentMsg'>发送</text>
   </view>
 </view>
+<view class='fake-addComent' wx:else>
+  <view class='addComent-con'>
+    <input placeholder='评论' class='comment-input' placeholder-class='comment-inpt__placeholder' focus='{{isFocus}}' disabled='disabled' bindtap='setFocus'></input>
+    <span class='sent' name='sent'>发送</span>
+  </view>
+</view>
 <view class='comment-wrap'>
-   <view class='fake-addComent'>
-    <view class='addComent-con'>
-      <input placeholder='评论' class='comment-input' placeholder-class='comment-inpt__placeholder'  focus='{{isFocus}}'  disabled='disabled' bindtap='setFocus'></input>
-      <text class='sent' name='sent' >发送</text>
-    </view>
-  </view> 
+  <view class='comment-title'>一一一一一一一一一
+    <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>评论
+    <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>一一一一一一一一</view>
   <view wx:if="{{commentData.length == 0}}" class='no-comment'>
-    呀，还没有人评论，快来抢沙发~
+    <!-- <view class='no-comment-img'></view> -->
+    <image class='no-comment-img' src='../../images/no-comment.png'></image>
+    <view>呀，还没有人评论，快来抢沙发~</view>
   </view>
   <view wx:else class='comment-center'>
     <template is="comment-item" wx:for="{{commentData}}" data="{{...item,index}}"></template>
@@ -32,3 +37,4 @@
     </view>
   </view>
 </template>
+

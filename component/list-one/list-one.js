@@ -24,7 +24,16 @@ Component({
     isShowDelete:{
       type: String,
       value: ""
+    },
+    isDetail:{
+      type:Boolean,
+      value:false
+    },
+    listOBJ:{
+        type:Object,
+        value:{}
     }
+  
   },
 
   /**
@@ -177,7 +186,7 @@ Component({
       }
 
     },
-    toggleSahre: function (dataArr) {
+    toggleShare: function (dataArr) {
       if (disAgreeClickFlag) {
         disAgreeClickFlag = false;
         var that = this;
@@ -204,18 +213,33 @@ Component({
         var that = this;
         agreeClickFlag = false;
         let typeIndex = config.typeList.indexOf(that.data.listType);
-        let nowFlag = that.data.list[dataArr.index].agreeFlag;
+        let nowFlag ;
+        if (!that.data.isDetail){
+          nowFlag = that.data.list[dataArr.index].agreeFlag;
+        }else{
+          nowFlag = that.data.listOBJ.agreeFlag;
+        }
+        console.log(that.data.listOBJ,nowFlag);
         fetch._get.call(that, api.setAgree, {
           ...dataArr,
           type: typeIndex,
           uid: config.openID,
           agreeFlag: nowFlag
         }, function (res) {
-          that.data.list[dataArr.index].agreeFlag = res.result.agreeFlag;
-          that.data.list[dataArr.index].agreeNum = res.result.agreeNum;
-          that.setData({
-            list: that.data.list
-          })
+          if (!that.data.isDetail){
+            that.data.list[dataArr.index].agreeFlag = res.result.agreeFlag;
+            that.data.list[dataArr.index].agreeNum = res.result.agreeNum;
+            that.setData({
+              list: that.data.list
+            })
+          }else{
+            that.data.listOBJ.agreeFlag = res.result.agreeFlag;
+            that.data.listOBJ.agreeNum = res.result.agreeNum;
+            that.setData({
+              listOBJ: that.data.listOBJ
+            })
+          }
+          
           agreeClickFlag = true;
         }, function () {
           console.log("toggleAgree fail");

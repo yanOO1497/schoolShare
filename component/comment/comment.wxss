@@ -3,12 +3,9 @@
 @import "../../common/style/weui.wxss";
 @import "../../pages/listDetail/listDetail.wxss";
 
-.comment-wrap {
-  margin-bottom: 100rpx;
-}
-
-.weui-media-box__info {
+.weui-media-box__info__meta {
   margin-top: 5rpx;
+  text-align: right;
 }
 
 .no-comment {
@@ -16,24 +13,30 @@
   font-size: 30rpx;
   line-height: 60rpx;
   padding: 20rpx;
-  color: #333;
+  color: #ccc;
+}
+
+.no-comment-img{
+  width: 60%;
+  display: inline-block;
 }
 
 .addComment ,.fake-addComent{
   position: absolute;
   width: 100%;
-  /* border-top: 1rpx solid #ccc; */
-  padding: 10rpx;
+  padding: 15rpx;
   box-sizing: border-box;
   vertical-align: center;
-  bottom: 0
+  bottom: 0;
+   background-color: #eee;
 }
 .fake-addComent{
-  position: relative;
+  position: fixed;
+ 
 }
 .addComent-con {
   display: block;  
-  background-color: white;
+  /* background-color: white; */
   height: 80rpx;
   line-height: 45rpx;
   font-size: 35rpx;
@@ -55,21 +58,32 @@
 }
 .sent {
   position: static;
-  width: 20%;
+  display: inline-block;
+  width: 18%;
   box-sizing: border-box;
-  color: #79bd8f;
+  border: 1px solid #79bd8f;
+  border-radius: 15rpx;
+  color: white;
   line-height: 80rpx;
+  text-align: center;
   font-size: 35rpx;
-  border: none;
-  background-color: unset;
    height: 80rpx;
   float: right;
+   margin-left: 2% ; 
+   background-color: #79BD8F; 
+}
+
+.comment-title{
+  color: #ccc;
 }
 
 .comment-wrap {
   margin-top: 10rpx;
   font-size: 28rpx;
   border-radius: 20rpx;
+  background-color: white;
+  padding: 20rpx;
+  text-align: center;
 }
 
 .user-link {
@@ -83,4 +97,5 @@
   padding: 10rpx 20rpx;
   /* border-top: 1px solid #ccc; */
   background-color: white;
+  text-align: left;
 }

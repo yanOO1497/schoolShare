@@ -1,7 +1,14 @@
 <!--component/list-1/list-1.wxml-->
-<block class='list' wx:for="{{list}}" wx:key="index">
-  <template is="{{listType}}" data="{{...item,index,isShowDelete}}" bindtap="checkEnter"></template>
-</block>
+<view wx:if="{{isDetail}}">
+  <template is="{{listType}}" data="{{...listOBJ}}" bindtap="checkEnter"></template>
+</view>
+<view wx:else>
+  <block class='list' wx:for="{{list}}" wx:key="index">
+    <template is="{{listType}}" data="{{...item,index,isShowDelete}}" bindtap="checkEnter"></template>
+  </block>
+</view>
+
+
 <template name="rewardhelp">
   <view data-mid="{{id}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
     <view class='user-info'>
@@ -106,11 +113,6 @@
         <i class="iconfont icon-aixin" data-name="useful"></i>
         <text data-name="useful">{{agreeNum > 0 ? agreeNum : '感兴趣'}}</text>
       </view>
-      <!-- <view class="weui-media-box__info__meta weui-media-box__info__meta_extra {{disagreeFlag == 1 ? 'act' : ''}}">
-        <i class="iconfont icon-cai" data-name="useless"></i>
-        <text data-name="useless">{{disagreeNum > 0 ? disagreeNum : '没用'}}</text>
-      </view> -->
-
       <view class="weui-media-box__info__meta weui-media-box__info__meta_extra {{optionList[2] ? 'act' : ''}}">
         <i class="iconfont icon-pinglun" data-name="comment"></i>
         <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '评论'}}</text>
@@ -170,7 +172,7 @@
         <view class='nickname'>{{nickName}}</view>
         <view class='from'> {{createTime}}</view>
       </view>
-      <view class='option-more' data-name="more"></view>
+      <view class='option-more' wx:if="{{!isDetail}}" data-name="more"></view>
     </view>
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
@@ -195,25 +197,6 @@
       <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
         <text data-name="delete">删除</text>
       </view>
-    </view>
-  </view>
-</template>
-<template name="ebook">
-  <view data-mid="{{id}}" class='book-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
-
-    <view class='list-content'>
-      <view class='item-title'>{{bookName}}</view>
-      <view wx:if="{{bookFace !== '' && bookFace}}" style="background-image: url('{{bookFace}}')" class='img' mode="widthFix" data-uid="{{uid}}"></view>
-      <view class='item-con'>{{dec}}</view>
-    </view>
-
-    <view class='user-info'>
-      <view class='user-data'>
-        贡献者：
-        <view class='nickname'>{{nickName}}</view>
-        <view class='from'> {{createTime}}</view>
-      </view>
-      <view class='option-more' data-name="more"></view>
     </view>
   </view>
 </template>

@@ -18,6 +18,9 @@ function _get(url, prames, cb, fail_cb) {
       "content-Type": "application/json,application/json"
     },
     success: function (res) {
+      that.setData({
+        showLoading: false
+      })
       typeof cb == 'function' && cb(res.data)
     },
     fail: function (res) {

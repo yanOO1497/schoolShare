@@ -1,4 +1,5 @@
 /* pages/listDetail/listDetail.wxss */
+@import '../../component/list-one/list-one';
 .img-wrap{
   display: flex;
   flex-wrap:wrap;
@@ -10,8 +11,12 @@
   background-size: contain;
   background-repeat: no-repeat;
 }
+.weui-media-box__info{
+  display: flex;
+}
 .weui-media-box__info__meta{
-  float: right;
+  /* float: right; */
+  flex:1;
 }
 .weui-media-box{
   position: static;

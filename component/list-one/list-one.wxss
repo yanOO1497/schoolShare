@@ -46,8 +46,9 @@ button::after{
   padding: 25rpx;
   box-sizing: border-box;
   background-color: white;
-  border-bottom: 1px solid #ccc;
+  /* border-bottom: 1px solid #ccc; */
   color: #333;
+  margin: 15rpx 0;
 }
 
 .control {

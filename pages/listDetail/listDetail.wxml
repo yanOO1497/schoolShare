@@ -1,6 +1,7 @@
 <view class='page'>
-  <template is="listDetail" data="{{...listDetail}}">
-  </template>
+  <!-- <template is="listDetail" data="{{...listDetail}}">
+  </template> -->
+   <list-one  listOBJ="{{listDetail}}" listType="{{listTypeArr[typeIndex]}}" isDetail = "{{isDetail}}" bind:onShareAppMessage="onShareAppMessage"/>
   <template name="listDetail">
     <view class="weui-media-box weui-media-box_text">
       <view class='user-info'>
@@ -11,10 +12,14 @@
         </view>
       </view>
       <view class="content">{{content}}</view>
-       <view class='img-wrap'>
+      <view class='img-wrap'>
         <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-url="{{item}}" bindtap='previewImg'></view>
-      </view> 
+      </view>
       <view class="weui-media-box__info">
+      <view class="weui-media-box__info__meta ">
+          <i class="iconfont icon-report"></i>
+          <text data-name="report">{{reportFlag > 0 ? "已举报" : '举报 '}}</text>
+        </view>
         <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">
           <i class="iconfont icon-pinglun"></i>
           <text class='comment'>{{commentNum > 0 ? commentNum : '评论'}}</text>
@@ -23,15 +28,10 @@
           <i class="iconfont icon-dianzan" data-name="useful"></i>
           <text data-name="useful">{{agreeNum > 0 ? agreeNum : '有用'}}</text>
         </view>
-        <view class="weui-media-box__info__meta {{disagreeFlag == 1 ? 'act' : ''}} weui-media-box__info__meta_extra">
-          <i class="iconfont icon-cai" data-name="useless"></i>
-          <text data-name="useless">{{disagreeNum > 0 ? disagreeNum : '没用'}}</text>
-        </view>
-
-
-        <view class="weui-media-box__info__meta ">
-          <i class="iconfont icon-report"></i>
-          <text data-name="report">{{reportFlag > 0 ? "已举报" : '举报 '}}</text>
+        
+        <view class="weui-media-box__info__meta  weui-media-box__info__meta_extra {{shareFlag == 1 ? 'act' : ''}}">
+          <i class="iconfont icon-fenxiang" data-name="share"></i>
+          <button data-name="share" class='share-btn' id="shareBtn" open-type="share" hover-class="other-button-hover">分享</button>
         </view>
       </view>
     </view>

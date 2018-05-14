@@ -2,6 +2,7 @@
 var fetch = require('../../common/script/fetch')
 var util = require('../../utils/util')
 var config = require('../../common/script/config')
+let listTypeArr = config.typeList;
 Page({
 
   /**
@@ -21,6 +22,8 @@ Page({
     commentData: [],
     typeIndex: 0,
     mid:1,
+    listTypeArr,
+    isDetail:true
   },
 
   /**
@@ -30,7 +33,7 @@ Page({
     var that = this;
     console.log(options);
     let { typeIndex, mid } = options;
-    fetch._get(config.apiList.getMessageByMidAndType, { 'type': typeIndex, mid }, function (res) {
+    fetch._get.call(that,config.apiList.getMessageByMidAndType, { 'type': typeIndex, mid }, function (res) {
       if (res.result.picUrl !== "" && res.result.picUrl) {
         res.result.picUrl = res.result.picUrl.split(",");
         console.log(res.result.picUrl);
@@ -42,6 +45,7 @@ Page({
         typeIndex,
         mid
       })
+      console.log("进入进入",that.data.listTypeArr[that.data.typeIndex]);
     })
   },
   observeReply: function () {

@@ -29,7 +29,7 @@ Page({
     var that = this;
     if (that.data.textareaValue !== '') {
       //添加请求代码
-      fetch._get(config.apiList.addToFeedback,
+      fetch._get.call(that,config.apiList.addToFeedback,
         {
           uid: config.openID,
           content: that.data.textareaValue

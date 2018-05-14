@@ -79,7 +79,7 @@ Page({
     },function(){
       console.log("获取用户数据失败");
     });
-
+    that.refreshData(0);
   },
   enterDetail:function(){
     console.log("enter");
@@ -162,8 +162,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow(){
-    console.log("home显示");
-    this.refreshData(0);
+    // console.log("home显示");
+    // this.refreshData(0);
   },
 
   /**
