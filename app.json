@@ -22,7 +22,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#79BD8F",
     "navigationBarTitleText": "同学帮帮忙",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#333",

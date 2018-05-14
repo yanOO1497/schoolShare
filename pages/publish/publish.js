@@ -32,6 +32,7 @@ Page({
     })
   },
   bindValue : function (e){
+    // console.log("输入",e);
     this.data.textareaArea = e.detail.value; 
   },
   formSubmit: function (event) {
@@ -136,9 +137,12 @@ Page({
       that.setData({
         isPublish:true
       })
-      wx.navigateBack({
-        delta: 1,
-      })
+      setTimeout(function(){
+        wx.navigateBack({
+          delta: 1,
+        })
+      },1000)
+      
     })
   },
   /**

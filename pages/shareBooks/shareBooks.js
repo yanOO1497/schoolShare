@@ -8,9 +8,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    floorstatus: false,
     isShowFixBar: true,
     showLoading: false,
+    scrollTop: 0,
+    floorstatus: false,
     navtab: {
       list: [{
         id: 'ebook',
@@ -92,6 +93,17 @@ Page({
     // wx.navigateTo({
     //   url: `../publish/publish?publishType=book&typeIndex=${bookType}`
     // })
+  },
+  scroll(e) {
+    if (e.detail.scrollTop > 500) {
+      this.setData({
+        floorstatus: true
+      });
+    } else {
+      this.setData({
+        floorstatus: false
+      });
+    }
   },
   toggleBottomPopup(e){
     var that = this;

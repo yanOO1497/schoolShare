@@ -103,7 +103,7 @@ Component({
       let {bid,uid,url} = e.currentTarget.dataset;
       let itemList,bookFlag = false;
       if (that.data.listType === "ebook"){
-        itemList = ['资源不能下载', '在线打开', '私信提供用户', '举报'];
+        itemList = ['在线打开', '反馈：资源不能下载', '私信提供用户', '举报'];
         bookFlag = true;
       }else{
         itemList = ['私信提供用户', '举报'];
@@ -114,14 +114,12 @@ Component({
           if (bookFlag){
             switch (res.tapIndex) {
               case 0:
-                console.log("通知上传用户调整资源");
-                break;
-              case 1:
-                // console.log(e);
                 that.openFile(url, bid);
                 break;
+              case 1:
+                console.log("通知上传用户调整资源");
+                break;
               case 2:
-                // console.log(e);
                 that.enterUserDetail(e);
                 break;
               case 3:

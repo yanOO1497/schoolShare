@@ -4,5 +4,6 @@
       "zan-tab": "../../component/tab/index",
       "doc-page": "../../component/doc-page/index",
       "list-one":"../../component/list-one/list-one"
-    }
+    },
+    "enablePullDownRefresh": true
 }

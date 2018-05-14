@@ -28,7 +28,7 @@
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
         <view class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="说说你的看法吧~" style="height: 7.3em" value='{{textareaArea}}' bindblur="bindValue" />
+          <textarea class="weui-textarea" placeholder="分享你的收获与困惑吧~" style="height: 7.3em" value='{{textareaArea}}' bindblur="bindValue" bindinput="bindValue"/>
           <button class="weui-textarea-counter" bindtap='formSubmit'>发送</button>
         </view>
       </view>
