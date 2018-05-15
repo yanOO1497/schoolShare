@@ -60,7 +60,8 @@ Page({
       ],
       selectedId: 'question',
       scroll: true,
-      height: 45
+      height: 45,
+      message:{}
     },
 
   },//data

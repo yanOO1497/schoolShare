@@ -2,26 +2,30 @@
 <!--index.wxml-->
 <movable-area class='page'>
 
-  <movable-view class='fixBar' direction="all"  x="280" y="400">
-    <view  class='fixBar-item write ' bindtap='toPublish' wx:if="{{isShowFixBar}}">
+  <movable-view class='fixBar' direction="all" x="280" y="400">
+    <view class='fixBar-item write ' bindtap='toPublish' wx:if="{{isShowFixBar}}">
       <text class='iconfont icon-xie'></text>
     </view>
-    <view class='fixBar-item top ' wx:if="{{ floorstatus && isShowFixBar}}" bindtap='toTop' >
+    <view class='fixBar-item top ' wx:if="{{ floorstatus && isShowFixBar}}" bindtap='toTop'>
       <text class='iconfont icon-top'></text>
     </view>
     <!-- <view class='toggleFixBar' bindtap='toggleFixBar'></view> -->
   </movable-view>
-  
+
   <!-- navtab -->
-   <zan-tab list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" scroll="{{ navtab.scroll }}" height="{{ navtab.height }}" bindtabchange="tabchange" /> 
+  <zan-tab list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" scroll="{{ navtab.scroll }}" height="{{ navtab.height }}" bindtabchange="tabchange" />
   <view class='empty' style='height:{{ navtab.height }}px'></view>
-  <scroll-view class="weui-tab__content" scroll-y scroll-with-animation='true' bindscroll="scroll"  style='height:94%' scroll-top="{{scrollTop}}" bindscrolltolower="onReachBottom" bindscrolltoupper="onPullDownRefresh">
+  <scroll-view class="weui-tab__content" scroll-y scroll-with-animation='true' bindscroll="scroll" style='height:94%' scroll-top="{{scrollTop}}" bindscrolltolower="onReachBottom" bindscrolltoupper="onPullDownRefresh">
     <!-- 校内问答与经验分享页面 -->
-     <view wx:if="{{showLoading}}">
+    <view wx:if="{{showLoading}}">
       <view class="loading">正在载入数据…</view>
     </view>
-     <list-one wx:else list="{{listData[navtab.selectedId]}}" listType="{{navtab.selectedId}}" bind:onShareAppMessage="onShareAppMessage"/>  
-    <view class='hasEnterBottom' wx:if="{{!hasMore}}">没有更多啦~</view>
+    <list-one wx:else list="{{listData[navtab.selectedId]}}" listType="{{navtab.selectedId}}" bind:onShareAppMessage="onShareAppMessage" />
+    <!-- <view class='hasEnterBottom'">没有更多啦~</view> -->
+     <view class="loading-tip nomore" wx:if="{{!hasMore}}">
+      <view class='tips-title'>没有更多内容了！</view>
+      <view class='tips-img'></view>
+    </view> 
     <!-- 讲座 列表 -->
 
   </scroll-view>
@@ -29,6 +33,6 @@
 
 </movable-area>
 
-<import src="../../component/message/message.wxml"/>
-<template is="message" data="{{message: message}}"  />
+<import src=" ../../component/message/message.wxml " />
+<template is="message " data="{{message: message}} " />
 <!-- page -->

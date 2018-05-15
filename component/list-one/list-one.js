@@ -61,9 +61,10 @@ Component({
       });
     },
     checkEnter: function (e) {
+      // console.log("进入detail",e);
       var that = this;
       let { mid, index } = e.currentTarget.dataset;
-      let { name, uid } = e.target.dataset;
+      let { name, uid ,url} = e.target.dataset;
       var _avaterUrl = "../../pages/personal/personal?uid=" + uid;
       // 判断当前点击对象
       switch (name) {
@@ -86,8 +87,23 @@ Component({
             }
           });
           break;
+        case "previewImg":
+          if (!that.data.isDetail) {
+            that.enterDetail(index);
+          } else{
+            console.log("previewImg");
+
+            wx.previewImage({
+              current: url, // 当前显示图片的http链接
+              urls: that.data.listOBJ.picUrl // 需要预览的图片http链接列表
+            })
+          }
+          
+        break;
         default:
+        if(!that.data.isDetail){
           that.enterDetail(index);
+        } 
           break;
       }
     },

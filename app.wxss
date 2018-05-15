@@ -73,3 +73,15 @@ page{
     animation: bounceIn .3s;
 }
 
+.nomore{
+  text-align: center;
+  width: 100%;
+}
+.tips-img{
+  display: inline-block;
+  width: 50%;
+  height: 400rpx;
+  background:url('http://p8aftlhm5.bkt.clouddn.com/no-follow.png') no-repeat;
+  background-size: contain; 
+}
+

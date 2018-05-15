@@ -177,7 +177,7 @@
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
       <view class='img-wrap'>
-        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}"></view>
+        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}"></view>
       </view>
     </view>
     <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}">

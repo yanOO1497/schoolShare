@@ -2,6 +2,7 @@
 .content{
   margin: 0 20rpx;
   text-align: justify; 
+  column-count:2;
 }  
 .item{
   width: 100%;
@@ -95,4 +96,15 @@
 }
 .right{
   float: right;
+}
+.nomore{
+  text-align: center;
+  width: 100%;
+}
+.tips-img{
+  display: inline-block;
+  width: 50%;
+  height: 400rpx;
+  background:url('http://p8aftlhm5.bkt.clouddn.com/no-follow.png') no-repeat;
+  background-size: contain; 
 }

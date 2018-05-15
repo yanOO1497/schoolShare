@@ -1,6 +1,8 @@
-
 <view class="content">
-  <view class="left">
+  <block wx:for="{{list}}" wx:key="">
+    <template is="{{listType}}" data="{{...item}}" ></template>
+  </block>
+  <!-- <view class="left">
     <block wx:for="{{list}}" wx:key="">
       <template is="{{listType}}" data="{{...item}}" wx:if="{{index%2==0}}"></template>
     </block>
@@ -9,29 +11,32 @@
     <block wx:for="{{list}}" wx:key="">
       <template is="{{listType}}" data="{{...item}}" wx:if="{{index%2==1}}"></template>
     </block>
-  </view>
+  </view> -->
 </view>
 <block wx:if="{{hasMore}}">
   <view class="loading-tip">拼命加载中…</view>
 </block>
 <block wx:else>
-  <view class="loading-tip">没有更多内容了</view>
+  <view class="loading-tip nomore">
+    <view class='tips-title'>没有更多内容了！</view>
+    <view class='tips-img'></view>
+  </view>
 </block>
 <!--  下面是一个模块 -->
 <template name="ebook">
   <view class="item" bindtap='showMoreChoose' data-url="{{downloadUrl}}" data-uid="{{uid}}" data-bid="{{id}}">
     <image class="item-img" wx:if="{{bookFace !== '' && bookFace}}" src="{{bookFace ? bookFace : defaultImg}}" mode="widthFix"></image>
     <view class='item-img' wx:else>
-    暂无图片
+      暂无图片
     </view>
     <view class="item-title-box">
       {{bookName}}
     </view>
     <view class='item-dec'>{{dec}}</view>
-    <view class="name" >
-      <image class="item-ava" src="{{avatarUrl}}" catchtap='enterUserDetail'  data-uid="{{uid}}" ></image>
-      <text class="name-title"  data-uid="{{uid}}"  catchtap='enterUserDetail'>{{nickName}}</text>
-      <a  href="{{downloadUrl}}" class="heart iconfont icon-xiazai" catchtap='downloadFile' data-url="{{downloadUrl}}" data-bid="{{id}}">
+    <view class="name">
+      <image class="item-ava" src="{{avatarUrl}}" catchtap='enterUserDetail' data-uid="{{uid}}"></image>
+      <text class="name-title" data-uid="{{uid}}" catchtap='enterUserDetail'>{{nickName}}</text>
+      <a href="{{downloadUrl}}" class="heart iconfont icon-xiazai" catchtap='downloadFile' data-url="{{downloadUrl}}" data-bid="{{id}}">
       </a>
     </view>
   </view>
@@ -44,9 +49,9 @@
       {{bookName}}
     </view>
     <view class='item-dec'>{{dec}}</view>
-    <view class="name" >
-      <image class="item-ava" src="{{avatarUrl}}" catchtap='enterUserDetail'  data-uid="{{uid}}"></image>
-      <text class="name-title"  data-uid="{{uid}}"  catchtap='enterUserDetail'>{{nickName}}</text>
+    <view class="name">
+      <image class="item-ava" src="{{avatarUrl}}" catchtap='enterUserDetail' data-uid="{{uid}}"></image>
+      <text class="name-title" data-uid="{{uid}}" catchtap='enterUserDetail'>{{nickName}}</text>
       <view></view>
     </view>
   </view>
