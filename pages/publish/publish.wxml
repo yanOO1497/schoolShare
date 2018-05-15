@@ -12,23 +12,20 @@
           </picker>
         </view>
       </view>
-      <view wx:if="{{typesIndex == 3}}" class="weui-cell weui-cell_select">
-        <view class="weui-cell__hd" style="width: 105px">
-          <picker bindchange="bindCountryCodeChange" value="{{countryCodeIndex}}" range="{{countryCodes}}">
-            <view class="weui-select">{{countryCodes[countryCodeIndex]}}</view>
-          </picker>
+      
+      <view wx:if="{{typesIndex == 3}}" class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">酬劳</view>
         </view>
-        <view class="weui-cell__bd weui-cell__bd_in-select-before">
-          <input class="weui-input" placeholder="请输入悬赏金额" />
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入具体酬劳" value='{{reward}}' bindinput='bindReward' maxlength="10"/>
         </view>
-
-
       </view>
     </view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
         <view class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="分享你的收获与困惑吧~" style="height: 7.3em" value='{{textareaArea}}' bindblur="bindValue" bindinput="bindValue"/>
+          <textarea class="weui-textarea" placeholder="{{publish_placeholder[typesIndex]}}" style="height: 7.3em" value='{{textareaArea}}' bindblur="bindValue" bindinput="bindValue" />
           <button class="weui-textarea-counter" bindtap='formSubmit'>发送</button>
         </view>
       </view>

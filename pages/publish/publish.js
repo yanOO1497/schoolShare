@@ -23,8 +23,11 @@ Page({
     showImgLoad: [true, true, true, true, true, true, true, true, true],
     showWarn: [false, false, false, false, false,false, false, false, false],//图片是否上传成功结果存储
     isPublish:false,
-    publish_result :["", "发完求助记得也去看看其他小伙伴有没有需要帮助的哦~当问答区无法寻求到合适的帮助时可以考虑下悬赏求助模块", "字斟句酌处，亦是与心推敲时，记录学到的知识也是梳理整合的一个过程，感谢你为众多学弟学妹们带来的宝贵经验！", "必要的付费有时候是获得解决方案的最快途径~", "多去参加活动和朋友互动吧，宅在宿舍是会发霉的哦~", "清掉不再适合自己的物品，人生就不会有那么多烦恼~"],
-    publishType:"square"
+    publish_result :["", "发完求助记得也去看看其他小伙伴有没有需要帮助的，互帮互助可以为你积攒人品哦~", "字斟句酌处，亦是与心推敲时，记录学到的知识也是梳理整合的一个过程，感谢你为其他同学带来的宝贵经验！", "必要的付费有时候是获得解决方案的最快途径~", "多去参加活动和朋友互动吧，宅在宿舍是会发霉的哦~", "清掉不再适合自己的物品，人生就不会有那么多烦恼~"],
+    publish_placeholder: ["请先选择模块进行发布", "嘿，在学校遇到什么疑惑困难了吗？可以说出来让大家一起帮你哦~", "分享一下自己成长过程中的经验吧，同学们非常需要你的分享！", "必要的付费有时候是获得解决方案的最快途径~", "学校附近有什么有趣的活动当然是你最清楚啦，快来告诉大家一起玩耍~", "清掉不再适合自己的物品，人生就不会有那么多烦恼~"],
+    publishType:"square",
+    reward:"",
+    shoulRefresh:false
   },
   bindTypesChange: function (e) {
     this.setData({
@@ -32,8 +35,11 @@ Page({
     })
   },
   bindValue : function (e){
-    // console.log("输入",e);
     this.data.textareaArea = e.detail.value; 
+  },
+  bindReward(e){
+    this.data.reward = e.detail.value; 
+    // if()
   },
   formSubmit: function (event) {
     var that = this;
@@ -124,6 +130,9 @@ Page({
         prams.cancelUrl = that.data.uploadImgList
       }
     }
+    if (that.data.typesIndex == 3){//
+      prams.reward = that.data.reward;
+    }
     console.log(that.data.textareaArea, prams, that.data.typesIndex, option);
     fetch._get.call(that,config.apiList.publish,{
       uid:config.openID,
@@ -138,10 +147,17 @@ Page({
         isPublish:true
       })
       setTimeout(function(){
+        let pages = getCurrentPages();
+        let prevPage = pages[pages.length - 2];
+        console.log(pages, prevPage)
+        prevPage.setData({
+          shouldRefresh: true
+        })
         wx.navigateBack({
           delta: 1,
         })
-      },1000)
+       
+      },2000)
       
     })
   },
@@ -154,12 +170,14 @@ Page({
         typesIndex: options.typeIndex,
         publishType: options.publishType
       })
-    }else{
+    } else if (options.typeIndex){
       this.setData({
         typesIndex: options.typeIndex
       })
     }
-    
+    if (options.refresh){
+      this.refreshData(1);
+    }
   },
 
   /**
@@ -173,7 +191,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

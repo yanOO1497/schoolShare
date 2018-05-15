@@ -20,22 +20,7 @@ Page({
         name: "共享图书",
         urlName: "shareBooks",
         iconClass: "icon-zhishi"
-      },
-      {
-        name: "学校讲座",
-        urlName: "setting",
-        iconClass: "icon-lecture"
-      },
-      {
-        name: "校内新鲜事",
-        urlName: "feedback",
-        iconClass: "icon-freshNews"
-      },
-      {
-        name: "校内生存指南",
-        urlName: "setting",
-        iconClass: "icon-schoolHome"
-      },
+      }
     ]
   },
 

@@ -41,6 +41,7 @@ function getUserSet(cb, fail_cb){
     },
     fail: res => {
       console.log("进入fail");
+      
       getUserInfo(cb, fail_cb);
     }
   })

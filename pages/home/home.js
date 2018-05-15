@@ -6,9 +6,9 @@ var config = require('../../common/script/config')
 const app = getApp();
 const typeArr = config.typeList;
 const apiList = config.apiList;
-let api ={
-  question:apiList.questionList, 
-  share:apiList.loadExperienceList,
+let api = {
+  question: apiList.questionList,
+  share: apiList.loadExperienceList,
 
 };
 Page({
@@ -18,26 +18,23 @@ Page({
    */
 
   data: {
-    motto: '欢迎进入！',
     userInfo: {},
     hasUserInfo: false,
+    shouldRefresh: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     scrollTop: 0,
     floorstatus: false,
-  
+    count: 5,//每次加载的数据量
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
-    hasMore:true,
-    start: 0,
-    showLoading:true,
+    hasMore: true,
+    start: { "question": 0, 'share': 0, 'rewardhelp': 0, 'activity': 0, 'secondarymarket': 0 },
+    showLoading: true,
 
-    isShowFixBar:true,
+    isShowFixBar: true,
     //最新消息列表
-    listData:{
-      share: [],
-      question: [],
-      lectures: []
+    listData: {
 
     },
     navtab: {
@@ -47,24 +44,25 @@ Page({
       }, {
         id: 'share',
         title: '师哥师姐说'
-      }, 
+      },
       {
         id: 'rewardhelp',
         title: '悬赏求助'
-      }, 
+      },
       {
         id: 'activity',
         title: '校内活动'
-      }, 
-       {
-         id: 'secondarymarket',
+      },
+      {
+        id: 'secondarymarket',
         title: '二手市场'
       }
       ],
       selectedId: 'question',
       scroll: true,
       height: 45
-    }
+    },
+
   },//data
   /**
    * 生命周期函数--监听页面加载
@@ -75,54 +73,58 @@ Page({
     // 获取用户信息
     util.getUserSet(function (userInfo) {
       console.log("登录成功", userInfo);
-      
-    },function(){
+      that.refreshData(0);
+    }, function () {
       console.log("获取用户数据失败");
     });
-    that.refreshData(0);
+
   },
-  enterDetail:function(){
+  enterDetail: function () {
     console.log("enter");
   },
-  tabchange(e){
+  tabchange(e) {
     var that = this;
     that.data.navtab.selectedId = e.detail;
     that.setData({
       navtab: that.data.navtab
     });
-    that.refreshData(0);
+    if (!that.data.listData[e.detail]) {
+      console.log("进入刷新");
+      that.refreshData(0);
+    }
   },
-  refreshData: function (start, refreshType = "refresh"){ 
+  refreshData: function (start, refreshType = "refresh", cb) {
     var that = this;
     let select = that.data.navtab.selectedId;
+    let count = that.data.count;
     fetch._get.call(that, apiList.loadTableList, {
       tableType: typeArr.indexOf(select),
-      start: that.data.start,
-      count: 20
+      start,
+      count
     }, function (res) {
       wx.hideNavigationBarLoading();
       // wx.stopPullDownRefresh();
-      res.subjects.map((item,key,arr)=>{
-        if (item.picUrl !== "" && item.picUrl){
+      res.subjects.map((item, key, arr) => {
+        if (item.picUrl !== "" && item.picUrl) {
           item.picUrl = item.picUrl.split(",");
         }
-      }) 
-      if (refreshType == "refresh"){
+      })
+      if (refreshType == "refresh") {
         that.data.listData[select] = res.subjects;
-        
-      }else{
+      } else {
         that.data.listData[select] = that.data.listData[select].concat(res.subjects);
       }
-      console.log("页面刷新", select, that.data.listData[select]);
+      console.log(refreshType, select, that.data.listData[select], res.subjects);
       that.setData({
         listData: that.data.listData,
         showLoading: false
       });
+      typeof cb == 'function' && cb(res)//刷新数据后的回调
     }, function (res) {
       console.log("home get questionList fail");
     });
   },
-  toPublish(e){
+  toPublish(e) {
     var that = this;
     let select = that.data.navtab.selectedId;
     let url = `../publish/publish?typeIndex=${typeArr.indexOf(select)}`;
@@ -130,13 +132,13 @@ Page({
       url: url
     })
   },
-  toggleFixBar(){
+  toggleFixBar() {
     var that = this;
     this.setData({
-      isShowFixBar: !that.data.isShowFixBar 
+      isShowFixBar: !that.data.isShowFixBar
     })
   },
-  scroll(e){
+  scroll(e) {
     if (e.detail.scrollTop > 500) {
       this.setData({
         floorstatus: true
@@ -147,7 +149,7 @@ Page({
       });
     }
   },
-  toTop:function(){
+  toTop: function () {
     console.log("返回顶部");
     this.setData({
       scrollTop: 0
@@ -156,16 +158,21 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady(){
+  onReady() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow(){
-    // console.log("home显示");
-    // this.refreshData(0);
+  onShow() {
+    console.log("页面是否刷新", this.data.shouldRefresh);
+    if (this.data.shouldRefresh) {
+      this.refreshData(1);
+      this.setData({
+        shouldRefresh: false
+      })
+    }
   },
 
   /**
@@ -193,14 +200,34 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-    console.log("xiala刷新");
+    var that = this;
+    let { hasMore, count, } = that.data;
+
+    if (hasMore) {
+      let selectedId = that.data.navtab.selectedId;
+      that.data.start[selectedId] = that.data.start[selectedId] + 5;
+
+      console.log(that.data.start[selectedId]);
+      that.refreshData(that.data.start[selectedId], "load", function (res) {
+
+        console.log("加载成功", res.subjects.length, count);
+
+        if (res.subjects.length < count) {
+          that.setData({
+            hasMore: false
+          })
+          console.log("已经到底部了");
+        }
+      })
+    }
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    if(res.from){//默认分享
+    if (res.from) {//默认分享
       return {
         title: '同学可以帮忙看看吗',
         path: `pages/home/home`,
@@ -213,10 +240,10 @@ Page({
           util.showText("转发失败！");
         }
       }
-    }else{
-      let {mid,typeIndex} = res.detail;
-      
-      
+    } else {
+      let { mid, typeIndex } = res.detail;
+
+
       console.log("从组件的分享", res);
       return {
         title: '同学可以帮忙看看吗',
@@ -231,7 +258,7 @@ Page({
         }
       }
     }
-    
+
   }
-  
+
 })

@@ -74,14 +74,11 @@ Component({
           break;
         case "more":
           wx.showActionSheet({
-            itemList: ['收藏', '举报'],
+            itemList: [ '举报'],
             success: function (res) {
               if (!res.cancel) {
                 switch (res.tapIndex) {
                   case 0:
-                    that.toggleCollect(mid, index);
-                    break;//收藏
-                  case 1:
                     that.report(mid, index);
                     break;//举报
                 }
@@ -125,6 +122,9 @@ Component({
         case "share":
           that.onShareAppMessage(data);
         break;
+        case "collect":
+          that.toggleCollect(data);
+        break;
       }
 
     },
@@ -136,17 +136,19 @@ Component({
         that.triggerEvent('observeDelete', myEventDetail, myEventOption)
       })
     },
-    toggleCollect: function (mid, index) {//切换收藏
+    toggleCollect: function (data) {//切换收藏
       var that = this;
+      let {mid,index} = data;
       let nowFlag = that.data.list[index].collectFlag;
       let typeIndex = config.typeList.indexOf(that.data.listType);
       fetch._get.call(that, api.setCollect, {
         type: typeIndex,
-        mid: mid,
+        ...data,
         uid: config.openID,
         collectFlag: nowFlag
-      }, function () {
+      }, function (res) {
         that.data.list[index].collectFlag = nowFlag == 0 ? 1 : 0;
+        that.data.list[index].collectNum = res.result.collectNum;
         that.setData({
           list: that.data.list
         })

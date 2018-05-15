@@ -39,7 +39,7 @@
 					"query": "uid=o2GCt4iaAWOlVDzD3XX1nxc-KYKY"
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "发布信息",
 					"pathName": "pages/publish/publish",
 					"query": ""

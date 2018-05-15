@@ -186,9 +186,13 @@
         <i class="iconfont icon-aixin" data-name="useful"></i>
         <text data-name="useful">{{agreeNum > 0 ? agreeNum : '关注'}}</text>
       </view>
-      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{optionList[2] ? 'act' : ''}}">
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  ">
         <i class="iconfont icon-pinglun" data-name="comment"></i>
         <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '评论'}}</text>
+      </view>
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{collectFlag == 1 ? 'act' : ''}}">
+        <i class="iconfont icon-shoucang" data-name="collect"></i>
+        <text class='comment' data-name="collect">{{collectNum > 0 ? collectNum : '收藏'}}</text>
       </view>
       <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{disagreeFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-fenxiang" data-name="share"></i>

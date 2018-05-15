@@ -141,6 +141,8 @@ button::after{
   border-left: 4px solid #79BD8F;
   padding-left: 10rpx;
   /* color: red; */
+  background-color: #f5f5f5;
+  margin-top:10rpx;
 }
 
 
