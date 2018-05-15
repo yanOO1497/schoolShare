@@ -46,7 +46,7 @@ Component({
       // console.log(this.data.sentMessage, e);
       let { mid, fatherId, typeIndex, sentMessage } = that.data;
       console.log(mid, fatherId, typeIndex, sentMessage)
-      fetch._get(config.apiList.addToComment,{
+      fetch._get.call(that,config.apiList.addToComment,{
         uid:config.openID,
         type: typeIndex,
         content: sentMessage,
@@ -86,7 +86,7 @@ Component({
     },
     refreshData:function (start){
       var that = this;
-      fetch._get(config.apiList.getComment,{
+      fetch._get.call(that,config.apiList.getComment,{
         type:this.data.typeIndex,
         mid: that.data.mid
       },function(res){

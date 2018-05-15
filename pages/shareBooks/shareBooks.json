@@ -3,6 +3,7 @@
   "usingComponents": {
     "zan-tab": "../../component/tab/index",
     "list": "../../component/imageList/imageList",
-   "zan-popup":"../../component/popup/index"
+   "zan-popup":"../../component/popup/index",
+   "searchBar": "../../component/searchBar/searchBar"
   }
 }

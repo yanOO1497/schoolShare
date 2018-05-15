@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "课件资料",
+  "usingComponents": {
+    "list-fold": "../../component/list-fold/list-fold",
+    "searchBar": "../../component/searchBar/searchBar"
+  }
+}

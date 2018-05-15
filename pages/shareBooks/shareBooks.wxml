@@ -9,6 +9,7 @@
     </view>
   </movable-view> -->
   <!-- navtab -->
+  <searchBar bindsentInput="searchData" bindinputTyping="inputTyping" />
   <zan-tab list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" scroll="{{ navtab.scroll }}" height="{{ navtab.height }}" bindtabchange="tabchange" />
   <view class='empty' style='height:{{ navtab.height }}px'></view>
   <block wx:if="{{showLoading}}">

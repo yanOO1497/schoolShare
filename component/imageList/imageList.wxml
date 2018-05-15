@@ -19,7 +19,7 @@
 <block wx:else>
   <view class="loading-tip nomore">
     <view class='tips-title'>没有更多内容了！</view>
-    <view class='tips-img'></view>
+    <view class='tips-img no-more'></view>
   </view>
 </block>
 <!--  下面是一个模块 -->

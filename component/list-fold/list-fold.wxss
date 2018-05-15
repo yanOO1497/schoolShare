@@ -1,0 +1,21 @@
+/* component/list-fold/list-fold.wxss */
+
+/* @import '../imageList/imageList'; */
+@import '../../common/style/weui';
+@import '../../common/style/iconfont';
+
+.item-ava, .icon-xiazai {
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.weui-media-box__info__meta {
+  vertical-align: bottom;
+  display: inline-block;
+  line-height: 35rpx;
+}
+
+.icon-xiazai {
+  display: inline-block;
+  color: red;
+}

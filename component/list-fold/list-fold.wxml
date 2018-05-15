@@ -1,0 +1,41 @@
+<!--component/list-fold/list-fold.wxml-->
+<view class='list-fold-wrap'>
+  <view class="weui-cells weui-cells_after-title" wx:for="{{listData}}">
+    <template is="weui-media-box" data="{{...item}}"></template>
+  </view>
+</view>
+<template name="list-fold">
+  <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <scroll-view scroll-x class="weui-cell__bd">{{courseName}}</scroll-view>
+    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </view>
+  <view class='list-fold-content weui-cell'>
+    <view>
+      <view class='list-fold-dec'>
+        {{courseDec}}
+      </view>
+      <view class=" name flex-wrap">
+        <image class="item-ava flex-item" src="{{avatarUrl}}" catchtap='enterUserDetail' data-uid="{{uid}}"></image>
+        <text class="name-title flex-item" data-uid="{{uid}}" catchtap='enterUserDetail'>{{nickName}}</text>
+        <text class='creatTime'>{{creatTime}}</text>
+        <a href="{{downloadUrl}}" class="heart iconfont icon-xiazai  flex-item" catchtap='downloadFile' data-url="{{downloadUrl}}" data-bid="{{id}}">
+        </a>
+      </view>
+    </view>
+
+  </view>
+
+</template>
+
+<template name="weui-media-box">
+  <view class="weui-media-box weui-media-box_text">
+    <view class="weui-media-box__title weui-media-box__title_in-text">{{courseName}}</view>
+    <view class="weui-media-box__desc"> {{courseDec}}</view>
+    <view class="weui-media-box__info">
+    <image class="weui-media-box__info__meta item-ava" src="{{avatarUrl}}" catchtap='enterUserDetail' data-uid="{{uid}}"></image>
+      <view class="weui-media-box__info__meta">{{nickName}}</view>
+      <view class="weui-media-box__info__meta">{{createTime}}</view>
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra "><span class="iconfont icon-xiazai"></span></view>
+    </view>
+  </view>
+</template>

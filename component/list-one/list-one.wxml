@@ -22,7 +22,7 @@
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
       <view class='img-wrap'>
-        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}"></view>
+        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view>
       </view>
       <view class='reward'>
         <text class='reward-title'>报酬： </text>
@@ -52,18 +52,18 @@
 </template>
 <template name="activity">
   <view data-mid="{{id}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
-    <view class='user-info'>
+   <view class='user-info'>
       <image class='avatar' src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
         <view class='from'> {{createTime}}</view>
       </view>
-      <view class='option-more' data-name="more"></view>
+      <view class='option-more' wx:if="{{!isDetail}}" data-name="more"></view>
     </view>
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
       <view class='img-wrap'>
-        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}"></view>
+        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view>
       </view>
     </view>
     <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}">
@@ -91,18 +91,18 @@
 </template>
 <template name="secondarymarket">
   <view data-mid="{{id}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
-    <view class='user-info'>
+   <view class='user-info'>
       <image class='avatar' src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
         <view class='from'> {{createTime}}</view>
       </view>
-      <view class='option-more' data-name="more"></view>
+      <view class='option-more' wx:if="{{!isDetail}}" data-name="more"></view>
     </view>
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
       <view class='img-wrap'>
-        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}"></view>
+        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view>
       </view>
     </view>
     <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}">
@@ -133,12 +133,12 @@
         <view class='nickname'>{{nickName}}</view>
         <view class='from'> {{createTime}}</view>
       </view>
-      <view class='option-more' data-name="more"></view>
+      <view class='option-more' wx:if="{{!isDetail}}" data-name="more"></view>
     </view>
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
       <view class='img-wrap'>
-        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}"></view>
+        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view>
       </view>
     </view>
     <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}">
@@ -177,7 +177,7 @@
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
       <view class='img-wrap'>
-        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}"></view>
+        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view>
       </view>
     </view>
     <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}">
@@ -204,3 +204,4 @@
     </view>
   </view>
 </template>
+

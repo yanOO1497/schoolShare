@@ -63,9 +63,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "设置",
-					"pathName": "pages/setting/setting",
+					"id": 5,
+					"name": "课件",
+					"pathName": "pages/courseware/courseware",
 					"query": ""
 				},
 				{

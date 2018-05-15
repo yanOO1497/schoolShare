@@ -25,6 +25,7 @@ module.exports = {
     // loadExperienceList: url + '/loadExperienceList.do',//加载问答列表
     loadTableList: url + '/loadTableList.do',//加载各类信息列表
     loadBookList: url + '/loadBookList.do',//加载图书列表
+    searchCoursewareList: url + '/searchCoursewareList.do', 
     getExperienceListByUid: url + '/getExperienceListByUid.do',
     loadUserInfoDetails: url + '/loadUserInfoDetails.do',//获取用户详情
     saveUserInfo: url + '/saveUserInfo.do',//保存用户信息

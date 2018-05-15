@@ -16,7 +16,8 @@
     "pages/alterUserInfo/alterUserInfo",
     "pages/about/about",
     "pages/dataBase/dataBase",
-    "pages/shareBooks/shareBooks"
+    "pages/shareBooks/shareBooks",
+    "pages/courseware/courseware"
   ],
   "window": {
     "backgroundTextStyle": "light",

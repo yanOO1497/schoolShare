@@ -13,7 +13,7 @@ Page({
       },
       {
         name: "课件资料",
-        urlName: "myQuestion",
+        urlName: "courseware",
         iconClass: "icon-wenjian"
       },
       {

@@ -22,7 +22,7 @@
     </view>
     <list-one wx:else list="{{listData[navtab.selectedId]}}" listType="{{navtab.selectedId}}" bind:onShareAppMessage="onShareAppMessage" />
     <!-- <view class='hasEnterBottom'">没有更多啦~</view> -->
-     <view class="loading-tip nomore" wx:if="{{!hasMore}}">
+     <view class="loading-tip nomore" wx:if="{{!hasMore[navtab.selectedId]}}">
       <view class='tips-title'>没有更多内容了！</view>
       <view class='tips-img'></view>
     </view> 
@@ -33,6 +33,6 @@
 
 </movable-area>
 
-<import src=" ../../component/message/message.wxml " />
-<template is="message " data="{{message: message}} " />
+<!-- <import src=" ../../component/message/message.wxml " /> -->
+<!-- <template is="message " data="{{message: message}} " /> -->
 <!-- page -->

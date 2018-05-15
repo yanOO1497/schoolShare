@@ -28,7 +28,7 @@ Page({
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
-    hasMore: true,
+    hasMore: { "question": true, 'share': true, 'rewardhelp': true, 'activity': true, 'secondarymarket': true },
     start: { "question": 0, 'share': 0, 'rewardhelp': 0, 'activity': 0, 'secondarymarket': 0 },
     showLoading: true,
 
@@ -203,9 +203,9 @@ Page({
   onReachBottom() {
     var that = this;
     let { hasMore, count, } = that.data;
-
-    if (hasMore) {
-      let selectedId = that.data.navtab.selectedId;
+    let selectedId = that.data.navtab.selectedId;
+    if (hasMore[selectedId]) {
+     
       that.data.start[selectedId] = that.data.start[selectedId] + 5;
 
       console.log(that.data.start[selectedId]);
@@ -214,8 +214,9 @@ Page({
         console.log("加载成功", res.subjects.length, count);
 
         if (res.subjects.length < count) {
+          hasMore[selectedId] = false;
           that.setData({
-            hasMore: false
+            hasMore
           })
           console.log("已经到底部了");
         }
