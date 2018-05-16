@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "问答分享",
+  "usingComponents": {
+    "list-one": "../../component/list-one/list-one",
+    "searchBar": "../../component/searchBar/searchBar"
+  },
+  "enablePullDownRefresh": true
+}

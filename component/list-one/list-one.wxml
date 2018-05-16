@@ -2,6 +2,11 @@
 <view wx:if="{{isDetail}}">
   <template is="{{listType}}" data="{{...listOBJ}}" bindtap="checkEnter"></template>
 </view>
+<view wx:elif="{{isQuesAndShare}}">
+  <block class='list' wx:for="{{list}}" wx:key="index">
+    <template is="{{listTypeArr[item.type]}}" data="{{...item,index,isQuesAndShare}}" bindtap="checkEnter"></template>
+  </block>
+</view>
 <view wx:else>
   <block class='list' wx:for="{{list}}" wx:key="index">
     <template is="{{listType}}" data="{{...item,index,isShowDelete}}" bindtap="checkEnter"></template>
@@ -52,7 +57,7 @@
 </template>
 <template name="activity">
   <view data-mid="{{id}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
-   <view class='user-info'>
+    <view class='user-info'>
       <image class='avatar' src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
@@ -91,11 +96,11 @@
 </template>
 <template name="secondarymarket">
   <view data-mid="{{id}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
-   <view class='user-info'>
+    <view class='user-info'>
       <image class='avatar' src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
-        <view class='from'> {{createTime}}</view>
+        <view class='from'> {{createTime}} <view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--primary zan-tag--plain">二手</view> </view>
       </view>
       <view class='option-more' wx:if="{{!isDetail}}" data-name="more"></view>
     </view>
@@ -131,7 +136,7 @@
       <image class='avatar' src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
-        <view class='from'> {{createTime}}</view>
+        <view class='from'> {{createTime}} <view wx:if="{{isQuesAndShare}}" class="zan-tag zan-tag--warn zan-tag--plain">分享</view> </view>
       </view>
       <view class='option-more' wx:if="{{!isDetail}}" data-name="more"></view>
     </view>
@@ -149,10 +154,10 @@
         <i class="iconfont icon-dianzan" data-name="useful"></i>
         <text data-name="useful">{{agreeNum > 0 ? agreeNum : '有用'}}</text>
       </view>
-      <!-- <view class="weui-media-box__info__meta weui-media-box__info__meta_extra {{disagreeFlag == 1 ? 'act' : ''}}">
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra {{disagreeFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-cai" data-name="useless"></i>
         <text data-name="useless">{{disagreeNum > 0 ? disagreeNum : '没用'}}</text>
-      </view> -->
+      </view>
       <view class="weui-media-box__info__meta weui-media-box__info__meta_extra ">
         <i class="iconfont icon-fenxiang" data-name="share"></i>
         <button data-name="share" class='share-btn' id="shareBtn" open-type="share" hover-class="other-button-hover">分享</button>
@@ -170,7 +175,9 @@
       <image class='avatar' src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
-        <view class='from'> {{createTime}}</view>
+        <view class='from'> {{createTime}}
+           <view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--primary zan-tag--plain">问答</view> 
+        </view>
       </view>
       <view class='option-more' wx:if="{{!isDetail}}" data-name="more"></view>
     </view>
@@ -204,4 +211,3 @@
     </view>
   </view>
 </template>
-

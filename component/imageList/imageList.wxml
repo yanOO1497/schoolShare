@@ -13,15 +13,7 @@
     </block>
   </view> -->
 </view>
-<block wx:if="{{hasMore}}">
-  <view class="loading-tip">拼命加载中…</view>
-</block>
-<block wx:else>
-  <view class="loading-tip nomore">
-    <view class='tips-title'>没有更多内容了！</view>
-    <view class='tips-img no-more'></view>
-  </view>
-</block>
+
 <!--  下面是一个模块 -->
 <template name="ebook">
   <view class="item" bindtap='showMoreChoose' data-url="{{downloadUrl}}" data-uid="{{uid}}" data-bid="{{id}}">

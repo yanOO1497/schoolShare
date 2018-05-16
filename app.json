@@ -17,14 +17,14 @@
     "pages/about/about",
     "pages/dataBase/dataBase",
     "pages/shareBooks/shareBooks",
-    "pages/courseware/courseware"
+    "pages/courseware/courseware",
+    "pages/quesAndShare/quesAndShare"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#79BD8F",
     "navigationBarTitleText": "同学帮帮忙",
-    "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#333",

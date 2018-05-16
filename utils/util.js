@@ -1,5 +1,9 @@
 var config = require('../common/script/config')
 var fetch = require('../common/script/fetch')
+
+let socketOpen = false;
+let socketMsgQueue = [];
+let socketTask ;
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -19,6 +23,7 @@ function getUserSet(cb, fail_cb){
   wx.getSetting({
     success: res => {
       if (res.authSetting['scope.userInfo']) {
+        console.log("已授权");
         // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
         wx.getUserInfo({
           success: res => {
@@ -36,12 +41,15 @@ function getUserSet(cb, fail_cb){
           }
         })
       } else {//未授权，引导用户授权
-        getUserInfo(cb, fail_cb);
+        console.log("未授权");
+        wx.navigateTo({
+          url: '../../pages/login/login'
+        })
+        // getUserInfo(cb, fail_cb);
       }
     },
     fail: res => {
       console.log("进入fail");
-      
       getUserInfo(cb, fail_cb);
     }
   })
@@ -56,8 +64,8 @@ function getUserInfo (cb){
             success: function (res) {
               console.log("success", res);
               config.userInfo = res.userInfo;
-              getOpenID(code);
-              typeof cb == "function" && cb(config.userInfo)
+              getOpenID(code,cb);
+              // typeof cb == "function" && cb(config.userInfo)
             }
           })
         } else {
@@ -70,8 +78,55 @@ function getUserInfo (cb){
       }
     })
 }
+function openSocket (cb,fail_cb){
+  console.log("正在连接websocket", config.openID);
+    let url = 'ws://192.168.1.102:8082/school_share/websocket/' + config.openID
+    socketTask = wx.connectSocket({
+      url: url,
+      success:function(res){
+        console.log("WebSocket连接连接成功", res.socketTaskId);
+      }
+    })
+    wx.onSocketOpen(function (res) {
+      console.log('WebSocket连接已打开！')
+      socketOpen = true;
+      typeof cb == 'function' && cb()
+    })
+    wx.onSocketError(function (res) {
+      console.log('WebSocket连接打开失败，请检查！');
+      typeof fail_cb == 'function' && fail_cb()
+    })
 
-function getOpenID(code) {
+    wx.onSocketMessage(function (res) {
+      console.log('收到服务器内容：' + res.data)
+    })
+}
+
+function sentMsg(data){
+  let { message, toUid} = data;
+  message = message + "|" + toUid;//将要发送的信息和内容拼起来，以便于服务端知道消息要发给谁
+  if (socketOpen){
+    socketTask.sent({
+      data: message
+    })
+    console.log("soket发送", message);
+  }else {
+    openSocket("soket发送" +function(res){
+      console.log(res);
+      socketTask.sent({
+        data
+      })
+    },function(){
+      socketMsgQueue.push(data);
+    });
+  }
+}
+
+function closeSocket(){
+  socketTask.close();
+}
+
+function getOpenID(code,cb) {
   wx.request({
     url: 'https://api.weixin.qq.com/sns/jscode2session',
     data: {
@@ -88,15 +143,7 @@ function getOpenID(code) {
       // var openid = res.data.openid //返回openid
       config.openID = res.data.openid;
       wx.setStorageSync(config.userInfo.nickName + "openID", config.openID);
-      fetch._get( config.apiList.saveUserInfo,{
-        ...config.userInfo,
-        sex: config.userInfo.gender,
-        uid: config.openID
-      },function(){
-        console.log("用户信息录入成功");
-      },function(){
-        console.log("用户信息录入失败");
-      })
+       typeof cb == "function" && cb(config.userInfo)
     }
   })
 }
@@ -156,5 +203,7 @@ module.exports = {
   showText,
   showToastSu,
   showConfirmModal,
-  showImg
+  showImg,
+  sentMsg,
+  openSocket
 }

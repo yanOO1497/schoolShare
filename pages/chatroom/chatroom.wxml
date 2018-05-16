@@ -1,23 +1,40 @@
 <!--pages/chateRoom/chatroom.wxml-->
 
 <view class='page'>
-  <template is="chat" data="{{...userData,myAvaterUrl:myAvaterUrl,chatData:chatData}}"></template>
-  <view class='sentMessage'>
+  <view class='chat-wrap' wx:for="{{chatData}}" wx:key="*this">
+
+    <template is="{{item.uid == nowUid ?'myMes' : 'otherMes'}}" data="{{...item,...myUserInfo}}"> </template>
+  </view>
+  <!-- <view class='sentMessage'>
     <input class='inout-sent' placeholder="请输入" />
     <button class='btn-sent'>发送</button>
+  </view> -->
+  <view class="sentMessage weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入文本" value='{{message}}' bindinput='inputTyping' />
+      </view>
+      <view class="weui-cell__ft">
+        <button class='weui-btn mini-btn' plain="true" type="primary" size="mini" bindtap='sentMessage'>发送</button>
+      </view>
+    </view>
   </view>
 </view>
 
-<template name="chat">
-  <view class='chat-wrap' wx:for="{{chatData}}" wx:key="*this">
-    <view class='chat-other' wx:if="{{item[0]}}">
-      <image wx:if="{{avaterUrl}}" src='{{avaterUrl}}' class='avatar'></image>
-      <view class='chat-detail'>{{item[0]}}</view>
-    </view>
-    <view class='chat-my' wx:if="{{item[1]}}">
-      <view class='chat-detail'>{{item[1]}}</view>
-      <image src='{{myAvaterUrl}}' class='avatar'></image>
-    </view>
-  </view>
 
+
+
+<template name="myMes">
+  <view class='chat-other chat-item  clearfloat'>
+    <view class='sentFlag'></view>
+    <view class='chat-detail t'>{{content}}</view>
+    <image src='{{toAvatarUrl}}' class='avatar'></image>
+  </view>
+</template>
+
+<template name="otherMes">
+  <view class='chat-my  clearfloat' >
+    <view class='chat-detail'>{{content}}</view>
+    <image src='{{toAvatarUrl}}' class='avatar'></image>
+  </view>
 </template>

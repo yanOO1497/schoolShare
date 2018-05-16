@@ -104,7 +104,6 @@ Page({
       count
     }, function (res) {
       wx.hideNavigationBarLoading();
-      // wx.stopPullDownRefresh();
       res.subjects.map((item, key, arr) => {
         if (item.picUrl !== "" && item.picUrl) {
           item.picUrl = item.picUrl.split(",");

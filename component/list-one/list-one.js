@@ -29,6 +29,10 @@ Component({
       type:Boolean,
       value:false
     },
+    isQuesAndShare: {
+      type: Boolean,
+      value: false
+    },
     listOBJ:{
         type:Object,
         value:{}
@@ -40,7 +44,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    listTypeArr: config.typeList
   },
 
   /**
@@ -52,10 +56,11 @@ Component({
     },
     enterDetail:function(index){
       var that = this;
-      let typeIndex = config.typeList.indexOf(that.data.listType);
-      let { id } = that.data.list[index];
-      console.log(that.data.list[index] ,typeIndex)
-      let _url = `../../pages/listDetail/listDetail?mid=${id}&typeIndex=${typeIndex}`;
+      // let typeIndex ;
+      let { id, type} = that.data.list[index];
+    
+      console.log(that.data.list[index], type)
+      let _url = `../../pages/listDetail/listDetail?mid=${id}&typeIndex=${type}`;
       wx.navigateTo({
         url: _url
       });
@@ -156,7 +161,7 @@ Component({
       var that = this;
       let {mid,index} = data;
       let nowFlag = that.data.list[index].collectFlag;
-      let typeIndex = config.typeList.indexOf(that.data.listType);
+      let typeIndex = that.data.list[index].type;
       fetch._get.call(that, api.setCollect, {
         type: typeIndex,
         ...data,

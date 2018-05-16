@@ -1,2 +1,16 @@
 /* pages/shareBooks/shareBooks.wxss */
- @import '../home/home' 
+ @import '../home/home' ;
+ searchBar{
+   position: fixed;
+   top:0;
+   z-index: 100;
+   width: 100%;
+ }
+ zan-tab{
+  position: fixed;
+  z-index: 100;
+  top:44px;
+}
+.weui-tab__content{
+  margin-top:45px;
+}

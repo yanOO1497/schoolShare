@@ -9,6 +9,7 @@
       </view>
     </block>
   </view>
-  <view>最新上传内容</view>
-  
+  <view class="page__bd">
+    <view class='title'>最新上传内容</view>
+  </view>
 </view>

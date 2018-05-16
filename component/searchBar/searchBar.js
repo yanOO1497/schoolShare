@@ -34,10 +34,13 @@ Component({
       });
     },
     hideInput: function () {
-      this.setData({
+      let that = this;
+      that.setData({
         inputVal: "",
         inputShowed: false
       });
+      var myEventDetail = { value: "" } // detail对象，提供给事件监听函数
+      that.triggerEvent('inputTyping', myEventDetail, {})
     },
     clearInput: function () {
       this.setData({
@@ -49,16 +52,6 @@ Component({
       that.setData({
         inputVal: e.detail.value
       });
-      // console.log("输入信息", e.detail.value);
-      // if (that.data.isCanSearch){
-      //   var myEventDetail = { value: e.detail.value } // detail对象，提供给事件监听函数
-      //   that.triggerEvent('inputTyping', myEventDetail, {})
-      //   that.data.isCanSearch = false;
-      //   setTimeout(function(){
-      //     that.data.isCanSearch = true;
-      //   },1000)
-      // } 
-
       var myEventDetail = { value: e.detail.value } // detail对象，提供给事件监听函数
       that.triggerEvent('inputTyping', myEventDetail, {})
     },

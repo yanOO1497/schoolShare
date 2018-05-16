@@ -5,3 +5,8 @@
 .weui-grids .iconfont{
   font-size: 50rpx;
 }
+
+.title{
+  margin: 20rpx;
+  border-bottom: 1px solid #ccc;
+}

@@ -3,10 +3,10 @@ var config = require('./config.js')
 // 获取
 function _get(url, prames, cb, fail_cb) {
   var that = this;
-  that.setData({
-    showLoading:true,
-    message:[]
-  })
+  // that.setData({
+  //   showLoading:true,
+  //   message:[]
+  // })
   wx.request({
     url: url,
     data: {
@@ -18,9 +18,9 @@ function _get(url, prames, cb, fail_cb) {
       "content-Type": "application/json,application/json"
     },
     success: function (res) {
-      that.setData({
-        showLoading: false
-      })
+      // that.setData({
+      //   showLoading: false
+      // })
       typeof cb == 'function' && cb(res.data)
     },
     fail: function (res) {
@@ -86,6 +86,7 @@ function _uploadFile(prames,cb,fail_cb){
       }
     })
 }
+
 module.exports = {
   _get: _get,
   _uploadFile: _uploadFile

@@ -1,10 +1,32 @@
 <!--pages/message/message.wxml-->
-<import src="../../templates/newMessage/newMessage.wxml" />
+<!-- <import src="../../templates/newMessage/newMessage.wxml" /> -->
 <view class='page'>
-
-
-  <block class='list' wx:for="{{talkData}}" wx:key="*this">
-    <template is="talk" data="{{...item}}"></template>
-  </block>
+  <view wx:if="{{talkData.length !== 0}}">
+    <view class='list' wx:for="{{talkData}}" wx:key="*this">
+      <template is="talk" data="{{...item}}"></template>
+    </view>
+  </view>
+  <view wx:else>
+    <view class="loading-tip">
+      <view class='tips-title'>呀，一条消息也没有呢~</view>
+      <view class='tips-img no-msg'></view>
+    </view>
+  </view>
 
 </view>
+
+<template name="talk">
+  <navigator class="weui-cells weui-cells_after-title " url='../chatroom/chatroom?uid={{uid}}'>
+    <view class="weui-cell ">
+      <view class="weui-cell__hd " style="position: relative;margin-right: 10px; ">
+        <image src="{{avaterUrl}} " style="width: 50px; height: 50px; display: block " />
+        <view class="weui-badge " style="position: absolute;top: -.4em;right: -.4em; ">{{messageNum}}</view>
+      </view>
+      <view class="weui-cell__bd ">
+        <view>{{nickname}}</view>
+        <view style="font-size: 13px;color: #888888; ">{{talkMessage}}</view>
+      </view>
+    </view>
+  </navigator>
+
+</template>

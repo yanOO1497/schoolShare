@@ -1,1 +1,10 @@
 /* pages/message/message.wxss */
+.weui-btn{
+  display: inline-block;
+  margin: auto;
+}
+
+.no-msg{
+  background: url('http://p8aftlhm5.bkt.clouddn.com/no-msg.png') no-repeat;
+  background-size: contain;
+}

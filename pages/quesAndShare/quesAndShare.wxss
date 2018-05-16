@@ -1,0 +1,11 @@
+/* pages/quesAndShare/quesAndSHare.wxss */
+searchBar{
+  position: fixed;
+  top:0;
+  width: 100%;
+  z-index:22;
+}
+
+.content{
+  margin-top:44px;
+}

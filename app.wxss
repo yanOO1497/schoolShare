@@ -4,6 +4,11 @@
 @import "./common/style/weui.wxss";
 @import "./common/style/zanui.wxss";
 @import "./common/style/base.wxss";
+
+/*清除浮动代码*/ 
+.clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0} 
+.clearfloat{zoom:1} 
+
 page,.page{
   width: 100%;
   color: #161716;
@@ -79,7 +84,7 @@ page{
   margin-top:10rpx;
 }
 
-.nomore{
+.loading-tip,.nomore{
   text-align: center;
   width: 100%;
 }

@@ -10,7 +10,7 @@ Page({
   data: {
     isShowFixBar: true,
     showLoading: false,
-    scrollTop: 0,
+    scrollTop: 0,//
     floorstatus: false,
     navtab: {
       list: [{
@@ -29,7 +29,8 @@ Page({
       ebook: [],
       book: []
     },
-    bookType: 0,
+    hasMore:true,
+    bookType: 0,//0代表电子书 1代表实体书
     showBottomPopup:false
   },
   tabchange(e) {
@@ -55,24 +56,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.refreshData(0);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.refreshData(0);
+    
   },
-
-  refreshData(start, refreshType = "refresh") {
+  inputTyping(e) {
+    console.log("子组件输入", e.detail.value);
+    this.refreshData(0,"refresh", e.detail.value);
+  },
+  refreshData(start, refreshType = "refresh",searchName) {
     let that = this;
     let bookType = that.data.bookType;
-    
+    let prames = {};
+    if (searchName){
+      prames.searchName = searchName;
+    }
     fetch._get.call(that,config.apiList.loadBookList, {
       start,
       bookType,
-      count: 20
+      count: 20,
+      ...prames
     }, function (res) {
       console.log("图书数据获取成功");
       if (bookType === 0) {//电子书

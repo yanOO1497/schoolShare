@@ -1,0 +1,8 @@
+<!--pages/quesAndShare/quesAndSHare.wxml-->
+<view class='page'>
+  <searchBar bindinputTyping="inputTyping" />
+  <view class='content'>
+    <list-one list="{{listData}}" bind:onShareAppMessage="onShareAppMessage" isQuesAndShare="true" />
+  </view>
+
+</view>

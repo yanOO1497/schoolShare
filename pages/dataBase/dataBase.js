@@ -8,7 +8,7 @@ Page({
     gridList: [
       {
         name: "问答分享",
-        urlName: "setting",
+        urlName: "quesAndShare",
         iconClass: "icon-online"
       },
       {

@@ -1,4 +1,7 @@
 // pages/login/login.js
+var util = require('../../utils/util')
+var config = require('../../common/script/config')
+var fetch = require('../../common/script/fetch')
 Page({
 
   /**
@@ -11,6 +14,26 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  getuserinfo(res) {
+    var that = this;
+    config.userInfo = res.detail.userInfo;
+    util.getUserInfo(function(res){
+      fetch._get.call(that,config.apiList.saveUserInfo, {
+        ...config.userInfo,
+        sex: config.userInfo.gender,
+        uid: config.openID
+      }, function (res) {
+        console.log("用户信息录入成功");
+        typeof cb == 'function' && cb()
+      }, function () {
+        console.log("用户信息录入失败");
+      })
+      wx.navigateBack({
+        delta: 1,
+      })
+    });
+   
+  },
   onLoad: function (options) {
   
   },

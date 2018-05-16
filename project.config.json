@@ -45,9 +45,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "我的",
-					"pathName": "pages/my/my",
+					"id": 2,
+					"name": "问答分享",
+					"pathName": "pages/quesAndShare/quesAndShare",
 					"query": ""
 				},
 				{
@@ -57,9 +57,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "我的问答",
-					"pathName": "pages/myQuestion/myQuestion",
+					"id": 4,
+					"name": "聊天室",
+					"pathName": "pages/chatroom/chatroom",
 					"query": ""
 				},
 				{
@@ -73,6 +73,12 @@
 					"name": "精华库",
 					"pathName": "pages/dataBase/dataBase",
 					"query": "uid=o2GCt4iaAWOlVDzD3XX1nxc-KYKY"
+				},
+				{
+					"id": -1,
+					"name": "消息",
+					"pathName": "pages/message/message",
+					"query": ""
 				}
 			]
 		}

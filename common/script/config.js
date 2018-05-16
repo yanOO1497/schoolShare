@@ -25,7 +25,10 @@ module.exports = {
     // loadExperienceList: url + '/loadExperienceList.do',//加载问答列表
     loadTableList: url + '/loadTableList.do',//加载各类信息列表
     loadBookList: url + '/loadBookList.do',//加载图书列表
-    searchCoursewareList: url + '/searchCoursewareList.do', 
+    loadQuesAndShareList: url + '/loadQuesAndShareList.do',
+    getChatLogDetails: url + '/getChatLogDetails.do',//获取聊天记录详情
+    getChats: url + '/getChats.do',//获取消息列表页
+    searchCoursewareList: url + '/searchCoursewareList.do', //搜索课件资料
     getExperienceListByUid: url + '/getExperienceListByUid.do',
     loadUserInfoDetails: url + '/loadUserInfoDetails.do',//获取用户详情
     saveUserInfo: url + '/saveUserInfo.do',//保存用户信息

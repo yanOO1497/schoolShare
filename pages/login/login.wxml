@@ -22,6 +22,6 @@
                 </view>
             </view> -->
         </view>
-   <button class="weui-btn" type="primary">微信授权登录</button>
+   <button class="weui-btn" type="primary" open-type="getUserInfo" bindgetuserinfo='getuserinfo'>微信授权登录</button>
   
 </view>

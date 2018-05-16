@@ -9,7 +9,7 @@
     </view>
   </movable-view> -->
   <!-- navtab -->
-  <searchBar bindsentInput="searchData" bindinputTyping="inputTyping" />
+  <searchBar  bindinputTyping="inputTyping" />
   <zan-tab list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" scroll="{{ navtab.scroll }}" height="{{ navtab.height }}" bindtabchange="tabchange" />
   <view class='empty' style='height:{{ navtab.height }}px'></view>
   <block wx:if="{{showLoading}}">
@@ -21,7 +21,12 @@
       <view class="loading">正在加载中…</view>
     </view>
     <list wx:else list="{{bookData[navtab.selectedId]}}" listType="{{navtab.selectedId}}" bind:onShareAppMessage="onShareAppMessage" />
-
+<block  wx:if="{{!hasMore}}">
+  <view class="loading-tip nomore">
+    <view class='tips-title'>没有更多内容了！</view>
+    <view class='tips-img no-more'></view>
+  </view>
+</block>
     <!-- 讲座 列表 -->
 
   </scroll-view>

@@ -25,13 +25,28 @@
 .chat-my .avatar{
   right: 0;
 }
+ .chat-item{
+  position: relative;
+  min-height: 120rpx;
+} 
+
 .chat-detail{
-  line-height: 100rpx;
+  line-height: 50rpx;
+  width: 80%;
+}
+.chat-my  .chat-detail{
+  float: right;
+}
+.sentFlag{
+  position: absolute;
+  top:10rpx;
+
+  width: 20%;
+  height: 50rpx;
 }
 .sentMessage{
   width: 100%;
   background-color: white;
-  height:100rpx;
   position: fixed;
   bottom:0;
   z-index:20;
@@ -39,9 +54,7 @@
 .sentMessage input{
   width: 80%;
 }
-.sentMessage{
-  height: 50rpx;
-}
+
 .inout-sent{
   height: 100%;
   

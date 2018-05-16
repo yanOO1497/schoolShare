@@ -20,7 +20,7 @@ Component({
    */
   data: {
     file:[],
-    defaultImg:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526298449318&di=28837bc5d16b513b360a2ada1fe3b9ed&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D3994969733%2C336727888%26fm%3D214%26gp%3D0.jpg'
+    defaultImg:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1526298449318&di=28837bc5d16b513b360a2ada1fe3b9ed&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D3994969733%2C336727888%26fm%3D214%26gp%3D0.jpg',
   },
 
   /**
