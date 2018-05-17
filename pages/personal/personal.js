@@ -16,6 +16,8 @@ Page({
       school: "福州大学",
       sex:2
     },
+    isUser:false
+
   },
 
   /**
@@ -23,11 +25,15 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    var uid = Number.parseInt();
+    if (options.uid == config.openID) {
+      that.data.isUser = true;
+    }
     fetch._get.call(that, config.apiList.loadUserInfoDetails, { uid: options.uid }, function (res) {
       that.setData({
-        userInfo:res.result
+        userInfo:res.result,
+        isUser: that.data.isUser
       })
+      
     })
   },
   tabchange: function (e) {

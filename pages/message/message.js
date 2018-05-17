@@ -62,6 +62,7 @@ Page({
     // 获取用户信息
     if (config.openID) {
       that.refreshData(0);
+      console.log("消息列表需要刷新");
     } else {
       util.getUserSet(function (userInfo) {
         console.log("登录成功", userInfo);

@@ -36,13 +36,19 @@ Page({
         for (let item of res.subjects) {
           if (item.toUid == config.openID) {
             let { nowAvatarUrl, nowNickName, uid } = item;
-
             that.data.otherUserInfo = {
-              nowAvatarUrl,
-              nowNickName,
-              uid
+              toAvatarUrl:nowAvatarUrl,
+              toNickName: nowNickName,
+              toUid:uid
             }
 
+          }else{
+            let { toAvatarUrl, toNickName, toUid } = item;
+            that.data.otherUserInfo = {
+              toAvatarUrl,
+              toNickName,
+              toUid
+            }
           }
         }
       }
@@ -52,8 +58,13 @@ Page({
         otherUserInfo: that.data.otherUserInfo,
         myUserInfo: that.data.myUserInfo
       })
+
+      wx.setNavigationBarTitle({
+        title: "私信" + that.data.otherUserInfo.toNickName//页面标题为路由参数
+      })
+
       that.runToBottom();
-      // console.log(that.data.chatData, that.data.myUserInfo, that.data.otherUserInfo);
+      console.log(that.data.otherUserInfo);
     })
   },
   sentMessage(e) {
@@ -65,9 +76,9 @@ Page({
         uid: config.openID
       })
 
-      let message = that.data.message + "|" + that.data.otherUserInfo.uid;//将要发送的信息和内容拼起来，以便于服务端知道消息要发给谁
+      let message = that.data.message + "|" + that.data.otherUserInfo.toUid;//将要发送的信息和内容拼起来，以便于服务端知道消息要发给谁
 
-      console.log("点击发送", that.data.otherUserInfo.uid, that.data.message);
+      console.log("点击发送", that.data.otherUserInfo.toUid, that.data.message);
       if (that.data.isConnect) {
         SocketTask.send({
           data: message,
@@ -88,7 +99,7 @@ Page({
   },
   runToBottom(){
     let len = this.data.chatData.length;
-    console.log("当前数组长度", len);
+    console.log("当前数组长度", this.data.chatData);
     this.setData({
       scrollTop:1000 * len
     })

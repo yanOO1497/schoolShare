@@ -14,7 +14,7 @@
       <view class='bio'>{{userInfo.bio}}</view>
     </view>
   </view>
-    <navigator class="user-opton-item weui-btn" url="../chatroom/chatroom?uid={{userInfo.id}}">
+    <navigator wx:if="{{!isUser}}" class="user-opton-item weui-btn" url="../chatroom/chatroom?uid={{userInfo.id}}">
         <text class='iconfont icon-youjian'></text> 私信</navigator>
   <view class='page__bd'>
      

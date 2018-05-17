@@ -35,6 +35,6 @@
 <template name="otherSentMes">
   <view class='chat-other clearfloat chat-item ' >
     <view class='chat-detail'>{{content}}</view>
-    <image src='{{otherUserInfo.nowAvatarUrl}}' class='avatar'></image>
+    <image src='{{otherUserInfo.toAvatarUrl}}' class='avatar'></image>
   </view>
 </template>
