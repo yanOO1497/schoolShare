@@ -22,9 +22,9 @@
     </view>
     <list-one wx:else list="{{listData[navtab.selectedId]}}" listType="{{navtab.selectedId}}" bind:onShareAppMessage="onShareAppMessage" isQuesAndShare="false"/>
     <!-- <view class='hasEnterBottom'">没有更多啦~</view> -->
-     <view class="loading-tip nomore" wx:if="{{!hasMore[navtab.selectedId]}}">
+     <view class="loading-tip " wx:if="{{!hasMore[navtab.selectedId]}}">
       <view class='tips-title'>没有更多内容了！</view>
-      <view class='tips-img'></view>
+      <view class='tips-img no-more'></view>
     </view> 
     <!-- 讲座 列表 -->
 

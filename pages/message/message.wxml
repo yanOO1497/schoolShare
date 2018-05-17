@@ -1,8 +1,11 @@
 <!--pages/message/message.wxml-->
 <!-- <import src="../../templates/newMessage/newMessage.wxml" /> -->
 <view class='page'>
-  <view wx:if="{{talkData.length !== 0}}">
-    <view class='list' wx:for="{{talkData}}" wx:key="*this">
+  <view wx:if="{{showLoading}}">
+    <view class="loading">正在载入数据…</view>
+  </view>
+  <view wx:elif="{{chatData.length !== 0}}">
+    <view class='list' wx:for="{{chatData}}" wx:key="*this">
       <template is="talk" data="{{...item}}"></template>
     </view>
   </view>
@@ -16,17 +19,23 @@
 </view>
 
 <template name="talk">
-  <navigator class="weui-cells weui-cells_after-title " url='../chatroom/chatroom?uid={{uid}}'>
+  <navigator class="weui-cells weui-cells_after-title " url='../chatroom/chatroom?uid={{toUid}}'>
     <view class="weui-cell ">
       <view class="weui-cell__hd " style="position: relative;margin-right: 10px; ">
-        <image src="{{avaterUrl}} " style="width: 50px; height: 50px; display: block " />
-        <view class="weui-badge " style="position: absolute;top: -.4em;right: -.4em; ">{{messageNum}}</view>
+        <image src="{{toAvatarUrl}} " style="width: 50px; height: 50px; display: block " />
+        <view class="weui-badge " style="position: absolute;top: -.4em;right: -.4em; " wx:if="{{unreadNum > 0}}">{{unreadNum}}</view>
       </view>
       <view class="weui-cell__bd ">
-        <view>{{nickname}}</view>
-        <view style="font-size: 13px;color: #888888; ">{{talkMessage}}</view>
+        <view>{{toNickName}}</view>
+        <view style="font-size: 13px;color: #888888; " class='mes-wrap'>
+          <text class='mes-content'>{{content}}</text>
+          <text class='mes-time'>{{createTime}}</text>
+        </view>
       </view>
     </view>
   </navigator>
 
 </template>
+
+<import src="../../component/message/message.wxml" />
+<template is="message" data="{{message: message}}" />

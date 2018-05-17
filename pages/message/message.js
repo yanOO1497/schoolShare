@@ -7,40 +7,43 @@ Page({
    * 页面的初始数据
    */
   data: {
-    talkData: [],
+    chatData: [],
     inputValue: "在吗在吗",
-    start:0,
-    showNoData:false
-
+    start: 0,
+    showNoData: false,
+    showLoading: true,
+    urlUid:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this;
-    // 获取用户信息
-    util.getUserSet(function (userInfo) {
-      console.log("登录成功", userInfo);
-      // util.openSocket(function (res) {
-      //   console.log("回调mes");
-      // });
-      that.refreshData(0);
-    }, function () {
-      console.log("获取用户数据失败");
-    });
-    
+
+
 
   },
 
-  refreshData(start,refreshType = "refresh",cb){
+  refreshData(start, refreshType = "refresh", cb) {
     let that = this;
     fetch._get.call(that, config.apiList.getChats, {
       start,
-      count:10
+      count: 10
     }, function (res) {
-      console.log("数据请求成功",res);
-
+      console.log("数据请求成功", res.subjects);
+      for (let item of res.subjects) {
+        if (item.toUid == config.openID) {
+          item.toUid = item.uid;
+          item.toAvatarUrl = item.nowAvatarUrl;
+          item.toNickName = item.nowNickName;
+        }
+      }
+      that.setData({
+        chatData: res.subjects,
+        showLoading: false
+      })
+      
+      console.log()
     }
     )
   },
@@ -55,6 +58,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let that = this;
+    // 获取用户信息
+    if (config.openID) {
+      that.refreshData(0);
+    } else {
+      util.getUserSet(function (userInfo) {
+        console.log("登录成功", userInfo);
+        that.refreshData(0);
+      }, function () {
+        console.log("获取用户数据失败");
+      });
+
+    }
+
 
   },
 

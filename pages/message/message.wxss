@@ -8,3 +8,15 @@
   background: url('http://p8aftlhm5.bkt.clouddn.com/no-msg.png') no-repeat;
   background-size: contain;
 }
+.mes-wrap{
+  display: flex;
+}
+.mes-content , .mes-time{
+  /* display: inline-block; */
+  flex:1;
+}
+
+.mes-content{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

@@ -20,7 +20,7 @@
       <image class='avatar' src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
-        <view class='from'> {{createTime}}</view>
+        <view class='from'> {{createTime}}<view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--primary zan-tag--plain">求助</view></view>
       </view>
       <view class='option-more' data-name="more"></view>
     </view>
@@ -61,7 +61,7 @@
       <image class='avatar' src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
-        <view class='from'> {{createTime}}</view>
+        <view class='from'> {{createTime}}<view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--primary zan-tag--plain">活动</view></view>
       </view>
       <view class='option-more' wx:if="{{!isDetail}}" data-name="more"></view>
     </view>
@@ -100,7 +100,7 @@
       <image class='avatar' src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
-        <view class='from'> {{createTime}} <view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--primary zan-tag--plain">二手</view> </view>
+        <view class='from'> {{createTime}}<view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--warn zan-tag--plain">出清</view></view>
       </view>
       <view class='option-more' wx:if="{{!isDetail}}" data-name="more"></view>
     </view>

@@ -22,7 +22,7 @@
       <view class='weui-media-box__info'>
 
       </view>
-      <view class='school'>
+      <view class='school'  wx:if="{{userInfo.school  !== ''}}">
         <i class='iconfont icon-school'></i>{{userInfo.school}}
       </view>
       <view class='wechat' wx:if="{{userInfo.wechat  !== ''}}">

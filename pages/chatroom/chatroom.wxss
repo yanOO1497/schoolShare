@@ -1,7 +1,10 @@
 /* pages/chateRoom/chatroom.wxss */
 
 .chat-wrap{
-  margin: 15rpx;
+  margin: 25rpx;
+   height: 90%; 
+  margin-bottom: 100rpx;
+  width: auto;
 }
 .chat-other,.chat-my{
   position: relative;
@@ -33,9 +36,16 @@
 .chat-detail{
   line-height: 50rpx;
   width: 80%;
+  padding: 20rpx;
+  border-radius: 20rpx;
 }
 .chat-my  .chat-detail{
   float: right;
+  background-color: white;
+}
+
+.chat-other .chat-detail{
+   background-color: #ffcc99;
 }
 .sentFlag{
   position: absolute;

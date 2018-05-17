@@ -1,4 +1,7 @@
 // pages/dataBase/dataBase.js
+var fetch = require('../../common/script/fetch')
+var util = require('../../utils/util')
+var config = require('../../common/script/config')
 Page({
 
   /**
@@ -21,7 +24,8 @@ Page({
         urlName: "shareBooks",
         iconClass: "icon-zhishi"
       }
-    ]
+    ],
+    carousel:[]
   },
 
   /**
@@ -49,9 +53,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.getCarousel();
   },
-
+  
+  getCarousel(){
+    let that = this;
+    fetch._get.call(that, config.apiList.getCarousel,{
+      count:5
+    },function(res){
+      console.log("获取轮播图成功 ",res);
+      that.setData({
+        carousel:res.subjects
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -66,20 +81,7 @@ Page({
   
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
+ 
   /**
    * 用户点击右上角分享
    */

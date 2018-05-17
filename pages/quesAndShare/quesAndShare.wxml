@@ -4,5 +4,8 @@
   <view class='content'>
     <list-one list="{{listData}}" bind:onShareAppMessage="onShareAppMessage" isQuesAndShare="true" />
   </view>
-
+  <view class="loading-tip " wx:if="{{!hasMore}}">
+    <view class='tips-title'>没有更多内容了！</view>
+    <view class='tips-img no-more'></view>
+  </view>
 </view>

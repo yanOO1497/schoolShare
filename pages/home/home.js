@@ -61,7 +61,7 @@ Page({
       selectedId: 'question',
       scroll: true,
       height: 45,
-      message:{}
+      message: {}
     },
 
   },//data
@@ -204,7 +204,7 @@ Page({
     let { hasMore, count, } = that.data;
     let selectedId = that.data.navtab.selectedId;
     if (hasMore[selectedId]) {
-     
+
       that.data.start[selectedId] = that.data.start[selectedId] + 5;
 
       console.log(that.data.start[selectedId]);

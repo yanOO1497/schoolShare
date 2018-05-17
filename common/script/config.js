@@ -7,6 +7,7 @@ apiList: api列表
 userInfo: 用户信息存储（首次载入时获取）
 openID: 用户唯一标识符（载入时缓存获取或者请求微信相关api获取）
 skinList: “我的”页面背景列表
+无线ip:192.168.1.102
 */
 
 var url = 'http://192.168.1.102:8082/school_share/share'
@@ -28,6 +29,7 @@ module.exports = {
     loadQuesAndShareList: url + '/loadQuesAndShareList.do',
     getChatLogDetails: url + '/getChatLogDetails.do',//获取聊天记录详情
     getChats: url + '/getChats.do',//获取消息列表页
+    getCarousel: url + '/getCarousel.do',//获取资料库最新轮播图
     searchCoursewareList: url + '/searchCoursewareList.do', //搜索课件资料
     getExperienceListByUid: url + '/getExperienceListByUid.do',
     loadUserInfoDetails: url + '/loadUserInfoDetails.do',//获取用户详情
@@ -45,6 +47,7 @@ module.exports = {
     addToComment: url + '/addToComment.do',//添加评论
     uploadPic: url + '/uploadPic.do',//上传图片
     publish: url + '/publish.do',//发布消息
+    webSocket: 'ws://192.168.1.102:8082/school_share/websocket/',
     getMessageByMidAndType: url + '/getMessageByMidAndType.do',
     personDetail: 'https://api.douban.com/v2/movie/celebrity/',
     baiduMap: 'https://api.map.baidu.com/geocoder/v2/'

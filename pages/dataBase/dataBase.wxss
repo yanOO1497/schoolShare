@@ -1,4 +1,8 @@
 /* pages/dataBase/dataBase.wxss */
+.page{
+  overflow: hidden;
+  background-color: white;
+}
 .weui-grids{
   text-align: center;
 }
@@ -9,4 +13,14 @@
 .title{
   margin: 20rpx;
   border-bottom: 1px solid #ccc;
+}
+
+.carousel-wrap{
+  overflow: hidden;
+  height: 720rpx;
+  /* background-color: white; */
+}
+
+.weui-media-box__thumb{
+  border-radius: 50%;
 }
