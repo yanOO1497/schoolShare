@@ -1,24 +1,31 @@
 <!--pages/message/message.wxml-->
 <!-- <import src="../../templates/newMessage/newMessage.wxml" /> -->
 <view class='page'>
-  <view wx:if="{{showLoading}}">
+  <zan-tab list="{{ navtab.list }}" selected-id="{{ navtab.selectedId }}" scroll="{{ navtab.scroll }}" height="{{ navtab.height }}" bindtabchange="tabchange" />
+  <view class='page-content' wx:if="{{ navtab.selectedId == 'chat' && !showLoading}}">
+    <template wx:if="{{chatData.length !== 0}}" data="{{...item}}" wx:for="{{chatData}}" wx:key="*this" is="chat"></template>
+    <view wx:if="{{chatData.length == 0}}">
+      <view class="loading-tip">
+        <view class='tips-title'>呀，一条消息也没有呢~</view>
+        <view class='tips-img no-msg'></view>
+      </view>
+    </view>
+  </view>
+  <view class='page-content' wx:elif="{{ navtab.selectedId == 'comment' && !showLoading}}">
+    <template is="comment" wx:if="{{commentData.length !== 0}}" data="{{...item}}" wx:for="{{commentData}}" wx:key="*this"></template>
+    <view wx:if="{{commentData.length == 0 }}">
+      <view class="loading-tip">
+        <view class='tips-title'>呀，一条消息也没有呢~</view>
+        <view class='tips-img no-msg'></view>
+      </view>
+    </view>
+  </view>
+  <view class='page-content' wx:if="{{showLoading}}">
     <view class="loading">正在载入数据…</view>
   </view>
-  <view wx:elif="{{chatData.length !== 0}}">
-    <view class='list' wx:for="{{chatData}}" wx:key="*this">
-      <template is="talk" data="{{...item}}"></template>
-    </view>
-  </view>
-  <view wx:else>
-    <view class="loading-tip">
-      <view class='tips-title'>呀，一条消息也没有呢~</view>
-      <view class='tips-img no-msg'></view>
-    </view>
-  </view>
-
 </view>
 
-<template name="talk">
+<template name="chat">
   <navigator class="weui-cells weui-cells_after-title " url='../chatroom/chatroom?uid={{toUid}}'>
     <view class="weui-cell ">
       <view class="weui-cell__hd " style="position: relative;margin-right: 10px; ">
@@ -36,6 +43,33 @@
   </navigator>
 
 </template>
+<template name="comment">
+  <view class='comment-item clearfloat' data-mid="{{mid}}" wx:if="{{messageType == 'reply'}}">
+    <navigator url='../personal/personal?uid={{uid}}'>
+      <image src='{{avatarUrl}}' class='avatar'></image>
+    </navigator>
 
+    <navigator url='../listDetail/listDetail?typeIndex={{type}}&mid={{mid}}' class='comment-right'>
+      <view class='user-info'>
+        <text class='user-link' data-uid="{{uid}}">{{nickName}}</text>回复了你
+      </view>
+      <view class='content'>{{content}}</view>
+      <view class='creatTime'>{{createTime}}</view>
+    </navigator>
+  </view>
+
+  <view class='comment-item' wx:if="{{messageType == 'comment'}}">
+   <navigator url='../personal/personal?uid={{uid}}'>
+      <image src='{{avatarUrl}}' class='avatar'></image>
+    </navigator>
+    <navigator url='../listDetail/listDetail?typeIndex={{type}}&mid={{mid}}' class='comment-right'>
+      <view class='user-info'>
+        <text class='user-link' data-uid="{{uid}}">{{nickName}}</text>评论了你
+      </view>
+      <view class='content'>{{content}}</view>
+      <view class='creatTime'>{{createTime}}</view>
+    </navigator>
+  </view>
+</template>
 <import src="../../component/message/message.wxml" />
-<template is="message" data="{{message: message}}" />
+<template is="message" data="{{message:message}}" />

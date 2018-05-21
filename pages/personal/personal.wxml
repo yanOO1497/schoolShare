@@ -3,20 +3,30 @@
   <view class="page__hd">
     <view class='user-info'>
       <image class='user-img' src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <view  class='user-info'>
-        <text  class='user-name' > {{userInfo.nickName}}</text>
+      <view class='user-info'>
+        <text class='user-name'> {{userInfo.nickName}}</text>
         <text wx:if="{{userInfo.sex == 2}}" class='iconfont icon-girl'></text>
         <text wx:else class='iconfont icon-boy'></text>
       </view>
-      <view class='wechat' wx:if="{{userInfo.showWechat == 1 && userInfo.wechat !== ''}}"><i class='iconfont icon-wechat'></i>{{userInfo.wechat}}</view>
-       <view class='QQ' wx:if="{{userInfo.showQQ == 1 && userInfo.qq !== ''}}"><i class='iconfont icon-QQ'></i>{{userInfo.qq}}</view>
-      <view class='school'><i class='iconfont icon-school'></i>{{userInfo.school}}</view>
+      <view class='wechat' wx:if="{{userInfo.showWechat == 1 && userInfo.wechat !== ''}}">
+        <i class='iconfont icon-wechat'></i>{{userInfo.wechat}}</view>
+      <view class='QQ' wx:if="{{userInfo.showQQ == 1 && userInfo.qq !== ''}}">
+        <i class='iconfont icon-QQ'></i>{{userInfo.qq}}</view>
+      <view class='school'>
+        <i class='iconfont icon-school'></i>{{userInfo.school}}</view>
       <view class='bio'>{{userInfo.bio}}</view>
     </view>
   </view>
-    <navigator wx:if="{{!isUser}}" class="user-opton-item weui-btn" url="../chatroom/chatroom?uid={{userInfo.id}}">
-        <text class='iconfont icon-youjian'></text> 私信</navigator>
-  <view class='page__bd'>
-     
-  </view>      
+  <navigator wx:if="{{!isUser}}" class="user-opton-item weui-btn" url="../chatroom/chatroom?uid={{userInfo.id}}&nickName={{userInfo.nickName}}">
+    <text class='iconfont icon-youjian'></text> 私信</navigator>
+  <view class='title'>最新动态</view>
+  <sroll-view scroll-y="true" style="height:300px" class='page__bd'>
+    <view wx:if="{{showLoading}}">
+      <view class="loading">正在加载中…</view>
+    </view>
+    <list-one wx:elif="{{listData.length > 0}}" list="{{listData}}" bind:onShareAppMessage="onShareAppMessage" isQuesAndShare="false" />
+    <view wx:else>
+        他最近没有动态~
+    </view>
+  </sroll-view>
 </view>

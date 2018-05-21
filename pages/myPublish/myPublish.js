@@ -18,7 +18,7 @@ Page({
    */
   onLoad: function () {
     var that = this;
-    that.getQuestList.call(that,0, function (res){
+    that.getTableList.call(that,0, function (res){
       console.log(res.subjects);
       that.setData({
         listData: res.subjects,
@@ -32,7 +32,7 @@ Page({
     let detail = e.detail; // 自定义组件触发事件时提供的detail对象
     console.log(detail);
     if (detail.deleteFlag) {
-      fetch._get.call(that, config.apiList.deleteFromQuestionByMid, {
+      fetch._get.call(that, config.apiList.deleteTableByMidAndType, {
         ...detail
       }, function () {
         util.showText("消息删除成功!");
@@ -40,14 +40,12 @@ Page({
       })
     }
   },
-  getQuestList:function (start,cb){
+  getTableList:function (start,cb){
     var that = this;
-    fetch._get.call(that, config.apiList.getQuestionListByUid, {
+    fetch._get.call(that, config.apiList.loadTableListByUid, {
       start: start,
-      uid: config.openID,
       count: 20
     }, function (res) {
-      // console.log(res.subjects);
       res.subjects.map((item, key, arr) => {
         if (item.picUrl !== "" && item.picUrl) {
           item.picUrl = item.picUrl.split(",");

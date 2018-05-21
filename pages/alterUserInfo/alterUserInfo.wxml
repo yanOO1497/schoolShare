@@ -1,12 +1,12 @@
 <!--pages/alterUserInfo/alterUserInfo.wxml-->
 <view class='page'>
-  <view class="weui-cells weui-cells_after-title">
+  <form class="weui-cells weui-cells_after-title" bindsubmit="submitData">
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">
         <view class="weui-label">昵称</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" placeholder="{{userInfo.nickName}}" />
+        <input name="nickName" class="weui-input" value="{{userInfo.nickName}}"  placeholder="{{userInfo.nickName}}" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input">
@@ -14,7 +14,7 @@
         <view class="weui-label">性别</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" placeholder="{{userInfo.sex}}" />
+        <input name="sex"  bindtap='chooseSex' class="weui-input" value='{{userInfo.sex === 2 ? "女":"男"}}'  />
       </view>
     </view>
     <view class="weui-cell weui-cell_input">
@@ -22,7 +22,7 @@
         <view class="weui-label">学校</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" placeholder="{{userInfo.school}}" />
+        <input name="school" class="weui-input" value="{{userInfo.school}}" placeholder="{{userInfo.school}}" />
       </view>
     </view>
 
@@ -31,28 +31,28 @@
         <view class="weui-label">QQ</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" placeholder="{{userInfo.qq}}" />
+        <input name="qq" class="weui-input" value="{{userInfo.qq}}" placeholder="{{userInfo.qq}}" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">
-        <view class="weui-label">微信</view>
+        <view  class="weui-label">微信</view>
       </view>
       <view class="weui-cell__bd">
-        <input class="weui-input" placeholder="{{userInfo.wechat}}" />
+        <input  name="wechat" class="weui-input" value="{{userInfo.wechat}}" placeholder="{{userInfo.wechat}}" />
       </view>
     </view>
      <view class="weui-cells__title">个性签名</view>
         <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell">
                 <view class="weui-cell__bd">
-                    <textarea class="weui-textarea" placeholder="{{userInfo.bio}}" style="height: 3.3em" />
+                    <textarea  name="bio" class="weui-textarea" value="{{userInfo.bio}}" placeholder="{{userInfo.bio}}" style="height: 3.3em" />
                     <view class="weui-textarea-counter">0/200</view>
                 </view>
             </view>
         </view>
     <view class="weui-btn-area">
-      <button class="weui-btn" type="primary" bindtap="showTopTips">更新资料</button>
+      <button class="weui-btn" type="primary" form-type="submit" >更新资料</button>
     </view>
-  </view>
+  </form>
 </view>

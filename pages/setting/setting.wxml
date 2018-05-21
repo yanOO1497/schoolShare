@@ -5,10 +5,6 @@
       <view class="weui-cell__bd">个人资料</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
-    <!-- <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__bd"></view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </navigator> -->
   </view>
   <view class="weui-cells ">
     <view class="weui-cell weui-cell_switch">
@@ -23,12 +19,12 @@
         <switch />
       </view>
     </view>
-    <view class="weui-cell weui-cell_switch">
+    <!-- <view class="weui-cell weui-cell_switch">
       <view class="weui-cell__bd">新消息提醒</view>
       <view class="weui-cell__ft">
         <switch checked />
       </view>
-    </view>
+    </view> -->
   </view>
   <view class="weui-cells ">
     <navigator url="../about/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">

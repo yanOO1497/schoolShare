@@ -9,7 +9,6 @@
     <view class='fixBar-item top ' wx:if="{{ floorstatus && isShowFixBar}}" bindtap='toTop'>
       <text class='iconfont icon-top'></text>
     </view>
-    <!-- <view class='toggleFixBar' bindtap='toggleFixBar'></view> -->
   </movable-view>
 
   <!-- navtab -->
@@ -20,17 +19,17 @@
     <view wx:if="{{showLoading}}">
       <view class="loading">正在载入数据…</view>
     </view>
-    <list-one wx:else list="{{listData[navtab.selectedId]}}" listType="{{navtab.selectedId}}" bind:onShareAppMessage="onShareAppMessage" isQuesAndShare="false"/>
+    <list-one wx:else list="{{listData[navtab.selectedId]}}" listType="{{navtab.selectedId}}" bind:onShareAppMessage="onShareAppMessage" isQuesAndShare="false" />
     <!-- <view class='hasEnterBottom'">没有更多啦~</view> -->
-     <view class="loading-tip " wx:if="{{!hasMore[navtab.selectedId]}}">
+    <view class="loading-tip " wx:if="{{!hasMore[navtab.selectedId]}}">
       <view class='tips-title'>没有更多内容了！</view>
       <view class='tips-img no-more'></view>
-    </view> 
+    </view>
     <!-- 讲座 列表 -->
 
   </scroll-view>
-<import src="../../component/message/message.wxml"/>
-<template is="message" data="{{message: message}}"  />
+  <import src="../../component/message/message.wxml" />
+  <template is="message" data="{{message: message}}" />
 
 </movable-area>
 

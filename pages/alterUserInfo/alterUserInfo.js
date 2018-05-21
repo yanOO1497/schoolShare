@@ -37,6 +37,41 @@ Page({
 
   },
 
+  submitData(e){
+    let that = this;
+    console.log("提交表单",e.detail.value);
+    fetch._get.call(that, config.apiList.setUserInfo,
+     { ...e.detail.value},function(res){
+        if(res.code === 100){
+          util.showText("更新成功");
+        }else{
+          util.showText(res.msg);
+        }
+    });
+  },
+
+  chooseSex(e){
+    let that = this;
+    wx.showActionSheet({
+      itemList: ['女', '男'],
+      success: function (res) {
+        console.log(res.tapIndex)
+        if (res.tapIndex === 0){
+         
+          that.data.userInfo.sex = 2;
+        }else{
+          that.data.userInfo.sex = 1;
+        }
+        that.setData({
+          useInfo: that.data.userInfo
+        })
+         console.log(that.data.userInfo);
+      },
+      fail: function (res) {
+        console.log(res.errMsg)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

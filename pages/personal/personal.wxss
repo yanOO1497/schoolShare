@@ -1,6 +1,16 @@
 /* pages/personal/personal.wxss */
 @import '../my/my.wxss';
-
+page,.page{
+  overflow: auto;
+}
+.page__hd{
+  width: 100%;
+  
+}
+.title{
+  background: white;
+  padding: 20rpx;
+}
 .user-opton-item {
    display: block; 
   position: absolute;
@@ -27,4 +37,5 @@
 }
 .page__bd{
    background-color: white;
+   height: 300px;
 }

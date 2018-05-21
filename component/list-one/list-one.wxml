@@ -4,23 +4,21 @@
 </view>
 <view wx:elif="{{isQuesAndShare}}">
   <block class='list' wx:for="{{list}}" wx:key="index">
-    <template is="{{listTypeArr[item.type]}}" data="{{...item,index,isQuesAndShare}}" bindtap="checkEnter"></template>
+    <template is="{{listTypeArr[item.type]}}" data="{{...item,index,isQuesAndShare,isShowDelete}}" bindtap="checkEnter"></template>
   </block>
 </view>
-<view wx:else>
-  <block class='list' wx:for="{{list}}" wx:key="index">
-    <template is="{{listType}}" data="{{...item,index,isShowDelete}}" bindtap="checkEnter"></template>
-  </block>
-</view>
+
 
 
 <template name="rewardhelp">
   <view data-mid="{{id}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
     <view class='user-info'>
-      <image class='avatar' src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
+      <image class='avatar' wx:if="{{avatarUrl}}" src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
-        <view class='from'> {{createTime}}<view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--primary zan-tag--plain">求助</view></view>
+        <view class='from'> {{createTime}}
+          <view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--primary zan-tag--plain">求助</view>
+        </view>
       </view>
       <view class='option-more' data-name="more"></view>
     </view>
@@ -34,13 +32,11 @@
         <text>{{reward}}</text>
       </view>
     </view>
-    <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}">
-      <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
-        <text data-name="delete">删除</text>
-      </view>
+    <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}" data-type="{{type}}">
+
       <view class="weui-media-box__info__meta {{agreeFlag == 1 ? 'act' : ''}}">
-        <i class="iconfont icon-dianzan" data-name="useful"></i>
-        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '有用'}}</text>
+        <i class="iconfont icon-aixin" data-name="useful"></i>
+        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '点赞'}}</text>
       </view>
 
       <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{optionList[2] ? 'act' : ''}}">
@@ -51,17 +47,21 @@
         <i class="iconfont icon-fenxiang" data-name="share"></i>
         <button data-name="share" class='share-btn' id="shareBtn" open-type="share" hover-class="other-button-hover">分享</button>
       </view>
-
+      <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+        <text data-name="delete">删除</text>
+      </view>
     </view>
   </view>
 </template>
 <template name="activity">
   <view data-mid="{{id}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
     <view class='user-info'>
-      <image class='avatar' src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
+      <image class='avatar' wx:if="{{avatarUrl}}" src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
-        <view class='from'> {{createTime}}<view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--primary zan-tag--plain">活动</view></view>
+        <view class='from'> {{createTime}}
+          <view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--primary zan-tag--plain">活动</view>
+        </view>
       </view>
       <view class='option-more' wx:if="{{!isDetail}}" data-name="more"></view>
     </view>
@@ -71,11 +71,11 @@
         <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view>
       </view>
     </view>
-    <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}">
+    <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}" data-type="{{type}}">
 
       <view class="weui-media-box__info__meta {{agreeFlag == 1 ? 'act' : ''}}">
-        <i class="iconfont icon-dianzan" data-name="useful"></i>
-        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '感兴趣'}}</text>
+        <i class="iconfont icon-aixin" data-name="useful"></i>
+        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '点赞'}}</text>
       </view>
 
       <view class="weui-media-box__info__meta  weui-media-box__info__meta_extra {{optionList[2] ? 'act' : ''}}">
@@ -97,10 +97,12 @@
 <template name="secondarymarket">
   <view data-mid="{{id}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
     <view class='user-info'>
-      <image class='avatar' src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
+      <image class='avatar' wx:if="{{avatarUrl}}" src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
-        <view class='from'> {{createTime}}<view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--warn zan-tag--plain">出清</view></view>
+        <view class='from'> {{createTime}}
+          <view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--warn zan-tag--plain">出清</view>
+        </view>
       </view>
       <view class='option-more' wx:if="{{!isDetail}}" data-name="more"></view>
     </view>
@@ -110,13 +112,11 @@
         <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view>
       </view>
     </view>
-    <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}">
-      <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
-        <text data-name="delete">删除</text>
-      </view>
+    <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}" data-type="{{type}}">
+
       <view class="weui-media-box__info__meta {{agreeFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-aixin" data-name="useful"></i>
-        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '感兴趣'}}</text>
+        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '点赞'}}</text>
       </view>
       <view class="weui-media-box__info__meta weui-media-box__info__meta_extra {{optionList[2] ? 'act' : ''}}">
         <i class="iconfont icon-pinglun" data-name="comment"></i>
@@ -127,6 +127,9 @@
         <i class="iconfont icon-fenxiang" data-name="share"></i>
         <button data-name="share" class='share-btn' id="shareBtn" open-type="share" hover-class="other-button-hover">分享</button>
       </view>
+      <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+        <text data-name="delete">删除</text>
+      </view>
     </view>
   </view>
 </template>
@@ -136,7 +139,9 @@
       <image class='avatar' src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
-        <view class='from'> {{createTime}} <view wx:if="{{isQuesAndShare}}" class="zan-tag zan-tag--warn zan-tag--plain">分享</view> </view>
+        <view class='from'> {{createTime}}
+          <view wx:if="{{isQuesAndShare}}" class="zan-tag zan-tag--warn zan-tag--plain">分享</view>
+        </view>
       </view>
       <view class='option-more' wx:if="{{!isDetail}}" data-name="more"></view>
     </view>
@@ -146,25 +151,22 @@
         <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view>
       </view>
     </view>
-    <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}">
-      <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
-        <text data-name="delete">删除</text>
-      </view>
+    <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}" data-type="{{type}}">
       <view class="weui-media-box__info__meta   {{agreeFlag == 1 ? 'act' : ''}}">
-        <i class="iconfont icon-dianzan" data-name="useful"></i>
-        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '有用'}}</text>
+        <i class="iconfont icon-aixin" data-name="useful"></i>
+        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '点赞'}}</text>
       </view>
-      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra {{disagreeFlag == 1 ? 'act' : ''}}">
-        <i class="iconfont icon-cai" data-name="useless"></i>
-        <text data-name="useless">{{disagreeNum > 0 ? disagreeNum : '没用'}}</text>
+      <view class="weui-media-box__info__meta {{optionList[2] ? 'act' : ''}} weui-media-box__info__meta_extra">
+        <i class="iconfont icon-pinglun" data-name="comment"></i>
+        <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '评论'}}</text>
       </view>
       <view class="weui-media-box__info__meta weui-media-box__info__meta_extra ">
         <i class="iconfont icon-fenxiang" data-name="share"></i>
         <button data-name="share" class='share-btn' id="shareBtn" open-type="share" hover-class="other-button-hover">分享</button>
       </view>
-      <view class="weui-media-box__info__meta {{optionList[2] ? 'act' : ''}} weui-media-box__info__meta_extra">
-        <i class="iconfont icon-pinglun" data-name="comment"></i>
-        <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '评论'}}</text>
+
+      <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+        <text data-name="delete">删除</text>
       </view>
     </view>
   </view>
@@ -176,7 +178,7 @@
       <view class='user-data'>
         <view class='nickname'>{{nickName}}</view>
         <view class='from'> {{createTime}}
-           <view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--primary zan-tag--plain">问答</view> 
+          <view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--primary zan-tag--plain">问答</view>
         </view>
       </view>
       <view class='option-more' wx:if="{{!isDetail}}" data-name="more"></view>
@@ -187,7 +189,7 @@
         <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view>
       </view>
     </view>
-    <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}">
+    <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}" data-type="{{type}}">
 
       <view class="weui-media-box__info__meta {{agreeFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-aixin" data-name="useful"></i>

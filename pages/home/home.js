@@ -69,6 +69,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("ߘ 表情？？")
     var that = this;
     wx.showNavigationBarLoading();
     // 获取用户信息
@@ -168,7 +169,7 @@ Page({
   onShow() {
     console.log("页面是否刷新", this.data.shouldRefresh);
     if (this.data.shouldRefresh) {
-      this.refreshData(1);
+      this.refreshData(0);
       this.setData({
         shouldRefresh: false
       })

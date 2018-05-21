@@ -10,13 +10,25 @@
   font-size: 50rpx;
 }
 
+.page__bd{
+  font-size: 30rpx;
+}
+
+.weui-media-box__title{
+  font-size: 30rpx;
+}
+
+.weui-media-box weui-media-box_appmsg{
+  padding: 15rpx;
+}
+
 .title{
   margin: 20rpx;
   border-bottom: 1px solid #ccc;
 }
 
 .carousel-wrap{
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 720rpx;
   /* background-color: white; */
 }

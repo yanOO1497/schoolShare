@@ -10,7 +10,7 @@ skinList: “我的”页面背景列表
 无线ip:192.168.1.102
 */
 
-var url = 'http://192.168.1.102:8082/school_share/share'
+var url = 'http://192.168.191.1:8082/school_share/share'
 module.exports = {
   APP_ID:'wx15734a2373afa7a8',
   APP_SECRET:'10c27dc6070ef03f708ccdbe3c072e21',
@@ -25,10 +25,14 @@ module.exports = {
     // questionList: url + '/loadQuestionList.do',//加载问答列表
     // loadExperienceList: url + '/loadExperienceList.do',//加载问答列表
     loadTableList: url + '/loadTableList.do',//加载各类信息列表
+    loadTableListByUid: url + '/loadTableListByUid.do',// 信息列表
     loadBookList: url + '/loadBookList.do',//加载图书列表
+    loadCollectList: url + '/loadCollectList.do',//获取我的收藏列表
+    setUserInfo: url + '/setUserInfo.do',//更改个人资料
     loadQuesAndShareList: url + '/loadQuesAndShareList.do',
     getChatLogDetails: url + '/getChatLogDetails.do',//获取聊天记录详情
     getChats: url + '/getChats.do',//获取消息列表页
+    getUnreadMessage: url + '/getUnreadMessage.do',
     getCarousel: url + '/getCarousel.do',//获取资料库最新轮播图
     searchCoursewareList: url + '/searchCoursewareList.do', //搜索课件资料
     getExperienceListByUid: url + '/getExperienceListByUid.do',
@@ -37,17 +41,17 @@ module.exports = {
     setBioByUid: url + '/setBioByUid.do',//添加用户签名
     addToQuestion: url + '/addToQuestion.do',//添加问答
     addToFeedback: url + '/addToFeedback.do',//反馈
-    deleteFromQuestionByMid: url + '/deleteFromQuestionByMid.do',//删除文档列表
-    getQuestionListByUid: url + '/getQuestionListByUid.do',//获取用户问答列表
+    deleteTableByMidAndType: url + '/deleteTableByMidAndType.do',//删除文档列表
+    getQuestionListByUid: url + '/getQuestionListByUid.do',//获取用户问答列表；
     setReport: url + '/setReport.do',//举报文章
     setCollect: url + '/setCollect.do',//收藏文章
     setShare: url + '/setShare.do',//转发内容
     setAgree: url + '/setAgree.do',//点赞文章
     getComment: url + '/getComment.do',//获取文章 评论信息
     addToComment: url + '/addToComment.do',//添加评论
-    uploadPic: url + '/uploadPic.do',//上传图片
+    uploadFile: url + '/uploadFile.do',//上传文件
     publish: url + '/publish.do',//发布消息
-    webSocket: 'ws://192.168.1.102:8082/school_share/websocket/',
+    webSocket: 'ws://192.168.191.1:8082/school_share/websocket/',
     getMessageByMidAndType: url + '/getMessageByMidAndType.do',
     personDetail: 'https://api.douban.com/v2/movie/celebrity/',
     baiduMap: 'https://api.map.baidu.com/geocoder/v2/'

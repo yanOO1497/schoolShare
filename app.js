@@ -18,11 +18,6 @@ App({
     });
     
   },
-  getUserInfo: function () {
-    // util.getUserInfo();
-  },
- 
-
   globalData: {
     userInfo: null,
     tempUserInfo:null

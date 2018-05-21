@@ -1,22 +1,63 @@
 /* pages/message/message.wxss */
-.weui-btn{
+zan-tab{
+  position: fixed;
+  top:0;
+  z-index: 20;
+}
+
+.page-content{
+  margin-top: 45px;
+}
+
+.weui-btn {
   display: inline-block;
   margin: auto;
 }
 
-.no-msg{
+.no-msg {
   background: url('http://p8aftlhm5.bkt.clouddn.com/no-msg.png') no-repeat;
   background-size: contain;
 }
-.mes-wrap{
+
+.mes-wrap {
   display: flex;
 }
-.mes-content , .mes-time{
-  /* display: inline-block; */
-  flex:1;
+
+.mes-content, .mes-time {
+  flex: 1;
 }
 
-.mes-content{
+.comment-item {
+  background-color: white;
+  padding:0 20rpx;
+  display: flex;
+}
+
+.user-info {
+  color: black;
+}
+
+.content {
+  color: #666;
+  margin-bottom: 15rpx;
+}
+
+.creatTime {
+  font-size: 25rpx;
+  color: #ccc;
+}
+
+.comment-right {
+  flex: 3;
+  border-bottom: 1rpx solid #ccc;
+  padding: 15rpx 0;
+}
+
+.mes-content {
+  margin-bottom: 20rpx;
+}
+
+.mes-content {
   white-space: nowrap;
   text-overflow: ellipsis;
 }

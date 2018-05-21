@@ -16,7 +16,8 @@ Page({
       school: "福州大学",
       sex:2
     },
-    isUser:false
+    isUser:false,
+    listData:[]
 
   },
 
@@ -31,11 +32,24 @@ Page({
     fetch._get.call(that, config.apiList.loadUserInfoDetails, { uid: options.uid }, function (res) {
       that.setData({
         userInfo:res.result,
-        isUser: that.data.isUser
+        isUser: that.data.isUser,
+        listData: res.subjects
       })
       
     })
+    // that.getRencentList(options.uid);
   },
+
+  getRencentList:function(uid){
+    let that = this;
+    fetch._get.call(that, config.apiList.loadTableListByUid, { uid,start:0, count:5 }, function (res) {
+      that.setData({
+        listData: res.result
+      })
+
+    })
+  },
+
   tabchange: function (e) {
     var that = this;
     that.data.navtab.selectedId = e.detail;

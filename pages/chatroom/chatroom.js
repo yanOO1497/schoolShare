@@ -32,7 +32,7 @@ Page({
       start: 0,
       count: 10
     }, function (res) {
-      if (!that.data.otherUserInfo.avatarUrl) {
+      if (!that.data.otherUserInfo.avatarUrl && res.subjects.length !== 0) {
         for (let item of res.subjects) {
           if (item.toUid == config.openID) {
             let { nowAvatarUrl, nowNickName, uid } = item;
@@ -51,17 +51,29 @@ Page({
             }
           }
         }
+        that.setData({
+          chatData: res.subjects,
+          nowUid: config.openID,
+          otherUserInfo: that.data.otherUserInfo,
+          myUserInfo: that.data.myUserInfo
+        })
+        wx.setNavigationBarTitle({
+          title: "私信" + that.data.otherUserInfo.toNickName//页面标题为路由参数
+        })
+      } else if (res.subjects.length == 0){
+        that.setData({
+          chatData: res.subjects,
+          nowUid: config.openID,
+          otherUserInfo: options,
+          myUserInfo: that.data.myUserInfo
+        })
+        wx.setNavigationBarTitle({
+          title: "私信" + that.data.otherUserInfo.nickName//页面标题为路由参数
+        })
       }
-      that.setData({
-        chatData: res.subjects,
-        nowUid: config.openID,
-        otherUserInfo: that.data.otherUserInfo,
-        myUserInfo: that.data.myUserInfo
-      })
+      
 
-      wx.setNavigationBarTitle({
-        title: "私信" + that.data.otherUserInfo.toNickName//页面标题为路由参数
-      })
+     
 
       that.runToBottom();
       console.log(that.data.otherUserInfo);

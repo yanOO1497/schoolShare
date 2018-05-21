@@ -1,7 +1,7 @@
 <!--pages/chateRoom/chatroom.wxml-->
 
 <view class='page'>
-  <scroll-view scroll-y class='chat-wrap' scroll-with-animation = "true" scrollTop="{{scrollTop}}">
+  <scroll-view scroll-y class='chat-wrap' scroll-with-animation="true" scrollTop="{{scrollTop}}">
 
     <template wx:for="{{chatData}}" wx:key="*this" is="{{item.uid == nowUid ?'mySentMes' : 'otherSentMes'}}" data="{{...item,myUserInfo,otherUserInfo,length}}"> </template>
   </scroll-view>
@@ -14,9 +14,7 @@
       <view class="weui-cell__bd">
         <input class="weui-input" placeholder="请输入文本" value='{{message}}' bindinput='inputTyping' />
       </view>
-      <view class="weui-cell__ft">
-        <button class='weui-btn mini-btn' plain="true" type="primary" size="mini" bindtap='sentMessage'>发送</button>
-      </view>
+      <button class='weui-cell__ft weui-btn mini-btn' plain="true" type="primary" size="mini" bindtap='sentMessage'>发送</button>
     </view>
   </view>
 </view>
@@ -33,7 +31,7 @@
 </template>
 
 <template name="otherSentMes">
-  <view class='chat-other clearfloat chat-item ' >
+  <view class='chat-other clearfloat chat-item '>
     <view class='chat-detail'>{{content}}</view>
     <image src='{{otherUserInfo.toAvatarUrl}}' class='avatar'></image>
   </view>

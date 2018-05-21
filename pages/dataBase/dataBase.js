@@ -25,7 +25,8 @@ Page({
         iconClass: "icon-zhishi"
       }
     ],
-    carousel:[]
+    carousel:[],
+    scrollTop:0
   },
 
   /**
@@ -59,7 +60,7 @@ Page({
   getCarousel(){
     let that = this;
     fetch._get.call(that, config.apiList.getCarousel,{
-      count:5
+      count:10
     },function(res){
       console.log("获取轮播图成功 ",res);
       that.setData({

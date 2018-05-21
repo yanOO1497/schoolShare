@@ -1,5 +1,6 @@
 /* pages/listDetail/listDetail.wxss */
 @import '../../component/list-one/list-one';
+
 .img-wrap{
   display: flex;
   flex-wrap:wrap;

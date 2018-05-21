@@ -11,22 +11,25 @@
   </view>
   <view class="page__bd">
     <view class='title'>最新上传内容</view>
-
-    <view class='carousel-wrap'>
-
-      <!-- <view class=''>{{item.type == 7 ? 'books' : 'courseware'}}</view> -->
-      <template  wx:for="{{carousel}}" is="{{item.type == 6 ? 'books' : 'courseware'}}" data="{{...item}}"></template>
-    </view>
+    <scroll-view scroll-y scrollTop='{{scrollTop}}' class='carousel-wrap'>
+      <view class='carousel-item'>
+        <template wx:for="{{carousel}}" is="{{item.type == 6 ? 'books' : 'courseware'}}" data="{{...item}}"></template>
+      </view>
+      <view class='carousel-item'>
+        <template wx:for="{{carousel}}" is="{{item.type == 6 ? 'books' : 'courseware'}}" data="{{...item}}"></template>
+      </view>
+    </scroll-view>
   </view>
 </view>
 
 <template name="books">
-  <view  class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+  <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
       <image class="weui-media-box__thumb" src="{{avatarUrl}}" />
     </view>
     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-      <view class="weui-media-box__title"><text class='user-link'>{{nickName}}</text>分享了{{bookName}}</view>
+      <view class="weui-media-box__title">
+        <text class='user-link'>{{nickName}}</text>分享了{{bookName}}</view>
       <view class="weui-media-box__desc">{{dec}}</view>
     </view>
     <!-- <view class="weui-media-box__info">
@@ -43,7 +46,10 @@
       <image class="weui-media-box__thumb" src="{{avatarUrl}}" />
     </view>
     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-      <view class="weui-media-box__title"><text class='user-link'>{{nickName}}</text>分享了<text>{{courseName}}</text></view>
+      <view class="weui-media-box__title">
+        <text class='user-link'>{{nickName}}</text>分享了
+        <text>{{courseName}}</text>
+      </view>
       <view class="weui-media-box__desc">{{courseDec}}</view>
     </view>
     <!-- <view class="weui-media-box__info">

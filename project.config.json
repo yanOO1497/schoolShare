@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -59,7 +59,7 @@
 				{
 					"id": 4,
 					"name": "聊天室",
-					"pathName": "pages/chatroom/chatroom",
+					"pathName": "pages/my/my",
 					"query": ""
 				},
 				{

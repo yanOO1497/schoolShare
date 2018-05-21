@@ -35,7 +35,10 @@ Page({
     })
   },
   bindValue : function (e){
-    this.data.textareaArea = e.detail.value; 
+    // this.data.textareaArea = e.detail.value; 
+    this.setData({
+      textareaArea: e.detail.value
+    })
   },
   bindReward(e){
     this.data.reward = e.detail.value; 
@@ -43,7 +46,6 @@ Page({
   },
   formSubmit: function (event) {
     var that = this;
-    console.log("点击发送")
     let { typesIndex, textareaArea } = that.data;
     if (typesIndex !== 0 && textareaArea !== '') {
       console.log(textareaArea, "submit");
@@ -81,7 +83,7 @@ Page({
             }
             console.log(formData);
             fetch._uploadFile.call(that,{
-              url: config.apiList.uploadPic,
+              url: config.apiList.uploadFile,
               filePath: res.tempFilePaths[0],
               name: 'image',
               formData: formData,
@@ -122,7 +124,7 @@ Page({
   publishData: function (option){
     var that = this;
     let prams = {};
-    console.log("发布地方"+that.data.uploadImgList);
+    // console.log("发布地方"+that.data.uploadImgList);
     if (that.data.uploadImgList.length > 0){
       if (option === 1) {
         prams.successUrl = that.data.uploadImgList
@@ -159,6 +161,8 @@ Page({
        
       },2000)
       
+    },function(res){
+      console.log("发布失败",res);
     })
   },
   /**

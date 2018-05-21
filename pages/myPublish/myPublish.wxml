@@ -2,4 +2,4 @@
 <view wx:if="{{showLoading}}">
   <view class="loading">玩命加载中…</view>
 </view>
-<list-one wx:else list="{{listData}}" listType="question" bind:observeDelete="observeDelete" isShowDelete="yes" />
+<list-one wx:else list="{{listData}}"  bind:observeDelete="observeDelete" isShowDelete="yes" isQuesAndShare="true" />

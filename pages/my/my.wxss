@@ -1,41 +1,46 @@
 /* pages/my/my.wxss */
-.page{
-  background: url("http://attach.bbs.miui.com/forum/201709/16/215420yjddlec5okkk58vj.jpg") no-repeat;
-  background-size: cover;
-  overflow: hidden;
-}
-.page__hd{
+
+
+
+.page__hd {
   position: relative;
-  background-color: rgba(255, 255, 255, .2);
+  background-color: rgba(255, 255, 255, 0.2);
   color: white;
   text-align: center;
   min-height: 50%;
-  box-sizing:border-box; 
-  /* padding: 0; */
+  box-sizing: border-box;
+  background: url("http://attach.bbs.miui.com/forum/201709/16/215420yjddlec5okkk58vj.jpg") no-repeat;
+  background-size: cover;
 }
-.page__bd{
+
+.page__bd {
   text-align: center;
   background-color: white;
   min-height: 50%;
-  box-sizing:border-box; 
+  box-sizing: border-box;
 }
 
-.user-info .iconfont{
- margin: 0 10rpx; 
+.user-info .iconfont {
+  margin: 0 10rpx;
 }
-.user-name{
+
+.user-name {
   font-size: 34rpx;
   font-weight: 600;
 }
+
 .icon-girl {
   color: rgb(255, 77, 148);
 }
+
 .icon-boy {
   color: #35a1d4;
 }
+
 .icon-school {
   /* color: rgb(35, 148, 251); */
 }
+
 .bio {
   line-height: 60rpx;
   font-size: 30rpx;
@@ -46,72 +51,84 @@
   text-align: center;
 }
 
-.icon-list{
+.icon-list {
   position: absolute;
-   width: 100%; 
+  width: 100%;
   box-sizing: border-box;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   padding: 0 20rpx;
 }
- .icon-list .iconfont{
-    float: left;
-    font-size:50rpx;
-  }
-  .icon-list  .icon-yifu{
-    float: right;
-  } 
-  .user-info,.user-item{
-    text-align: center;
-  }
-  .user-login{
-    display: inline-block;
-    line-height: 40rpx;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 80rpx;
-    margin: auto;
-  }
-  .user-img{
-    width: 120rpx;
-    height: 120rpx;
-    background-color: #ccc;
-    border-radius: 50%;
-    margin: 0 auto;
-    position: relative;
-  }
-  .points{
-    color: #ddd;
-    font-size: 26rpx;
-  }
-  .broadcast{
-    position: absolute;
-    padding: 0 15rpx;
-    bottom: 0;
-    left: 0;
-    width:100%;
-    box-sizing: border-box;
-    height: 60rpx;
-    line-height: 60rpx;
-    color: #FE9900;
-    background-color: rgba(51, 51, 51, 0.3)
-  }
-.broadcast-text{
+
+.icon-list .iconfont {
+  float: left;
+  font-size: 50rpx;
+}
+
+.icon-list  .icon-yifu {
+  float: right;
+}
+
+.user-info, .user-item {
+  text-align: center;
+}
+
+.user-login {
+  display: inline-block;
+  line-height: 40rpx;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80rpx;
+  margin: auto;
+}
+
+.user-img {
+  width: 120rpx;
+  height: 120rpx;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.points {
+  color: #ddd;
+  font-size: 26rpx;
+}
+
+.broadcast {
+  position: absolute;
+  padding: 0 15rpx;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #fe9900;
+  background-color: rgba(51, 51, 51, 0.3);
+}
+
+.broadcast-text {
   font-size: 25rpx;
   padding-left: 10rpx;
 }
-.weui-grids{
+
+.weui-grids {
   text-align: center;
 }
-.weui-grids .iconfont{
+
+.weui-grids .iconfont {
   font-size: 50rpx;
 }
- /* .weui-media-box__info{
+
+/* .weui-media-box__info{
   display: flex;
 } */
-.weui-media-box__info__meta{
+
+.weui-media-box__info__meta {
   line-height: 40rpx;
-} 
+}

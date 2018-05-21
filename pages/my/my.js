@@ -16,14 +16,14 @@ Page({
     broadcast: "最新消息最新消息",
     gridList:[
       {
-        name:"每日签到",
-        urlName:"setting",
-        iconClass:"icon-qiandao"
+        name: "我的发布",
+        urlName: "myPublish",
+        iconClass: "icon-wenda"
       },
       {
-        name: "我的问答",
-        urlName: "myQuestion",
-        iconClass: "icon-wenda"
+        name: "我的收藏",
+        urlName: "myCollect",
+        iconClass: "icon-shoucang"
       },
       {
         name: "我的分享",
@@ -31,9 +31,9 @@ Page({
         iconClass: "icon-fenxiang"
       },
       {
-        name: "我的收藏",
+        name: "我的上传",
         urlName: "setting",
-        iconClass: "icon-shoucang"
+        iconClass: "icon-online"
       },
       {
         name: "意见反馈",
@@ -66,7 +66,7 @@ Page({
 
         that.setData({
           userInfo: config.userInfo,
-          hasUserInfo: true
+          isLogin: true
         })
       })
     }

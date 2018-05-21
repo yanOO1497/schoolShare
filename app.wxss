@@ -3,12 +3,16 @@
 @import "./common/style/iconfont.wxss";   
 @import "./common/style/weui.wxss";
 @import "./common/style/zanui.wxss";
-@import "./common/style/base.wxss";
 
 /*清除浮动代码*/ 
 .clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0} 
 .clearfloat{zoom:1} 
-
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
 page,.page{
   width: 100%;
   color: #161716;
@@ -34,9 +38,9 @@ page{
 .page__hd {
     padding: 40px;
 }
-.page__bd {
+/* .page__bd {
     padding-bottom: 40px;
-}
+} */
 .page__bd_spacing {
     padding-left: 15px;
     padding-right: 15px;

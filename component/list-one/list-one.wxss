@@ -7,6 +7,7 @@
   color: inherit;
   line-height: inherit;
   font-size: inherit;
+  padding: 0;
 }
 button::after{
   border:none;
