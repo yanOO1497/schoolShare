@@ -6,7 +6,7 @@
 
 目前项目尚在起步阶段，原型设计也不太完善，暂且贴出目前项目选用的各类工具，欢迎批评指正！
 
-![image](http://p8aftlhm5.bkt.clouddn.com/%E6%80%BB%E5%9B%BE1.jpg)
+![image](http://p8aftlhm5.bkt.clouddn.com/%E4%B8%AD%E7%AD%89%E5%9B%BE%E7%89%87%20%282%29.jpg)
 
 ## 项目涉及：
 
