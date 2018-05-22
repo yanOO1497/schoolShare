@@ -1,0 +1,98 @@
+<!--pages/publish/publish.wxml-->
+<view class='page'>
+  <!-- <view> {{textareaArea}}</view> -->
+  <form bindsubmit="formSubmit" wx:if="{{!isPublish}}">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+          <view class="weui-label">发布模块</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindTypesChange" value="{{typesIndex}}" range="{{types}}">
+            <view class="weui-select weui-select_in-select-after">{{types[typesIndex]}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">标题</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name="wechat" class="weui-input" value="{{userInfo.wechat}}" placeholder="请输入标题" />
+        </view>
+
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">文件</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name="wechat" class="weui-input" value="{{userInfo.wechat}}" placeholder="请选择文件" bindtap='chooseFile'/>
+        </view>
+
+      </view>
+    </view>
+    <view class="weui-cells__title">资料描述</view>
+    <view class="weui-cells weui-cells_after-title">
+
+      <view class="weui-cell">
+        <textarea class="weui-textarea" placeholder="{{publish_placeholder[typesIndex]}}" style="height: 7.3em" value='{{textareaArea}}' bindblur="bindValue" bindinput="bindValue" />
+      </view>
+    </view>
+    <view class="weui-progress">
+      <view class="weui-progress__bar">
+        <progress percent="{{progress}}" stroke-width="3" />
+      </view>
+      <view class="weui-progress__opr">
+        <icon type="cancel" size="22"></icon>
+      </view>
+    </view>
+    <view class="weui-btn-area">
+      <button type="primary" bindtap="upload" disabled="{{disabled}}">上传</button>
+    </view>
+    <!-- <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-uploader__bd">
+          <view class="weui-uploader__files" id="uploaderFiles">
+            <block wx:for="{{files}}" wx:key="*this">
+              <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                <view class="weui-uploader__file-content" wx:if="{{showWarn[index]}}">
+                  <icon type="warn" size="23" color="#F43530"></icon>
+                </view>
+                <view class="weui-uploader__file-content" wx:if="{{showImgLoad[index]}}">正在上传</view>
+
+              </view>
+            </block>
+          </view>
+          <view class="weui-uploader__input-box">
+            <view class="weui-uploader__input" bindtap="chooseImage"></view>
+          </view>
+        </view>
+      </view>
+      <button type='primary'>发布</button>
+    </view> -->
+
+  </form>
+  <view wx:else class='publish-result'>
+    <view class="weui-msg__icon-area">
+      <icon type="success" size="93"></icon>
+    </view>
+    <view class="weui-msg__text-area">
+      <view class="weui-msg__title">发送成功</view>
+      <view class="weui-msg__desc">{{publish_result[typesIndex]}}</view>
+    </view>
+  </view>
+</view>
+<template name="img-item">
+  <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+    <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+    <view class="weui-uploader__file-content">
+      <view class="weui-uploader__file-content">
+        {{showImgLoad[index]}}
+        <text wx:if="{{showImgLoad[index]}}">正在上传</text>
+        <icon type="warn" size="23" color="#F43530" wx:if="{{showWarn[index]}}"></icon>
+      </view>
+    </view>
+  </view>
+</template>

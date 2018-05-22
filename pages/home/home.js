@@ -20,7 +20,7 @@ Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
-    shouldRefresh: false,
+    shouldRefresh: true,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     scrollTop: 0,
     floorstatus: false,
@@ -110,13 +110,23 @@ Page({
           item.picUrl = item.picUrl.split(",");
         }
       })
+      
       if (refreshType == "refresh") {
+        that.data.start[select]= 0;
         that.data.listData[select] = res.subjects;
       } else {
         that.data.listData[select] = that.data.listData[select].concat(res.subjects);
       }
       console.log(refreshType, select, that.data.listData[select], res.subjects);
+      let hasMore = that.data.hasMore;
+      
+      if (res.subjects.length < count) {
+        hasMore[select] = false;
+      } else {
+        hasMore[select] = true;
+      }
       that.setData({
+        hasMore,
         listData: that.data.listData,
         showLoading: false
       });
@@ -168,12 +178,13 @@ Page({
    */
   onShow() {
     console.log("页面是否刷新", this.data.shouldRefresh);
-    if (this.data.shouldRefresh) {
-      this.refreshData(0);
-      this.setData({
-        shouldRefresh: false
-      })
-    }
+    this.refreshData(0);
+    // if (this.data.shouldRefresh) {
+    //   this.refreshData(0);
+    //   this.setData({
+    //     shouldRefresh: false
+    //   })
+    // }
   },
 
   /**
@@ -205,22 +216,9 @@ Page({
     let { hasMore, count, } = that.data;
     let selectedId = that.data.navtab.selectedId;
     if (hasMore[selectedId]) {
-
       that.data.start[selectedId] = that.data.start[selectedId] + 5;
-
       console.log(that.data.start[selectedId]);
-      that.refreshData(that.data.start[selectedId], "load", function (res) {
-
-        console.log("加载成功", res.subjects.length, count);
-
-        if (res.subjects.length < count) {
-          hasMore[selectedId] = false;
-          that.setData({
-            hasMore
-          })
-          console.log("已经到底部了");
-        }
-      })
+      that.refreshData(that.data.start[selectedId], "load");
     }
 
   },

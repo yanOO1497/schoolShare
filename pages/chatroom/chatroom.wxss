@@ -1,5 +1,7 @@
 /* pages/chateRoom/chatroom.wxss */
-
+.weui-btn{
+  margin: 0;
+}
 .chat-wrap{
   margin: 25rpx;
    height: 90%; 
@@ -31,17 +33,20 @@
  .chat-item{
   position: relative;
   min-height: 120rpx;
+  margin:20rpx 0;
 } 
 
 .chat-detail{
   line-height: 50rpx;
-  width: 80%;
+  max-width: 75%; 
   padding: 20rpx;
   border-radius: 20rpx;
+  display: inline-block;
 }
 .chat-my  .chat-detail{
   float: right;
   background-color: white;
+  text-align: left;
 }
 
 .chat-other .chat-detail{
@@ -50,7 +55,6 @@
 .sentFlag{
   position: absolute;
   top:10rpx;
-
   width: 20%;
   height: 50rpx;
 }

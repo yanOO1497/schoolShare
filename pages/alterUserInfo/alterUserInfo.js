@@ -57,13 +57,12 @@ Page({
       success: function (res) {
         console.log(res.tapIndex)
         if (res.tapIndex === 0){
-         
           that.data.userInfo.sex = 2;
         }else{
           that.data.userInfo.sex = 1;
         }
         that.setData({
-          useInfo: that.data.userInfo
+          userInfo: that.data.userInfo
         })
          console.log(that.data.userInfo);
       },

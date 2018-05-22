@@ -41,6 +41,9 @@ Page({
 
   refreshCommentData(start, refreshType = "refresh", cb) {
     let that = this;
+    that.setData({
+      showLoading: true
+    })
     fetch._get.call(that, config.apiList.getUnreadMessage, {
       start,
       count: 10

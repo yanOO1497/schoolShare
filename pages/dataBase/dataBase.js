@@ -42,6 +42,9 @@ Page({
   onReady: function () {
   
   },
+  toUpload(){
+    
+  },
   jumpCheck: function (e) {
     let that = this;
     let index = e.currentTarget.dataset.index;

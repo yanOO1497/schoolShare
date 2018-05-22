@@ -1,11 +1,6 @@
 <!--pages/my/my.wxml-->
 <view class='page'>
   <view class="page__hd">
-    <!-- <view class='icon-list'>
-      <i class='iconfont .icon-saomianerweima' bindtap="scan"></i>
-      <i class='iconfont .icon-yifu'></i>
-    </view> -->
-
     <view class=' user-img' wx:if="{{!isLogin}}" bindtap="getUserInfo">
       <text class='user-login'>立即\n登录</text>
     </view>

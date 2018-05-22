@@ -10,13 +10,15 @@
     <view class="weui-cell weui-cell_switch">
       <view class="weui-cell__bd">是否显示微信号在个人主页</view>
       <view class="weui-cell__ft">
-        <switch />
+        <!-- <switch /> -->
+        <zan-switch checked="{{asyncWechat.checked}}" loading="{{ asyncWechat.loading }}" bind:change="asyncChangeWechat" />
       </view>
     </view>
     <view class="weui-cell weui-cell_switch">
       <view class="weui-cell__bd">是否显示QQ号在个人主页</view>
       <view class="weui-cell__ft">
-        <switch />
+        <!-- <switch /> -->
+        <zan-switch checked="{{asyncQQ.checked}}" loading="{{ asyncQQ.loading }}" bind:change="asyncChangeQQ" />
       </view>
     </view>
     <!-- <view class="weui-cell weui-cell_switch">

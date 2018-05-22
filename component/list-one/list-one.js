@@ -174,9 +174,9 @@ Component({
           list: that.data.list
         })
         if (nowFlag === 0) {
-          that.showToastSu("收藏成功！");
+          util.showText("收藏成功！");
         } else {
-          that.showToastSu("取消收藏成功！");
+          util.showText("取消收藏成功！");
         }
       }, function () {
 

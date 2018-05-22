@@ -6,7 +6,7 @@
         <view class="weui-label">昵称</view>
       </view>
       <view class="weui-cell__bd">
-        <input name="nickName" class="weui-input" value="{{userInfo.nickName}}"  placeholder="{{userInfo.nickName}}" />
+        <input name="nickName" class="weui-input" value="{{userInfo.nickName}}" placeholder="{{userInfo.nickName}}" />
       </view>
     </view>
     <view class="weui-cell weui-cell_input">
@@ -14,7 +14,8 @@
         <view class="weui-label">性别</view>
       </view>
       <view class="weui-cell__bd">
-        <input name="sex"  bindtap='chooseSex' class="weui-input" value='{{userInfo.sex === 2 ? "女":"男"}}'  />
+        <input name="sex" class="weui-input" value='{{userInfo.sex}}' hidden='true' />
+        <view class="weui-input" bindtap='chooseSex'>{{userInfo.sex === 2 ? "女":"男"}}</view>
       </view>
     </view>
     <view class="weui-cell weui-cell_input">
@@ -36,23 +37,24 @@
     </view>
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__hd">
-        <view  class="weui-label">微信</view>
+        <view class="weui-label">微信</view>
       </view>
       <view class="weui-cell__bd">
-        <input  name="wechat" class="weui-input" value="{{userInfo.wechat}}" placeholder="{{userInfo.wechat}}" />
+        <input name="wechat" class="weui-input" value="{{userInfo.wechat}}" placeholder="{{userInfo.wechat}}" />
       </view>
     </view>
-     <view class="weui-cells__title">个性签名</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell">
-                <view class="weui-cell__bd">
-                    <textarea  name="bio" class="weui-textarea" value="{{userInfo.bio}}" placeholder="{{userInfo.bio}}" style="height: 3.3em" />
-                    <view class="weui-textarea-counter">0/200</view>
-                </view>
-            </view>
-        </view>
+    <view class="weui-cells__title">个性签名</view>
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea name="bio" class="weui-textarea" value="{{userInfo.bio}}" placeholder="{{userInfo.bio}}" style="height: 3.3em" />
+        <view class="weui-textarea-counter">0/200</view>
+      </view>
+    </view>
+    <!-- <view class="weui-cells weui-cells_after-title">
+
+    </view> -->
     <view class="weui-btn-area">
-      <button class="weui-btn" type="primary" form-type="submit" >更新资料</button>
+      <button class="weui-btn" type="primary" form-type="submit">更新资料</button>
     </view>
   </form>
 </view>

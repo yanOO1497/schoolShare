@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的分享",
+  "usingComponents": {
+    "list-one": "../../component/list-one/list-one"
+  }
+}

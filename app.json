@@ -17,7 +17,9 @@
     "pages/shareBooks/shareBooks",
     "pages/courseware/courseware",
     "pages/quesAndShare/quesAndShare",
-    "pages/myCollect/myCollect"
+    "pages/myCollect/myCollect",
+    "pages/myShare/myShare",
+    "pages/uploadFiles/uploadFiles"
   ],
   "window": {
     "backgroundTextStyle": "light",

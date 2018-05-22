@@ -27,7 +27,7 @@ Page({
       },
       {
         name: "我的分享",
-        urlName: "setting",
+        urlName: "myShare",
         iconClass: "icon-fenxiang"
       },
       {

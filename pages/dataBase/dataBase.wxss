@@ -1,4 +1,4 @@
-/* pages/dataBase/dataBase.wxss */
+@import '../home/home';
 .page{
   overflow: hidden;
   background-color: white;

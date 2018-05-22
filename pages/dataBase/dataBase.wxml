@@ -1,5 +1,11 @@
 <!--pages/dataBase/dataBase.wxml-->
-<view class='page'>
+<movable-area class='page'>
+
+  <movable-view class='fixBar' direction="all" x="280" y="400">
+    <navigator url='../uploadFiles/uploadFiles' class='fixBar-item write ' >
+      <text class='iconfont icon-upload'></text>
+    </navigator>
+  </movable-view>
 
   <view class="weui-grids">
     <block wx:for="{{gridList}}" wx:key="*this">
@@ -20,7 +26,7 @@
       </view>
     </scroll-view>
   </view>
-</view>
+</movable-area>
 
 <template name="books">
   <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">

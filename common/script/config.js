@@ -28,6 +28,7 @@ module.exports = {
     loadTableListByUid: url + '/loadTableListByUid.do',// 信息列表
     loadBookList: url + '/loadBookList.do',//加载图书列表
     loadCollectList: url + '/loadCollectList.do',//获取我的收藏列表
+    loadShareList: url + '/loadShareList.do',//获取我的分享列表
     setUserInfo: url + '/setUserInfo.do',//更改个人资料
     loadQuesAndShareList: url + '/loadQuesAndShareList.do',
     getChatLogDetails: url + '/getChatLogDetails.do',//获取聊天记录详情
@@ -47,6 +48,8 @@ module.exports = {
     setCollect: url + '/setCollect.do',//收藏文章
     setShare: url + '/setShare.do',//转发内容
     setAgree: url + '/setAgree.do',//点赞文章
+    toggleShowWechat: url + '/toggleShowWechat.do',//显示微信号
+    toggleShowQQ: url + '/toggleShowQQ.do',//显示QQ号
     getComment: url + '/getComment.do',//获取文章 评论信息
     addToComment: url + '/addToComment.do',//添加评论
     uploadFile: url + '/uploadFile.do',//上传文件
