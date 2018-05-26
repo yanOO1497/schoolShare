@@ -34,8 +34,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "个人信息",
-					"pathName": "pages/alterUserInfo/alterUserInfo",
+					"name": "上传",
+					"pathName": "pages/uploadFiles/uploadFiles",
 					"query": "uid=o2GCt4iaAWOlVDzD3XX1nxc-KYKY"
 				},
 				{
@@ -78,6 +78,12 @@
 					"id": -1,
 					"name": "消息",
 					"pathName": "pages/message/message",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/login/login",
 					"query": ""
 				}
 			]

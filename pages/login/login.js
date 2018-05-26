@@ -23,21 +23,26 @@ Page({
         sex: config.userInfo.gender,
         uid: config.openID
       }, function (res) {
-        console.log("用户信息录入成功");
-        typeof cb == 'function' && cb()
+        util.showText("用户信息录入成功");
+        
+        that.navBack();
+        
       }, function () {
-        console.log("用户信息录入失败");
+        util.showText("用户信息录入失败");
+       
       })
-      wx.navigateBack({
-        delta: 1,
-      })
+      
     });
    
   },
   onLoad: function (options) {
   
   },
-
+  navBack(){
+    wx.navigateBack({
+      delta:2
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

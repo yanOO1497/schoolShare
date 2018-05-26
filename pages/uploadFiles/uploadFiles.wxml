@@ -27,7 +27,8 @@
           <view class="weui-label">文件</view>
         </view>
         <view class="weui-cell__bd">
-          <input name="wechat" class="weui-input" value="{{userInfo.wechat}}" placeholder="请选择文件" bindtap='chooseFile'/>
+          <!-- <input name="wechat" class="weui-input" value="{{userInfo.wechat}}" placeholder="请选择文件" bindtap='chooseFile'/> -->
+           <input type="file" id="file_input" placeholder="请选择文件"/>
         </view>
 
       </view>

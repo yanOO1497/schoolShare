@@ -16,7 +16,7 @@
     </block>
   </view>
   <view class="page__bd">
-    <view class='title'>最新上传内容</view>
+    <view class='title'>热点推荐</view>
     <scroll-view scroll-y scrollTop='{{scrollTop}}' class='carousel-wrap'>
       <view class='carousel-item'>
         <template wx:for="{{carousel}}" is="{{item.type == 6 ? 'books' : 'courseware'}}" data="{{...item}}"></template>

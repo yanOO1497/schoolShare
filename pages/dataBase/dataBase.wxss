@@ -29,8 +29,7 @@
 
 .carousel-wrap{
   /* overflow: hidden; */
-  height: 720rpx;
-  /* background-color: white; */
+  height: 820rpx;
 }
 
 .weui-media-box__thumb{

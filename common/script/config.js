@@ -10,7 +10,7 @@ skinList: “我的”页面背景列表
 无线ip:192.168.1.102
 */
 
-var url = 'http://192.168.191.1:8082/school_share/share'
+var url = 'http://www.yanoo.xyz:8082/school_share-0.0.1-SNAPSHOT/share'
 module.exports = {
   APP_ID:'wx15734a2373afa7a8',
   APP_SECRET:'10c27dc6070ef03f708ccdbe3c072e21',
@@ -54,7 +54,7 @@ module.exports = {
     addToComment: url + '/addToComment.do',//添加评论
     uploadFile: url + '/uploadFile.do',//上传文件
     publish: url + '/publish.do',//发布消息
-    webSocket: 'ws://192.168.191.1:8082/school_share/websocket/',
+    webSocket: 'ws://www.yanoo.xyz:8082/school_share-0.0.1-SNAPSHOT/websocket/',
     getMessageByMidAndType: url + '/getMessageByMidAndType.do',
     personDetail: 'https://api.douban.com/v2/movie/celebrity/',
     baiduMap: 'https://api.map.baidu.com/geocoder/v2/'

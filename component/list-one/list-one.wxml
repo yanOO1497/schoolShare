@@ -20,7 +20,7 @@
           <view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--primary zan-tag--plain">求助</view>
         </view>
       </view>
-      <view class='option-more' data-name="more"></view>
+      <view class='option-more iconfont icon-more' data-name="more"></view>
     </view>
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
@@ -63,7 +63,7 @@
           <view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--primary zan-tag--plain">活动</view>
         </view>
       </view>
-      <view class='option-more' wx:if="{{!isDetail}}" data-name="more"></view>
+      <view class='option-more iconfont icon-more' wx:if="{{!isDetail}}" data-name="more"></view>
     </view>
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
@@ -104,7 +104,7 @@
           <view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--warn zan-tag--plain">出清</view>
         </view>
       </view>
-      <view class='option-more' wx:if="{{!isDetail}}" data-name="more"></view>
+      <view class='option-more iconfont icon-more' wx:if="{{!isDetail}}" data-name="more"></view>
     </view>
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
@@ -143,7 +143,7 @@
           <view wx:if="{{isQuesAndShare}}" class="zan-tag zan-tag--warn zan-tag--plain">分享</view>
         </view>
       </view>
-      <view class='option-more' wx:if="{{!isDetail}}" data-name="more"></view>
+      <view class='option-more iconfont icon-more' wx:if="{{!isDetail}}" data-name="more"></view>
     </view>
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
@@ -181,7 +181,7 @@
           <view wx:if=" {{isQuesAndShare}} " class="zan-tag zan-tag--primary zan-tag--plain">问答</view>
         </view>
       </view>
-      <view class='option-more' wx:if="{{!isDetail}}" data-name="more"></view>
+      <view class='option-more iconfont icon-more' wx:if="{{!isDetail}}" data-name="more"></view>
     </view>
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>

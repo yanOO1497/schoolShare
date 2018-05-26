@@ -1,1 +1,27 @@
 /* pages/login/login.wxss */
+.page{
+  padding: 100rpx;
+  text-align: center;
+  color: #ccc;
+}
+.logo-wrap{
+  display: inline-block;
+  padding: 20rpx;
+  background-color: #92d091;
+  border-radius: 20rpx;
+}
+.logo{
+  width: 100rpx;
+  height: 100rpx;
+  background-size: cover;
+}
+
+.title{
+  font-size: 50rpx;
+}
+button[type=primary].weui-btn {
+  background-color: #92d091;
+  /* width: 100%; */
+  box-sizing: border-box;
+  margin-top: 80rpx;
+}

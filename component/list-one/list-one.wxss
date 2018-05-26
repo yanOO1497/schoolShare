@@ -24,14 +24,16 @@ button::after{
   background-repeat: no-repeat;
 }
 .option-more{
-  width: 20rpx;
-  height: 20rpx;
+  /* width: 20rpx; */
+  /* height: 20rpx; */
   position: absolute;
-  top:-20rpx;
-  right: -10rpx;
-  border-left: 2rpx solid #ccc;
-  border-bottom:  2rpx solid #ccc;
-  transform: rotate(-45deg);
+  top:-30rpx;
+  right: 10rpx;
+  font-size: 60rpx;
+  color: #ccc;
+  /* border-left: 2rpx solid #ccc; */
+  /* border-bottom:  2rpx solid #ccc; */
+  /* transform: rotate(-45deg); */
 }
 .avatar {
   width: 100rpx;

@@ -73,12 +73,18 @@ Page({
     var that = this;
     wx.showNavigationBarLoading();
     // 获取用户信息
-    util.getUserSet(function (userInfo) {
-      console.log("登录成功", userInfo);
-      that.refreshData(0);
-    }, function () {
-      console.log("获取用户数据失败");
-    });
+
+    let interval = setInterval(function(){
+      if(config.openID){
+        clearInterval(interval);
+        that.refreshData(0);
+      }
+    },1000)
+    // util.getUserSet(function (userInfo) {
+    //   console.log("登录成功", userInfo);
+    // }, function () {
+    //   console.log("获取用户数据失败");
+    // });
 
   },
   enterDetail: function () {

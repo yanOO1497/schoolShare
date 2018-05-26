@@ -57,13 +57,17 @@ Component({
     enterDetail:function(index){
       var that = this;
       // let typeIndex ;
-      let { id, type} = that.data.list[index];
-    
-      console.log(that.data.list[index], type)
-      let _url = `../../pages/listDetail/listDetail?mid=${id}&typeIndex=${type}`;
-      wx.navigateTo({
-        url: _url
-      });
+      if(!that.data.isDetail){
+        let { id, type } = that.data.list[index];
+        // console.log(that.data.list[index], type)
+        let _url = `../../pages/listDetail/listDetail?mid=${id}&typeIndex=${type}`;
+        wx.navigateTo({
+          url: _url
+        });
+      }else{
+        
+      }
+      
     },
     checkEnter: function (e) {
       // console.log("进入detail",e);
@@ -160,19 +164,34 @@ Component({
     toggleCollect: function (data) {//切换收藏
       var that = this;
       let {mid,index} = data;
-      let nowFlag = that.data.list[index].collectFlag;
-      let typeIndex = that.data.list[index].type;
+      let nowFlag ;
+      if (!that.data.isDetail) {
+        nowFlag = that.data.list[dataArr.index].collectFlag;
+      } else {
+        nowFlag = that.data.listOBJ.collectFlag;
+      }
+      let typeIndex = config.typeList.indexOf(that.data.listType);
       fetch._get.call(that, api.setCollect, {
         type: typeIndex,
         ...data,
         uid: config.openID,
         collectFlag: nowFlag
       }, function (res) {
-        that.data.list[index].collectFlag = nowFlag == 0 ? 1 : 0;
-        that.data.list[index].collectNum = res.result.collectNum;
-        that.setData({
-          list: that.data.list
-        })
+        
+
+        if (!that.data.isDetail) {
+          that.data.list[index].collectFlag = nowFlag == 0 ? 1 : 0;
+          that.data.list[index].collectNum = res.result.collectNum;
+          that.setData({
+            list: that.data.list
+          })
+        } else {
+          that.data.listOBJ.collectFlag = res.result.collectFlag;
+          that.data.listOBJ.collectNum = res.result.collectNum;
+          that.setData({
+            listOBJ: that.data.listOBJ
+          })
+        }
         if (nowFlag === 0) {
           util.showText("收藏成功！");
         } else {
@@ -180,7 +199,7 @@ Component({
         }
       }, function () {
 
-        console.log("toggleAgree fail");
+        console.log("toggleCollect fail");
       })
 
     },
