@@ -1,4 +1,7 @@
 <!--pages/setting/setting.wxml-->
+<view wx:if="{{showLoading}}">
+  <view class="loading">载入数据中…</view>
+</view>
 <view class='page'>
   <view class="weui-cells ">
     <navigator url="../alterUserInfo/alterUserInfo" class="weui-cell weui-cell_access" hover-class="weui-cell_active">

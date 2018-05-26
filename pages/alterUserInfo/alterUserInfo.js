@@ -8,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+    userInfo: {},
+    showLoading:true
+
   },
 
   /**
@@ -18,7 +20,8 @@ Page({
     var that = this;
     fetch._get.call(that, config.apiList.loadUserInfoDetails, { uid: config.openID },       function (res) {
       that.setData({
-        userInfo: res.result
+        userInfo: res.result,
+        showLoading:false
       })
     })
   },

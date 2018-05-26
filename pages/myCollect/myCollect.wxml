@@ -1,4 +1,4 @@
 <view wx:if="{{showLoading}}">
-  <view class="loading">玩命加载中…</view>
+  <view class="loading">载入数据中…</view>
 </view>
 <list-one wx:else list="{{listData}}"  isQuesAndShare="true" />

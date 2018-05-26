@@ -63,9 +63,9 @@ Page({
     var that = this;
     if (that.data.typesIndex !== 0){
       wx.chooseImage({
-        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+        sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-        count: 2,
+        count: 9,
         success: function (res) {
           // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
           let index = that.data.files.length;
@@ -81,32 +81,36 @@ Page({
               'uid': config.openID,
               'type': that.data.typesIndex
             }
-            console.log(formData);
-            fetch._uploadFile.call(that,{
-              url: config.apiList.uploadFile,
-              filePath: res.tempFilePaths[0],
-              name: 'image',
-              formData: formData,
-            },function(res){
-              let index = that.data.files.length;
-              console.log(JSON.parse(res.data),index);
-              that.data.uploadImgList.push(JSON.parse(res.data).picUrl);
-                that.data.showImgLoad[index-1] = false;
-                that.data.showWarn[index - 1] = false;
-                that.setData({
-                  showImgLoad: that.data.showImgLoad,
-                  showWarn: that.data.showWarn,
-                  uploadImgList: that.data.uploadImgList
-                })
-                console.log("上传成功" + that.data.uploadImgList);
-            },function(){
-              that.data.showImgLoad[index - 1] = false;
-              that.data.showWarn[index - 1] = true;
-              that.setData({
-                showImgLoad: that.data.showImgLoad,
-                showWarn: that.data.showWarn
-              })
-            });
+            
+            for (let l = 0; l < res.tempFilePaths.length ;l++){
+              // console.log(l);
+              that.uploadImg(that, res.tempFilePaths ,l, formData);
+            }
+            // fetch._uploadFile.call(that,{
+            //   url: config.apiList.uploadFile,
+            //   filePath: res.tempFilePaths[0],
+            //   name: 'image',
+            //   formData: formData,
+            // },function(res){
+            //   let index = that.data.files.length;
+            //   console.log(JSON.parse(res.data),index);
+            //   that.data.uploadImgList.push(JSON.parse(res.data).picUrl);
+            //     that.data.showImgLoad[index-1] = false;
+            //     that.data.showWarn[index - 1] = false;
+            //     that.setData({
+            //       showImgLoad: that.data.showImgLoad,
+            //       showWarn: that.data.showWarn,
+            //       uploadImgList: that.data.uploadImgList
+            //     })
+            //     console.log("上传成功" + that.data.uploadImgList);
+            // },function(){
+            //   that.data.showImgLoad[index - 1] = false;
+            //   that.data.showWarn[index - 1] = true;
+            //   that.setData({
+            //     showImgLoad: that.data.showImgLoad,
+            //     showWarn: that.data.showWarn
+            //   })
+            // });
           }
         }
       })
@@ -120,6 +124,34 @@ Page({
       current: e.currentTarget.id, // 当前显示图片的http链接
       urls: this.data.files // 需要预览的图片http链接列表
     })
+  },
+  uploadImg(that, tempFilePaths, imgNum, formData){
+    fetch._uploadFile.call(that, {
+      url: config.apiList.uploadFile,
+      filePath: tempFilePaths[imgNum],
+      name: 'image',
+      formData: formData,
+    }, function (res) {
+      let index = that.data.files.length;
+      console.log(JSON.parse(res.data), index);
+      that.data.uploadImgList.push(JSON.parse(res.data).picUrl);
+      that.data.showImgLoad[index - 1] = false;
+      that.data.showWarn[index - 1] = false;
+      that.setData({
+        showImgLoad: that.data.showImgLoad,
+        showWarn: that.data.showWarn,
+        uploadImgList: that.data.uploadImgList
+      })
+      console.log("上传成功" + that.data.uploadImgList);
+    }, function () {
+      that.data.showImgLoad[index - 1] = false;
+      that.data.showWarn[index - 1] = true;
+      that.setData({
+        showImgLoad: that.data.showImgLoad,
+        showWarn: that.data.showWarn
+      })
+    });
+
   },
   publishData: function (option){
     var that = this;
@@ -146,15 +178,16 @@ Page({
     },function(res){
       console.log("发布成功",res);
       that.setData({
-        isPublish:true
+        isPublish:true,
+        uploadImgList:[]
       })
       setTimeout(function(){
         let pages = getCurrentPages();
         let prevPage = pages[pages.length - 2];
         console.log(pages, prevPage)
-        prevPage.setData({
-          shouldRefresh: true
-        })
+        // prevPage.setData({
+        //   shouldRefresh: true
+        // })
         wx.navigateBack({
           delta: 1,
         })
@@ -209,10 +242,12 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    if (this.data.uploadImgList.length > 0){
-      this.publishData(0);
+    // console.log("是否点击发送", this.data.uploadImgList,this.data.uploadImgList.length);
+    if (this.data.uploadImgList.length === 0){
+      console.log("已发送")
     }else{
-      console.log("无图片内容");
+      console.log("未点击发送");
+      this.publishData(0);
     }
   },
 

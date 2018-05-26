@@ -1,4 +1,7 @@
 <!--pages/alterUserInfo/alterUserInfo.wxml-->
+<view wx:if="{{showLoading}}">
+  <view class="loading">载入数据中…</view>
+</view>
 <view class='page'>
   <form class="weui-cells weui-cells_after-title" bindsubmit="submitData">
     <view class="weui-cell weui-cell_input">

@@ -17,7 +17,8 @@ Page({
       sex:2
     },
     isUser:false,
-    listData:[]
+    listData:[],
+    showLoading:true
 
   },
 
@@ -33,7 +34,8 @@ Page({
       that.setData({
         userInfo:res.result,
         isUser: that.data.isUser,
-        listData: res.subjects
+        listData: res.subjects,
+        showLoading:false
       })
       
     })

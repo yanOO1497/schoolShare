@@ -41,7 +41,7 @@
                 <view class="weui-uploader__file-content" wx:if="{{showWarn[index]}}">
                   <icon type="warn" size="23" color="#F43530"></icon>
                 </view>
-                <view class="weui-uploader__file-content" wx:if="{{showImgLoad[index]}}">正在上传</view>
+                <!-- <view class="weui-uploader__file-content" wx:if="{{showImgLoad[index]}}">正在上传</view> -->
 
               </view>
             </block>
@@ -70,8 +70,8 @@
     <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
     <view class="weui-uploader__file-content">
       <view class="weui-uploader__file-content">
-        {{showImgLoad[index]}}
-        <text wx:if="{{showImgLoad[index]}}">正在上传</text>
+        <!-- {{showImgLoad[index]}} -->
+        <!-- <text wx:if="{{showImgLoad[index]}}">正在上传到云端</text> -->
         <icon type="warn" size="23" color="#F43530" wx:if="{{showWarn[index]}}"></icon>
       </view>
     </view>

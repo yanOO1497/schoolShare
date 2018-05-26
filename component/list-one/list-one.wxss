@@ -18,8 +18,9 @@ button::after{
 } 
 .img{
   flex:1;
-  min-width:33.3%;  
-  height:250rpx; 
+  min-width:30%;  
+  /* height:250rpx;  */
+  margin:5rpx;
   background-size: contain;
   background-repeat: no-repeat;
 }

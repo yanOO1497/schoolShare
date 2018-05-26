@@ -45,7 +45,8 @@ Page({
         urlName: "setting",
         iconClass: "icon-shezhi"
       },
-    ]
+    ],
+    showLoading:true
   },
 
   /**
@@ -57,7 +58,8 @@ Page({
       fetch._get.call(that, config.apiList.loadUserInfoDetails, { uid: config.openID }, function (res) {
         that.setData({
           userInfo: res.result,
-          isLogin: true
+          isLogin: true,
+          showLoading:false
         })
       })
       

@@ -15,6 +15,7 @@ Page({
       checked: true,
       loading: true
     },
+    showLoading:true
   },
 
   /**
@@ -34,6 +35,7 @@ Page({
         'asyncWechat.checked': showWechat,
         'asyncQQ.loading': false,
         'asyncWechat.loading': false,
+        showLoading:false
       })
     })
   },

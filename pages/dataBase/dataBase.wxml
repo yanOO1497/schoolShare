@@ -1,4 +1,5 @@
 <!--pages/dataBase/dataBase.wxml-->
+
 <movable-area class='page'>
 
   <movable-view class='fixBar' direction="all" x="280" y="400">
@@ -16,7 +17,7 @@
     </block>
   </view>
   <view class="page__bd">
-    <view class='title'>热点推荐</view>
+    <view class='title'>大家都在看</view>
     <scroll-view scroll-y scrollTop='{{scrollTop}}' class='carousel-wrap'>
       <view class='carousel-item'>
         <template wx:for="{{carousel}}" is="{{item.type == 6 ? 'books' : 'courseware'}}" data="{{...item}}"></template>
@@ -27,7 +28,8 @@
     </scroll-view>
   </view>
 </movable-area>
-
+  <import src="../../component/message/message.wxml" />
+  <template is="message" data="{{message: message}}" />
 <template name="books">
   <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
     <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">

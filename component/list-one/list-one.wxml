@@ -25,7 +25,9 @@
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
       <view class='img-wrap'>
-        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view>
+        <!-- <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view> -->
+
+        <image class='img' data-uid="{{uid}}" wx:for="{{picUrl}}" data-name="previewImg" data-url="{{item}}" wx:key="*this" wx:if="{{picUrl !== '' && picUrl}}" src='{{item}}' wx:key="*this"></image>
       </view>
       <view class='reward'>
         <text class='reward-title'>报酬： </text>
@@ -68,7 +70,8 @@
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
       <view class='img-wrap'>
-        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view>
+        <!-- <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view> -->
+        <image class='img' data-uid="{{uid}}" wx:for="{{picUrl}}" data-name="previewImg" data-url="{{item}}" wx:key="*this" mode="widthFix" wx:if="{{picUrl !== '' && picUrl}}" src='{{item}}' wx:key="*this"></image>
       </view>
     </view>
     <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}" data-type="{{type}}">
@@ -109,7 +112,8 @@
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
       <view class='img-wrap'>
-        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view>
+        <!-- <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view> -->
+                <image class='img' data-uid="{{uid}}" wx:for="{{picUrl}}" data-name="previewImg" data-url="{{item}}" wx:key="*this" mode="widthFix" wx:if="{{picUrl !== '' && picUrl}}" src='{{item}}' wx:key="*this"></image>
       </view>
     </view>
     <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}" data-type="{{type}}">
@@ -148,7 +152,9 @@
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
       <view class='img-wrap'>
-        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view>
+        <!-- <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view> -->
+
+        <image class='img' data-uid="{{uid}}" wx:for="{{picUrl}}" data-name="previewImg" data-url="{{item}}" wx:key="*this" mode="widthFix" wx:if="{{picUrl !== '' && picUrl}}" src='{{item}}' wx:key="*this"></image>
       </view>
     </view>
     <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}" data-type="{{type}}">
@@ -186,7 +192,9 @@
     <view class='list-content'>
       <view class='item-title'>{{content}}</view>
       <view class='img-wrap'>
-        <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view>
+        <!-- <view wx:for="{{picUrl}}" wx:if="{{picUrl !== '' && picUrl}}" style="background-image: url('{{item}}')" class='img' mode="widthFix" data-uid="{{uid}}" data-name="previewImg" data-url="{{item}}" wx:key="*this"></view> -->
+
+        <image class='img' data-uid="{{uid}}" wx:for="{{picUrl}}" data-name="previewImg" data-url="{{item}}" wx:key="*this" mode="widthFix" wx:if="{{picUrl !== '' && picUrl}}" src='{{item}}' wx:key="*this"></image>
       </view>
     </view>
     <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}" data-type="{{type}}">

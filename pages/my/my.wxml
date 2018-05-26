@@ -1,4 +1,7 @@
 <!--pages/my/my.wxml-->
+<view wx:if="{{showLoading}}">
+  <view class="loading">载入数据中…</view>
+</view>
 <view class='page'>
   <view class="page__hd">
     <view class=' user-img' wx:if="{{!isLogin}}" bindtap="getUserInfo">
@@ -45,3 +48,5 @@
     </view>
   </view>
 </view>
+  <import src="../../component/message/message.wxml" />
+  <template is="message" data="{{message: message}}" />

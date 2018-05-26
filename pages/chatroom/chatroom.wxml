@@ -2,7 +2,6 @@
 
 <view class='page'>
   <scroll-view scroll-y class='chat-wrap' scroll-with-animation="true" scrollTop="{{scrollTop}}">
-
     <template wx:for="{{chatData}}" wx:key="*this" is="{{item.uid == nowUid ?'mySentMes' : 'otherSentMes'}}" data="{{...item,myUserInfo,otherUserInfo,length}}"> </template>
   </scroll-view>
   <!-- <view class='sentMessage'>

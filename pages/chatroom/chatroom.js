@@ -32,6 +32,7 @@ Page({
       start: 0,
       count: 10
     }, function (res) {
+      res.subjects.reverse();
       if (!that.data.otherUserInfo.avatarUrl && res.subjects.length !== 0) {
         for (let item of res.subjects) {
           if (item.toUid == config.openID) {

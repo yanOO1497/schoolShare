@@ -24,11 +24,11 @@
 .addComment ,.fake-addComent{
   position: absolute;
   width: 100%;
-  padding: 15rpx;
+  padding: 15rpx 15rpx 25rpx;
   box-sizing: border-box;
   vertical-align: center;
-  bottom: 0;
-   background-color: #eee;
+  bottom: 0; 
+  background-color: #eee;
 }
 .fake-addComent{
   position: fixed;
