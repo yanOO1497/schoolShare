@@ -26,7 +26,8 @@ Page({
       }
     ],
     carousel:[],
-    scrollTop:0
+    scrollTop:0,
+    listData:[]
   },
 
   /**
@@ -62,12 +63,19 @@ Page({
   
   getCarousel(){
     let that = this;
-    fetch._get.call(that, config.apiList.getCarousel,{
+    fetch._get.call(that, config.apiList.loadTableList,{
+      tableType: 0,
+      start:0,
       count:10
     },function(res){
-      console.log("获取轮播图成功 ",res);
+      // console.log("获取轮播图成功 ",res);
+      res.subjects.map((item, key, arr) => {
+        if (item.picUrl !== "" && item.picUrl) {
+          item.picUrl = item.picUrl.split(",");
+        }
+      })
       that.setData({
-        carousel:res.subjects
+        listData:res.subjects
       })
     })
   },

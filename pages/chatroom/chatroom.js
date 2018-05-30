@@ -15,7 +15,11 @@ Page({
     socketTaskId: 0,
     isConnect: false,
     nowUid: "",
-    otherUserInfo: {}
+    otherUserInfo: {},
+    hasMore:true,
+    count:10,
+    uid:"",
+    start:0
   },
 
   /**
@@ -25,12 +29,17 @@ Page({
     var that = this;
     config.userInfo.uid = config.openID;
     that.data.myUserInfo = config.userInfo;
-    console.log("你好我是", that.data.myUserInfo);
+    that.data.uid = options.toUid;
+    console.log("你好我是", options);
     that.connectSocket();
+    that.getChatLogDetails(0 , options);
+  },
+  getChatLogDetails(start,options,loadType = "load"){
+    let that = this;
     fetch._get.call(that, config.apiList.getChatLogDetails, {
       toUid: options.uid,
-      start: 0,
-      count: 10
+      start: start,
+      count: that.data.count
     }, function (res) {
       res.subjects.reverse();
       if (!that.data.otherUserInfo.avatarUrl && res.subjects.length !== 0) {
@@ -38,12 +47,12 @@ Page({
           if (item.toUid == config.openID) {
             let { nowAvatarUrl, nowNickName, uid } = item;
             that.data.otherUserInfo = {
-              toAvatarUrl:nowAvatarUrl,
+              toAvatarUrl: nowAvatarUrl,
               toNickName: nowNickName,
-              toUid:uid
+              toUid: uid
             }
 
-          }else{
+          } else {
             let { toAvatarUrl, toNickName, toUid } = item;
             that.data.otherUserInfo = {
               toAvatarUrl,
@@ -52,16 +61,32 @@ Page({
             }
           }
         }
-        that.setData({
-          chatData: res.subjects,
-          nowUid: config.openID,
-          otherUserInfo: that.data.otherUserInfo,
-          myUserInfo: that.data.myUserInfo
-        })
+        if (res.subjects.length < that.data.count){
+          that.data.hasMore = false;
+        }
+        if(loadType === "loadMore"){
+          res.subjects = that.data.chatData.concat(res.subjects);
+          that.setData({
+            chatData: res.subjects,
+            nowUid: config.openID,
+            otherUserInfo: that.data.otherUserInfo,
+            myUserInfo: that.data.myUserInfo
+          })
+        }else{     
+          that.setData({
+            chatData: res.subjects,
+            nowUid: config.openID,
+            otherUserInfo: that.data.otherUserInfo,
+            myUserInfo: that.data.myUserInfo
+          })
+          that.runToBottom();
+        }
+        
         wx.setNavigationBarTitle({
           title: "私信" + that.data.otherUserInfo.toNickName//页面标题为路由参数
         })
-      } else if (res.subjects.length == 0){
+        
+      } else if (res.subjects.length == 0) {
         that.setData({
           chatData: res.subjects,
           nowUid: config.openID,
@@ -71,26 +96,18 @@ Page({
         wx.setNavigationBarTitle({
           title: "私信" + that.data.otherUserInfo.nickName//页面标题为路由参数
         })
-      }
-      
-
-     
-
-      that.runToBottom();
+      } 
       console.log(that.data.otherUserInfo);
     })
   },
   sentMessage(e) {
     let that = this;
     if (that.data.message !== "" && that.data.message) {
-
       that.data.chatData.push({
         content: that.data.message,
         uid: config.openID
       })
-
       let message = that.data.message + "|" + that.data.otherUserInfo.toUid;//将要发送的信息和内容拼起来，以便于服务端知道消息要发给谁
-
       console.log("点击发送", that.data.otherUserInfo.toUid, that.data.message);
       if (that.data.isConnect) {
         SocketTask.send({
@@ -104,15 +121,12 @@ Page({
             that.runToBottom();
           }
         })
-
-      }
-
-     
+      }  
     }
   },
   runToBottom(){
     let len = this.data.chatData.length;
-    console.log("当前数组长度", this.data.chatData);
+    // console.log("当前数组长度", this.data.chatData);
     this.setData({
       scrollTop:1000 * len
     })
@@ -139,7 +153,28 @@ Page({
 
 
   },
-
+  loadMore(){
+    let that = this;
+    let { start, count, hasMore } = that.data;
+    that.data.start = start + count;
+    if(hasMore){
+      that.getChatLogDetails(start,"loadMore");
+      fetch._get.call(that,config.apiList.getChatLogDetails, {
+        toUid: that.data.uid,
+        start: start,
+        count: that.data.count
+      }, function (res) {
+            that.data.chatData.concat(res.subjects);
+            if (res.subjects.length < count){
+              that.data.hasMore = false;
+            }
+            that.setData({
+              hasMore: that.data.hasMore,
+              chatData: that.data.chatData
+            })
+      })
+    }
+  },
   pageScrollToBottom: function () {
     wx.createSelectorQuery().select('#chatWrap').boundingClientRect(function (rect) {
       // 使页面滚动到底部
@@ -174,6 +209,8 @@ Page({
     that.runToBottom();
 
   },
+
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -28,17 +28,20 @@ Page({
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
-    hasMore: { "question": true, 'share': true, 'rewardhelp': true, 'activity': true, 'secondarymarket': true },
-    start: { "question": 0, 'share': 0, 'rewardhelp': 0, 'activity': 0, 'secondarymarket': 0 },
+    hasMore: { "all": true, "question": true, 'share': true, 'rewardhelp': true, 'activity': true, 'secondarymarket': true },
+    start: { "all": 0, "question": 0, 'share': 0, 'rewardhelp': 0, 'activity': 0, 'secondarymarket': 0 },
     showLoading: true,
-
     isShowFixBar: true,
     //最新消息列表
     listData: {
-
     },
     navtab: {
-      list: [{
+      list: [
+        {
+          id: 'all',
+          title: '全部'
+        }, 
+        {
         id: 'question',
         title: '校内百事通'
       }, {
@@ -58,7 +61,7 @@ Page({
         title: '二手市场'
       }
       ],
-      selectedId: 'question',
+      selectedId: 'all',
       scroll: true,
       height: 45,
       message: {}
@@ -69,7 +72,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("ߘ 表情？？")
     var that = this;
     wx.showNavigationBarLoading();
     // 获取用户信息
@@ -80,11 +82,6 @@ Page({
         that.refreshData(0);
       }
     },1000)
-    // util.getUserSet(function (userInfo) {
-    //   console.log("登录成功", userInfo);
-    // }, function () {
-    //   console.log("获取用户数据失败");
-    // });
 
   },
   enterDetail: function () {
@@ -97,7 +94,7 @@ Page({
       navtab: that.data.navtab
     });
     if (!that.data.listData[e.detail]) {
-      console.log("进入刷新");
+      // console.log("进入刷新");
       that.refreshData(0);
     }
   },

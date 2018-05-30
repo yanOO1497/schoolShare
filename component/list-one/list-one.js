@@ -72,7 +72,7 @@ Component({
     checkEnter: function (e) {
       // console.log("进入detail",e);
       var that = this;
-      let { mid, index } = e.currentTarget.dataset;
+      let { mid, index ,type } = e.currentTarget.dataset;
       let { name, uid ,url} = e.target.dataset;
       var _avaterUrl = "../../pages/personal/personal?uid=" + uid;
       // 判断当前点击对象
@@ -84,11 +84,17 @@ Component({
           break;
         case "more":
           wx.showActionSheet({
-            itemList: [ '举报'],
+            itemList: ['收藏', '举报'],
             success: function (res) {
               if (!res.cancel) {
                 switch (res.tapIndex) {
                   case 0:
+                    that.toggleCollect({mid,index,type});
+                    break;
+                  // case 1:
+                  //   that.onShareAppMessage({ mid, index });
+                  //   break;
+                  case 1:
                     that.report(mid, index);
                     break;//举报
                 }
@@ -100,7 +106,7 @@ Component({
           if (!that.data.isDetail) {
             that.enterDetail(index);
           } else{
-            console.log("previewImg");
+            // console.log("previewImg");
 
             wx.previewImage({
               current: url, // 当前显示图片的http链接
@@ -133,6 +139,7 @@ Component({
     changeAct: function (e) {
       let that = this;
       let data = e.currentTarget.dataset;
+      console.log(data);
       let name = e.target.dataset.name;
       switch (name) {
         case "useful":
@@ -147,9 +154,9 @@ Component({
         case "share":
           that.onShareAppMessage(data);
         break;
-        case "collect":
-          that.toggleCollect(data);
-        break;
+        // case "collect":
+        //   that.toggleCollect(data);
+        // break;
       }
 
     },
@@ -166,19 +173,17 @@ Component({
       let {mid,index} = data;
       let nowFlag ;
       if (!that.data.isDetail) {
-        nowFlag = that.data.list[dataArr.index].collectFlag;
+        nowFlag = that.data.list[data.index].collectFlag;
       } else {
         nowFlag = that.data.listOBJ.collectFlag;
       }
-      let typeIndex = config.typeList.indexOf(that.data.listType);
+      // let typeIndex = config.typeList.indexOf(that.data.listType);
       fetch._get.call(that, api.setCollect, {
-        type: typeIndex,
         ...data,
         uid: config.openID,
         collectFlag: nowFlag
       }, function (res) {
-        
-
+      
         if (!that.data.isDetail) {
           that.data.list[index].collectFlag = nowFlag == 0 ? 1 : 0;
           that.data.list[index].collectNum = res.result.collectNum;
@@ -199,7 +204,7 @@ Component({
         }
       }, function () {
 
-        console.log("toggleCollect fail");
+        // console.log("toggleCollect fail");
       })
 
     },
@@ -232,11 +237,11 @@ Component({
       if (disAgreeClickFlag) {
         disAgreeClickFlag = false;
         var that = this;
+        let {mid,index,type} = dataArr;
         let typeIndex = config.typeList.indexOf(that.data.listType);
         fetch._get.call(that, api.setDisagree, {
           ...dataArr,
-          uid: config.openID,
-          type: typeIndex
+          uid: config.openID
         }, function (res) {
           that.data.list[dataArr.index].shareNum = res.result.shareNum;
           that.data.list[dataArr.index].shareNum = res.result.shareNum;
@@ -254,17 +259,16 @@ Component({
       if (agreeClickFlag) {
         var that = this;
         agreeClickFlag = false;
-        let typeIndex = config.typeList.indexOf(that.data.listType);
+        // let typeIndex = config.typeList.indexOf(that.data.listType);
         let nowFlag ;
         if (!that.data.isDetail){
           nowFlag = that.data.list[dataArr.index].agreeFlag;
         }else{
           nowFlag = that.data.listOBJ.agreeFlag;
         }
-        console.log(that.data.listOBJ,nowFlag);
+        // console.log(that.data.listOBJ,nowFlag);
         fetch._get.call(that, api.setAgree, {
           ...dataArr,
-          type: typeIndex,
           uid: config.openID,
           agreeFlag: nowFlag
         }, function (res) {
@@ -292,7 +296,7 @@ Component({
     },
     onShareAppMessage (data){
       var that = this;
-      let typeIndex = config.typeList.indexOf(that.data.listType);
+      let typeIndex = data.type;
       var myEventDetail = { mid:data.mid,typeIndex } // detail对象，提供给事件监听函数
       var myEventOption = {} // 触发事件的选项
       that.triggerEvent('onShareAppMessage', myEventDetail, myEventOption)

@@ -1,4 +1,7 @@
 <!--pages/quesAndShare/quesAndSHare.wxml-->
+<view wx:if="{{showLoading}}">
+  <view class="loading">载入数据中…</view>
+</view>
 <view class='page'>
   <searchBar bindinputTyping="inputTyping" />
   <view class='content'>

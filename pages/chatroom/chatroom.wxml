@@ -1,13 +1,9 @@
 <!--pages/chateRoom/chatroom.wxml-->
 
 <view class='page'>
-  <scroll-view scroll-y class='chat-wrap' scroll-with-animation="true" scrollTop="{{scrollTop}}">
+  <scroll-view scroll-y class='chat-wrap' scroll-with-animation="true" scrollTop="{{scrollTop}}" bindscrolltoupper="loadMore">
     <template wx:for="{{chatData}}" wx:key="*this" is="{{item.uid == nowUid ?'mySentMes' : 'otherSentMes'}}" data="{{...item,myUserInfo,otherUserInfo,length}}"> </template>
   </scroll-view>
-  <!-- <view class='sentMessage'>
-    <input class='inout-sent' placeholder="请输入" />
-    <button class='btn-sent'>发送</button>
-  </view> -->
   <view class="sentMessage weui-cells weui-cells_after-title">
     <view class="weui-cell weui-cell_input">
       <view class="weui-cell__bd">
@@ -17,9 +13,6 @@
     </view>
   </view>
 </view>
-
-
-
 
 <template name="mySentMes">
   <view class='chat-my chat-item  clearfloat'>

@@ -11,7 +11,7 @@
 
 
 <template name="rewardhelp">
-  <view data-mid="{{id}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
+  <view data-mid="{{id}}" data-type = "{{type}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
     <view class='user-info'>
       <image class='avatar' wx:if="{{avatarUrl}}" src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
@@ -30,15 +30,15 @@
         <image class='img' data-uid="{{uid}}" wx:for="{{picUrl}}" data-name="previewImg" data-url="{{item}}" wx:key="*this" wx:if="{{picUrl !== '' && picUrl}}" src='{{item}}' wx:key="*this"></image>
       </view>
       <view class='reward'>
-        <text class='reward-title'>报酬： </text>
-        <text>{{reward}}</text>
+        <text class='reward-title iconfont icon-money'> </text>
+        <text> {{reward}}</text>
       </view>
     </view>
     <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}" data-type="{{type}}">
 
       <view class="weui-media-box__info__meta {{agreeFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-aixin" data-name="useful"></i>
-        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '点赞'}}</text>
+        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '喜欢'}}</text>
       </view>
 
       <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{optionList[2] ? 'act' : ''}}">
@@ -56,7 +56,7 @@
   </view>
 </template>
 <template name="activity">
-  <view data-mid="{{id}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
+  <view data-mid="{{id}}" class='list-item {{type}}' data-type = "{{type}}" data-index="{{index}}" bindtap='checkEnter'>
     <view class='user-info'>
       <image class='avatar' wx:if="{{avatarUrl}}" src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
@@ -76,9 +76,9 @@
     </view>
     <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}" data-type="{{type}}">
 
-      <view class="weui-media-box__info__meta {{agreeFlag == 1 ? 'act' : ''}}">
+      <view class="weui-media-box__info__meta {{agreeFlag == 1 ? 'act' : ''}}"  >
         <i class="iconfont icon-aixin" data-name="useful"></i>
-        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '点赞'}}</text>
+        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '喜欢'}}</text>
       </view>
 
       <view class="weui-media-box__info__meta  weui-media-box__info__meta_extra {{optionList[2] ? 'act' : ''}}">
@@ -120,7 +120,7 @@
 
       <view class="weui-media-box__info__meta {{agreeFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-aixin" data-name="useful"></i>
-        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '点赞'}}</text>
+        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '喜欢'}}</text>
       </view>
       <view class="weui-media-box__info__meta weui-media-box__info__meta_extra {{optionList[2] ? 'act' : ''}}">
         <i class="iconfont icon-pinglun" data-name="comment"></i>
@@ -160,7 +160,7 @@
     <view class="weui-media-box__info" catchtap='changeAct' data-index="{{index}}" data-mid="{{id}}" data-type="{{type}}">
       <view class="weui-media-box__info__meta   {{agreeFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-aixin" data-name="useful"></i>
-        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '点赞'}}</text>
+        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '喜欢'}}</text>
       </view>
       <view class="weui-media-box__info__meta {{optionList[2] ? 'act' : ''}} weui-media-box__info__meta_extra">
         <i class="iconfont icon-pinglun" data-name="comment"></i>
@@ -201,22 +201,23 @@
 
       <view class="weui-media-box__info__meta {{agreeFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-aixin" data-name="useful"></i>
-        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '关注'}}</text>
+        <text data-name="useful">{{agreeNum > 0 ? agreeNum : '喜欢'}}</text>
       </view>
       <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  ">
         <i class="iconfont icon-pinglun" data-name="comment"></i>
         <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '评论'}}</text>
       </view>
-      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{collectFlag == 1 ? 'act' : ''}}">
+      <!-- <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{collectFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-shoucang" data-name="collect"></i>
         <text class='comment' data-name="collect">{{collectNum > 0 ? collectNum : '收藏'}}</text>
-      </view>
-      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{disagreeFlag == 1 ? 'act' : ''}}">
+      </view> -->
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{shareFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-fenxiang" data-name="share"></i>
         <button data-name="share" class='share-btn' id="shareBtn" open-type="share" hover-class="other-button-hover">分享</button>
       </view>
       <view wx:if="{{isShowDelete == 'yes'}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">
-        <text data-name="delete">删除</text>
+        <i class="iconfont icon-shanchu" data-name="share"></i>
+         <text data-name="delete">删除</text> 
       </view>
     </view>
   </view>

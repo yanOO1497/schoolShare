@@ -1,4 +1,7 @@
 @import '../home/home';
+.icon-hot{
+  color: red;
+}
 .page{
   overflow: hidden;
   background-color: white;
@@ -25,6 +28,8 @@
 .title{
   margin: 20rpx;
   border-bottom: 1px solid #ccc;
+  line-height: 65rpx;
+  font-weight: 600;
 }
 
 .carousel-wrap{

@@ -17,14 +17,15 @@
     </block>
   </view>
   <view class="page__bd">
-    <view class='title'>大家都在看</view>
+    <view class='title'><text class='iconfont icon-hot'></text> 热点推荐</view>
     <scroll-view scroll-y scrollTop='{{scrollTop}}' class='carousel-wrap'>
-      <view class='carousel-item'>
+    <list-one  list="{{listData}}" listType="all" bind:onShareAppMessage="onShareAppMessage" isQuesAndShare="false" />
+      <!-- <view class='carousel-item'>
         <template wx:for="{{carousel}}" is="{{item.type == 6 ? 'books' : 'courseware'}}" data="{{...item}}"></template>
       </view>
       <view class='carousel-item'>
         <template wx:for="{{carousel}}" is="{{item.type == 6 ? 'books' : 'courseware'}}" data="{{...item}}"></template>
-      </view>
+      </view> -->
     </scroll-view>
   </view>
 </movable-area>

@@ -12,7 +12,8 @@ Page({
     searchName:"",
     hasMore:true,
     count:20,
-    start:0
+    start:0,
+    showLoading:true
   },
  
 
@@ -31,7 +32,7 @@ Page({
   },
 
   getData(start,getType="refresh"){
-    let that = this;
+      let that = this;
     
       fetch._get.call(that, config.apiList.loadQuesAndShareList, {
         start: start,
@@ -56,7 +57,8 @@ Page({
         }
         that.setData({
           listData: res.subjects,
-          hasMore: that.data.hasMore
+          hasMore: that.data.hasMore,
+          showLoading:false
         })
       })
     

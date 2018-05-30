@@ -23,6 +23,7 @@ button::after{
   margin:5rpx;
   background-size: contain;
   background-repeat: no-repeat;
+  border-radius: 15rpx;
 }
 .option-more{
   /* width: 20rpx; */
@@ -41,6 +42,7 @@ button::after{
   height: 100rpx;
   border-radius: 50%;
   margin-right: 20rpx;
+  /* border:5rpx solid #ccc; */
 }
 .user-info {
  height: 100rpx;
@@ -52,7 +54,8 @@ button::after{
   background-color: white;
   /* border-bottom: 1px solid #ccc; */
   color: #333;
-  margin: 15rpx 0;
+  margin: 25rpx;
+  border-radius: 20rpx;
 }
 
 .control {
@@ -89,6 +92,8 @@ button::after{
 .nickname {
   font-size: 34rpx;
   line-height: 60rpx;
+  color: black;
+  /* font-weight: 600; */
 }
 
 .item-title {
@@ -130,6 +135,7 @@ button::after{
 .weui-media-box__info{
   display: flex;
   line-height: 1.2em;
+  color: #ccc;
 }
 .weui-media-box__info__meta{
  flex: 1;
@@ -142,13 +148,18 @@ button::after{
   margin:0 10rpx;
 }
 .reward {
-  border-left: 4px solid #79BD8F;
-  padding-left: 10rpx;
-  /* color: red; */
-  background-color: #f5f5f5;
+   display: inline-block; 
+  padding: 15rpx 25rpx;
+  color: #555f50;
+  background-color: rgb(218, 250, 202);   
+   /* background-color: rgba(255, 255, 255, 0.2); */
   margin-top:10rpx;
+  border-radius: 20rpx;
 }
-
+.reward-title{
+  color: #f59763;
+  padding-right: 20rpx;
+}
 
 .book-item{
   width: 50%;

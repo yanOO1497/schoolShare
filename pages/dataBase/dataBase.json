@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "精华库"
+  "navigationBarTitleText": "精华库",
+  "usingComponents": {
+    "list-one": "../../component/list-one/list-one"
+  }
 }

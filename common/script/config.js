@@ -8,10 +8,11 @@ userInfo: 用户信息存储（首次载入时获取）
 openID: 用户唯一标识符（载入时缓存获取或者请求微信相关api获取）
 skinList: “我的”页面背景列表
 正式环境域名：www.yanoo.xyz
-无线ip:192.168.191.1
+学校无线ip:192.168.191.1
+ww.yanoo.xyz:8082
 */
 
-var url = 'http://www.yanoo.xyz:8082/school_share/share'
+var url = 'http://192.168.191.1:8082/school_share/share'
 module.exports = {
   APP_ID:'wx15734a2373afa7a8',
   APP_SECRET:'10c27dc6070ef03f708ccdbe3c072e21',
@@ -21,10 +22,9 @@ module.exports = {
   openID: 0,
   userInfo:{},
   baiduAK: 'k28S8L69VGKML5GG2X6VBOKIFdhBQ6Bi',
-  typeList: ["", "question", "share", "rewardhelp", "activity", "secondarymarket"],
+  typeList: ["all", "question", "share", "rewardhelp", "activity", "secondarymarket"],
   apiList: {
-    // questionList: url + '/loadQuestionList.do',//加载问答列表
-    // loadExperienceList: url + '/loadExperienceList.do',//加载问答列表
+
     loadTableList: url + '/loadTableList.do',//加载各类信息列表
     loadTableListByUid: url + '/loadTableListByUid.do',// 信息列表
     loadBookList: url + '/loadBookList.do',//加载图书列表

@@ -25,6 +25,11 @@
       <view class='tips-title'>没有更多内容了！</view>
       <view class='tips-img no-more'></view>
     </view>
+    <view class="loading-tip " wx:if="{{hasMore[navtab.selectedId]}}">
+      <view class='tips-title'>正在加载中</view>
+      <view class='tips-img no-more'></view>
+    </view>
+
     <!-- 讲座 列表 -->
 
   </scroll-view>
