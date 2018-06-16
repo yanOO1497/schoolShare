@@ -66,7 +66,8 @@ Page({
     fetch._get.call(that, config.apiList.loadTableList,{
       tableType: 0,
       start:0,
-      count:10
+      count:10,
+      loadType:"hot"
     },function(res){
       // console.log("获取轮播图成功 ",res);
       res.subjects.map((item, key, arr) => {

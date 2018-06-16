@@ -1,12 +1,12 @@
 <!--pages/dataBase/dataBase.wxml-->
 
-<movable-area class='page'>
+<scroll-view scroll-y class='page'>
 
-  <movable-view class='fixBar' direction="all" x="280" y="400">
+  <!-- <movable-view class='fixBar' direction="all" x="280" y="400">
     <navigator url='../uploadFiles/uploadFiles' class='fixBar-item write ' >
       <text class='iconfont icon-upload'></text>
     </navigator>
-  </movable-view>
+  </movable-view> -->
 
   <view class="weui-grids">
     <block wx:for="{{gridList}}" wx:key="*this">
@@ -17,8 +17,8 @@
     </block>
   </view>
   <view class="page__bd">
-    <view class='title'><text class='iconfont icon-hot'></text> 热点推荐</view>
-    <scroll-view scroll-y scrollTop='{{scrollTop}}' class='carousel-wrap'>
+    <view class='title'><text class='iconfont icon-hot'></text>实时热点推荐</view>
+    <view class='carousel-wrap'>
     <list-one  list="{{listData}}" listType="all" bind:onShareAppMessage="onShareAppMessage" isQuesAndShare="false" />
       <!-- <view class='carousel-item'>
         <template wx:for="{{carousel}}" is="{{item.type == 6 ? 'books' : 'courseware'}}" data="{{...item}}"></template>
@@ -26,9 +26,9 @@
       <view class='carousel-item'>
         <template wx:for="{{carousel}}" is="{{item.type == 6 ? 'books' : 'courseware'}}" data="{{...item}}"></template>
       </view> -->
-    </scroll-view>
+    </view>
   </view>
-</movable-area>
+</scroll-view>
   <import src="../../component/message/message.wxml" />
   <template is="message" data="{{message: message}}" />
 <template name="books">

@@ -136,24 +136,25 @@ function closeSocket() {
 
 function getOpenID(code, cb) {
   wx.request({
-    url: 'https://api.weixin.qq.com/sns/jscode2session',
+    url: config.apiList.getOpenID,
     data: {
-      appid: config.APP_ID,
-      secret: config.APP_SECRET,
-      js_code: code,
-      grant_type: 'authorization_code'
+      js_code: code
     },
     header: {
       'content-type': 'application/json'
     },
     success: function (res) {
-      console.log("success", config.userInfo.nickName, "openID", res.data.openid);
+      // console.log(res); 
+      res.data = JSON.parse(res.data.data);
+      
+      // console.log("success", config.userInfo.nickName, "openID", res.data.openid);
       // var openid = res.data.openid //返回openid
       config.openID = res.data.openid;
       wx.setStorageSync(config.userInfo.nickName + "openID", config.openID);
       typeof cb == "function" && cb(config.userInfo)
     }
   })
+  
 }
 function showToastSu(str) {
   wx.showToast({

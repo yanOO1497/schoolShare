@@ -8,7 +8,9 @@ zan-tab{
 .page-content{
   margin-top: 45px;
 }
-
+.avatar{
+  margin-top:25rpx;
+}
 .weui-btn {
   display: inline-block;
   margin: auto;

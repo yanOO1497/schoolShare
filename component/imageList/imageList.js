@@ -129,7 +129,8 @@ Component({
           }else{
             switch (res.tapIndex) {
               case 0:
-                console.log("通知上传用户调整资源");
+                console.log("私信提供用户");
+                that.enterUserDetail(e);
                 break;
               case 1:
                 console.log("举报资源");

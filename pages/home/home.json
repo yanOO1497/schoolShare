@@ -3,7 +3,8 @@
     "usingComponents": {
       "zan-tab": "../../component/tab/index",
       "doc-page": "../../component/doc-page/index",
-      "list-one":"../../component/list-one/list-one"
-    },
-    "enablePullDownRefresh": true
+      "list-one":"../../component/list-one/list-one",
+      "zan-loading": "../../component/loading/index"
+    }
+  
 }

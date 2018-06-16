@@ -1,10 +1,10 @@
 <!--component/list-1/list-1.wxml-->
 <view wx:if="{{isDetail}}">
-  <template is="{{listType}}" data="{{...listOBJ}}" bindtap="checkEnter"></template>
+  <template is="{{listType}}" data="{{...listOBJ,isDetail}}" ></template>
 </view>
 <view wx:elif="{{isQuesAndShare}}">
   <block class='list' wx:for="{{list}}" wx:key="index">
-    <template is="{{listTypeArr[item.type]}}" data="{{...item,index,isQuesAndShare,isShowDelete}}" bindtap="checkEnter"></template>
+    <template is="{{listTypeArr[item.type]}}" data="{{...item,index,isQuesAndShare,isShowDelete}}" ></template>
   </block>
 </view>
 
@@ -41,9 +41,9 @@
         <text data-name="useful">{{agreeNum > 0 ? agreeNum : '喜欢'}}</text>
       </view>
 
-      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{optionList[2] ? 'act' : ''}}">
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{optionList[2] ? 'act' : ''}}" wx:if="{{!isDetail}}">
         <i class="iconfont icon-pinglun" data-name="comment"></i>
-        <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '评论'}}</text>
+        <text class='comment' data-name="comment" >{{commentNum > 0 ? commentNum : '评论'}}</text>
       </view>
       <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  {{disagreeFlag == 1 ? 'act' : ''}}">
         <i class="iconfont icon-fenxiang" data-name="share"></i>
@@ -81,7 +81,7 @@
         <text data-name="useful">{{agreeNum > 0 ? agreeNum : '喜欢'}}</text>
       </view>
 
-      <view class="weui-media-box__info__meta  weui-media-box__info__meta_extra {{optionList[2] ? 'act' : ''}}">
+      <view class="weui-media-box__info__meta  weui-media-box__info__meta_extra {{optionList[2] ? 'act' : ''}}" wx:if="{{!isDetail}}">
         <i class="iconfont icon-pinglun" data-name="comment"></i>
         <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '了解更多'}}</text>
 
@@ -98,7 +98,7 @@
   </view>
 </template>
 <template name="secondarymarket">
-  <view data-mid="{{id}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
+  <view data-mid="{{id}}" data-type = "{{type}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
     <view class='user-info'>
       <image class='avatar' wx:if="{{avatarUrl}}" src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
@@ -122,7 +122,7 @@
         <i class="iconfont icon-aixin" data-name="useful"></i>
         <text data-name="useful">{{agreeNum > 0 ? agreeNum : '喜欢'}}</text>
       </view>
-      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra {{optionList[2] ? 'act' : ''}}">
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra {{optionList[2] ? 'act' : ''}}" wx:if="{{!isDetail}}">
         <i class="iconfont icon-pinglun" data-name="comment"></i>
         <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '评论'}}</text>
       </view>
@@ -138,7 +138,7 @@
   </view>
 </template>
 <template name="share">
-  <view data-mid="{{id}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
+  <view data-mid="{{id}}" data-type = "{{type}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
     <view class='user-info'>
       <image class='avatar' src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
@@ -162,7 +162,7 @@
         <i class="iconfont icon-aixin" data-name="useful"></i>
         <text data-name="useful">{{agreeNum > 0 ? agreeNum : '喜欢'}}</text>
       </view>
-      <view class="weui-media-box__info__meta {{optionList[2] ? 'act' : ''}} weui-media-box__info__meta_extra">
+      <view class="weui-media-box__info__meta {{optionList[2] ? 'act' : ''}} weui-media-box__info__meta_extra" wx:if="{{!isDetail}}">
         <i class="iconfont icon-pinglun" data-name="comment"></i>
         <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '评论'}}</text>
       </view>
@@ -178,7 +178,7 @@
   </view>
 </template>
 <template name="question">
-  <view data-mid="{{id}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
+  <view data-mid="{{id}}" data-type = "{{type}}" class='list-item {{type}}' data-index="{{index}}" bindtap='checkEnter'>
     <view class='user-info'>
       <image class='avatar' src='{{avatarUrl}}' data-name="avater-img" data-uid="{{uid}}"></image>
       <view class='user-data'>
@@ -203,7 +203,7 @@
         <i class="iconfont icon-aixin" data-name="useful"></i>
         <text data-name="useful">{{agreeNum > 0 ? agreeNum : '喜欢'}}</text>
       </view>
-      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  ">
+      <view class="weui-media-box__info__meta weui-media-box__info__meta_extra  " wx:if="{{!isDetail}}">
         <i class="iconfont icon-pinglun" data-name="comment"></i>
         <text class='comment' data-name="comment">{{commentNum > 0 ? commentNum : '评论'}}</text>
       </view>

@@ -23,15 +23,11 @@ Page({
         sex: config.userInfo.gender,
         uid: config.openID
       }, function (res) {
-        util.showText("用户信息录入成功");
-        
-        that.navBack();
-        
+        util.showText("用户信息录入成功"); 
+        that.navBack();  
       }, function () {
-        util.showText("用户信息录入失败");
-       
+        util.showText("用户信息录入失败");  
       })
-      
     });
    
   },

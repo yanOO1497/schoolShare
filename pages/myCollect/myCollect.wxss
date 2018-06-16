@@ -1,1 +1,14 @@
 /* pages/myCollect/myCollect.wxss */
+.tips-title{
+  width: 60%;
+  margin:0 auto;
+}
+.loading-tip{
+  position: absolute;
+  top:0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  height: 500rpx;
+}

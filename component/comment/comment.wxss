@@ -7,7 +7,9 @@
   margin-top: 5rpx;
   text-align: right;
 }
-
+.comment-center{
+  margin-bottom: 40rpx; 
+}
 .no-comment {
   text-align: center;
   font-size: 30rpx;
@@ -21,24 +23,21 @@
   display: inline-block;
 }
 
-.addComment ,.fake-addComent{
-  position: absolute;
+.addComment {
+  position: fixed;
   width: 100%;
-  padding: 15rpx 15rpx 25rpx;
+  padding: 15rpx 35rpx 25rpx;
   box-sizing: border-box;
   vertical-align: center;
   bottom: 0; 
   background-color: #eee;
 }
-.fake-addComent{
-  position: fixed;
- 
-}
+
 .addComent-con {
   display: block;  
   /* background-color: white; */
   height: 80rpx;
-  line-height: 45rpx;
+  line-height: 80rpx;
   font-size: 35rpx;
   clear: both;
 }
@@ -48,20 +47,21 @@
 }
 .comment-input {
   width: 80%; 
-   height: 80rpx;
+  min-height: 80rpx;
+  line-height: 80rpx;
   background-color: white;
   display: inline-block;
-  padding: 10rpx 20rpx;
+  padding: 20rpx;
   vertical-align: center;
   box-sizing: border-box;
   float: left;
 }
 .sent {
   position: static;
+  padding: 0;
   display: inline-block;
   width: 18%;
   box-sizing: border-box;
-  border: 1px solid #79bd8f;
   border-radius: 15rpx;
   color: white;
   line-height: 80rpx;

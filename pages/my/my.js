@@ -11,10 +11,10 @@ Page({
     userInfo: {},
     isLogin: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    color:"#99CC33",
-    points:"55",
+    color: "#99CC33",
+    points: "55",
     broadcast: "最新消息最新消息",
-    gridList:[
+    gridList: [
       {
         name: "我的发布",
         urlName: "myPublish",
@@ -32,7 +32,7 @@ Page({
       },
       {
         name: "我的上传",
-        urlName: "setting",
+        urlName: "myUpload",
         iconClass: "icon-online"
       },
       {
@@ -46,7 +46,7 @@ Page({
         iconClass: "icon-shezhi"
       },
     ],
-    showLoading:true
+    showLoading: true
   },
 
   /**
@@ -59,12 +59,12 @@ Page({
         that.setData({
           userInfo: res.result,
           isLogin: true,
-          showLoading:false
+          showLoading: false
         })
       })
-      
+
     } else {
-      util.getUserSet(function(){
+      util.getUserSet(function () {
 
         that.setData({
           userInfo: config.userInfo,
@@ -73,62 +73,77 @@ Page({
       })
     }
   },
-  scan:function(){
+  scan: function () {
     wx.scanCode({
       success: (res) => {
         console.log(res)
       }
     })
   },
-  getUserInfo:function(){
+  getUserInfo: function () {
     util.getUserInfo();
   },
-  jumpCheck:function(e){
+  jumpCheck: function (e) {
     let that = this;
-    
-    if(that.data.isLogin){
+
+    if (that.data.isLogin) {
       let index = e.currentTarget.dataset.index;
       let urlName = that.data.gridList[index].urlName;
-      wx.navigateTo({    
+      wx.navigateTo({
         url: `/pages/${urlName}/${urlName}`
       })
-    }else{
+    } else {
+
       util.showText("请先登录！");
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
     }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    let that = this;
+    if (that.data.isLogin) {
+      fetch._get.call(that, config.apiList.loadUserInfoDetails, { uid: config.openID }, function (res) {
+        that.setData({
+          userInfo: res.result,
+          isLogin: true,
+          showLoading: false
+        })
+      })
+    }else{
+
+    }
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
 

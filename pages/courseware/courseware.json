@@ -2,6 +2,9 @@
   "navigationBarTitleText": "课件资料",
   "usingComponents": {
     "list-fold": "../../component/list-fold/list-fold",
-    "searchBar": "../../component/searchBar/searchBar"
-  }
+    "searchBar": "../../component/searchBar/searchBar",
+    "zan-loading": "../../component/loading/index"
+  },
+  "enablePullDownRefresh": true
+  
 }

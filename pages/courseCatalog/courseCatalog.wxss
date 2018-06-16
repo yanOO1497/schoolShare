@@ -1,0 +1,47 @@
+@import '../courseware/courseware';
+
+.page{
+  background-color: white;
+}
+.courseCover{
+  display: flex;
+  margin: 20rpx;
+  padding: 20rpx 0;
+}
+.courseName{
+  font-weight: bold;
+}
+.catalog-num{
+  color: red;
+}
+.catalog-title{
+  display: flex;
+  padding: 0 20rpx;
+  line-height: 40rpx;
+  margin: 20rpx;
+  border-left: 4rpx solid #66cc66;
+  justify-content: space-between;
+}
+image{
+  width: 40%;
+}
+.catalog-item{
+  display: flex;
+  height: 50rpx;
+  border-bottom: 0.5rpx solid #ccc;
+  padding: 20rpx;
+  margin: 0 20rpx;
+  font-size: 30rpx;
+}
+.title{
+  padding-left: 40rpx;
+}
+.index{
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  border-radius: 50%;
+  background-color: #66cc66;
+  color: white;
+  text-align: center;
+}

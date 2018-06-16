@@ -25,6 +25,19 @@
           <view class="weui-media-box__title weui-media-box__title_in-text">静态资源存储</view>
           <view class="weui-media-box__desc">七牛云存储</view>
         </view>
+        <view class="weui-media-box weui-media-box_text">
+          <view class="weui-media-box__title weui-media-box__title_in-text">服务器</view>
+          <view class="weui-media-box__desc">腾讯云主机，jetty容器</view>
+        </view>
+         <view class="weui-media-box weui-media-box_text">
+          <view class="weui-media-box__title weui-media-box__title_in-text">后台</view>
+          <view class="weui-media-box__desc">java后台（springMVC框架）</view>
+        </view>
+         <view class="weui-media-box weui-media-box_text">
+          <view class="weui-media-box__title weui-media-box__title_in-text">数据库</view>
+          <view class="weui-media-box__desc">MySQL（Workbench管理工具）</view>
+        </view>
+
       </view>
     </view>
   </view>

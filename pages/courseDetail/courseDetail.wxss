@@ -1,0 +1,5 @@
+/* pages/courseDetail/courseDetail.wxss */
+@import "../../wxParse/wxParse.wxss";
+.page{
+  padding: 30rpx;
+}

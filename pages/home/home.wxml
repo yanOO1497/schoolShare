@@ -1,7 +1,6 @@
 <!--pages/home/home.wxml-->
 <!--index.wxml-->
 <movable-area class='page'>
-
   <movable-view class='fixBar' direction="all" x="280" y="400">
     <view class='fixBar-item write ' bindtap='toPublish' wx:if="{{isShowFixBar}}">
       <text class='iconfont icon-xie'></text>
@@ -16,19 +15,20 @@
   <view class='empty' style='height:{{ navtab.height }}px'></view>
   <scroll-view class="weui-tab__content" scroll-y scroll-with-animation='true' bindscroll="scroll" style='height:94%' scroll-top="{{scrollTop}}" bindscrolltolower="onReachBottom" bindscrolltoupper="onPullDownRefresh">
     <!-- 校内问答与经验分享页面 -->
-    <view wx:if="{{showLoading}}">
+    <view wx:if="{{showLoading }}">
       <view class="loading">正在载入数据…</view>
     </view>
+
     <list-one wx:else list="{{listData[navtab.selectedId]}}" listType="{{navtab.selectedId}}" bind:onShareAppMessage="onShareAppMessage" isQuesAndShare="false" />
+    <view wx:if="{{!noNetWork}}">
+      <view class="loading-tip " wx:if="{{!hasMore[navtab.selectedId]}}">
+        <view class='tips-title'>没有更多内容了！</view>
+        <view class='tips-img no-more'></view>
+      </view>
+      <zan-loading type="dot" color="black"  wx:if="{{hasMore[navtab.selectedId] && !showLoading}}"></zan-loading>
+    </view>
     <!-- <view class='hasEnterBottom'">没有更多啦~</view> -->
-    <view class="loading-tip " wx:if="{{!hasMore[navtab.selectedId]}}">
-      <view class='tips-title'>没有更多内容了！</view>
-      <view class='tips-img no-more'></view>
-    </view>
-    <view class="loading-tip " wx:if="{{hasMore[navtab.selectedId]}}">
-      <view class='tips-title'>正在加载中</view>
-      <view class='tips-img no-more'></view>
-    </view>
+
 
     <!-- 讲座 列表 -->
 

@@ -1,16 +1,16 @@
-<!--component/comment/comment.wxml-->
-<view class='addComment' wx:if="{{isShow}}">
-  <view class='addComent-con'>
-    <input placeholder='{{input_placeholder}}' class='comment-input' placeholder-class='comment-inpt__placeholder' cursor-spacing='5' value='{{sentMessage}}' focus='{{isFocus}}' bindinput="setSentData" bindblur='hideInput' adjust-position="false"></input>
-    <text class='sent' name='sent' bindtap='sentMsg'>发送</text>
-  </view>
+
+<view class='addComment' >
+    <form bindsubmit="sentMsg" class='addComent-con clearfix'>
+       <textarea placeholder='{{input_placeholder}}' class='comment-input' placeholder-class='comment-inpt__placeholder' focus='{{isFocus}}'   fixed="true"   adjust-position="false" auto-height="true" name="textarea" bindtap='setFocus' bindinput = "checkMsg"></textarea>
+      <button class='sent' form-type="submit" name='sent' disabled='{{isDisable}}'>评论 </button>
+    </form>
 </view>
-<view class='fake-addComent' wx:else>
+<!-- <view class='fake-addComent' wx:else>
   <view class='addComent-con'>
-    <input placeholder='评论' class='comment-input' placeholder-class='comment-inpt__placeholder' focus='{{isFocus}}' disabled='disabled' bindtap='setFocus'></input>
-    <span class='sent' name='sent'>发送</span>
+    <input placeholder='评论' class='comment-input' placeholder-class='comment-inpt__placeholder'  disabled='disabled' bindtap='setFocus'></input>
+    <span class='sent' >发送</span>
   </view>
-</view>
+</view> -->
 <view class='comment-wrap'>
   <view class='comment-title'>一一一一一一一一一
     <text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>评论
@@ -37,4 +37,3 @@
     </view>
   </view>
 </template>
-

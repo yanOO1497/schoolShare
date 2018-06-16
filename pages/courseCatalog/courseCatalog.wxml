@@ -1,0 +1,32 @@
+<!--pages/courseDetail/courseDetail.wxml-->
+<view wx:if="{{showLoading}}">
+  <view class="loading">正在载入数据…</view>
+</view>
+<view wx:else class='page'>
+  <view class='courseCover'>
+    <image src='{{cover}}' mode='widthFix'></image>
+    <view class='detail'>
+      <text class='courseName'>{{name}}</text>
+      <view class='author'>作者：{{author}}</view>
+      <view class='publisher'>出版社：{{publisher}}</view>
+      <view>ISBN：{{isbn}}</view>
+    </view>
+  </view>
+  <view class='catalog-title'>
+    <view>章节目录</view>
+    <view class='catalog-all'>共有
+      <text class='catalog-num'>{{list.length}}</text>章节</view>
+  </view>
+  <view class='catalog' wx:for="{{list}}">
+    <template is="catalog-item" data="{{...item}}" />
+  </view>
+
+</view>
+
+
+<template name="catalog-item">
+  <navigator class='catalog-item' url='../courseDetail/courseDetail?id={{id}}'>
+    <view class='index'>{{index}}</view>
+    <view class='title'>{{title}}</view>
+  </navigator>
+</template>

@@ -23,7 +23,8 @@ Page({
     typeIndex: 0,
     mid:1,
     listTypeArr,
-    isDetail:true
+    isDetail:true,
+    showLoading:true
   },
 
   /**
@@ -43,7 +44,8 @@ Page({
         commentData: res.subjects,
         listDetail: res.result,
         typeIndex,
-        mid
+        mid,
+        showLoading:false
       })
       console.log("进入进入",that.data.listTypeArr[that.data.typeIndex]);
     })

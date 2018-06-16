@@ -7,7 +7,9 @@
     top:0;
     left: 0;
 }
-
+.page-content{
+  margin-top:30rpx;
+}
 .message {
     box-sizing: border-box;
     position: fixed;

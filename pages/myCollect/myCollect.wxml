@@ -1,4 +1,8 @@
 <view wx:if="{{showLoading}}">
   <view class="loading">载入数据中…</view>
 </view>
-<list-one wx:else list="{{listData}}"  isQuesAndShare="true" />
+<list-one wx:elif="{{listData.length != 0}}" list="{{listData}}" isQuesAndShare="true" />
+<view class="loading-tip " wx:else>
+  <view class='tips-title'>呀，你还没有收藏任何内容呢，快去广场看看吧！</view>
+  <view class='tips-img no-more'></view>
+</view>

@@ -1,6 +1,8 @@
 /* pages/home/home.wxss */
 @import '../../component/message/message';
-
+zan-loading{
+  width: 100%;
+}
 .page{
   height: 100%;
 }

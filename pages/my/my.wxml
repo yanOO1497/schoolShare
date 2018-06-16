@@ -2,13 +2,13 @@
 <view wx:if="{{showLoading}}">
   <view class="loading">载入数据中…</view>
 </view>
-<view class='page'>
+<view wx:else class='page'>
   <view class="page__hd">
     <view class=' user-img' wx:if="{{!isLogin}}" bindtap="getUserInfo">
       <text class='user-login'>立即\n登录</text>
     </view>
     <view class='user-info' wx:else>
-      <image class='user-img' src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <image class='user-img' wx:if="{{userInfo.avatarUrl}}" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <view class='user-info'>
         <text class='user-name'> {{userInfo.nickName}}</text>
 
@@ -33,8 +33,8 @@
       <!-- <view class='score'>积分：{{userInfo.score}}</view> -->
     </view>
     <view class='broadcast'>
-      <i class='iconfont .icon-guangboxianxing'></i>
-      <text class='broadcast-text'>积分：{{userInfo.score}}</text>
+      <i class='iconfont .icon-jifen'></i>
+      <text class='broadcast-text'>：{{userInfo.score}}</text>
     </view>
   </view>
   <view class='page__bd'>

@@ -1,14 +1,42 @@
 <!--pages/courseware/courseware.wxml-->
+<view class='search-bar'>
+  <searchBar bindsentInput="searchData" bindinputTyping="inputTyping" />
+  <view class='result-title'>共为你查找到
+    <text class='result-num'> {{total}} </text>本教材</view>
+</view>
 
-<searchBar bindsentInput="searchData" bindinputTyping="inputTyping" />
+<view wx:if="{{showLoading}}">
+  <view class="loading">正在载入数据…</view>
+</view>
+<view class=' search-result'>
 
+  <view wx:if="{{!showLoading}}" class="course-wrap" wx:for="{{course}}">
+    <template is="list-fold" data="{{...item}}"></template>
+  </view>
+</view>
 
+<view wx:if="{{current_page}}">
+  <view class="loading-tip " wx:if="{{current_page === last_page}}">
+    <view class='tips-title'>没有更多内容了！</view>
+    <view class='tips-img no-more'></view>
+  </view>
+  <zan-loading type="dot" color="black" wx:if="{{current_page < last_page}}"></zan-loading>
+</view>
 
-<list-fold listData="{{course}}" />
-
-<view wx:if="{{course.length == 0}}">
+<template name="list-fold">
+  <navigator class='list-wrap' url='../courseCatalog/courseCatalog?id={{id}}'>
+    <image class='list-item' wx:if="{{cover}}" src='{{cover}}' mode='widthFix'></image>
+    <view class='list-item detail'>
+      <text class='courseName'>{{name}}</text>
+      <view class='author'>作者：{{author}}</view>
+      <view class='publisher'>出版社：{{publisher}}</view>
+      <view></view>
+    </view>
+  </navigator>
+</template>
+<!-- <view wx:if="{{course.length == 0}}">
   <view class="tips nomore">
     <view class='tips-title'>没有查询到相关消息！可以去校内问答看看能不能问到相关资料~</view>
     <view class='tips-img no-search'></view>
   </view>
-</view>
+</view> -->

@@ -3,10 +3,10 @@
   <view class="loading">载入数据中…</view>
 </view>
 
-<view class='page'>
+<view wx:else class='page'>
   <view class="page__hd">
     <view class='user-info'>
-      <image class='user-img' src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <image class='user-img' wx:if="{{userInfo.avatarUrl}}" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <view class='user-info'>
         <text class='user-name'> {{userInfo.nickName}}</text>
         <text wx:if="{{userInfo.sex == 2}}" class='iconfont icon-girl'></text>
@@ -16,7 +16,7 @@
         <i class='iconfont icon-wechat'></i>{{userInfo.wechat}}</view>
       <view class='QQ' wx:if="{{userInfo.showQQ == 1 && userInfo.qq !== ''}}">
         <i class='iconfont icon-QQ'></i>{{userInfo.qq}}</view>
-      <view class='school'>
+      <view class='school' wx:if="{{userInfo.school && userInfo.school !== ''}}">
         <i class='iconfont icon-school'></i>{{userInfo.school}}</view>
       <view class='bio'>{{userInfo.bio}}</view>
     </view>

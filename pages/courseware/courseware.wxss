@@ -1,3 +1,70 @@
 /* pages/courseware/courseware.wxss */
+.search-bar{
+  position: fixed;
+  top:0;
+  z-index: 10;
+  width: 100%;
+  background-color: white;
+}
+
+.result-title{
+  padding: 0 20rpx;
+  border-left: 4rpx solid #66cc66;
+  line-height: 40rpx;
+  margin: 10rpx;
+  top:120;
+}
+.search-result{
+   margin-top:100rpx; 
+}
+
+.course-wrap{
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.search-result{
+ margin-top:140rpx;
+ background-color: white;
+ padding: 15rpx;
+}
 
 
+.result-num{
+  color: red;
+}
+
+.list-wrap {
+  /* display: flex;   *//* margin: 20rpx; */
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.list-item {
+  display: inline-block;
+  vertical-align: top;
+}
+
+image {
+  width: 35%;
+  /* flex: 1; */
+}
+
+.detail {
+  color: #333;
+  font-size: 25rpx;
+  width: 65%;
+  line-height: 50rpx;
+}
+
+.courseName {
+ display: -webkit-box;
+  width: 100%;
+  color: black;
+  font-size: 35rpx;
+  padding-bottom: 20rpx;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 60rpx;
+}

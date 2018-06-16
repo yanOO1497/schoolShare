@@ -12,7 +12,7 @@ Page({
       nickName: "这里是名字",
       avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/NxZsHXwemD7L0cvJjYeRK3GWUApuXMeOSTdn6RrUCxEbYiaXzbLcKNIIJOLVQ0DqMYXIoGibT4pcVZz6ojehdUdw/0",
       points: 22,
-      bio: "面朝大海，春暖花开",
+      bio: "个性签名",
       school: "福州大学",
       sex:2
     },

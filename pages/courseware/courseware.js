@@ -1,6 +1,7 @@
 // pages/courseware/courseware.js
-var fetch = require('../../common/script/fetch')
+
 var util = require('../../utils/util')
+var fetch = require('../../common/script/fetch')
 var config = require('../../common/script/config')
 Page({
 
@@ -8,25 +9,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    course:[
-      {
-      courseName:"大物下历年卷大物下历年卷大物下历年卷大物下历年卷大物下历年卷大物下历年卷大物下历年卷",
-      uid:"1",
-      nickName:"花菜真好吃",
-      avatarUrl:"http://qlogo4.store.qq.com/qzone/834728267/834728267/30",
-      dec:"这里是课件描述信息这里是课件描述信息这里是课件描述信息这里是课件描述信息这里是课件描述信息",
-      creatTime:"2017.12.4",
-      downloadUrl:""
-      }, {
-        courseName: "大物下历年卷大物下历年卷大物下历年卷大物下历年卷大物下历年卷大物下历年卷大物下历年卷",
-        uid: "1",
-        nickName: "花菜真好吃",
-        avatarUrl: "http://qlogo4.store.qq.com/qzone/834728267/834728267/30",
-        dec: "这里是课件描述信息这里是课件描述信息这里是课件描述信息这里是课件描述信息这里是课件描述信息",
-        creatTime: "2017.12.4",
-        downloadUrl: ""
-      },
-    ],
+    course:[],
+    noNetWork:false,
+    showLoading:true,
+    hasMore:true,
+    page:1,
+    key:""
     // isCanSearch:true
   },
 
@@ -34,34 +22,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getData();
+    this.getData("search");
   },
 
-  getData(getType, searchName,cb){
+  getData(getType,cb){
     let that = this,prames ={};
-    if (getType === "search"){
-      prames.searchName = searchName
-    }
-    fetch._get.call(that, config.apiList.searchCoursewareList,{
-      start:0,
-      count:5,
-      ...prames
-    },function(res){
+    let { key, page } = that.data;
+    fetch._get.call(that, config.apiList.textbookSearch, {
+      page,
+      key
+    }, function (res) {
+      res.data = JSON.parse(res.data).data;
+      console.log(res.data);   
+      if (getType === "loadMore"){
+        that.data.course = that.data.course.concat(res.data.list);
+      }else{
+        that.data.course = res.data.list;
+      }
       that.setData({
-        course:res.subjects
+        course: that.data.course,
+        showLoading:false,
+        total: res.data.total,
+        current_page: res.data.current_page,
+        last_page: res.data.last_page
       })
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
   inputTyping(e){
-    console.log("子组件输入", e.detail.value);
-    this.getData("search", e.detail.value);
+    // console.log("子组件输入", e.detail.value);
+    let that = this;
+    that.data.key = e.detail.value;
+    that.data.page = 1;
+    that.getData("search");
   },
   searchData(e){
     // console.log("父组件接收到",e.detail.value);
@@ -99,7 +91,14 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    // console.log("daodi la ");
+    let that = this;
+    let { current_page, last_page ,page} = that.data;
+    if (current_page < last_page){
+      that.data.page = page + 1;
+      that.getData("loadMore");
+    }
+    
   },
 
   /**

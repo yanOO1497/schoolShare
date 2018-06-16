@@ -19,7 +19,9 @@ Page({
     hasMore:true,
     count:10,
     uid:"",
-    start:0
+    start:0,
+    isDisable:true,
+    isFocus:true
   },
 
   /**
@@ -102,12 +104,13 @@ Page({
   },
   sentMessage(e) {
     let that = this;
-    if (that.data.message !== "" && that.data.message) {
+    console.log()
+    let msg = e.detail.value.message;
       that.data.chatData.push({
-        content: that.data.message,
+        content: msg,
         uid: config.openID
       })
-      let message = that.data.message + "|" + that.data.otherUserInfo.toUid;//将要发送的信息和内容拼起来，以便于服务端知道消息要发给谁
+      let message = msg + "|" + that.data.otherUserInfo.toUid;//将要发送的信息和内容拼起来，以便于服务端知道消息要发给谁
       console.log("点击发送", that.data.otherUserInfo.toUid, that.data.message);
       if (that.data.isConnect) {
         SocketTask.send({
@@ -122,7 +125,7 @@ Page({
           }
         })
       }  
-    }
+
   },
   runToBottom(){
     let len = this.data.chatData.length;
@@ -158,13 +161,14 @@ Page({
     let { start, count, hasMore } = that.data;
     that.data.start = start + count;
     if(hasMore){
-      that.getChatLogDetails(start,"loadMore");
+      // that.getChatLogDetails(start,"loadMore");
       fetch._get.call(that,config.apiList.getChatLogDetails, {
-        toUid: that.data.uid,
-        start: start,
+        toUid: that.data.otherUserInfo.toUid,
+        start: that.data.start,
         count: that.data.count
       }, function (res) {
-            that.data.chatData.concat(res.subjects);
+        console.log(res.subjects);
+        that.data.chatData = res.subjects.concat(that.data.chatData);
             if (res.subjects.length < count){
               that.data.hasMore = false;
             }
@@ -185,10 +189,22 @@ Page({
 
   },
   inputTyping(e) {
-    let that = this;
-    that.setData({
-      message: e.detail.value
-    });
+    // let that = this;
+    // that.setData({
+    //   message: e.detail.value
+    // });
+
+    if (e.detail.value != "") {
+      console.log("有文字");
+      this.setData({
+        isDisable: false
+      })
+    } else {
+      this.setData({
+        isDisable: true
+      })
+      console.log("meiweni");
+    }
   },
 
   getMessage(str) {

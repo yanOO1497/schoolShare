@@ -5,12 +5,20 @@
     <template wx:for="{{chatData}}" wx:key="*this" is="{{item.uid == nowUid ?'mySentMes' : 'otherSentMes'}}" data="{{...item,myUserInfo,otherUserInfo,length}}"> </template>
   </scroll-view>
   <view class="sentMessage weui-cells weui-cells_after-title">
-    <view class="weui-cell weui-cell_input">
+
+    <form bindsubmit="sentMessage" class='addComent-con clearfix' >
+      <textarea  class='comment-input' placeholder-class='comment-inpt__placeholder'  fixed="true" adjust-position="false" auto-height="true"  name="message" bindinput="inputTyping" ></textarea>
+      <button class='sent' form-type="submit" name='sent' >发送</button>
+    </form>
+    <!-- <view class="weui-cell weui-cell_input">
       <view class="weui-cell__bd">
         <input class="weui-input" placeholder="请输入文本" value='{{message}}' bindinput='inputTyping' />
       </view>
       <button class='weui-cell__ft weui-btn mini-btn' plain="true" type="primary" size="mini" bindtap='sentMessage'>发送</button>
-    </view>
+    </view> -->
+
+
+
   </view>
 </view>
 

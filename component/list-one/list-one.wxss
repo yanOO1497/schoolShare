@@ -49,13 +49,14 @@ button::after{
   position: relative; 
 }
 .list-item {
-  padding: 25rpx;
+  padding: 30rpx;
   box-sizing: border-box;
   background-color: white;
-  /* border-bottom: 1px solid #ccc; */
+   border-bottom: 1px solid #e5e5e5; 
   color: #333;
-  margin: 25rpx;
-  border-radius: 20rpx;
+  margin:25rpx 0;
+  /* margin: 25rpx; */
+  /* border-radius: 20rpx; */
 }
 
 .control {
@@ -135,7 +136,8 @@ button::after{
 .weui-media-box__info{
   display: flex;
   line-height: 1.2em;
-  color: #ccc;
+  color: #9a9a9a;
+  /* border-top:1rpx solid #9a9a9a; */
 }
 .weui-media-box__info__meta{
  flex: 1;

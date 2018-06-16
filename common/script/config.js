@@ -9,10 +9,12 @@ openID: 用户唯一标识符（载入时缓存获取或者请求微信相关api
 skinList: “我的”页面背景列表
 正式环境域名：www.yanoo.xyz
 学校无线ip:192.168.191.1
-ww.yanoo.xyz:8082
+www.yanoo.xyz
 */
 
-var url = 'http://192.168.191.1:8082/school_share/share'
+var url = 'https://www.yanoo.xyz/school_share/share';
+var ontherUrl = "https://kaoshibb.com/api/v3/";
+
 module.exports = {
   APP_ID:'wx15734a2373afa7a8',
   APP_SECRET:'10c27dc6070ef03f708ccdbe3c072e21',
@@ -24,7 +26,6 @@ module.exports = {
   baiduAK: 'k28S8L69VGKML5GG2X6VBOKIFdhBQ6Bi',
   typeList: ["all", "question", "share", "rewardhelp", "activity", "secondarymarket"],
   apiList: {
-
     loadTableList: url + '/loadTableList.do',//加载各类信息列表
     loadTableListByUid: url + '/loadTableListByUid.do',// 信息列表
     loadBookList: url + '/loadBookList.do',//加载图书列表
@@ -55,7 +56,13 @@ module.exports = {
     addToComment: url + '/addToComment.do',//添加评论
     uploadFile: url + '/uploadFile.do',//上传文件
     publish: url + '/publish.do',//发布消息
-    webSocket: 'ws://www.yanoo.xyz:8082/school_share/websocket/',
+    getOpenID: url +'/getOpenID.do',
+    //课件资料接口分割线
+    textbookHotTagList: url + '/textbookHotTagList.do',
+    textbookSearch: url + '/textbookSearch.do',
+    textbookDetail: url + '/textbookDetail.do',
+    chapterDetail: url + '/chapterDetail.do',
+    webSocket: 'wss://www.yanoo.xyz/school_share/websocket/',
     getMessageByMidAndType: url + '/getMessageByMidAndType.do',
     personDetail: 'https://api.douban.com/v2/movie/celebrity/',
     baiduMap: 'https://api.map.baidu.com/geocoder/v2/'

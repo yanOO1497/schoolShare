@@ -29,9 +29,10 @@ Component({
    commentNum:0,
    sentMessage:"",
    isFocus:false,
-   isShow:false,
+   isShow:true,
    fatherId:0,
-   input_placeholder:"评论"
+   input_placeholder:"说点什么吧~",
+   isDisable:true
   },
 
 
@@ -41,47 +42,54 @@ Component({
   methods: {
 
     sentMsg:function(e){
-      console.log("发送消息");
+      console.log("发送消息",e);
       var that = this;
-      // console.log(this.data.sentMessage, e);
-      let { mid, fatherId, typeIndex, sentMessage } = that.data;
-      console.log(mid, fatherId, typeIndex, sentMessage)
+      console.log(e.detail.value.textarea);
+      let { mid, fatherId, typeIndex} = that.data;
+      // console.log(mid, fatherId, typeIndex);
       fetch._get.call(that,config.apiList.addToComment,{
         uid:config.openID,
         type: typeIndex,
-        content: sentMessage,
+        content: e.detail.value.textarea,
         fatherId: fatherId,
         mid: mid,
       },function(res){
         console.log(res);
         that.refreshData();
       })
-      // var that = this;
-      // var myEventDetail = { 
-      //   sentMessage: thatdata.sentMessage,
-      //   typeIndex: that.data.typeIndex
-      //  } // detail对象，提供给事件监听函数
-      // that.triggerEvent('observeReply', myEventDetail)
+
     },
+    //发送消息
     setSentData:function(e){
+      // console.log("有文字");
       this.data.sentMessage = e.detail.value;
-      // console.log(e.detail.value,"评论输入框");
+      
+    },
+    checkMsg:function (e){
+      if (e.detail.value != "") {
+        console.log("有文字");
+        this.setData({
+          isDisable: false
+        })
+      } else {
+        this.setData({
+          isDisable: true
+        })
+        console.log("meiweni");
+      }
     },
     setFocus:function(e){
       let { fatherid, name } = e.currentTarget.dataset;
+      let prames = {};
       if (name){
-        name = "回复" + name;
+        prames.input_placeholder = "回复" + name;
+        prames.fatherId = fatherid;
       }else{
-        name = "评论" ;
-        fatherid = 0
+        prames.input_placeholder = "评论";
       }
-      
-      console.log('focus', fatherid, name);
       this.setData({
         isFocus:true,
-        isShow:true,
-        input_placeholder: name,
-        fatherId: fatherid
+        ...prames
       })
     },
     refreshData:function (start){
@@ -95,17 +103,7 @@ Component({
             commentData: res.result
           })
       })
-    },
-    hideInput:function(){
-      var that = this;
-      
-      setTimeout(function(){
-        that.setData({
-          isShow: false
-        })
-        // console.log("隐藏");
-      },1000)
-      
     }
+
   }
 })

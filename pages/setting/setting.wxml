@@ -1,8 +1,8 @@
 <!--pages/setting/setting.wxml-->
-<view wx:if="{{showLoading}}">
+ <view wx:if="{{showLoading}}">
   <view class="loading">载入数据中…</view>
-</view>
-<view class='page'>
+</view> 
+<view wx:else class='page'>
   <view class="weui-cells ">
     <navigator url="../alterUserInfo/alterUserInfo" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__bd">个人资料</view>
@@ -31,15 +31,15 @@
       </view>
     </view> -->
   </view>
-  <view class="weui-cells ">
+  <!-- <view class="weui-cells ">
     <navigator url="../about/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__bd">背景图片更改</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
-  </view>
+  </view> -->
   <view class="weui-cells ">
     <navigator url="../about/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__bd">关于我们</view>
+      <view class="weui-cell__bd">关于</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>
     </navigator>
   </view>

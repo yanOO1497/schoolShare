@@ -6,13 +6,13 @@
 </view>
 <template name="list-fold">
   <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-    <scroll-view scroll-x class="weui-cell__bd">{{courseName}}</scroll-view>
+    <scroll-view scroll-x class="weui-cell__bd">{{name}}</scroll-view>
     <view class="weui-cell__ft weui-cell__ft_in-access"></view>
   </view>
   <view class='list-fold-content weui-cell'>
     <view>
       <view class='list-fold-dec'>
-        {{courseDec}}
+        {{publisher}}
       </view>
       <view class=" name flex-wrap">
         <image class="item-ava flex-item" src="{{avatarUrl}}" catchtap='enterUserDetail' data-uid="{{uid}}"></image>

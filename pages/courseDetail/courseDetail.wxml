@@ -1,0 +1,13 @@
+<import src="../../wxParse/wxParse.wxml"/>  
+
+<!-- <view wx:for = "{{imgSrc}}">
+    <image src='{{item}}' mode='widthFix'></image>
+</view> -->
+<view wx:if="{{showLoading}}">
+  <view class="loading">正在载入数据…</view>
+</view>
+<view wx:else class='page'>
+  <view>{{textbook}}</view>
+  <view>{{title}}</view>
+ <template is="wxParse" data="{{wxParseData:dkcontent.nodes}}"/>  
+</view>

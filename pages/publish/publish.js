@@ -35,7 +35,6 @@ Page({
     })
   },
   bindValue : function (e){
-    // this.data.textareaArea = e.detail.value; 
     this.setData({
       textareaArea: e.detail.value
     })
@@ -159,9 +158,11 @@ Page({
     // console.log("发布地方"+that.data.uploadImgList);
     if (that.data.uploadImgList.length > 0){
       if (option === 1) {
-        prams.successUrl = that.data.uploadImgList
+        prams.successUrl = that.data.uploadImgList;
+        prams.cancelUrl = "";
       } else {
-        prams.cancelUrl = that.data.uploadImgList
+        prams.cancelUrl = that.data.uploadImgList;
+        prams.successUrl = "";
       }
     }
     if (that.data.typesIndex == 3){//
@@ -185,14 +186,14 @@ Page({
         let pages = getCurrentPages();
         let prevPage = pages[pages.length - 2];
         console.log(pages, prevPage)
-        // prevPage.setData({
-        //   shouldRefresh: true
-        // })
+        prevPage.setData({
+          shouldRefresh: true
+        })
         wx.navigateBack({
           delta: 1,
         })
        
-      },2000)
+      },1000)
       
     },function(res){
       console.log("发布失败",res);

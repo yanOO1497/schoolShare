@@ -19,17 +19,20 @@
     "pages/quesAndShare/quesAndShare",
     "pages/myCollect/myCollect",
     "pages/myShare/myShare",
-    "pages/uploadFiles/uploadFiles"
+    "pages/uploadFiles/uploadFiles",
+    "pages/courseDetail/courseDetail",
+    "pages/courseCatalog/courseCatalog",
+    "pages/myUpload/myUpload"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#92d091",
-    "navigationBarTitleText": "同学帮帮忙",
+    "navigationBarTitleText": "同学帮个忙",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#333",
-    "selectedColor": "#36ab60",
+    "selectedColor": "#92d091",
     "backgroundColor": "#fff",
     "borderStyle": "#ccc",
     "list": [
@@ -38,7 +41,7 @@
         "text": "广场",
         "iconPath": "images/tab-home.png",
         "selectedIconPath": "images/tab-home-cur.png",
-        "selectedColor": "#4EDF80",
+        "selectedColor": "#92d091",
         "active": false
       },
       {

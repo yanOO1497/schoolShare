@@ -22,9 +22,25 @@ function _get(url, prames, cb, fail_cb) {
       //   showLoading: false
       // })
       typeof cb == 'function' && cb(res.data)
+      // if(res.code === 100){
+      //   typeof cb == 'function' && cb(res.data)
+      // }else{
+      //   that.setData({
+      //     showLoading: false,
+      //     noNetWork: true,
+      //     message: {
+      //       content: '服务器出问题了',
+      //       icon: 'null',
+      //       duration: 3000,
+      //       visiable: true
+      //     }
+      //   })
+      // }
+      
     },
     fail: function (res) {
       that.setData({
+        noNetWork:true,
         showLoading: false,
         message:{
           content: '网络开小差了',

@@ -27,7 +27,7 @@
       <view class="weui-cell">
         <view class="weui-cell__bd">
           <textarea class="weui-textarea" placeholder="{{publish_placeholder[typesIndex]}}" style="height: 7.3em" value='{{textareaArea}}' bindblur="bindValue" bindinput="bindValue" />
-          <button class="weui-textarea-counter" bindtap='formSubmit'>发送</button>
+          <button class="weui-textarea-counter" form-type='submit'>发送</button>
         </view>
       </view>
     </view>

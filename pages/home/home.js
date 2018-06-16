@@ -9,7 +9,6 @@ const apiList = config.apiList;
 let api = {
   question: apiList.questionList,
   share: apiList.loadExperienceList,
-
 };
 Page({
 
@@ -32,6 +31,8 @@ Page({
     start: { "all": 0, "question": 0, 'share': 0, 'rewardhelp': 0, 'activity': 0, 'secondarymarket': 0 },
     showLoading: true,
     isShowFixBar: true,
+    noNetWork:false,
+    
     //最新消息列表
     listData: {
     },
@@ -75,11 +76,16 @@ Page({
     var that = this;
     wx.showNavigationBarLoading();
     // 获取用户信息
-
+    console.log("页面初次加载");
     let interval = setInterval(function(){
-      if(config.openID){
+      if (config.openID) {
         clearInterval(interval);
-        that.refreshData(0);
+        if (that.data.shouldRefresh) {
+          that.refreshData(0);
+          that.setData({
+            shouldRefresh: false
+          })
+        }
       }
     },1000)
 
@@ -107,35 +113,36 @@ Page({
       start,
       count
     }, function (res) {
-      wx.hideNavigationBarLoading();
-      res.subjects.map((item, key, arr) => {
-        if (item.picUrl !== "" && item.picUrl) {
-          item.picUrl = item.picUrl.split(",");
+        wx.hideNavigationBarLoading();
+        res.subjects.map((item, key, arr) => {
+          if (item.picUrl !== "" && item.picUrl) {
+            item.picUrl = item.picUrl.split(",");
+          }
+        })
+
+        if (refreshType == "refresh") {
+          that.data.start[select] = 0;
+          that.data.listData[select] = res.subjects;
+        } else {
+          that.data.listData[select] = that.data.listData[select].concat(res.subjects);
         }
-      })
-      
-      if (refreshType == "refresh") {
-        that.data.start[select]= 0;
-        that.data.listData[select] = res.subjects;
-      } else {
-        that.data.listData[select] = that.data.listData[select].concat(res.subjects);
-      }
-      console.log(refreshType, select, that.data.listData[select], res.subjects);
-      let hasMore = that.data.hasMore;
-      
-      if (res.subjects.length < count) {
-        hasMore[select] = false;
-      } else {
-        hasMore[select] = true;
-      }
-      that.setData({
-        hasMore,
-        listData: that.data.listData,
-        showLoading: false
-      });
-      typeof cb == 'function' && cb(res)//刷新数据后的回调
+        console.log(refreshType, select, that.data.listData[select], res.subjects);
+        let hasMore = that.data.hasMore;
+
+        if (res.subjects.length < count) {
+          hasMore[select] = false;
+        } else {
+          hasMore[select] = true;
+        }
+        that.setData({
+          hasMore,
+          listData: that.data.listData,
+          showLoading: false
+        });
+        typeof cb == 'function' && cb(res)//刷新数据后的回调
+  
     }, function (res) {
-      console.log("home get questionList fail");
+      console.log("home 请求失败");
     });
   },
   toPublish(e) {
@@ -168,6 +175,7 @@ Page({
     this.setData({
       scrollTop: 0
     })
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -181,20 +189,22 @@ Page({
    */
   onShow() {
     console.log("页面是否刷新", this.data.shouldRefresh);
-    this.refreshData(0);
-    // if (this.data.shouldRefresh) {
-    //   this.refreshData(0);
-    //   this.setData({
-    //     shouldRefresh: false
-    //   })
-    // }
+    // this.refreshData(0);
+    if (this.data.shouldRefresh) {
+      this.refreshData(0);
+      this.setData({
+        shouldRefresh: false
+      })
+    }
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-
+    this.setData({
+      shouldRefresh: true
+    })
   },
 
   /**
@@ -204,13 +214,6 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-    var that = this;
-    // that.refreshData(0);
-  },
   /**
    * 页面上拉触底事件的处理函数
    */

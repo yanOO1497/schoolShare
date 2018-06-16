@@ -70,7 +70,7 @@ Component({
       
     },
     checkEnter: function (e) {
-      // console.log("进入detail",e);
+      console.log("进入detail",e);
       var that = this;
       let { mid, index ,type } = e.currentTarget.dataset;
       let { name, uid ,url} = e.target.dataset;
@@ -89,13 +89,14 @@ Component({
               if (!res.cancel) {
                 switch (res.tapIndex) {
                   case 0:
+                    console.log(type,"额鹅鹅鹅");
                     that.toggleCollect({mid,index,type});
                     break;
                   // case 1:
                   //   that.onShareAppMessage({ mid, index });
                   //   break;
                   case 1:
-                    that.report(mid, index);
+                    that.report(mid, index ,type);
                     break;//举报
                 }
               }
@@ -170,7 +171,7 @@ Component({
     },
     toggleCollect: function (data) {//切换收藏
       var that = this;
-      let {mid,index} = data;
+      let {mid,index,type} = data;
       let nowFlag ;
       if (!that.data.isDetail) {
         nowFlag = that.data.list[data.index].collectFlag;
@@ -208,13 +209,13 @@ Component({
       })
 
     },
-    report: function (mid, index) {//举报
+    report: function (mid, index ,type) {//举报
     let that = this ;
       let nowFlag = that.data.list[index].reportFlag;
-      let typeIndex = config.typeList.indexOf(that.data.listType);
+      // let typeIndex = config.typeList.indexOf(that.data.listType);
       if (nowFlag === 0) {
         fetch._get.call(that, api.setCollect, {
-          type: typeIndex,
+          type,
           mid: mid,
           uid: config.openID,
           collectFlag: nowFlag
@@ -229,7 +230,7 @@ Component({
           console.log("toggleAgree fail");
         })
       } else {
-        that.showToastSu("已经举报过了！");
+        that.showText("已经举报过了哦~");
       }
 
     },
