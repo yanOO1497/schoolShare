@@ -8,7 +8,7 @@
 
 以下项目截至 2018.5.22 的截图 还有部分页面未上图
 
-![image](http://p8aftlhm5.bkt.clouddn.com/%E4%B8%AD%E7%AD%89%E5%9B%BE%E7%89%87%20%282%29.jpg)
+![image](./main.jpg)
 
 ## 项目涉及：
 
